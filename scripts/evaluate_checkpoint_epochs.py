@@ -19,7 +19,9 @@ from kk_sft.data import read_jsonl  # noqa: E402
 from kk_sft.evaluation import parse_answer  # noqa: E402
 
 
-def pattern(answer: dict, people: list[str]) -> str:
+def pattern(answer: dict | None, people: list[str]) -> str:
+    if not isinstance(answer, dict):
+        return "INVALID"
     return "".join("K" if answer.get(person) == "knight" else "N" for person in people)
 
 
