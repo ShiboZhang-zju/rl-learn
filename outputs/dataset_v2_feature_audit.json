@@ -1,0 +1,3252 @@
+{
+  "dataset_version": "kk-v2",
+  "generator_version": "kk-v2-statement-first",
+  "splits": {
+    "train": {
+      "count": 5000,
+      "unique_ids": 5000,
+      "label_distribution": {
+        "KKK": 591,
+        "KKN": 621,
+        "KNK": 674,
+        "KNN": 603,
+        "NKK": 597,
+        "NKN": 633,
+        "NNK": 628,
+        "NNN": 653
+      },
+      "solution_count_distribution": {
+        "1": 5000
+      },
+      "unique_solution_rate": 1.0,
+      "prompt_chars": {
+        "mean": 351.0444,
+        "min": 254,
+        "max": 609
+      },
+      "answer_chars": {
+        "mean": 56.4842,
+        "min": 55,
+        "max": 58
+      },
+      "difficulty": {
+        "statement_chars": {
+          "mean": 159.0444,
+          "min": 62,
+          "max": 417
+        },
+        "expression_nodes": {
+          "mean": 6.559,
+          "min": 3,
+          "max": 19
+        },
+        "expression_depth": {
+          "mean": 2.3898,
+          "min": 1,
+          "max": 3
+        }
+      },
+      "feature_means_by_label": {
+        "KKK": {
+          "same_count": 2.233502538071066,
+          "different_count": 0.7800338409475466,
+          "and_count": 0.5109983079526227,
+          "or_count": 0.9120135363790186,
+          "not_count": 0.7157360406091371
+        },
+        "KKN": {
+          "same_count": 1.4476650563607085,
+          "different_count": 1.5925925925925926,
+          "and_count": 0.6714975845410628,
+          "or_count": 0.6972624798711755,
+          "not_count": 0.7085346215780999
+        },
+        "KNK": {
+          "same_count": 1.4391691394658754,
+          "different_count": 1.5905044510385757,
+          "and_count": 0.6261127596439169,
+          "or_count": 0.8011869436201781,
+          "not_count": 0.6958456973293768
+        },
+        "KNN": {
+          "same_count": 1.6235489220563848,
+          "different_count": 1.4328358208955223,
+          "and_count": 0.8109452736318408,
+          "or_count": 0.6318407960199005,
+          "not_count": 0.7114427860696517
+        },
+        "NKK": {
+          "same_count": 1.3886097152428811,
+          "different_count": 1.6197654941373534,
+          "and_count": 0.6365159128978225,
+          "or_count": 0.7738693467336684,
+          "not_count": 0.7353433835845896
+        },
+        "NKN": {
+          "same_count": 1.6255924170616114,
+          "different_count": 1.4849921011058451,
+          "and_count": 0.8183254344391785,
+          "or_count": 0.6666666666666666,
+          "not_count": 0.7203791469194313
+        },
+        "NNK": {
+          "same_count": 1.5939490445859872,
+          "different_count": 1.4363057324840764,
+          "and_count": 0.8550955414012739,
+          "or_count": 0.5573248407643312,
+          "not_count": 0.7117834394904459
+        },
+        "NNN": {
+          "same_count": 0.8177641653905053,
+          "different_count": 2.196018376722818,
+          "and_count": 0.9448698315467075,
+          "or_count": 0.47013782542113325,
+          "not_count": 0.7044410413476263
+        }
+      },
+      "shortcut_audit": {
+        "same_count": {
+          "mutual_information_bits": 0.09273277445186211,
+          "table": {
+            "KKK": {
+              "0": 23,
+              "1": 136,
+              "2": 209,
+              "3": 147,
+              "4": 59,
+              "5": 13,
+              "6": 4
+            },
+            "KKN": {
+              "0": 103,
+              "1": 249,
+              "2": 180,
+              "3": 70,
+              "4": 15,
+              "5": 4
+            },
+            "KNK": {
+              "0": 127,
+              "1": 253,
+              "2": 192,
+              "3": 77,
+              "4": 23,
+              "5": 2
+            },
+            "KNN": {
+              "0": 83,
+              "1": 220,
+              "2": 187,
+              "3": 79,
+              "4": 26,
+              "5": 5,
+              "6": 2,
+              "7": 1
+            },
+            "NKK": {
+              "0": 106,
+              "1": 252,
+              "2": 161,
+              "3": 59,
+              "4": 17,
+              "5": 2
+            },
+            "NKN": {
+              "0": 77,
+              "1": 235,
+              "2": 200,
+              "3": 93,
+              "4": 25,
+              "5": 3
+            },
+            "NNK": {
+              "0": 82,
+              "1": 241,
+              "2": 195,
+              "3": 77,
+              "4": 26,
+              "5": 7
+            },
+            "NNN": {
+              "0": 291,
+              "1": 230,
+              "2": 100,
+              "3": 24,
+              "4": 8
+            }
+          }
+        },
+        "different_count": {
+          "mutual_information_bits": 0.0976692560703604,
+          "table": {
+            "KKK": {
+              "0": 282,
+              "1": 189,
+              "2": 91,
+              "3": 26,
+              "4": 3
+            },
+            "KKN": {
+              "0": 79,
+              "1": 225,
+              "2": 210,
+              "3": 86,
+              "4": 19,
+              "5": 2
+            },
+            "KNK": {
+              "0": 83,
+              "1": 270,
+              "2": 196,
+              "3": 93,
+              "4": 29,
+              "5": 3
+            },
+            "KNN": {
+              "0": 103,
+              "1": 245,
+              "2": 168,
+              "3": 67,
+              "4": 18,
+              "5": 2
+            },
+            "NKK": {
+              "0": 73,
+              "1": 225,
+              "2": 187,
+              "3": 86,
+              "4": 21,
+              "5": 4,
+              "6": 1
+            },
+            "NKN": {
+              "0": 91,
+              "1": 262,
+              "2": 185,
+              "3": 73,
+              "4": 21,
+              "5": 1
+            },
+            "NNK": {
+              "0": 103,
+              "1": 251,
+              "2": 190,
+              "3": 67,
+              "4": 15,
+              "5": 2
+            },
+            "NNN": {
+              "0": 21,
+              "1": 158,
+              "2": 242,
+              "3": 160,
+              "4": 55,
+              "5": 12,
+              "6": 3,
+              "7": 2
+            }
+          }
+        },
+        "and_count": {
+          "mutual_information_bits": 0.022513450495660236,
+          "table": {
+            "KKK": {
+              "0": 355,
+              "1": 182,
+              "2": 43,
+              "3": 10,
+              "4": 1
+            },
+            "KKN": {
+              "0": 320,
+              "1": 205,
+              "2": 78,
+              "3": 16,
+              "4": 2
+            },
+            "KNK": {
+              "0": 367,
+              "1": 217,
+              "2": 70,
+              "3": 16,
+              "4": 3,
+              "5": 1
+            },
+            "KNN": {
+              "0": 293,
+              "1": 185,
+              "2": 85,
+              "3": 33,
+              "4": 3,
+              "5": 3,
+              "8": 1
+            },
+            "NKK": {
+              "0": 318,
+              "1": 194,
+              "2": 70,
+              "3": 14,
+              "4": 1
+            },
+            "NKN": {
+              "0": 298,
+              "1": 199,
+              "2": 99,
+              "3": 30,
+              "4": 6,
+              "7": 1
+            },
+            "NNK": {
+              "0": 290,
+              "1": 199,
+              "2": 88,
+              "3": 44,
+              "4": 5,
+              "5": 2
+            },
+            "NNN": {
+              "0": 283,
+              "1": 195,
+              "2": 121,
+              "3": 37,
+              "4": 16,
+              "5": 1
+            }
+          }
+        },
+        "or_count": {
+          "mutual_information_bits": 0.02180143926393477,
+          "table": {
+            "KKK": {
+              "0": 257,
+              "1": 191,
+              "2": 96,
+              "3": 35,
+              "4": 9,
+              "5": 3
+            },
+            "KKN": {
+              "0": 318,
+              "1": 199,
+              "2": 82,
+              "3": 19,
+              "4": 2,
+              "5": 1
+            },
+            "KNK": {
+              "0": 326,
+              "1": 208,
+              "2": 99,
+              "3": 30,
+              "4": 11
+            },
+            "KNN": {
+              "0": 332,
+              "1": 183,
+              "2": 72,
+              "3": 12,
+              "4": 2,
+              "5": 2
+            },
+            "NKK": {
+              "0": 284,
+              "1": 206,
+              "2": 72,
+              "3": 28,
+              "4": 7
+            },
+            "NKN": {
+              "0": 336,
+              "1": 197,
+              "2": 78,
+              "3": 19,
+              "4": 3
+            },
+            "NNK": {
+              "0": 356,
+              "1": 207,
+              "2": 53,
+              "3": 11,
+              "4": 1
+            },
+            "NNN": {
+              "0": 400,
+              "1": 205,
+              "2": 43,
+              "3": 4,
+              "4": 1
+            }
+          }
+        },
+        "not_count": {
+          "mutual_information_bits": 0.0031723479165068538,
+          "table": {
+            "KKK": {
+              "0": 291,
+              "1": 202,
+              "2": 74,
+              "3": 23,
+              "4": 1
+            },
+            "KKN": {
+              "0": 304,
+              "1": 219,
+              "2": 75,
+              "3": 21,
+              "4": 2
+            },
+            "KNK": {
+              "0": 328,
+              "1": 242,
+              "2": 88,
+              "3": 13,
+              "4": 3
+            },
+            "KNN": {
+              "0": 286,
+              "1": 223,
+              "2": 76,
+              "3": 18
+            },
+            "NKK": {
+              "0": 288,
+              "1": 204,
+              "2": 82,
+              "3": 21,
+              "4": 2
+            },
+            "NKN": {
+              "0": 309,
+              "1": 216,
+              "2": 90,
+              "3": 13,
+              "4": 4,
+              "5": 1
+            },
+            "NNK": {
+              "0": 307,
+              "1": 219,
+              "2": 81,
+              "3": 18,
+              "4": 3
+            },
+            "NNN": {
+              "0": 318,
+              "1": 229,
+              "2": 88,
+              "3": 17,
+              "4": 1
+            }
+          }
+        }
+      },
+      "top_op_label_mutual_information_bits": 0.7806545183400315,
+      "speaker_order_label_mutual_information_bits": 0.0
+    },
+    "val": {
+      "count": 500,
+      "unique_ids": 500,
+      "label_distribution": {
+        "KKK": 60,
+        "KKN": 73,
+        "KNK": 52,
+        "KNN": 63,
+        "NKK": 60,
+        "NKN": 63,
+        "NNK": 65,
+        "NNN": 64
+      },
+      "solution_count_distribution": {
+        "1": 500
+      },
+      "unique_solution_rate": 1.0,
+      "prompt_chars": {
+        "mean": 357.882,
+        "min": 255,
+        "max": 565
+      },
+      "answer_chars": {
+        "mean": 56.482,
+        "min": 55,
+        "max": 58
+      },
+      "difficulty": {
+        "statement_chars": {
+          "mean": 165.882,
+          "min": 63,
+          "max": 373
+        },
+        "expression_nodes": {
+          "mean": 6.924,
+          "min": 3,
+          "max": 16
+        },
+        "expression_depth": {
+          "mean": 2.48,
+          "min": 1,
+          "max": 3
+        }
+      },
+      "feature_means_by_label": {
+        "KKK": {
+          "same_count": 2.183333333333333,
+          "different_count": 1.0166666666666666,
+          "and_count": 0.5,
+          "or_count": 1.1833333333333333,
+          "not_count": 0.75
+        },
+        "KKN": {
+          "same_count": 1.726027397260274,
+          "different_count": 1.6164383561643836,
+          "and_count": 0.9315068493150684,
+          "or_count": 0.9041095890410958,
+          "not_count": 0.6712328767123288
+        },
+        "KNK": {
+          "same_count": 1.4423076923076923,
+          "different_count": 1.6923076923076923,
+          "and_count": 0.6923076923076923,
+          "or_count": 0.8076923076923077,
+          "not_count": 0.9230769230769231
+        },
+        "KNN": {
+          "same_count": 1.619047619047619,
+          "different_count": 1.3968253968253967,
+          "and_count": 1,
+          "or_count": 0.5555555555555556,
+          "not_count": 0.7777777777777778
+        },
+        "NKK": {
+          "same_count": 1.6833333333333333,
+          "different_count": 1.4833333333333334,
+          "and_count": 0.75,
+          "or_count": 0.8833333333333333,
+          "not_count": 0.5
+        },
+        "NKN": {
+          "same_count": 1.619047619047619,
+          "different_count": 1.4285714285714286,
+          "and_count": 0.8412698412698413,
+          "or_count": 0.7301587301587301,
+          "not_count": 0.8095238095238095
+        },
+        "NNK": {
+          "same_count": 1.6615384615384616,
+          "different_count": 1.4,
+          "and_count": 0.7076923076923077,
+          "or_count": 0.6615384615384615,
+          "not_count": 0.7384615384615385
+        },
+        "NNN": {
+          "same_count": 0.734375,
+          "different_count": 2.140625,
+          "and_count": 1.03125,
+          "or_count": 0.484375,
+          "not_count": 0.84375
+        }
+      },
+      "shortcut_audit": {
+        "same_count": {
+          "mutual_information_bits": 0.15751962298581623,
+          "table": {
+            "KKK": {
+              "0": 3,
+              "1": 14,
+              "2": 21,
+              "3": 14,
+              "4": 7,
+              "5": 1
+            },
+            "KKN": {
+              "0": 7,
+              "1": 26,
+              "2": 29,
+              "3": 6,
+              "4": 3,
+              "6": 2
+            },
+            "KNK": {
+              "0": 8,
+              "1": 23,
+              "2": 15,
+              "3": 3,
+              "4": 2,
+              "5": 1
+            },
+            "KNN": {
+              "0": 10,
+              "1": 23,
+              "2": 16,
+              "3": 11,
+              "4": 2,
+              "6": 1
+            },
+            "NKK": {
+              "0": 5,
+              "1": 22,
+              "2": 23,
+              "3": 8,
+              "4": 1,
+              "5": 1
+            },
+            "NKN": {
+              "0": 9,
+              "1": 25,
+              "2": 13,
+              "3": 13,
+              "4": 3
+            },
+            "NNK": {
+              "0": 8,
+              "1": 20,
+              "2": 23,
+              "3": 14
+            },
+            "NNN": {
+              "0": 30,
+              "1": 24,
+              "2": 8,
+              "3": 1,
+              "4": 1
+            }
+          }
+        },
+        "different_count": {
+          "mutual_information_bits": 0.08846671463060579,
+          "table": {
+            "KKK": {
+              "0": 20,
+              "1": 25,
+              "2": 9,
+              "3": 6
+            },
+            "KKN": {
+              "0": 12,
+              "1": 27,
+              "2": 18,
+              "3": 10,
+              "4": 5,
+              "5": 1
+            },
+            "KNK": {
+              "0": 8,
+              "1": 15,
+              "2": 16,
+              "3": 11,
+              "4": 2
+            },
+            "KNN": {
+              "0": 12,
+              "1": 25,
+              "2": 18,
+              "3": 6,
+              "4": 1,
+              "5": 1
+            },
+            "NKK": {
+              "0": 8,
+              "1": 25,
+              "2": 17,
+              "3": 10
+            },
+            "NKN": {
+              "0": 10,
+              "1": 25,
+              "2": 20,
+              "3": 7,
+              "4": 1
+            },
+            "NNK": {
+              "0": 12,
+              "1": 28,
+              "2": 16,
+              "3": 6,
+              "4": 2,
+              "5": 1
+            },
+            "NNN": {
+              "0": 2,
+              "1": 16,
+              "2": 26,
+              "3": 13,
+              "4": 5,
+              "5": 2
+            }
+          }
+        },
+        "and_count": {
+          "mutual_information_bits": 0.06654050402587401,
+          "table": {
+            "KKK": {
+              "0": 34,
+              "1": 22,
+              "2": 4
+            },
+            "KKN": {
+              "0": 29,
+              "1": 29,
+              "2": 10,
+              "3": 2,
+              "4": 2,
+              "5": 1
+            },
+            "KNK": {
+              "0": 22,
+              "1": 24,
+              "2": 6
+            },
+            "KNN": {
+              "0": 23,
+              "1": 23,
+              "2": 13,
+              "3": 2,
+              "4": 2
+            },
+            "NKK": {
+              "0": 31,
+              "1": 17,
+              "2": 8,
+              "3": 4
+            },
+            "NKN": {
+              "0": 26,
+              "1": 25,
+              "2": 8,
+              "3": 4
+            },
+            "NNK": {
+              "0": 36,
+              "1": 17,
+              "2": 7,
+              "3": 5
+            },
+            "NNN": {
+              "0": 24,
+              "1": 22,
+              "2": 11,
+              "3": 6,
+              "4": 1
+            }
+          }
+        },
+        "or_count": {
+          "mutual_information_bits": 0.07606973669010006,
+          "table": {
+            "KKK": {
+              "0": 20,
+              "1": 21,
+              "2": 11,
+              "3": 5,
+              "4": 2,
+              "5": 1
+            },
+            "KKN": {
+              "0": 32,
+              "1": 24,
+              "2": 13,
+              "4": 4
+            },
+            "KNK": {
+              "0": 25,
+              "1": 14,
+              "2": 11,
+              "3": 2
+            },
+            "KNN": {
+              "0": 42,
+              "1": 10,
+              "2": 9,
+              "3": 1,
+              "4": 1
+            },
+            "NKK": {
+              "0": 24,
+              "1": 22,
+              "2": 11,
+              "3": 3
+            },
+            "NKN": {
+              "0": 34,
+              "1": 16,
+              "2": 10,
+              "3": 2,
+              "4": 1
+            },
+            "NNK": {
+              "0": 34,
+              "1": 22,
+              "2": 7,
+              "3": 1,
+              "4": 1
+            },
+            "NNN": {
+              "0": 40,
+              "1": 19,
+              "2": 3,
+              "3": 2
+            }
+          }
+        },
+        "not_count": {
+          "mutual_information_bits": 0.0409873249030858,
+          "table": {
+            "KKK": {
+              "0": 27,
+              "1": 24,
+              "2": 7,
+              "3": 1,
+              "4": 1
+            },
+            "KKN": {
+              "0": 34,
+              "1": 29,
+              "2": 10
+            },
+            "KNK": {
+              "0": 14,
+              "1": 30,
+              "2": 7,
+              "4": 1
+            },
+            "KNN": {
+              "0": 26,
+              "1": 28,
+              "2": 7,
+              "3": 1,
+              "4": 1
+            },
+            "NKK": {
+              "0": 34,
+              "1": 22,
+              "2": 4
+            },
+            "NKN": {
+              "0": 24,
+              "1": 28,
+              "2": 10,
+              "3": 1
+            },
+            "NNK": {
+              "0": 25,
+              "1": 32,
+              "2": 8
+            },
+            "NNN": {
+              "0": 25,
+              "1": 26,
+              "2": 11,
+              "3": 2
+            }
+          }
+        }
+      },
+      "top_op_label_mutual_information_bits": 1.879829539220447,
+      "speaker_order_label_mutual_information_bits": 0.0
+    },
+    "test": {
+      "count": 1000,
+      "unique_ids": 1000,
+      "label_distribution": {
+        "KKK": 126,
+        "KKN": 120,
+        "KNK": 128,
+        "KNN": 140,
+        "NKK": 98,
+        "NKN": 133,
+        "NNK": 129,
+        "NNN": 126
+      },
+      "solution_count_distribution": {
+        "1": 1000
+      },
+      "unique_solution_rate": 1.0,
+      "prompt_chars": {
+        "mean": 354.687,
+        "min": 256,
+        "max": 604
+      },
+      "answer_chars": {
+        "mean": 56.472,
+        "min": 55,
+        "max": 58
+      },
+      "difficulty": {
+        "statement_chars": {
+          "mean": 162.687,
+          "min": 64,
+          "max": 412
+        },
+        "expression_nodes": {
+          "mean": 6.711,
+          "min": 3,
+          "max": 16
+        },
+        "expression_depth": {
+          "mean": 2.455,
+          "min": 1,
+          "max": 3
+        }
+      },
+      "feature_means_by_label": {
+        "KKK": {
+          "same_count": 2.246031746031746,
+          "different_count": 0.8095238095238095,
+          "and_count": 0.4444444444444444,
+          "or_count": 1.0793650793650793,
+          "not_count": 0.6746031746031746
+        },
+        "KKN": {
+          "same_count": 1.4333333333333333,
+          "different_count": 1.6083333333333334,
+          "and_count": 0.7333333333333333,
+          "or_count": 0.725,
+          "not_count": 0.6583333333333333
+        },
+        "KNK": {
+          "same_count": 1.5234375,
+          "different_count": 1.7734375,
+          "and_count": 0.6953125,
+          "or_count": 0.984375,
+          "not_count": 0.875
+        },
+        "KNN": {
+          "same_count": 1.5214285714285714,
+          "different_count": 1.5857142857142856,
+          "and_count": 0.8142857142857143,
+          "or_count": 0.7,
+          "not_count": 0.7714285714285715
+        },
+        "NKK": {
+          "same_count": 1.4795918367346939,
+          "different_count": 1.5510204081632653,
+          "and_count": 0.6122448979591837,
+          "or_count": 0.7040816326530612,
+          "not_count": 0.6836734693877551
+        },
+        "NKN": {
+          "same_count": 1.593984962406015,
+          "different_count": 1.6165413533834587,
+          "and_count": 0.8872180451127819,
+          "or_count": 0.6992481203007519,
+          "not_count": 0.7593984962406015
+        },
+        "NNK": {
+          "same_count": 1.4883720930232558,
+          "different_count": 1.4728682170542635,
+          "and_count": 0.7209302325581395,
+          "or_count": 0.6589147286821705,
+          "not_count": 0.8217054263565892
+        },
+        "NNN": {
+          "same_count": 0.8015873015873016,
+          "different_count": 2.3095238095238093,
+          "and_count": 0.9047619047619048,
+          "or_count": 0.46825396825396826,
+          "not_count": 0.6587301587301587
+        }
+      },
+      "shortcut_audit": {
+        "same_count": {
+          "mutual_information_bits": 0.12355851275411846,
+          "table": {
+            "KKK": {
+              "0": 3,
+              "1": 28,
+              "2": 47,
+              "3": 36,
+              "4": 8,
+              "5": 3,
+              "6": 1
+            },
+            "KKN": {
+              "0": 21,
+              "1": 48,
+              "2": 35,
+              "3": 11,
+              "4": 4,
+              "5": 1
+            },
+            "KNK": {
+              "0": 16,
+              "1": 57,
+              "2": 34,
+              "3": 15,
+              "4": 5,
+              "5": 1
+            },
+            "KNN": {
+              "0": 19,
+              "1": 49,
+              "2": 56,
+              "3": 13,
+              "4": 2,
+              "5": 1
+            },
+            "NKK": {
+              "0": 16,
+              "1": 36,
+              "2": 31,
+              "3": 13,
+              "4": 2
+            },
+            "NKN": {
+              "0": 19,
+              "1": 54,
+              "2": 33,
+              "3": 19,
+              "4": 6,
+              "5": 1,
+              "6": 1
+            },
+            "NNK": {
+              "0": 19,
+              "1": 53,
+              "2": 42,
+              "3": 8,
+              "4": 4,
+              "5": 3
+            },
+            "NNN": {
+              "0": 62,
+              "1": 35,
+              "2": 23,
+              "3": 5,
+              "5": 1
+            }
+          }
+        },
+        "different_count": {
+          "mutual_information_bits": 0.11844338165987048,
+          "table": {
+            "KKK": {
+              "0": 58,
+              "1": 40,
+              "2": 24,
+              "3": 2,
+              "4": 2
+            },
+            "KKN": {
+              "0": 15,
+              "1": 51,
+              "2": 28,
+              "3": 19,
+              "4": 6,
+              "5": 1
+            },
+            "KNK": {
+              "0": 18,
+              "1": 43,
+              "2": 35,
+              "3": 21,
+              "4": 8,
+              "5": 1,
+              "6": 1,
+              "8": 1
+            },
+            "KNN": {
+              "0": 24,
+              "1": 48,
+              "2": 38,
+              "3": 22,
+              "4": 8
+            },
+            "NKK": {
+              "0": 13,
+              "1": 37,
+              "2": 34,
+              "3": 10,
+              "4": 3,
+              "5": 1
+            },
+            "NKN": {
+              "0": 14,
+              "1": 50,
+              "2": 46,
+              "3": 19,
+              "4": 4
+            },
+            "NNK": {
+              "0": 27,
+              "1": 44,
+              "2": 35,
+              "3": 18,
+              "4": 3,
+              "5": 2
+            },
+            "NNN": {
+              "0": 3,
+              "1": 31,
+              "2": 39,
+              "3": 35,
+              "4": 14,
+              "5": 3,
+              "6": 1
+            }
+          }
+        },
+        "and_count": {
+          "mutual_information_bits": 0.034517152165432316,
+          "table": {
+            "KKK": {
+              "0": 83,
+              "1": 32,
+              "2": 9,
+              "3": 2
+            },
+            "KKN": {
+              "0": 58,
+              "1": 39,
+              "2": 20,
+              "3": 3
+            },
+            "KNK": {
+              "0": 64,
+              "1": 42,
+              "2": 19,
+              "3": 3
+            },
+            "KNN": {
+              "0": 67,
+              "1": 45,
+              "2": 18,
+              "3": 7,
+              "4": 3
+            },
+            "NKK": {
+              "0": 55,
+              "1": 31,
+              "2": 8,
+              "3": 3,
+              "4": 1
+            },
+            "NKN": {
+              "0": 59,
+              "1": 40,
+              "2": 25,
+              "3": 8,
+              "4": 1
+            },
+            "NNK": {
+              "0": 67,
+              "1": 40,
+              "2": 16,
+              "3": 3,
+              "4": 3
+            },
+            "NNN": {
+              "0": 49,
+              "1": 52,
+              "2": 17,
+              "3": 5,
+              "4": 2,
+              "5": 1
+            }
+          }
+        },
+        "or_count": {
+          "mutual_information_bits": 0.05124659037541571,
+          "table": {
+            "KKK": {
+              "0": 46,
+              "1": 42,
+              "2": 27,
+              "3": 5,
+              "4": 5,
+              "5": 1
+            },
+            "KKN": {
+              "0": 65,
+              "1": 30,
+              "2": 18,
+              "3": 7
+            },
+            "KNK": {
+              "0": 51,
+              "1": 41,
+              "2": 26,
+              "3": 7,
+              "4": 3
+            },
+            "KNN": {
+              "0": 73,
+              "1": 46,
+              "2": 12,
+              "3": 8,
+              "4": 1
+            },
+            "NKK": {
+              "0": 50,
+              "1": 30,
+              "2": 15,
+              "3": 3
+            },
+            "NKN": {
+              "0": 60,
+              "1": 56,
+              "2": 14,
+              "3": 3
+            },
+            "NNK": {
+              "0": 67,
+              "1": 41,
+              "2": 19,
+              "3": 2
+            },
+            "NNN": {
+              "0": 78,
+              "1": 38,
+              "2": 9,
+              "3": 1
+            }
+          }
+        },
+        "not_count": {
+          "mutual_information_bits": 0.01951996204564191,
+          "table": {
+            "KKK": {
+              "0": 57,
+              "1": 54,
+              "2": 14,
+              "3": 1
+            },
+            "KKN": {
+              "0": 59,
+              "1": 45,
+              "2": 14,
+              "3": 2
+            },
+            "KNK": {
+              "0": 52,
+              "1": 48,
+              "2": 20,
+              "3": 8
+            },
+            "KNN": {
+              "0": 61,
+              "1": 53,
+              "2": 23,
+              "3": 3
+            },
+            "NKK": {
+              "0": 47,
+              "1": 37,
+              "2": 12,
+              "3": 2
+            },
+            "NKN": {
+              "0": 65,
+              "1": 42,
+              "2": 19,
+              "3": 7
+            },
+            "NNK": {
+              "0": 53,
+              "1": 54,
+              "2": 16,
+              "3": 4,
+              "4": 2
+            },
+            "NNN": {
+              "0": 63,
+              "1": 45,
+              "2": 16,
+              "3": 2
+            }
+          }
+        }
+      },
+      "top_op_label_mutual_information_bits": 1.3983523456529763,
+      "speaker_order_label_mutual_information_bits": 0.0
+    }
+  },
+  "duplicate_audit": {
+    "total_rows": 6500,
+    "unique_puzzle_keys": 6500,
+    "duplicate_key_count": 0,
+    "duplicate_extra_rows": 0
+  },
+  "manual_sample_audit": {
+    "sample_size": 30,
+    "samples": [
+      {
+        "id": "kk_v2_train_004941",
+        "statements": [
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knave"
+            },
+            "speaker": "Alice",
+            "text": "Bob is a knave."
+          },
+          {
+            "expr": {
+              "left": {
+                "left": "Bob",
+                "op": "same",
+                "right": "Alice"
+              },
+              "op": "and",
+              "right": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knave"
+              }
+            },
+            "speaker": "Bob",
+            "text": "both (Bob and Alice are the same type) and (Carol is a knave)."
+          },
+          {
+            "expr": {
+              "expr": {
+                "left": {
+                  "op": "person_is",
+                  "person": "Carol",
+                  "value": "knight"
+                },
+                "op": "or",
+                "right": {
+                  "op": "person_is",
+                  "person": "Carol",
+                  "value": "knave"
+                }
+              },
+              "op": "not"
+            },
+            "speaker": "Carol",
+            "text": "it is not true that either (Carol is a knight) or (Carol is a knave)."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knave",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Bob is a knave.\nBob says: both (Bob and Alice are the same type) and (Carol is a knave).\nCarol says: it is not true that either (Carol is a knight) or (Carol is a knave).\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_003376",
+        "statements": [
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Carol",
+              "value": "knave"
+            },
+            "speaker": "Alice",
+            "text": "Carol is a knave."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Alice"
+            },
+            "speaker": "Bob",
+            "text": "Carol and Alice are the same type."
+          },
+          {
+            "expr": {
+              "left": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Carol"
+              },
+              "op": "and",
+              "right": {
+                "left": "Alice",
+                "op": "different",
+                "right": "Bob"
+              }
+            },
+            "speaker": "Carol",
+            "text": "both (Bob and Carol are different types) and (Alice and Bob are different types)."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knave",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Carol is a knave.\nBob says: Carol and Alice are the same type.\nCarol says: both (Bob and Carol are different types) and (Alice and Bob are different types).\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_002792",
+        "statements": [
+          {
+            "expr": {
+              "expr": {
+                "expr": {
+                  "op": "person_is",
+                  "person": "Bob",
+                  "value": "knave"
+                },
+                "op": "not"
+              },
+              "op": "not"
+            },
+            "speaker": "Alice",
+            "text": "it is not true that it is not true that Bob is a knave."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Alice"
+            },
+            "speaker": "Bob",
+            "text": "Carol and Alice are different types."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knave"
+            },
+            "speaker": "Carol",
+            "text": "Alice is a knave."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knight",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: it is not true that it is not true that Bob is a knave.\nBob says: Carol and Alice are different types.\nCarol says: Alice is a knave.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000572",
+        "statements": [
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knave"
+            },
+            "speaker": "Alice",
+            "text": "Bob is a knave."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Carol",
+              "value": "knave"
+            },
+            "speaker": "Bob",
+            "text": "Carol is a knave."
+          },
+          {
+            "expr": {
+              "left": {
+                "expr": {
+                  "left": "Alice",
+                  "op": "same",
+                  "right": "Bob"
+                },
+                "op": "not"
+              },
+              "op": "and",
+              "right": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Bob"
+              }
+            },
+            "speaker": "Carol",
+            "text": "both (it is not true that Alice and Bob are the same type) and (Carol and Bob are the same type)."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knight",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Bob is a knave.\nBob says: Carol is a knave.\nCarol says: both (it is not true that Alice and Bob are the same type) and (Carol and Bob are the same type).\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000342",
+        "statements": [
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Alice"
+            },
+            "speaker": "Alice",
+            "text": "Bob and Alice are different types."
+          },
+          {
+            "expr": {
+              "expr": {
+                "left": "Bob",
+                "op": "same",
+                "right": "Alice"
+              },
+              "op": "not"
+            },
+            "speaker": "Bob",
+            "text": "it is not true that Bob and Alice are the same type."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knave"
+            },
+            "speaker": "Carol",
+            "text": "Alice is a knave."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knave",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Bob and Alice are different types.\nBob says: it is not true that Bob and Alice are the same type.\nCarol says: Alice is a knave.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knave\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000460",
+        "statements": [
+          {
+            "expr": {
+              "left": {
+                "op": "person_is",
+                "person": "Alice",
+                "value": "knave"
+              },
+              "op": "or",
+              "right": {
+                "left": {
+                  "op": "person_is",
+                  "person": "Alice",
+                  "value": "knight"
+                },
+                "op": "or",
+                "right": {
+                  "left": "Bob",
+                  "op": "different",
+                  "right": "Alice"
+                }
+              }
+            },
+            "speaker": "Alice",
+            "text": "either (Alice is a knave) or (either (Alice is a knight) or (Bob and Alice are different types))."
+          },
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "different",
+              "right": "Carol"
+            },
+            "speaker": "Bob",
+            "text": "Alice and Carol are different types."
+          },
+          {
+            "expr": {
+              "left": {
+                "left": {
+                  "left": "Alice",
+                  "op": "same",
+                  "right": "Bob"
+                },
+                "op": "and",
+                "right": {
+                  "left": "Alice",
+                  "op": "same",
+                  "right": "Carol"
+                }
+              },
+              "op": "and",
+              "right": {
+                "left": "Alice",
+                "op": "different",
+                "right": "Carol"
+              }
+            },
+            "speaker": "Carol",
+            "text": "both (both (Alice and Bob are the same type) and (Alice and Carol are the same type)) and (Alice and Carol are different types)."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knight",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: either (Alice is a knave) or (either (Alice is a knight) or (Bob and Alice are different types)).\nBob says: Alice and Carol are different types.\nCarol says: both (both (Alice and Bob are the same type) and (Alice and Carol are the same type)) and (Alice and Carol are different types).\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knight\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_001183",
+        "statements": [
+          {
+            "expr": {
+              "left": {
+                "expr": {
+                  "op": "person_is",
+                  "person": "Bob",
+                  "value": "knave"
+                },
+                "op": "not"
+              },
+              "op": "or",
+              "right": {
+                "left": "Carol",
+                "op": "different",
+                "right": "Bob"
+              }
+            },
+            "speaker": "Alice",
+            "text": "either (it is not true that Bob is a knave) or (Carol and Bob are different types)."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Bob"
+            },
+            "speaker": "Bob",
+            "text": "Carol and Bob are different types."
+          },
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "different",
+              "right": "Carol"
+            },
+            "speaker": "Carol",
+            "text": "Alice and Carol are different types."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knave",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: either (it is not true that Bob is a knave) or (Carol and Bob are different types).\nBob says: Carol and Bob are different types.\nCarol says: Alice and Carol are different types.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000224",
+        "statements": [
+          {
+            "expr": {
+              "left": {
+                "expr": {
+                  "left": "Bob",
+                  "op": "same",
+                  "right": "Alice"
+                },
+                "op": "not"
+              },
+              "op": "or",
+              "right": {
+                "left": {
+                  "left": "Carol",
+                  "op": "different",
+                  "right": "Alice"
+                },
+                "op": "or",
+                "right": {
+                  "left": "Carol",
+                  "op": "same",
+                  "right": "Bob"
+                }
+              }
+            },
+            "speaker": "Alice",
+            "text": "either (it is not true that Bob and Alice are the same type) or (either (Carol and Alice are different types) or (Carol and Bob are the same type))."
+          },
+          {
+            "expr": {
+              "left": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Carol"
+              },
+              "op": "or",
+              "right": {
+                "left": {
+                  "left": "Alice",
+                  "op": "different",
+                  "right": "Carol"
+                },
+                "op": "or",
+                "right": {
+                  "op": "person_is",
+                  "person": "Alice",
+                  "value": "knave"
+                }
+              }
+            },
+            "speaker": "Bob",
+            "text": "either (Bob and Carol are different types) or (either (Alice and Carol are different types) or (Alice is a knave))."
+          },
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Carol"
+            },
+            "speaker": "Carol",
+            "text": "Bob and Carol are the same type."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knight",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: either (it is not true that Bob and Alice are the same type) or (either (Carol and Alice are different types) or (Carol and Bob are the same type)).\nBob says: either (Bob and Carol are different types) or (either (Alice and Carol are different types) or (Alice is a knave)).\nCarol says: Bob and Carol are the same type.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knight\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000279",
+        "statements": [
+          {
+            "expr": {
+              "expr": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knight"
+              },
+              "op": "not"
+            },
+            "speaker": "Alice",
+            "text": "it is not true that Carol is a knight."
+          },
+          {
+            "expr": {
+              "expr": {
+                "expr": {
+                  "left": "Bob",
+                  "op": "different",
+                  "right": "Alice"
+                },
+                "op": "not"
+              },
+              "op": "not"
+            },
+            "speaker": "Bob",
+            "text": "it is not true that it is not true that Bob and Alice are different types."
+          },
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Alice"
+            },
+            "speaker": "Carol",
+            "text": "Bob and Alice are different types."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knight",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: it is not true that Carol is a knight.\nBob says: it is not true that it is not true that Bob and Alice are different types.\nCarol says: Bob and Alice are different types.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000518",
+        "statements": [
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Carol",
+              "value": "knight"
+            },
+            "speaker": "Alice",
+            "text": "Carol is a knight."
+          },
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Carol"
+            },
+            "speaker": "Bob",
+            "text": "Bob and Carol are the same type."
+          },
+          {
+            "expr": {
+              "left": {
+                "left": {
+                  "left": "Alice",
+                  "op": "same",
+                  "right": "Bob"
+                },
+                "op": "and",
+                "right": {
+                  "op": "person_is",
+                  "person": "Alice",
+                  "value": "knight"
+                }
+              },
+              "op": "or",
+              "right": {
+                "op": "person_is",
+                "person": "Bob",
+                "value": "knight"
+              }
+            },
+            "speaker": "Carol",
+            "text": "either (both (Alice and Bob are the same type) and (Alice is a knight)) or (Bob is a knight)."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knight",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Carol is a knight.\nBob says: Bob and Carol are the same type.\nCarol says: either (both (Alice and Bob are the same type) and (Alice is a knight)) or (Bob is a knight).\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knight\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_004893",
+        "statements": [
+          {
+            "expr": {
+              "left": {
+                "expr": {
+                  "left": "Carol",
+                  "op": "same",
+                  "right": "Bob"
+                },
+                "op": "not"
+              },
+              "op": "and",
+              "right": {
+                "left": {
+                  "left": "Alice",
+                  "op": "different",
+                  "right": "Bob"
+                },
+                "op": "or",
+                "right": {
+                  "op": "person_is",
+                  "person": "Alice",
+                  "value": "knave"
+                }
+              }
+            },
+            "speaker": "Alice",
+            "text": "both (it is not true that Carol and Bob are the same type) and (either (Alice and Bob are different types) or (Alice is a knave))."
+          },
+          {
+            "expr": {
+              "expr": {
+                "left": {
+                  "op": "person_is",
+                  "person": "Alice",
+                  "value": "knave"
+                },
+                "op": "and",
+                "right": {
+                  "op": "person_is",
+                  "person": "Alice",
+                  "value": "knave"
+                }
+              },
+              "op": "not"
+            },
+            "speaker": "Bob",
+            "text": "it is not true that both (Alice is a knave) and (Alice is a knave)."
+          },
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Alice"
+            },
+            "speaker": "Carol",
+            "text": "Bob and Alice are different types."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knave",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: both (it is not true that Carol and Bob are the same type) and (either (Alice and Bob are different types) or (Alice is a knave)).\nBob says: it is not true that both (Alice is a knave) and (Alice is a knave).\nCarol says: Bob and Alice are different types.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_001341",
+        "statements": [
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "different",
+              "right": "Bob"
+            },
+            "speaker": "Alice",
+            "text": "Alice and Bob are different types."
+          },
+          {
+            "expr": {
+              "expr": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Bob"
+              },
+              "op": "not"
+            },
+            "speaker": "Bob",
+            "text": "it is not true that Carol and Bob are the same type."
+          },
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Alice"
+            },
+            "speaker": "Carol",
+            "text": "Bob and Alice are different types."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knave",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Alice and Bob are different types.\nBob says: it is not true that Carol and Bob are the same type.\nCarol says: Bob and Alice are different types.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_003598",
+        "statements": [
+          {
+            "expr": {
+              "left": {
+                "expr": {
+                  "left": "Carol",
+                  "op": "different",
+                  "right": "Alice"
+                },
+                "op": "not"
+              },
+              "op": "or",
+              "right": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Alice"
+              }
+            },
+            "speaker": "Alice",
+            "text": "either (it is not true that Carol and Alice are different types) or (Carol and Alice are the same type)."
+          },
+          {
+            "expr": {
+              "expr": {
+                "left": {
+                  "left": "Bob",
+                  "op": "different",
+                  "right": "Carol"
+                },
+                "op": "and",
+                "right": {
+                  "left": "Bob",
+                  "op": "different",
+                  "right": "Alice"
+                }
+              },
+              "op": "not"
+            },
+            "speaker": "Bob",
+            "text": "it is not true that both (Bob and Carol are different types) and (Bob and Alice are different types)."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Bob"
+            },
+            "speaker": "Carol",
+            "text": "Carol and Bob are different types."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knave",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: either (it is not true that Carol and Alice are different types) or (Carol and Alice are the same type).\nBob says: it is not true that both (Bob and Carol are different types) and (Bob and Alice are different types).\nCarol says: Carol and Bob are different types.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_001130",
+        "statements": [
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knight"
+            },
+            "speaker": "Alice",
+            "text": "Bob is a knight."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Alice"
+            },
+            "speaker": "Bob",
+            "text": "Carol and Alice are different types."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knight"
+            },
+            "speaker": "Carol",
+            "text": "Alice is a knight."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knave",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Bob is a knight.\nBob says: Carol and Alice are different types.\nCarol says: Alice is a knight.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_004555",
+        "statements": [
+          {
+            "expr": {
+              "left": {
+                "expr": {
+                  "left": "Alice",
+                  "op": "same",
+                  "right": "Bob"
+                },
+                "op": "not"
+              },
+              "op": "or",
+              "right": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Alice"
+              }
+            },
+            "speaker": "Alice",
+            "text": "either (it is not true that Alice and Bob are the same type) or (Carol and Alice are the same type)."
+          },
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "same",
+              "right": "Carol"
+            },
+            "speaker": "Bob",
+            "text": "Alice and Carol are the same type."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Bob"
+            },
+            "speaker": "Carol",
+            "text": "Carol and Bob are the same type."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knight",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: either (it is not true that Alice and Bob are the same type) or (Carol and Alice are the same type).\nBob says: Alice and Carol are the same type.\nCarol says: Carol and Bob are the same type.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knight\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_002082",
+        "statements": [
+          {
+            "expr": {
+              "expr": {
+                "expr": {
+                  "left": "Bob",
+                  "op": "same",
+                  "right": "Carol"
+                },
+                "op": "not"
+              },
+              "op": "not"
+            },
+            "speaker": "Alice",
+            "text": "it is not true that it is not true that Bob and Carol are the same type."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Bob"
+            },
+            "speaker": "Bob",
+            "text": "Carol and Bob are different types."
+          },
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "different",
+              "right": "Carol"
+            },
+            "speaker": "Carol",
+            "text": "Alice and Carol are different types."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knight",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: it is not true that it is not true that Bob and Carol are the same type.\nBob says: Carol and Bob are different types.\nCarol says: Alice and Carol are different types.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_004171",
+        "statements": [
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knight"
+            },
+            "speaker": "Alice",
+            "text": "Bob is a knight."
+          },
+          {
+            "expr": {
+              "expr": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knight"
+              },
+              "op": "not"
+            },
+            "speaker": "Bob",
+            "text": "it is not true that Carol is a knight."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Alice"
+            },
+            "speaker": "Carol",
+            "text": "Carol and Alice are the same type."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knight",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Bob is a knight.\nBob says: it is not true that Carol is a knight.\nCarol says: Carol and Alice are the same type.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knight\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_001354",
+        "statements": [
+          {
+            "expr": {
+              "expr": {
+                "expr": {
+                  "left": "Carol",
+                  "op": "different",
+                  "right": "Bob"
+                },
+                "op": "not"
+              },
+              "op": "not"
+            },
+            "speaker": "Alice",
+            "text": "it is not true that it is not true that Carol and Bob are different types."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knave"
+            },
+            "speaker": "Bob",
+            "text": "Alice is a knave."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knave"
+            },
+            "speaker": "Carol",
+            "text": "Alice is a knave."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knight",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: it is not true that it is not true that Carol and Bob are different types.\nBob says: Alice is a knave.\nCarol says: Alice is a knave.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000239",
+        "statements": [
+          {
+            "expr": {
+              "expr": {
+                "left": "Carol",
+                "op": "different",
+                "right": "Bob"
+              },
+              "op": "not"
+            },
+            "speaker": "Alice",
+            "text": "it is not true that Carol and Bob are different types."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knight"
+            },
+            "speaker": "Bob",
+            "text": "Alice is a knight."
+          },
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Carol"
+            },
+            "speaker": "Carol",
+            "text": "Bob and Carol are the same type."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knight",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: it is not true that Carol and Bob are different types.\nBob says: Alice is a knight.\nCarol says: Bob and Carol are the same type.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knight\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_004642",
+        "statements": [
+          {
+            "expr": {
+              "expr": {
+                "left": "Alice",
+                "op": "different",
+                "right": "Carol"
+              },
+              "op": "not"
+            },
+            "speaker": "Alice",
+            "text": "it is not true that Alice and Carol are different types."
+          },
+          {
+            "expr": {
+              "left": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Alice"
+              },
+              "op": "or",
+              "right": {
+                "expr": {
+                  "left": "Carol",
+                  "op": "different",
+                  "right": "Alice"
+                },
+                "op": "not"
+              }
+            },
+            "speaker": "Bob",
+            "text": "either (Carol and Alice are the same type) or (it is not true that Carol and Alice are different types)."
+          },
+          {
+            "expr": {
+              "left": {
+                "op": "person_is",
+                "person": "Alice",
+                "value": "knave"
+              },
+              "op": "and",
+              "right": {
+                "expr": {
+                  "left": "Carol",
+                  "op": "same",
+                  "right": "Alice"
+                },
+                "op": "not"
+              }
+            },
+            "speaker": "Carol",
+            "text": "both (Alice is a knave) and (it is not true that Carol and Alice are the same type)."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knave",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: it is not true that Alice and Carol are different types.\nBob says: either (Carol and Alice are the same type) or (it is not true that Carol and Alice are different types).\nCarol says: both (Alice is a knave) and (it is not true that Carol and Alice are the same type).\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knave\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000341",
+        "statements": [
+          {
+            "expr": {
+              "expr": {
+                "left": {
+                  "left": "Bob",
+                  "op": "same",
+                  "right": "Alice"
+                },
+                "op": "and",
+                "right": {
+                  "left": "Bob",
+                  "op": "same",
+                  "right": "Alice"
+                }
+              },
+              "op": "not"
+            },
+            "speaker": "Alice",
+            "text": "it is not true that both (Bob and Alice are the same type) and (Bob and Alice are the same type)."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Bob"
+            },
+            "speaker": "Bob",
+            "text": "Carol and Bob are the same type."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knight"
+            },
+            "speaker": "Carol",
+            "text": "Alice is a knight."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knave",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: it is not true that both (Bob and Alice are the same type) and (Bob and Alice are the same type).\nBob says: Carol and Bob are the same type.\nCarol says: Alice is a knight.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_001283",
+        "statements": [
+          {
+            "expr": {
+              "expr": {
+                "op": "person_is",
+                "person": "Bob",
+                "value": "knave"
+              },
+              "op": "not"
+            },
+            "speaker": "Alice",
+            "text": "it is not true that Bob is a knave."
+          },
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "different",
+              "right": "Carol"
+            },
+            "speaker": "Bob",
+            "text": "Alice and Carol are different types."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Bob"
+            },
+            "speaker": "Carol",
+            "text": "Carol and Bob are different types."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knave",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: it is not true that Bob is a knave.\nBob says: Alice and Carol are different types.\nCarol says: Carol and Bob are different types.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000735",
+        "statements": [
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "same",
+              "right": "Bob"
+            },
+            "speaker": "Alice",
+            "text": "Alice and Bob are the same type."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knave"
+            },
+            "speaker": "Bob",
+            "text": "Alice is a knave."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knight"
+            },
+            "speaker": "Carol",
+            "text": "Alice is a knight."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knight",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Alice and Bob are the same type.\nBob says: Alice is a knave.\nCarol says: Alice is a knight.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_000157",
+        "statements": [
+          {
+            "expr": {
+              "left": {
+                "left": {
+                  "left": "Alice",
+                  "op": "different",
+                  "right": "Bob"
+                },
+                "op": "and",
+                "right": {
+                  "left": "Carol",
+                  "op": "different",
+                  "right": "Bob"
+                }
+              },
+              "op": "and",
+              "right": {
+                "left": {
+                  "op": "person_is",
+                  "person": "Alice",
+                  "value": "knight"
+                },
+                "op": "or",
+                "right": {
+                  "left": "Carol",
+                  "op": "different",
+                  "right": "Alice"
+                }
+              }
+            },
+            "speaker": "Alice",
+            "text": "both (both (Alice and Bob are different types) and (Carol and Bob are different types)) and (either (Alice is a knight) or (Carol and Alice are different types))."
+          },
+          {
+            "expr": {
+              "left": {
+                "op": "person_is",
+                "person": "Bob",
+                "value": "knave"
+              },
+              "op": "and",
+              "right": {
+                "left": "Alice",
+                "op": "different",
+                "right": "Bob"
+              }
+            },
+            "speaker": "Bob",
+            "text": "both (Bob is a knave) and (Alice and Bob are different types)."
+          },
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "same",
+              "right": "Bob"
+            },
+            "speaker": "Carol",
+            "text": "Alice and Bob are the same type."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knave",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: both (both (Alice and Bob are different types) and (Carol and Bob are different types)) and (either (Alice is a knight) or (Carol and Alice are different types)).\nBob says: both (Bob is a knave) and (Alice and Bob are different types).\nCarol says: Alice and Bob are the same type.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knave\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_002592",
+        "statements": [
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Alice"
+            },
+            "speaker": "Alice",
+            "text": "Carol and Alice are different types."
+          },
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Alice"
+            },
+            "speaker": "Bob",
+            "text": "Bob and Alice are the same type."
+          },
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "same",
+              "right": "Bob"
+            },
+            "speaker": "Carol",
+            "text": "Alice and Bob are the same type."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knave",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Carol and Alice are different types.\nBob says: Bob and Alice are the same type.\nCarol says: Alice and Bob are the same type.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_002168",
+        "statements": [
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Carol"
+            },
+            "speaker": "Alice",
+            "text": "Bob and Carol are different types."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Carol",
+              "value": "knave"
+            },
+            "speaker": "Bob",
+            "text": "Carol is a knave."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knight"
+            },
+            "speaker": "Carol",
+            "text": "Alice is a knight."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knave",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Bob and Carol are different types.\nBob says: Carol is a knave.\nCarol says: Alice is a knight.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_003952",
+        "statements": [
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knave"
+            },
+            "speaker": "Alice",
+            "text": "Bob is a knave."
+          },
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Alice"
+            },
+            "speaker": "Bob",
+            "text": "Bob and Alice are the same type."
+          },
+          {
+            "expr": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knight"
+            },
+            "speaker": "Carol",
+            "text": "Bob is a knight."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knight",
+          "Bob": "knave",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Bob is a knave.\nBob says: Bob and Alice are the same type.\nCarol says: Bob is a knight.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_002626",
+        "statements": [
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Alice"
+            },
+            "speaker": "Alice",
+            "text": "Carol and Alice are the same type."
+          },
+          {
+            "expr": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Alice"
+            },
+            "speaker": "Bob",
+            "text": "Bob and Alice are different types."
+          },
+          {
+            "expr": {
+              "left": "Alice",
+              "op": "different",
+              "right": "Bob"
+            },
+            "speaker": "Carol",
+            "text": "Alice and Bob are different types."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knight",
+          "Carol": "knight"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: Carol and Alice are the same type.\nBob says: Bob and Alice are different types.\nCarol says: Alice and Bob are different types.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_002042",
+        "statements": [
+          {
+            "expr": {
+              "left": {
+                "left": {
+                  "left": "Alice",
+                  "op": "different",
+                  "right": "Carol"
+                },
+                "op": "or",
+                "right": {
+                  "left": "Alice",
+                  "op": "different",
+                  "right": "Carol"
+                }
+              },
+              "op": "and",
+              "right": {
+                "expr": {
+                  "left": "Carol",
+                  "op": "different",
+                  "right": "Bob"
+                },
+                "op": "not"
+              }
+            },
+            "speaker": "Alice",
+            "text": "both (either (Alice and Carol are different types) or (Alice and Carol are different types)) and (it is not true that Carol and Bob are different types)."
+          },
+          {
+            "expr": {
+              "left": {
+                "op": "person_is",
+                "person": "Alice",
+                "value": "knave"
+              },
+              "op": "or",
+              "right": {
+                "op": "person_is",
+                "person": "Alice",
+                "value": "knave"
+              }
+            },
+            "speaker": "Bob",
+            "text": "either (Alice is a knave) or (Alice is a knave)."
+          },
+          {
+            "expr": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Alice"
+            },
+            "speaker": "Carol",
+            "text": "Carol and Alice are different types."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knight",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: both (either (Alice and Carol are different types) or (Alice and Carol are different types)) and (it is not true that Carol and Bob are different types).\nBob says: either (Alice is a knave) or (Alice is a knave).\nCarol says: Carol and Alice are different types.\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      },
+      {
+        "id": "kk_v2_train_003452",
+        "statements": [
+          {
+            "expr": {
+              "left": {
+                "left": {
+                  "left": "Alice",
+                  "op": "same",
+                  "right": "Carol"
+                },
+                "op": "or",
+                "right": {
+                  "left": "Bob",
+                  "op": "same",
+                  "right": "Alice"
+                }
+              },
+              "op": "and",
+              "right": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knight"
+              }
+            },
+            "speaker": "Alice",
+            "text": "both (either (Alice and Carol are the same type) or (Bob and Alice are the same type)) and (Carol is a knight)."
+          },
+          {
+            "expr": {
+              "expr": {
+                "op": "person_is",
+                "person": "Alice",
+                "value": "knight"
+              },
+              "op": "not"
+            },
+            "speaker": "Bob",
+            "text": "it is not true that Alice is a knight."
+          },
+          {
+            "expr": {
+              "left": {
+                "left": "Carol",
+                "op": "different",
+                "right": "Alice"
+              },
+              "op": "and",
+              "right": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knave"
+              }
+            },
+            "speaker": "Carol",
+            "text": "both (Carol and Alice are different types) and (Carol is a knave)."
+          }
+        ],
+        "solver_answer": {
+          "Alice": "knave",
+          "Bob": "knight",
+          "Carol": "knave"
+        },
+        "sft_prompt": [
+          {
+            "content": "You solve Knights and Knaves logic puzzles. Output only one answer block.",
+            "role": "system"
+          },
+          {
+            "content": "Determine whether each person is a knight or a knave.\n\nAlice says: both (either (Alice and Carol are the same type) or (Bob and Alice are the same type)) and (Carol is a knight).\nBob says: it is not true that Alice is a knight.\nCarol says: both (Carol and Alice are different types) and (Carol is a knave).\n\nReturn exactly one answer block inside <answer>...</answer>:\nAlice: knight\nBob: knave\nCarol: knight",
+            "role": "user"
+          }
+        ],
+        "sft_completion": [
+          {
+            "content": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+            "role": "assistant"
+          }
+        ],
+        "solver_matches_record": true
+      }
+    ]
+  }
+}

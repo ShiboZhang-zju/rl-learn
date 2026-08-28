@@ -1,0 +1,976 @@
+{
+  "labels": [
+    "KKK",
+    "KKN",
+    "KNK",
+    "KNN",
+    "NKK",
+    "NKN",
+    "NNK",
+    "NNN"
+  ],
+  "experiments": {
+    "cot_1ep": {
+      "train": {
+        "count": 1000,
+        "exact": 126,
+        "exact_accuracy": 0.126,
+        "format_accuracy": 1.0,
+        "ground_truth_distribution": {
+          "KKK": 122,
+          "KKN": 130,
+          "KNK": 107,
+          "KNN": 129,
+          "NKK": 123,
+          "NKN": 121,
+          "NNK": 134,
+          "NNN": 134
+        },
+        "prediction_distribution": {
+          "KKK": 349,
+          "KKN": 621,
+          "KNN": 30
+        },
+        "confusion_matrix": {
+          "KKK": {
+            "KKK": 41,
+            "KKN": 81,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KKN": {
+            "KKK": 46,
+            "KKN": 81,
+            "KNK": 0,
+            "KNN": 3,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KNK": {
+            "KKK": 43,
+            "KKN": 60,
+            "KNK": 0,
+            "KNN": 4,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KNN": {
+            "KKK": 46,
+            "KKN": 79,
+            "KNK": 0,
+            "KNN": 4,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NKK": {
+            "KKK": 42,
+            "KKN": 78,
+            "KNK": 0,
+            "KNN": 3,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NKN": {
+            "KKK": 44,
+            "KKN": 74,
+            "KNK": 0,
+            "KNN": 3,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NNK": {
+            "KKK": 58,
+            "KKN": 76,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NNN": {
+            "KKK": 29,
+            "KKN": 92,
+            "KNK": 0,
+            "KNN": 13,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          }
+        }
+      },
+      "val": {
+        "count": 200,
+        "exact": 19,
+        "exact_accuracy": 0.095,
+        "format_accuracy": 1.0,
+        "ground_truth_distribution": {
+          "KKK": 13,
+          "KKN": 30,
+          "KNK": 28,
+          "KNN": 30,
+          "NKK": 19,
+          "NKN": 21,
+          "NNK": 34,
+          "NNN": 25
+        },
+        "prediction_distribution": {
+          "KKK": 61,
+          "KKN": 133,
+          "KNN": 6
+        },
+        "confusion_matrix": {
+          "KKK": {
+            "KKK": 1,
+            "KKN": 12,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KKN": {
+            "KKK": 9,
+            "KKN": 18,
+            "KNK": 0,
+            "KNN": 3,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KNK": {
+            "KKK": 11,
+            "KKN": 16,
+            "KNK": 0,
+            "KNN": 1,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KNN": {
+            "KKK": 9,
+            "KKN": 21,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NKK": {
+            "KKK": 7,
+            "KKN": 11,
+            "KNK": 0,
+            "KNN": 1,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NKN": {
+            "KKK": 9,
+            "KKN": 12,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NNK": {
+            "KKK": 11,
+            "KKN": 23,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NNN": {
+            "KKK": 4,
+            "KKN": 20,
+            "KNK": 0,
+            "KNN": 1,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          }
+        }
+      },
+      "test": {
+        "count": 500,
+        "exact": 81,
+        "exact_accuracy": 0.162,
+        "format_accuracy": 1.0,
+        "ground_truth_distribution": {
+          "KKK": 71,
+          "KKN": 70,
+          "KNK": 56,
+          "KNN": 61,
+          "NKK": 56,
+          "NKN": 58,
+          "NNK": 80,
+          "NNN": 48
+        },
+        "prediction_distribution": {
+          "KKK": 189,
+          "KKN": 301,
+          "KNN": 10
+        },
+        "confusion_matrix": {
+          "KKK": {
+            "KKK": 34,
+            "KKN": 37,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KKN": {
+            "KKK": 23,
+            "KKN": 45,
+            "KNK": 0,
+            "KNN": 2,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KNK": {
+            "KKK": 22,
+            "KKN": 33,
+            "KNK": 0,
+            "KNN": 1,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KNN": {
+            "KKK": 20,
+            "KKN": 39,
+            "KNK": 0,
+            "KNN": 2,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NKK": {
+            "KKK": 24,
+            "KKN": 32,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NKN": {
+            "KKK": 30,
+            "KKN": 27,
+            "KNK": 0,
+            "KNN": 1,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NNK": {
+            "KKK": 21,
+            "KKN": 57,
+            "KNK": 0,
+            "KNN": 2,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "NNN": {
+            "KKK": 15,
+            "KKN": 31,
+            "KNK": 0,
+            "KNN": 2,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          }
+        }
+      }
+    },
+    "answer_only_1ep": {
+      "train": {
+        "count": 1000,
+        "exact": 178,
+        "exact_accuracy": 0.178,
+        "format_accuracy": 1.0,
+        "ground_truth_distribution": {
+          "KKK": 122,
+          "KKN": 130,
+          "KNK": 107,
+          "KNN": 129,
+          "NKK": 123,
+          "NKN": 121,
+          "NNK": 134,
+          "NNN": 134
+        },
+        "prediction_distribution": {
+          "KKK": 57,
+          "KKN": 10,
+          "KNK": 5,
+          "KNN": 6,
+          "NKK": 119,
+          "NKN": 139,
+          "NNK": 447,
+          "NNN": 217
+        },
+        "confusion_matrix": {
+          "KKK": {
+            "KKK": 20,
+            "KKN": 2,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 5,
+            "NKN": 8,
+            "NNK": 50,
+            "NNN": 37
+          },
+          "KKN": {
+            "KKK": 10,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 1,
+            "NKK": 12,
+            "NKN": 26,
+            "NNK": 57,
+            "NNN": 24
+          },
+          "KNK": {
+            "KKK": 4,
+            "KKN": 2,
+            "KNK": 3,
+            "KNN": 1,
+            "NKK": 18,
+            "NKN": 18,
+            "NNK": 48,
+            "NNN": 13
+          },
+          "KNN": {
+            "KKK": 4,
+            "KKN": 1,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 17,
+            "NKN": 11,
+            "NNK": 67,
+            "NNN": 29
+          },
+          "NKK": {
+            "KKK": 8,
+            "KKN": 2,
+            "KNK": 1,
+            "KNN": 1,
+            "NKK": 25,
+            "NKN": 24,
+            "NNK": 48,
+            "NNN": 14
+          },
+          "NKN": {
+            "KKK": 6,
+            "KKN": 1,
+            "KNK": 1,
+            "KNN": 1,
+            "NKK": 19,
+            "NKN": 15,
+            "NNK": 63,
+            "NNN": 15
+          },
+          "NNK": {
+            "KKK": 4,
+            "KKN": 2,
+            "KNK": 0,
+            "KNN": 2,
+            "NKK": 18,
+            "NKN": 18,
+            "NNK": 60,
+            "NNN": 30
+          },
+          "NNN": {
+            "KKK": 1,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 5,
+            "NKN": 19,
+            "NNK": 54,
+            "NNN": 55
+          }
+        }
+      },
+      "val": {
+        "count": 200,
+        "exact": 30,
+        "exact_accuracy": 0.15,
+        "format_accuracy": 1.0,
+        "ground_truth_distribution": {
+          "KKK": 13,
+          "KKN": 30,
+          "KNK": 28,
+          "KNN": 30,
+          "NKK": 19,
+          "NKN": 21,
+          "NNK": 34,
+          "NNN": 25
+        },
+        "prediction_distribution": {
+          "KKK": 7,
+          "KKN": 1,
+          "KNK": 2,
+          "NKK": 23,
+          "NKN": 30,
+          "NNK": 98,
+          "NNN": 39
+        },
+        "confusion_matrix": {
+          "KKK": {
+            "KKK": 3,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 1,
+            "NKN": 1,
+            "NNK": 6,
+            "NNN": 2
+          },
+          "KKN": {
+            "KKK": 2,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 5,
+            "NKN": 6,
+            "NNK": 10,
+            "NNN": 7
+          },
+          "KNK": {
+            "KKK": 2,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 4,
+            "NKN": 9,
+            "NNK": 10,
+            "NNN": 3
+          },
+          "KNN": {
+            "KKK": 0,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 4,
+            "NKN": 2,
+            "NNK": 19,
+            "NNN": 5
+          },
+          "NKK": {
+            "KKK": 0,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 1,
+            "NKN": 3,
+            "NNK": 11,
+            "NNN": 4
+          },
+          "NKN": {
+            "KKK": 0,
+            "KKN": 1,
+            "KNK": 1,
+            "KNN": 0,
+            "NKK": 3,
+            "NKN": 1,
+            "NNK": 14,
+            "NNN": 1
+          },
+          "NNK": {
+            "KKK": 0,
+            "KKN": 0,
+            "KNK": 1,
+            "KNN": 0,
+            "NKK": 4,
+            "NKN": 5,
+            "NNK": 16,
+            "NNN": 8
+          },
+          "NNN": {
+            "KKK": 0,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 1,
+            "NKN": 3,
+            "NNK": 12,
+            "NNN": 9
+          }
+        }
+      },
+      "test": {
+        "count": 500,
+        "exact": 74,
+        "exact_accuracy": 0.148,
+        "format_accuracy": 1.0,
+        "ground_truth_distribution": {
+          "KKK": 71,
+          "KKN": 70,
+          "KNK": 56,
+          "KNN": 61,
+          "NKK": 56,
+          "NKN": 58,
+          "NNK": 80,
+          "NNN": 48
+        },
+        "prediction_distribution": {
+          "KKK": 24,
+          "KKN": 8,
+          "KNK": 4,
+          "KNN": 4,
+          "NKK": 83,
+          "NKN": 57,
+          "NNK": 227,
+          "NNN": 93
+        },
+        "confusion_matrix": {
+          "KKK": {
+            "KKK": 8,
+            "KKN": 3,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 6,
+            "NKN": 5,
+            "NNK": 29,
+            "NNN": 20
+          },
+          "KKN": {
+            "KKK": 4,
+            "KKN": 1,
+            "KNK": 0,
+            "KNN": 1,
+            "NKK": 10,
+            "NKN": 14,
+            "NNK": 34,
+            "NNN": 6
+          },
+          "KNK": {
+            "KKK": 5,
+            "KKN": 0,
+            "KNK": 1,
+            "KNN": 0,
+            "NKK": 13,
+            "NKN": 2,
+            "NNK": 23,
+            "NNN": 12
+          },
+          "KNN": {
+            "KKK": 0,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 15,
+            "NKN": 11,
+            "NNK": 24,
+            "NNN": 11
+          },
+          "NKK": {
+            "KKK": 4,
+            "KKN": 2,
+            "KNK": 2,
+            "KNN": 2,
+            "NKK": 6,
+            "NKN": 6,
+            "NNK": 29,
+            "NNN": 5
+          },
+          "NKN": {
+            "KKK": 3,
+            "KKN": 1,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 17,
+            "NKN": 6,
+            "NNK": 29,
+            "NNN": 2
+          },
+          "NNK": {
+            "KKK": 0,
+            "KKN": 1,
+            "KNK": 1,
+            "KNN": 0,
+            "NKK": 16,
+            "NKN": 9,
+            "NNK": 34,
+            "NNN": 19
+          },
+          "NNN": {
+            "KKK": 0,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 1,
+            "NKK": 0,
+            "NKN": 4,
+            "NNK": 25,
+            "NNN": 18
+          }
+        }
+      }
+    },
+    "answer_only_3ep": {
+      "train": {
+        "count": 1000,
+        "exact": 362,
+        "exact_accuracy": 0.362,
+        "format_accuracy": 1.0,
+        "ground_truth_distribution": {
+          "KKK": 122,
+          "KKN": 130,
+          "KNK": 107,
+          "KNN": 129,
+          "NKK": 123,
+          "NKN": 121,
+          "NNK": 134,
+          "NNN": 134
+        },
+        "prediction_distribution": {
+          "KKK": 182,
+          "KKN": 129,
+          "KNK": 63,
+          "KNN": 114,
+          "NKK": 119,
+          "NKN": 107,
+          "NNK": 118,
+          "NNN": 168
+        },
+        "confusion_matrix": {
+          "KKK": {
+            "KKK": 106,
+            "KKN": 13,
+            "KNK": 1,
+            "KNN": 2,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KKN": {
+            "KKK": 11,
+            "KKN": 32,
+            "KNK": 7,
+            "KNN": 30,
+            "NKK": 10,
+            "NKN": 11,
+            "NNK": 20,
+            "NNN": 9
+          },
+          "KNK": {
+            "KKK": 7,
+            "KKN": 13,
+            "KNK": 13,
+            "KNN": 18,
+            "NKK": 12,
+            "NKN": 16,
+            "NNK": 15,
+            "NNN": 13
+          },
+          "KNN": {
+            "KKK": 17,
+            "KKN": 23,
+            "KNK": 11,
+            "KNN": 26,
+            "NKK": 13,
+            "NKN": 11,
+            "NNK": 12,
+            "NNN": 16
+          },
+          "NKK": {
+            "KKK": 11,
+            "KKN": 9,
+            "KNK": 10,
+            "KNN": 10,
+            "NKK": 40,
+            "NKN": 23,
+            "NNK": 10,
+            "NNN": 10
+          },
+          "NKN": {
+            "KKK": 11,
+            "KKN": 13,
+            "KNK": 11,
+            "KNN": 12,
+            "NKK": 27,
+            "NKN": 19,
+            "NNK": 16,
+            "NNN": 12
+          },
+          "NNK": {
+            "KKK": 15,
+            "KKN": 24,
+            "KNK": 10,
+            "KNN": 11,
+            "NKK": 15,
+            "NKN": 15,
+            "NNK": 31,
+            "NNN": 13
+          },
+          "NNN": {
+            "KKK": 4,
+            "KKN": 2,
+            "KNK": 0,
+            "KNN": 5,
+            "NKK": 2,
+            "NKN": 12,
+            "NNK": 14,
+            "NNN": 95
+          }
+        }
+      },
+      "val": {
+        "count": 200,
+        "exact": 52,
+        "exact_accuracy": 0.26,
+        "format_accuracy": 1.0,
+        "ground_truth_distribution": {
+          "KKK": 13,
+          "KKN": 30,
+          "KNK": 28,
+          "KNN": 30,
+          "NKK": 19,
+          "NKN": 21,
+          "NNK": 34,
+          "NNN": 25
+        },
+        "prediction_distribution": {
+          "KKK": 35,
+          "KKN": 20,
+          "KNK": 15,
+          "KNN": 23,
+          "NKK": 26,
+          "NKN": 22,
+          "NNK": 24,
+          "NNN": 35
+        },
+        "confusion_matrix": {
+          "KKK": {
+            "KKK": 11,
+            "KKN": 2,
+            "KNK": 0,
+            "KNN": 0,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KKN": {
+            "KKK": 3,
+            "KKN": 4,
+            "KNK": 5,
+            "KNN": 2,
+            "NKK": 3,
+            "NKN": 2,
+            "NNK": 5,
+            "NNN": 6
+          },
+          "KNK": {
+            "KKK": 6,
+            "KKN": 2,
+            "KNK": 4,
+            "KNN": 6,
+            "NKK": 4,
+            "NKN": 3,
+            "NNK": 2,
+            "NNN": 1
+          },
+          "KNN": {
+            "KKK": 7,
+            "KKN": 3,
+            "KNK": 2,
+            "KNN": 7,
+            "NKK": 4,
+            "NKN": 3,
+            "NNK": 2,
+            "NNN": 2
+          },
+          "NKK": {
+            "KKK": 4,
+            "KKN": 1,
+            "KNK": 0,
+            "KNN": 1,
+            "NKK": 3,
+            "NKN": 3,
+            "NNK": 1,
+            "NNN": 6
+          },
+          "NKN": {
+            "KKK": 0,
+            "KKN": 3,
+            "KNK": 3,
+            "KNN": 3,
+            "NKK": 4,
+            "NKN": 4,
+            "NNK": 0,
+            "NNN": 4
+          },
+          "NNK": {
+            "KKK": 2,
+            "KKN": 5,
+            "KNK": 1,
+            "KNN": 1,
+            "NKK": 7,
+            "NKN": 7,
+            "NNK": 7,
+            "NNN": 4
+          },
+          "NNN": {
+            "KKK": 2,
+            "KKN": 0,
+            "KNK": 0,
+            "KNN": 3,
+            "NKK": 1,
+            "NKN": 0,
+            "NNK": 7,
+            "NNN": 12
+          }
+        }
+      },
+      "test": {
+        "count": 500,
+        "exact": 154,
+        "exact_accuracy": 0.308,
+        "format_accuracy": 1.0,
+        "ground_truth_distribution": {
+          "KKK": 71,
+          "KKN": 70,
+          "KNK": 56,
+          "KNN": 61,
+          "NKK": 56,
+          "NKN": 58,
+          "NNK": 80,
+          "NNN": 48
+        },
+        "prediction_distribution": {
+          "KKK": 100,
+          "KKN": 64,
+          "KNK": 33,
+          "KNN": 55,
+          "NKK": 86,
+          "NKN": 47,
+          "NNK": 39,
+          "NNN": 76
+        },
+        "confusion_matrix": {
+          "KKK": {
+            "KKK": 56,
+            "KKN": 12,
+            "KNK": 1,
+            "KNN": 2,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 0,
+            "NNN": 0
+          },
+          "KKN": {
+            "KKK": 9,
+            "KKN": 12,
+            "KNK": 8,
+            "KNN": 15,
+            "NKK": 6,
+            "NKN": 8,
+            "NNK": 7,
+            "NNN": 5
+          },
+          "KNK": {
+            "KKK": 7,
+            "KKN": 8,
+            "KNK": 7,
+            "KNN": 7,
+            "NKK": 8,
+            "NKN": 5,
+            "NNK": 7,
+            "NNN": 7
+          },
+          "KNN": {
+            "KKK": 7,
+            "KKN": 10,
+            "KNK": 5,
+            "KNN": 8,
+            "NKK": 11,
+            "NKN": 11,
+            "NNK": 3,
+            "NNN": 6
+          },
+          "NKK": {
+            "KKK": 2,
+            "KKN": 7,
+            "KNK": 2,
+            "KNN": 5,
+            "NKK": 19,
+            "NKN": 10,
+            "NNK": 6,
+            "NNN": 5
+          },
+          "NKN": {
+            "KKK": 5,
+            "KKN": 5,
+            "KNK": 3,
+            "KNN": 5,
+            "NKK": 25,
+            "NKN": 7,
+            "NNK": 3,
+            "NNN": 5
+          },
+          "NNK": {
+            "KKK": 12,
+            "KKN": 8,
+            "KNK": 7,
+            "KNN": 9,
+            "NKK": 17,
+            "NKN": 6,
+            "NNK": 9,
+            "NNN": 12
+          },
+          "NNN": {
+            "KKK": 2,
+            "KKN": 2,
+            "KNK": 0,
+            "KNN": 4,
+            "NKK": 0,
+            "NKN": 0,
+            "NNK": 4,
+            "NNN": 36
+          }
+        }
+      }
+    }
+  }
+}

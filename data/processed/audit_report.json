@@ -1,0 +1,126 @@
+{
+  "raw_dir": "data/raw",
+  "splits": {
+    "train": {
+      "count": 1000,
+      "unique_ids": 1000,
+      "unique_puzzles": 1000,
+      "duplicate_count": 0,
+      "unique_solution_count": 1000,
+      "bad_solution_count": 0,
+      "answer_distribution": {
+        "knight|knight|knight": 122,
+        "knight|knight|knave": 130,
+        "knight|knave|knave": 129,
+        "knight|knave|knight": 107,
+        "knave|knave|knight": 134,
+        "knave|knave|knave": 134,
+        "knave|knight|knight": 123,
+        "knave|knight|knave": 121
+      },
+      "statement_chars": {
+        "min": 62,
+        "max": 412,
+        "mean": 157.165
+      }
+    },
+    "val": {
+      "count": 200,
+      "unique_ids": 200,
+      "unique_puzzles": 200,
+      "duplicate_count": 0,
+      "unique_solution_count": 200,
+      "bad_solution_count": 0,
+      "answer_distribution": {
+        "knave|knave|knave": 25,
+        "knight|knight|knight": 13,
+        "knight|knave|knave": 30,
+        "knave|knight|knight": 19,
+        "knight|knight|knave": 30,
+        "knave|knave|knight": 34,
+        "knight|knave|knight": 28,
+        "knave|knight|knave": 21
+      },
+      "statement_chars": {
+        "min": 65,
+        "max": 364,
+        "mean": 161.19
+      }
+    },
+    "test": {
+      "count": 500,
+      "unique_ids": 500,
+      "unique_puzzles": 500,
+      "duplicate_count": 0,
+      "unique_solution_count": 500,
+      "bad_solution_count": 0,
+      "answer_distribution": {
+        "knight|knight|knave": 70,
+        "knave|knight|knight": 56,
+        "knight|knave|knave": 61,
+        "knight|knave|knight": 56,
+        "knight|knight|knight": 71,
+        "knave|knave|knave": 48,
+        "knave|knave|knight": 80,
+        "knave|knight|knave": 58
+      },
+      "statement_chars": {
+        "min": 64,
+        "max": 417,
+        "mean": 154.792
+      }
+    }
+  },
+  "cross_split_overlap": {
+    "train__val": 0,
+    "train__test": 0,
+    "val__test": 0
+  },
+  "processed": {
+    "processed_dir": "data/processed",
+    "splits": {
+      "train": {
+        "count": 1000,
+        "unique_ids": 1000,
+        "prompt_chars": {
+          "min": 581,
+          "max": 931,
+          "mean": 676.165
+        },
+        "completion_chars": {
+          "min": 1107,
+          "max": 1162,
+          "mean": 1139.612
+        }
+      },
+      "val": {
+        "count": 200,
+        "unique_ids": 200,
+        "prompt_chars": {
+          "min": 584,
+          "max": 883,
+          "mean": 680.19
+        },
+        "completion_chars": {
+          "min": 1106,
+          "max": 1162,
+          "mean": 1139.58
+        }
+      },
+      "test": {
+        "count": 500,
+        "unique_ids": 500,
+        "prompt_chars": {
+          "min": 583,
+          "max": 936,
+          "mean": 673.792
+        },
+        "completion_chars": {
+          "min": 1102,
+          "max": 1166,
+          "mean": 1140.176
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "count_prompts": 500,
+  "num_generations": 8,
+  "sampling": {
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "seed": 20260828
+  },
+  "zero_variance_group_ratio": 0.226,
+  "mixed_reward_group_ratio": 0.774,
+  "all_wrong_group_ratio": 0.22,
+  "all_correct_group_ratio": 0.006,
+  "groups_with_at_least_one_correct_ratio": 0.78,
+  "pass_at_8": 0.78,
+  "mean_unique_answers_per_group": 4.378,
+  "mean_correct_rollouts_per_group": 1.808,
+  "mean_reward": 0.32599999999999707,
+  "mean_reward_std": 0.313584355655546,
+  "format_valid_rollout_ratio": 1.0,
+  "parsed_pattern_distribution": {
+    "NKN": 449,
+    "NKK": 464,
+    "KNN": 557,
+    "NNN": 404,
+    "KNK": 502,
+    "KKN": 590,
+    "KKK": 524,
+    "NNK": 510
+  }
+}

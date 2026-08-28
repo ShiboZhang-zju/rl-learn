@@ -6,11 +6,12 @@ __pycache__/
 venv/
 env/
 
-# Generated data and model artifacts
-data/raw/*.jsonl
-data/processed/*.jsonl
-data/processed/*.json
-outputs/
+# Generated experiment data and results are intentionally versioned.
+# Keep only model weights and local caches out of GitHub.
+outputs/**/adapter_model.safetensors
+outputs/**/pytorch_model*.bin
+outputs/**/model*.safetensors
+outputs/**/model*.bin
 wandb/
 mlruns/
 

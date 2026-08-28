@@ -1,0 +1,35 @@
+{
+  "dataset_version": "kk-v2",
+  "generator_version": "kk-v2-statement-first",
+  "seed": 20260829,
+  "people": [
+    "Alice",
+    "Bob",
+    "Carol"
+  ],
+  "generation_rule": "random statements first, exact solve, retain solution_count == 1",
+  "splits": {
+    "train": {
+      "count": 5000,
+      "raw_file": "data/raw_v2/train.jsonl",
+      "processed_file": "data/processed/v2_answer_only_train.jsonl"
+    },
+    "val": {
+      "count": 500,
+      "raw_file": "data/raw_v2/val.jsonl",
+      "processed_file": "data/processed/v2_answer_only_val.jsonl"
+    },
+    "test": {
+      "count": 1000,
+      "raw_file": "data/raw_v2/test.jsonl",
+      "processed_file": "data/processed/v2_answer_only_test.jsonl"
+    }
+  },
+  "train_1k": {
+    "count": 1000,
+    "selection": "first 1000 rows of deterministic v2 train split",
+    "raw_file": "data/raw_v2/train_1k.jsonl",
+    "processed_file": "data/processed/v2_answer_only_train_1k.jsonl"
+  },
+  "total_unique_puzzles": 6500
+}

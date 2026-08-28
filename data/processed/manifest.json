@@ -1,0 +1,18 @@
+{
+  "dataset_version": "kk-v1",
+  "seed": 42,
+  "splits": {
+    "train": {
+      "count": 1000,
+      "file": "sft_train.jsonl"
+    },
+    "val": {
+      "count": 200,
+      "file": "sft_val.jsonl"
+    },
+    "test": {
+      "count": 500,
+      "file": "sft_test.jsonl"
+    }
+  }
+}
