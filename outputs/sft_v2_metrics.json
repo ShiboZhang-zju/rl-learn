@@ -1,0 +1,946 @@
+{
+  "experiment": "sft_v2",
+  "dataset_version": "kk-v2",
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "training": {
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "batch_size": 16,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.0001,
+    "epochs": 5,
+    "lora_r": 8,
+    "lora_alpha": 16
+  },
+  "data_audit_file": "outputs/dataset_v2_feature_audit.json",
+  "epoch_metrics": {
+    "V2-1K": [
+      {
+        "epoch": 1,
+        "step": 63,
+        "train_loss_mean": 0.15520000000000003,
+        "train_loss_log_count": 3,
+        "val_loss": 0.09496435523033142,
+        "val_token_accuracy": 0.9374666232615709,
+        "train_exact_accuracy": 0.183,
+        "val_exact_accuracy": 0.174,
+        "train_format_accuracy": 1.0,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 44,
+          "KKN": 66,
+          "KNK": 6,
+          "KNN": 9,
+          "NKK": 122,
+          "NKN": 182,
+          "NNK": 45,
+          "NNN": 26
+        },
+        "checkpoint": "outputs/sft_v2_1k_p800/checkpoint-63"
+      },
+      {
+        "epoch": 2,
+        "step": 126,
+        "train_loss_mean": 0.09303333333333334,
+        "train_loss_log_count": 3,
+        "val_loss": 0.09098170697689056,
+        "val_token_accuracy": 0.9469933845102787,
+        "train_exact_accuracy": 0.271,
+        "val_exact_accuracy": 0.244,
+        "train_format_accuracy": 1.0,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 36,
+          "KKN": 37,
+          "KNK": 25,
+          "KNN": 34,
+          "NKK": 10,
+          "NKN": 78,
+          "NNK": 109,
+          "NNN": 171
+        },
+        "checkpoint": "outputs/sft_v2_1k_p800/checkpoint-126"
+      },
+      {
+        "epoch": 3,
+        "step": 189,
+        "train_loss_mean": 0.08623333333333333,
+        "train_loss_log_count": 3,
+        "val_loss": 0.08519876003265381,
+        "val_token_accuracy": 0.9497523158788681,
+        "train_exact_accuracy": 0.333,
+        "val_exact_accuracy": 0.266,
+        "train_format_accuracy": 1.0,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 93,
+          "KKN": 60,
+          "KNK": 154,
+          "KNN": 60,
+          "NKK": 25,
+          "NKN": 32,
+          "NNK": 19,
+          "NNN": 57
+        },
+        "checkpoint": "outputs/sft_v2_1k_p800/checkpoint-189"
+      },
+      {
+        "epoch": 4,
+        "step": 252,
+        "train_loss_mean": 0.07863333333333333,
+        "train_loss_log_count": 3,
+        "val_loss": 0.08122298866510391,
+        "val_token_accuracy": 0.9553622473031282,
+        "train_exact_accuracy": 0.368,
+        "val_exact_accuracy": 0.332,
+        "train_format_accuracy": 1.0,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 59,
+          "KKN": 25,
+          "KNK": 20,
+          "KNN": 67,
+          "NKK": 26,
+          "NKN": 97,
+          "NNK": 111,
+          "NNN": 95
+        },
+        "checkpoint": "outputs/sft_v2_1k_p800/checkpoint-252"
+      },
+      {
+        "epoch": 5,
+        "step": 315,
+        "train_loss_mean": 0.07360000000000001,
+        "train_loss_log_count": 3,
+        "val_loss": 0.07717463374137878,
+        "val_token_accuracy": 0.957030676305294,
+        "train_exact_accuracy": 0.444,
+        "val_exact_accuracy": 0.334,
+        "train_format_accuracy": 1.0,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 87,
+          "KKN": 61,
+          "KNK": 79,
+          "KNN": 60,
+          "NKK": 33,
+          "NKN": 43,
+          "NNK": 53,
+          "NNN": 84
+        },
+        "checkpoint": "outputs/sft_v2_1k_p800/checkpoint-315"
+      }
+    ],
+    "V2-5K": [
+      {
+        "epoch": 1,
+        "step": 313,
+        "train_loss_mean": 0.11236666666666666,
+        "train_loss_log_count": 6,
+        "val_loss": 0.0690707415342331,
+        "val_token_accuracy": 0.9628441166132689,
+        "train_exact_accuracy": 0.4152,
+        "val_exact_accuracy": 0.418,
+        "train_format_accuracy": 1.0,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 89,
+          "KKN": 73,
+          "KNK": 47,
+          "KNN": 44,
+          "NKK": 19,
+          "NKN": 99,
+          "NNK": 38,
+          "NNN": 91
+        },
+        "checkpoint": "outputs/sft_v2_5k_p800/checkpoint-313"
+      },
+      {
+        "epoch": 2,
+        "step": 626,
+        "train_loss_mean": 0.05815,
+        "train_loss_log_count": 6,
+        "val_loss": 0.042461808770895004,
+        "val_token_accuracy": 0.9804256185889244,
+        "train_exact_accuracy": 0.6586,
+        "val_exact_accuracy": 0.63,
+        "train_format_accuracy": 1.0,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 59,
+          "KKN": 58,
+          "KNK": 62,
+          "KNN": 41,
+          "NKK": 55,
+          "NKN": 66,
+          "NNK": 79,
+          "NNN": 80
+        },
+        "checkpoint": "outputs/sft_v2_5k_p800/checkpoint-626"
+      },
+      {
+        "epoch": 3,
+        "step": 939,
+        "train_loss_mean": 0.03571666666666667,
+        "train_loss_log_count": 6,
+        "val_loss": 0.030565418303012848,
+        "val_token_accuracy": 0.9856027346104383,
+        "train_exact_accuracy": 0.7828,
+        "val_exact_accuracy": 0.712,
+        "train_format_accuracy": 1.0,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 59,
+          "KKN": 62,
+          "KNK": 43,
+          "KNN": 45,
+          "NKK": 67,
+          "NKN": 76,
+          "NNK": 76,
+          "NNN": 72
+        },
+        "checkpoint": "outputs/sft_v2_5k_p800/checkpoint-939"
+      },
+      {
+        "epoch": 4,
+        "step": 1252,
+        "train_loss_mean": 0.02264285714285715,
+        "train_loss_log_count": 7,
+        "val_loss": 0.028648367151618004,
+        "val_token_accuracy": 0.985940620303154,
+        "train_exact_accuracy": 0.8504,
+        "val_exact_accuracy": 0.722,
+        "train_format_accuracy": 0.9998,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 60,
+          "KKN": 59,
+          "KNK": 47,
+          "KNN": 56,
+          "NKK": 52,
+          "NKN": 74,
+          "NNK": 83,
+          "NNN": 69
+        },
+        "checkpoint": "outputs/sft_v2_5k_p800/checkpoint-1252"
+      },
+      {
+        "epoch": 5,
+        "step": 1565,
+        "train_loss_mean": 0.015400000000000002,
+        "train_loss_log_count": 6,
+        "val_loss": 0.028698069974780083,
+        "val_token_accuracy": 0.9879526291042566,
+        "train_exact_accuracy": 0.8984,
+        "val_exact_accuracy": 0.748,
+        "train_format_accuracy": 1.0,
+        "val_format_accuracy": 1.0,
+        "prediction_distribution": {
+          "KKK": 61,
+          "KKN": 70,
+          "KNK": 55,
+          "KNN": 61,
+          "NKK": 64,
+          "NKN": 60,
+          "NNK": 69,
+          "NNN": 60
+        },
+        "checkpoint": "outputs/sft_v2_5k_p800/checkpoint-1565"
+      }
+    ]
+  },
+  "final_evaluation": {
+    "V1": {
+      "adapter": "outputs/sft_answer_only_10ep_p800",
+      "datasets": {
+        "legacy_test": {
+          "count": 500,
+          "exact": 238,
+          "exact_accuracy": 0.476,
+          "format_valid": 498,
+          "format_accuracy": 0.996,
+          "ground_truth_distribution": {
+            "KKK": 71,
+            "KKN": 70,
+            "KNK": 56,
+            "KNN": 61,
+            "NKK": 56,
+            "NKN": 58,
+            "NNK": 80,
+            "NNN": 48
+          },
+          "prediction_distribution": {
+            "INVALID": 2,
+            "KKK": 71,
+            "KKN": 57,
+            "KNK": 48,
+            "KNN": 64,
+            "NKK": 70,
+            "NKN": 52,
+            "NNK": 71,
+            "NNN": 65
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 58,
+              "KKN": 5,
+              "KNK": 1,
+              "KNN": 2,
+              "NKK": 0,
+              "NKN": 1,
+              "NNK": 2,
+              "NNN": 2
+            },
+            "KKN": {
+              "KKK": 5,
+              "KKN": 25,
+              "KNK": 3,
+              "KNN": 14,
+              "NKK": 5,
+              "NKN": 6,
+              "NNK": 7,
+              "NNN": 5
+            },
+            "KNK": {
+              "KKK": 1,
+              "KKN": 7,
+              "KNK": 23,
+              "KNN": 13,
+              "NKK": 5,
+              "NKN": 1,
+              "NNK": 3,
+              "NNN": 3
+            },
+            "KNN": {
+              "KKK": 1,
+              "KKN": 10,
+              "KNK": 8,
+              "KNN": 18,
+              "NKK": 8,
+              "NKN": 6,
+              "NNK": 5,
+              "NNN": 5
+            },
+            "NKK": {
+              "KKK": 1,
+              "KKN": 2,
+              "KNK": 2,
+              "KNN": 3,
+              "NKK": 25,
+              "NKN": 10,
+              "NNK": 11,
+              "NNN": 1
+            },
+            "NKN": {
+              "KKK": 1,
+              "KKN": 2,
+              "KNK": 3,
+              "KNN": 6,
+              "NKK": 13,
+              "NKN": 20,
+              "NNK": 9,
+              "NNN": 4
+            },
+            "NNK": {
+              "KKK": 3,
+              "KKN": 3,
+              "KNK": 8,
+              "KNN": 8,
+              "NKK": 14,
+              "NKN": 7,
+              "NNK": 30,
+              "NNN": 6
+            },
+            "NNN": {
+              "KKK": 1,
+              "KKN": 3,
+              "KNK": 0,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 1,
+              "NNK": 4,
+              "NNN": 39
+            }
+          },
+          "prediction_file": "outputs/v2_eval/v1_legacy_test.jsonl"
+        },
+        "v2_test": {
+          "count": 1000,
+          "exact": 272,
+          "exact_accuracy": 0.272,
+          "format_valid": 1000,
+          "format_accuracy": 1.0,
+          "ground_truth_distribution": {
+            "KKK": 126,
+            "KKN": 120,
+            "KNK": 128,
+            "KNN": 140,
+            "NKK": 98,
+            "NKN": 133,
+            "NNK": 129,
+            "NNN": 126
+          },
+          "prediction_distribution": {
+            "KKK": 2,
+            "KKN": 11,
+            "KNK": 125,
+            "KNN": 247,
+            "NKK": 15,
+            "NKN": 281,
+            "NNK": 221,
+            "NNN": 98
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 2,
+              "KKN": 4,
+              "KNK": 39,
+              "KNN": 43,
+              "NKK": 0,
+              "NKN": 10,
+              "NNK": 17,
+              "NNN": 11
+            },
+            "KKN": {
+              "KKK": 0,
+              "KKN": 2,
+              "KNK": 18,
+              "KNN": 55,
+              "NKK": 0,
+              "NKN": 23,
+              "NNK": 15,
+              "NNN": 7
+            },
+            "KNK": {
+              "KKK": 0,
+              "KKN": 1,
+              "KNK": 27,
+              "KNN": 57,
+              "NKK": 2,
+              "NKN": 22,
+              "NNK": 17,
+              "NNN": 2
+            },
+            "KNN": {
+              "KKK": 0,
+              "KKN": 1,
+              "KNK": 22,
+              "KNN": 50,
+              "NKK": 3,
+              "NKN": 39,
+              "NNK": 23,
+              "NNN": 2
+            },
+            "NKK": {
+              "KKK": 0,
+              "KKN": 2,
+              "KNK": 4,
+              "KNN": 9,
+              "NKK": 6,
+              "NKN": 39,
+              "NNK": 32,
+              "NNN": 6
+            },
+            "NKN": {
+              "KKK": 0,
+              "KKN": 1,
+              "KNK": 9,
+              "KNN": 14,
+              "NKK": 1,
+              "NKN": 71,
+              "NNK": 27,
+              "NNN": 10
+            },
+            "NNK": {
+              "KKK": 0,
+              "KKN": 0,
+              "KNK": 3,
+              "KNN": 15,
+              "NKK": 3,
+              "NKN": 50,
+              "NNK": 56,
+              "NNN": 2
+            },
+            "NNN": {
+              "KKK": 0,
+              "KKN": 0,
+              "KNK": 3,
+              "KNN": 4,
+              "NKK": 0,
+              "NKN": 27,
+              "NNK": 34,
+              "NNN": 58
+            }
+          },
+          "prediction_file": "outputs/v2_eval/v1_v2_test.jsonl"
+        }
+      }
+    },
+    "V2-1K": {
+      "adapter": "outputs/sft_v2_1k_p800/checkpoint-315",
+      "datasets": {
+        "legacy_test": {
+          "count": 500,
+          "exact": 103,
+          "exact_accuracy": 0.206,
+          "format_valid": 453,
+          "format_accuracy": 0.906,
+          "ground_truth_distribution": {
+            "KKK": 71,
+            "KKN": 70,
+            "KNK": 56,
+            "KNN": 61,
+            "NKK": 56,
+            "NKN": 58,
+            "NNK": 80,
+            "NNN": 48
+          },
+          "prediction_distribution": {
+            "INVALID": 47,
+            "KKK": 255,
+            "KKN": 138,
+            "KNK": 8,
+            "KNN": 6,
+            "NKK": 2,
+            "NKN": 5,
+            "NNK": 17,
+            "NNN": 22
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 71,
+              "KKN": 0,
+              "KNK": 0,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 0,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 32,
+              "KKN": 24,
+              "KNK": 1,
+              "KNN": 1,
+              "NKK": 0,
+              "NKN": 0,
+              "NNK": 2,
+              "NNN": 1
+            },
+            "KNK": {
+              "KKK": 24,
+              "KKN": 24,
+              "KNK": 0,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 1,
+              "NNK": 4,
+              "NNN": 1
+            },
+            "KNN": {
+              "KKK": 29,
+              "KKN": 18,
+              "KNK": 1,
+              "KNN": 2,
+              "NKK": 0,
+              "NKN": 0,
+              "NNK": 3,
+              "NNN": 3
+            },
+            "NKK": {
+              "KKK": 18,
+              "KKN": 19,
+              "KNK": 2,
+              "KNN": 2,
+              "NKK": 0,
+              "NKN": 2,
+              "NNK": 2,
+              "NNN": 5
+            },
+            "NKN": {
+              "KKK": 20,
+              "KKN": 17,
+              "KNK": 4,
+              "KNN": 1,
+              "NKK": 1,
+              "NKN": 2,
+              "NNK": 5,
+              "NNN": 2
+            },
+            "NNK": {
+              "KKK": 30,
+              "KKN": 30,
+              "KNK": 0,
+              "KNN": 0,
+              "NKK": 1,
+              "NKN": 0,
+              "NNK": 1,
+              "NNN": 7
+            },
+            "NNN": {
+              "KKK": 31,
+              "KKN": 6,
+              "KNK": 0,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 0,
+              "NNK": 0,
+              "NNN": 3
+            }
+          },
+          "prediction_file": "outputs/v2_eval/v2_1k_legacy_test.jsonl"
+        },
+        "v2_test": {
+          "count": 1000,
+          "exact": 359,
+          "exact_accuracy": 0.359,
+          "format_valid": 1000,
+          "format_accuracy": 1.0,
+          "ground_truth_distribution": {
+            "KKK": 126,
+            "KKN": 120,
+            "KNK": 128,
+            "KNN": 140,
+            "NKK": 98,
+            "NKN": 133,
+            "NNK": 129,
+            "NNN": 126
+          },
+          "prediction_distribution": {
+            "KKK": 176,
+            "KKN": 122,
+            "KNK": 193,
+            "KNN": 103,
+            "NKK": 71,
+            "NKN": 90,
+            "NNK": 81,
+            "NNN": 164
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 105,
+              "KKN": 12,
+              "KNK": 7,
+              "KNN": 1,
+              "NKK": 0,
+              "NKN": 1,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 12,
+              "KKN": 28,
+              "KNK": 29,
+              "KNN": 23,
+              "NKK": 6,
+              "NKN": 5,
+              "NNK": 11,
+              "NNN": 6
+            },
+            "KNK": {
+              "KKK": 12,
+              "KKN": 12,
+              "KNK": 47,
+              "KNN": 14,
+              "NKK": 9,
+              "NKN": 9,
+              "NNK": 12,
+              "NNN": 13
+            },
+            "KNN": {
+              "KKK": 13,
+              "KKN": 26,
+              "KNK": 32,
+              "KNN": 28,
+              "NKK": 9,
+              "NKN": 9,
+              "NNK": 8,
+              "NNN": 15
+            },
+            "NKK": {
+              "KKK": 6,
+              "KKN": 8,
+              "KNK": 20,
+              "KNN": 9,
+              "NKK": 20,
+              "NKN": 9,
+              "NNK": 13,
+              "NNN": 13
+            },
+            "NKN": {
+              "KKK": 9,
+              "KKN": 12,
+              "KNK": 27,
+              "KNN": 14,
+              "NKK": 6,
+              "NKN": 34,
+              "NNK": 10,
+              "NNN": 21
+            },
+            "NNK": {
+              "KKK": 13,
+              "KKN": 22,
+              "KNK": 21,
+              "KNN": 13,
+              "NKK": 15,
+              "NKN": 20,
+              "NNK": 13,
+              "NNN": 12
+            },
+            "NNN": {
+              "KKK": 6,
+              "KKN": 2,
+              "KNK": 10,
+              "KNN": 1,
+              "NKK": 6,
+              "NKN": 3,
+              "NNK": 14,
+              "NNN": 84
+            }
+          },
+          "prediction_file": "outputs/v2_eval/v2_1k_v2_test.jsonl"
+        }
+      }
+    },
+    "V2-5K": {
+      "adapter": "outputs/sft_v2_5k_p800/checkpoint-1565",
+      "datasets": {
+        "legacy_test": {
+          "count": 500,
+          "exact": 217,
+          "exact_accuracy": 0.434,
+          "format_valid": 336,
+          "format_accuracy": 0.672,
+          "ground_truth_distribution": {
+            "KKK": 71,
+            "KKN": 70,
+            "KNK": 56,
+            "KNN": 61,
+            "NKK": 56,
+            "NKN": 58,
+            "NNK": 80,
+            "NNN": 48
+          },
+          "prediction_distribution": {
+            "INVALID": 164,
+            "KKK": 69,
+            "KKN": 52,
+            "KNK": 27,
+            "KNN": 16,
+            "NKK": 29,
+            "NKN": 42,
+            "NNK": 54,
+            "NNN": 47
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 55,
+              "KKN": 2,
+              "KNK": 0,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 0,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 0,
+              "KKN": 31,
+              "KNK": 1,
+              "KNN": 1,
+              "NKK": 3,
+              "NKN": 5,
+              "NNK": 1,
+              "NNN": 0
+            },
+            "KNK": {
+              "KKK": 4,
+              "KKN": 7,
+              "KNK": 20,
+              "KNN": 1,
+              "NKK": 3,
+              "NKN": 2,
+              "NNK": 1,
+              "NNN": 1
+            },
+            "KNN": {
+              "KKK": 1,
+              "KKN": 1,
+              "KNK": 5,
+              "KNN": 12,
+              "NKK": 1,
+              "NKN": 4,
+              "NNK": 6,
+              "NNN": 4
+            },
+            "NKK": {
+              "KKK": 2,
+              "KKN": 4,
+              "KNK": 1,
+              "KNN": 0,
+              "NKK": 16,
+              "NKN": 7,
+              "NNK": 5,
+              "NNN": 6
+            },
+            "NKN": {
+              "KKK": 4,
+              "KKN": 3,
+              "KNK": 0,
+              "KNN": 1,
+              "NKK": 2,
+              "NKN": 19,
+              "NNK": 2,
+              "NNN": 6
+            },
+            "NNK": {
+              "KKK": 3,
+              "KKN": 2,
+              "KNK": 0,
+              "KNN": 1,
+              "NKK": 4,
+              "NKN": 5,
+              "NNK": 38,
+              "NNN": 4
+            },
+            "NNN": {
+              "KKK": 0,
+              "KKN": 2,
+              "KNK": 0,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 0,
+              "NNK": 1,
+              "NNN": 26
+            }
+          },
+          "prediction_file": "outputs/v2_eval/v2_5k_legacy_test.jsonl"
+        },
+        "v2_test": {
+          "count": 1000,
+          "exact": 779,
+          "exact_accuracy": 0.779,
+          "format_valid": 1000,
+          "format_accuracy": 1.0,
+          "ground_truth_distribution": {
+            "KKK": 126,
+            "KKN": 120,
+            "KNK": 128,
+            "KNN": 140,
+            "NKK": 98,
+            "NKN": 133,
+            "NNK": 129,
+            "NNN": 126
+          },
+          "prediction_distribution": {
+            "KKK": 129,
+            "KKN": 105,
+            "KNK": 131,
+            "KNN": 138,
+            "NKK": 114,
+            "NKN": 127,
+            "NNK": 124,
+            "NNN": 132
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 122,
+              "KKN": 1,
+              "KNK": 1,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 2,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 0,
+              "KKN": 88,
+              "KNK": 10,
+              "KNN": 8,
+              "NKK": 6,
+              "NKN": 2,
+              "NNK": 0,
+              "NNN": 6
+            },
+            "KNK": {
+              "KKK": 1,
+              "KKN": 3,
+              "KNK": 101,
+              "KNN": 8,
+              "NKK": 6,
+              "NKN": 2,
+              "NNK": 2,
+              "NNN": 5
+            },
+            "KNN": {
+              "KKK": 1,
+              "KKN": 4,
+              "KNK": 4,
+              "KNN": 101,
+              "NKK": 2,
+              "NKN": 11,
+              "NNK": 15,
+              "NNN": 2
+            },
+            "NKK": {
+              "KKK": 3,
+              "KKN": 0,
+              "KNK": 5,
+              "KNN": 2,
+              "NKK": 75,
+              "NKN": 6,
+              "NNK": 4,
+              "NNN": 3
+            },
+            "NKN": {
+              "KKK": 1,
+              "KKN": 5,
+              "KNK": 2,
+              "KNN": 6,
+              "NKK": 9,
+              "NKN": 94,
+              "NNK": 10,
+              "NNN": 6
+            },
+            "NNK": {
+              "KKK": 0,
+              "KKN": 3,
+              "KNK": 4,
+              "KNN": 10,
+              "NKK": 10,
+              "NKN": 8,
+              "NNK": 91,
+              "NNN": 3
+            },
+            "NNN": {
+              "KKK": 1,
+              "KKN": 1,
+              "KNK": 4,
+              "KNN": 3,
+              "NKK": 6,
+              "NKN": 2,
+              "NNK": 2,
+              "NNN": 107
+            }
+          },
+          "prediction_file": "outputs/v2_eval/v2_5k_v2_test.jsonl"
+        }
+      }
+    }
+  },
+  "legacy_v1_reference": {
+    "generator": "kk-v1",
+    "train_size": 1000,
+    "epochs": 10,
+    "train_exact_accuracy": 0.915,
+    "val_exact_accuracy": 0.46,
+    "legacy_test_exact_accuracy": 0.476,
+    "v2_test_exact_accuracy": 0.272,
+    "adapter": "outputs/sft_answer_only_10ep_p800"
+  },
+  "best_checkpoints": {
+    "V2-1K": "outputs/sft_v2_1k_p800/checkpoint-315",
+    "V2-5K": "outputs/sft_v2_5k_p800/checkpoint-1565"
+  }
+}
