@@ -1,0 +1,26 @@
+{
+  "GRPO_minus_Epoch4": {
+    "mean_delta": 0.01054344999999999,
+    "pct_2_5": -0.006000000000000005,
+    "pct_97_5": 0.02749999999999997,
+    "ci_crosses_zero": true,
+    "iterations": 10000,
+    "seed": 20260828
+  },
+  "GRPO_minus_Epoch5": {
+    "mean_delta": -0.015409700000000004,
+    "pct_2_5": -0.03249999999999997,
+    "pct_97_5": 0.0010000000000000009,
+    "ci_crosses_zero": true,
+    "iterations": 10000,
+    "seed": 20260828
+  },
+  "Epoch5_minus_Epoch4": {
+    "mean_delta": 0.025879399999999993,
+    "pct_2_5": 0.01200000000000001,
+    "pct_97_5": 0.039999999999999925,
+    "ci_crosses_zero": false,
+    "iterations": 10000,
+    "seed": 20260828
+  }
+}

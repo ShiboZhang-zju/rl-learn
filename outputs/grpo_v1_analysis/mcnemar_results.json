@@ -1,0 +1,29 @@
+[
+  {
+    "comparison": "SFT_Epoch4_vs_GRPO_Best",
+    "b": 133,
+    "c": 154,
+    "n_discordant": 287,
+    "exact_p": 0.23772336278505402,
+    "chi2_corrected_p": 0.2377764997001089,
+    "chi2_statistic": 1.3937282229965158
+  },
+  {
+    "comparison": "SFT_Epoch5_vs_GRPO_Best",
+    "b": 159,
+    "c": 128,
+    "n_discordant": 287,
+    "exact_p": 0.07640373813290058,
+    "chi2_corrected_p": 0.07658664542993943,
+    "chi2_statistic": 3.1358885017421603
+  },
+  {
+    "comparison": "SFT_Epoch4_vs_SFT_Epoch5",
+    "b": 76,
+    "c": 128,
+    "n_discordant": 204,
+    "exact_p": 0.00033290416438775647,
+    "chi2_corrected_p": 0.00035600916321554743,
+    "chi2_statistic": 12.75
+  }
+]

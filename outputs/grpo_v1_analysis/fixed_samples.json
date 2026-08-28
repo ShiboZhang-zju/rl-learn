@@ -1,0 +1,1940 @@
+[
+  {
+    "id": "kk_grpo_v1_final_holdout_001205",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knight",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "NKK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_001205",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 5246431386096536070
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Alice"
+            },
+            "op": "and",
+            "right": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knave"
+            }
+          },
+          "speaker": "Alice",
+          "text": "both (Carol and Alice are different types) and (Bob is a knave)."
+        },
+        {
+          "expr": {
+            "left": "Alice",
+            "op": "different",
+            "right": "Bob"
+          },
+          "speaker": "Bob",
+          "text": "Alice and Bob are different types."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": {
+                "op": "person_is",
+                "person": "Bob",
+                "value": "knight"
+              },
+              "op": "or",
+              "right": {
+                "op": "person_is",
+                "person": "Alice",
+                "value": "knave"
+              }
+            },
+            "op": "or",
+            "right": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Carol"
+            }
+          },
+          "speaker": "Carol",
+          "text": "either (either (Bob is a knight) or (Alice is a knave)) or (Bob and Carol are the same type)."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 1,
+      "different_count": 2,
+      "and_count": 1,
+      "or_count": 2,
+      "not_count": 0,
+      "expression_nodes": 9,
+      "expression_depth": 3,
+      "statement_chars": 191,
+      "top_ops": "and+different+or",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+    "epoch4_pattern": "NKN",
+    "grpo_pattern": "NKK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_000998",
+    "ground_truth": {
+      "Alice": "knight",
+      "Bob": "knight",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "KKK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knight",
+        "Bob": "knight",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_000998",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 1217214290363417614
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": {
+              "left": "Alice",
+              "op": "different",
+              "right": "Carol"
+            },
+            "op": "or",
+            "right": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Bob"
+            }
+          },
+          "speaker": "Alice",
+          "text": "either (Alice and Carol are different types) or (Carol and Bob are the same type)."
+        },
+        {
+          "expr": {
+            "expr": {
+              "left": {
+                "left": "Alice",
+                "op": "different",
+                "right": "Carol"
+              },
+              "op": "or",
+              "right": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Alice"
+              }
+            },
+            "op": "not"
+          },
+          "speaker": "Bob",
+          "text": "it is not true that either (Alice and Carol are different types) or (Bob and Alice are different types)."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": "Alice",
+              "op": "same",
+              "right": "Carol"
+            },
+            "op": "or",
+            "right": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Alice"
+            }
+          },
+          "speaker": "Carol",
+          "text": "either (Alice and Carol are the same type) or (Carol and Alice are different types)."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 2,
+      "different_count": 4,
+      "and_count": 0,
+      "or_count": 3,
+      "not_count": 1,
+      "expression_nodes": 10,
+      "expression_depth": 3,
+      "statement_chars": 270,
+      "top_ops": "or+not+or",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knight\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knight\nBob: knight\nCarol: knight\n</answer>",
+    "epoch4_pattern": "KNN",
+    "grpo_pattern": "KKK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_000704",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knight",
+      "Carol": "knave"
+    },
+    "ground_truth_pattern": "NKN",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knave"
+      },
+      "id": "kk_grpo_v1_final_holdout_000704",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 2570771611382309178
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": "Bob",
+            "op": "same",
+            "right": "Carol"
+          },
+          "speaker": "Alice",
+          "text": "Bob and Carol are the same type."
+        },
+        {
+          "expr": {
+            "left": "Carol",
+            "op": "different",
+            "right": "Bob"
+          },
+          "speaker": "Bob",
+          "text": "Carol and Bob are different types."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Bob"
+              },
+              "op": "or",
+              "right": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Alice"
+              }
+            },
+            "op": "and",
+            "right": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knight"
+            }
+          },
+          "speaker": "Carol",
+          "text": "both (either (Carol and Bob are the same type) or (Carol and Alice are the same type)) and (Alice is a knight)."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 3,
+      "different_count": 1,
+      "and_count": 1,
+      "or_count": 1,
+      "not_count": 0,
+      "expression_nodes": 7,
+      "expression_depth": 3,
+      "statement_chars": 177,
+      "top_ops": "same+different+and",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "epoch4_pattern": "KNN",
+    "grpo_pattern": "NKN"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_000901",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knave",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "NNK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knave",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_000901",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 5136033611266631611
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": "Alice",
+            "op": "different",
+            "right": "Bob"
+          },
+          "speaker": "Alice",
+          "text": "Alice and Bob are different types."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Alice"
+            },
+            "op": "or",
+            "right": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knight"
+            }
+          },
+          "speaker": "Bob",
+          "text": "either (Carol and Alice are the same type) or (Alice is a knight)."
+        },
+        {
+          "expr": {
+            "left": "Alice",
+            "op": "same",
+            "right": "Bob"
+          },
+          "speaker": "Carol",
+          "text": "Alice and Bob are the same type."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 2,
+      "different_count": 1,
+      "and_count": 0,
+      "or_count": 1,
+      "not_count": 0,
+      "expression_nodes": 5,
+      "expression_depth": 2,
+      "statement_chars": 132,
+      "top_ops": "different+or+same",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knave\nCarol: knight\n</answer>",
+    "epoch4_pattern": "KNN",
+    "grpo_pattern": "NNK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001548",
+    "ground_truth": {
+      "Alice": "knight",
+      "Bob": "knight",
+      "Carol": "knave"
+    },
+    "ground_truth_pattern": "KKN",
+    "puzzle": {
+      "answer": {
+        "Alice": "knight",
+        "Bob": "knight",
+        "Carol": "knave"
+      },
+      "id": "kk_grpo_v1_final_holdout_001548",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 1411919331006360039
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "expr": {
+              "left": {
+                "left": "Alice",
+                "op": "same",
+                "right": "Bob"
+              },
+              "op": "and",
+              "right": {
+                "left": "Alice",
+                "op": "same",
+                "right": "Carol"
+              }
+            },
+            "op": "not"
+          },
+          "speaker": "Alice",
+          "text": "it is not true that both (Alice and Bob are the same type) and (Alice and Carol are the same type)."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Alice"
+            },
+            "op": "or",
+            "right": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Alice"
+            }
+          },
+          "speaker": "Bob",
+          "text": "either (Bob and Alice are the same type) or (Bob and Alice are different types)."
+        },
+        {
+          "expr": {
+            "op": "person_is",
+            "person": "Bob",
+            "value": "knave"
+          },
+          "speaker": "Carol",
+          "text": "Bob is a knave."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 3,
+      "different_count": 1,
+      "and_count": 1,
+      "or_count": 1,
+      "not_count": 1,
+      "expression_nodes": 8,
+      "expression_depth": 3,
+      "statement_chars": 194,
+      "top_ops": "not+or+person_is",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knight\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knight\nBob: knight\nCarol: knave\n</answer>",
+    "epoch4_pattern": "KNK",
+    "grpo_pattern": "KKN"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001906",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knight",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "NKK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_001906",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 4546938819572004002
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knight"
+            },
+            "op": "and",
+            "right": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knave"
+            }
+          },
+          "speaker": "Alice",
+          "text": "both (Bob is a knight) and (Bob is a knave)."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Alice"
+            },
+            "op": "or",
+            "right": {
+              "left": {
+                "left": "Alice",
+                "op": "same",
+                "right": "Carol"
+              },
+              "op": "and",
+              "right": {
+                "left": "Alice",
+                "op": "same",
+                "right": "Bob"
+              }
+            }
+          },
+          "speaker": "Bob",
+          "text": "either (Bob and Alice are different types) or (both (Alice and Carol are the same type) and (Alice and Bob are the same type))."
+        },
+        {
+          "expr": {
+            "expr": {
+              "left": {
+                "left": "Carol",
+                "op": "different",
+                "right": "Alice"
+              },
+              "op": "and",
+              "right": {
+                "left": "Bob",
+                "op": "same",
+                "right": "Alice"
+              }
+            },
+            "op": "not"
+          },
+          "speaker": "Carol",
+          "text": "it is not true that both (Carol and Alice are different types) and (Bob and Alice are the same type)."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 3,
+      "different_count": 2,
+      "and_count": 3,
+      "or_count": 1,
+      "not_count": 1,
+      "expression_nodes": 12,
+      "expression_depth": 3,
+      "statement_chars": 272,
+      "top_ops": "and+or+not",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+    "epoch4_pattern": "NKN",
+    "grpo_pattern": "NKK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_000728",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knave",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "NNK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knave",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_000728",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 5518733405146101871
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": "Bob",
+            "op": "different",
+            "right": "Alice"
+          },
+          "speaker": "Alice",
+          "text": "Bob and Alice are different types."
+        },
+        {
+          "expr": {
+            "left": "Bob",
+            "op": "different",
+            "right": "Alice"
+          },
+          "speaker": "Bob",
+          "text": "Bob and Alice are different types."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knave"
+              },
+              "op": "and",
+              "right": {
+                "left": "Alice",
+                "op": "same",
+                "right": "Carol"
+              }
+            },
+            "op": "or",
+            "right": {
+              "expr": {
+                "left": "Alice",
+                "op": "same",
+                "right": "Carol"
+              },
+              "op": "not"
+            }
+          },
+          "speaker": "Carol",
+          "text": "either (both (Carol is a knave) and (Alice and Carol are the same type)) or (it is not true that Alice and Carol are the same type)."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 2,
+      "different_count": 2,
+      "and_count": 1,
+      "or_count": 1,
+      "not_count": 1,
+      "expression_nodes": 8,
+      "expression_depth": 3,
+      "statement_chars": 200,
+      "top_ops": "different+different+or",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knave\nCarol: knight\n</answer>",
+    "epoch4_pattern": "NNN",
+    "grpo_pattern": "NNK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_000063",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knight",
+      "Carol": "knave"
+    },
+    "ground_truth_pattern": "NKN",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knave"
+      },
+      "id": "kk_grpo_v1_final_holdout_000063",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 4801122240501414568
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "op": "person_is",
+            "person": "Bob",
+            "value": "knave"
+          },
+          "speaker": "Alice",
+          "text": "Bob is a knave."
+        },
+        {
+          "expr": {
+            "expr": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Bob"
+            },
+            "op": "not"
+          },
+          "speaker": "Bob",
+          "text": "it is not true that Carol and Bob are the same type."
+        },
+        {
+          "expr": {
+            "op": "person_is",
+            "person": "Bob",
+            "value": "knave"
+          },
+          "speaker": "Carol",
+          "text": "Bob is a knave."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 1,
+      "different_count": 0,
+      "and_count": 0,
+      "or_count": 0,
+      "not_count": 1,
+      "expression_nodes": 4,
+      "expression_depth": 2,
+      "statement_chars": 82,
+      "top_ops": "person_is+not+person_is",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "epoch4_pattern": "KNK",
+    "grpo_pattern": "NKN"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001652",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knight",
+      "Carol": "knave"
+    },
+    "ground_truth_pattern": "NKN",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knave"
+      },
+      "id": "kk_grpo_v1_final_holdout_001652",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 2099209251896333088
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": {
+              "op": "person_is",
+              "person": "Carol",
+              "value": "knight"
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "left": "Carol",
+                "op": "different",
+                "right": "Bob"
+              },
+              "op": "and",
+              "right": {
+                "left": "Bob",
+                "op": "same",
+                "right": "Alice"
+              }
+            }
+          },
+          "speaker": "Alice",
+          "text": "both (Carol is a knight) and (both (Carol and Bob are different types) and (Bob and Alice are the same type))."
+        },
+        {
+          "expr": {
+            "left": "Alice",
+            "op": "same",
+            "right": "Carol"
+          },
+          "speaker": "Bob",
+          "text": "Alice and Carol are the same type."
+        },
+        {
+          "expr": {
+            "expr": {
+              "left": "Alice",
+              "op": "same",
+              "right": "Carol"
+            },
+            "op": "not"
+          },
+          "speaker": "Carol",
+          "text": "it is not true that Alice and Carol are the same type."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 3,
+      "different_count": 1,
+      "and_count": 2,
+      "or_count": 0,
+      "not_count": 1,
+      "expression_nodes": 8,
+      "expression_depth": 3,
+      "statement_chars": 198,
+      "top_ops": "and+same+not",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knave\nBob: knave\nCarol: knight\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "epoch4_pattern": "NNK",
+    "grpo_pattern": "NKN"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_000888",
+    "ground_truth": {
+      "Alice": "knight",
+      "Bob": "knave",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "KNK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knight",
+        "Bob": "knave",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_000888",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 1683961461821027538
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "expr": {
+              "left": "Alice",
+              "op": "same",
+              "right": "Bob"
+            },
+            "op": "not"
+          },
+          "speaker": "Alice",
+          "text": "it is not true that Alice and Bob are the same type."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": "Alice",
+              "op": "same",
+              "right": "Bob"
+            },
+            "op": "and",
+            "right": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Alice"
+            }
+          },
+          "speaker": "Bob",
+          "text": "both (Alice and Bob are the same type) and (Bob and Alice are different types)."
+        },
+        {
+          "expr": {
+            "left": {
+              "expr": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Carol"
+              },
+              "op": "not"
+            },
+            "op": "or",
+            "right": {
+              "left": "Bob",
+              "op": "different",
+              "right": "Alice"
+            }
+          },
+          "speaker": "Carol",
+          "text": "either (it is not true that Bob and Carol are different types) or (Bob and Alice are different types)."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 2,
+      "different_count": 3,
+      "and_count": 1,
+      "or_count": 1,
+      "not_count": 2,
+      "expression_nodes": 9,
+      "expression_depth": 3,
+      "statement_chars": 233,
+      "top_ops": "not+and+or",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knave\nBob: knave\nCarol: knight\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "epoch4_pattern": "NNK",
+    "grpo_pattern": "KNK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001269",
+    "ground_truth": {
+      "Alice": "knight",
+      "Bob": "knave",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "KNK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knight",
+        "Bob": "knave",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_001269",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 2461409163053185273
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": {
+              "op": "person_is",
+              "person": "Carol",
+              "value": "knight"
+            },
+            "op": "or",
+            "right": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Alice"
+            }
+          },
+          "speaker": "Alice",
+          "text": "either (Carol is a knight) or (Carol and Alice are different types)."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Carol"
+            },
+            "op": "and",
+            "right": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Bob"
+            }
+          },
+          "speaker": "Bob",
+          "text": "both (Bob and Carol are the same type) and (Carol and Bob are the same type)."
+        },
+        {
+          "expr": {
+            "left": {
+              "op": "person_is",
+              "person": "Bob",
+              "value": "knave"
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Alice"
+              },
+              "op": "or",
+              "right": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Bob"
+              }
+            }
+          },
+          "speaker": "Carol",
+          "text": "both (Bob is a knave) and (either (Bob and Alice are different types) or (Carol and Bob are the same type))."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 3,
+      "different_count": 2,
+      "and_count": 2,
+      "or_count": 2,
+      "not_count": 0,
+      "expression_nodes": 11,
+      "expression_depth": 3,
+      "statement_chars": 253,
+      "top_ops": "or+and+and",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "epoch4_pattern": "KNN",
+    "grpo_pattern": "KNK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001244",
+    "ground_truth": {
+      "Alice": "knight",
+      "Bob": "knight",
+      "Carol": "knave"
+    },
+    "ground_truth_pattern": "KKN",
+    "puzzle": {
+      "answer": {
+        "Alice": "knight",
+        "Bob": "knight",
+        "Carol": "knave"
+      },
+      "id": "kk_grpo_v1_final_holdout_001244",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 8293819698921747907
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Alice"
+            },
+            "op": "and",
+            "right": {
+              "expr": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Alice"
+              },
+              "op": "not"
+            }
+          },
+          "speaker": "Alice",
+          "text": "both (Carol and Alice are different types) and (it is not true that Carol and Alice are the same type)."
+        },
+        {
+          "expr": {
+            "expr": {
+              "left": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Carol"
+              },
+              "op": "and",
+              "right": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Alice"
+              }
+            },
+            "op": "not"
+          },
+          "speaker": "Bob",
+          "text": "it is not true that both (Bob and Carol are different types) and (Bob and Alice are different types)."
+        },
+        {
+          "expr": {
+            "left": "Alice",
+            "op": "different",
+            "right": "Bob"
+          },
+          "speaker": "Carol",
+          "text": "Alice and Bob are different types."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 1,
+      "different_count": 4,
+      "and_count": 2,
+      "or_count": 0,
+      "not_count": 2,
+      "expression_nodes": 9,
+      "expression_depth": 3,
+      "statement_chars": 238,
+      "top_ops": "and+not+different",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knight\nBob: knight\nCarol: knave\n</answer>",
+    "epoch4_pattern": "NKK",
+    "grpo_pattern": "KKN"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001884",
+    "ground_truth": {
+      "Alice": "knight",
+      "Bob": "knave",
+      "Carol": "knave"
+    },
+    "ground_truth_pattern": "KNN",
+    "puzzle": {
+      "answer": {
+        "Alice": "knight",
+        "Bob": "knave",
+        "Carol": "knave"
+      },
+      "id": "kk_grpo_v1_final_holdout_001884",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 8086712733417354938
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": "Carol",
+            "op": "different",
+            "right": "Alice"
+          },
+          "speaker": "Alice",
+          "text": "Carol and Alice are different types."
+        },
+        {
+          "expr": {
+            "left": "Alice",
+            "op": "same",
+            "right": "Carol"
+          },
+          "speaker": "Bob",
+          "text": "Alice and Carol are the same type."
+        },
+        {
+          "expr": {
+            "expr": {
+              "expr": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Carol"
+              },
+              "op": "not"
+            },
+            "op": "not"
+          },
+          "speaker": "Carol",
+          "text": "it is not true that it is not true that Bob and Carol are different types."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 1,
+      "different_count": 2,
+      "and_count": 0,
+      "or_count": 0,
+      "not_count": 2,
+      "expression_nodes": 5,
+      "expression_depth": 3,
+      "statement_chars": 144,
+      "top_ops": "different+same+not",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "epoch4_pattern": "NKN",
+    "grpo_pattern": "KNN"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_000321",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knight",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "NKK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_000321",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 5173574114254349767
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "op": "person_is",
+            "person": "Alice",
+            "value": "knight"
+          },
+          "speaker": "Alice",
+          "text": "Alice is a knight."
+        },
+        {
+          "expr": {
+            "left": "Alice",
+            "op": "different",
+            "right": "Carol"
+          },
+          "speaker": "Bob",
+          "text": "Alice and Carol are different types."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Alice"
+            },
+            "op": "or",
+            "right": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knave"
+            }
+          },
+          "speaker": "Carol",
+          "text": "either (Bob and Alice are the same type) or (Alice is a knave)."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 1,
+      "different_count": 1,
+      "and_count": 0,
+      "or_count": 1,
+      "not_count": 0,
+      "expression_nodes": 5,
+      "expression_depth": 2,
+      "statement_chars": 117,
+      "top_ops": "person_is+different+or",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+    "epoch4_pattern": "KNK",
+    "grpo_pattern": "NKK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001928",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knight",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "NKK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_001928",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 149847659855476678
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "op": "person_is",
+            "person": "Bob",
+            "value": "knave"
+          },
+          "speaker": "Alice",
+          "text": "Bob is a knave."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": {
+                "left": "Carol",
+                "op": "different",
+                "right": "Alice"
+              },
+              "op": "or",
+              "right": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knight"
+              }
+            },
+            "op": "or",
+            "right": {
+              "op": "person_is",
+              "person": "Alice",
+              "value": "knight"
+            }
+          },
+          "speaker": "Bob",
+          "text": "either (either (Carol and Alice are different types) or (Carol is a knight)) or (Alice is a knight)."
+        },
+        {
+          "expr": {
+            "left": "Carol",
+            "op": "different",
+            "right": "Alice"
+          },
+          "speaker": "Carol",
+          "text": "Carol and Alice are different types."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 0,
+      "different_count": 2,
+      "and_count": 0,
+      "or_count": 2,
+      "not_count": 0,
+      "expression_nodes": 7,
+      "expression_depth": 3,
+      "statement_chars": 151,
+      "top_ops": "person_is+or+different",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+    "epoch4_pattern": "NKN",
+    "grpo_pattern": "NKK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001805",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knight",
+      "Carol": "knave"
+    },
+    "ground_truth_pattern": "NKN",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knave"
+      },
+      "id": "kk_grpo_v1_final_holdout_001805",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 4868935270090184061
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": "Carol",
+            "op": "different",
+            "right": "Alice"
+          },
+          "speaker": "Alice",
+          "text": "Carol and Alice are different types."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Alice"
+            },
+            "op": "or",
+            "right": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Bob"
+            }
+          },
+          "speaker": "Bob",
+          "text": "either (Carol and Alice are the same type) or (Carol and Bob are the same type)."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": {
+                "left": "Bob",
+                "op": "same",
+                "right": "Carol"
+              },
+              "op": "and",
+              "right": {
+                "left": "Bob",
+                "op": "same",
+                "right": "Alice"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "op": "person_is",
+                "person": "Alice",
+                "value": "knave"
+              },
+              "op": "or",
+              "right": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knave"
+              }
+            }
+          },
+          "speaker": "Carol",
+          "text": "both (both (Bob and Carol are the same type) and (Bob and Alice are the same type)) and (either (Alice is a knave) or (Carol is a knave))."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 4,
+      "different_count": 1,
+      "and_count": 2,
+      "or_count": 2,
+      "not_count": 0,
+      "expression_nodes": 11,
+      "expression_depth": 3,
+      "statement_chars": 254,
+      "top_ops": "different+or+and",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knight\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+    "epoch4_pattern": "KNN",
+    "grpo_pattern": "NKN"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_000239",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knight",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "NKK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_000239",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 1264801345960649742
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "op": "person_is",
+            "person": "Bob",
+            "value": "knave"
+          },
+          "speaker": "Alice",
+          "text": "Bob is a knave."
+        },
+        {
+          "expr": {
+            "left": {
+              "expr": {
+                "op": "person_is",
+                "person": "Alice",
+                "value": "knight"
+              },
+              "op": "not"
+            },
+            "op": "or",
+            "right": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Alice"
+            }
+          },
+          "speaker": "Bob",
+          "text": "either (it is not true that Alice is a knight) or (Carol and Alice are the same type)."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": {
+                "left": "Carol",
+                "op": "different",
+                "right": "Alice"
+              },
+              "op": "and",
+              "right": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knave"
+              }
+            },
+            "op": "or",
+            "right": {
+              "left": {
+                "left": "Carol",
+                "op": "same",
+                "right": "Alice"
+              },
+              "op": "or",
+              "right": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knight"
+              }
+            }
+          },
+          "speaker": "Carol",
+          "text": "either (both (Carol and Alice are different types) and (Carol is a knave)) or (either (Carol and Alice are the same type) or (Carol is a knight))."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 2,
+      "different_count": 1,
+      "and_count": 1,
+      "or_count": 3,
+      "not_count": 1,
+      "expression_nodes": 12,
+      "expression_depth": 3,
+      "statement_chars": 247,
+      "top_ops": "person_is+or+or",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+    "epoch4_pattern": "KNK",
+    "grpo_pattern": "NKK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001941",
+    "ground_truth": {
+      "Alice": "knight",
+      "Bob": "knave",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "KNK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knight",
+        "Bob": "knave",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_001941",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 3952965601514132721
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": {
+              "left": "Carol",
+              "op": "different",
+              "right": "Bob"
+            },
+            "op": "or",
+            "right": {
+              "left": "Carol",
+              "op": "same",
+              "right": "Alice"
+            }
+          },
+          "speaker": "Alice",
+          "text": "either (Carol and Bob are different types) or (Carol and Alice are the same type)."
+        },
+        {
+          "expr": {
+            "op": "person_is",
+            "person": "Alice",
+            "value": "knave"
+          },
+          "speaker": "Bob",
+          "text": "Alice is a knave."
+        },
+        {
+          "expr": {
+            "expr": {
+              "left": {
+                "left": "Bob",
+                "op": "same",
+                "right": "Carol"
+              },
+              "op": "and",
+              "right": {
+                "left": "Bob",
+                "op": "same",
+                "right": "Carol"
+              }
+            },
+            "op": "not"
+          },
+          "speaker": "Carol",
+          "text": "it is not true that both (Bob and Carol are the same type) and (Bob and Carol are the same type)."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 3,
+      "different_count": 1,
+      "and_count": 1,
+      "or_count": 1,
+      "not_count": 1,
+      "expression_nodes": 8,
+      "expression_depth": 3,
+      "statement_chars": 196,
+      "top_ops": "or+person_is+not",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "epoch4_pattern": "KNN",
+    "grpo_pattern": "KNK"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_000714",
+    "ground_truth": {
+      "Alice": "knight",
+      "Bob": "knave",
+      "Carol": "knave"
+    },
+    "ground_truth_pattern": "KNN",
+    "puzzle": {
+      "answer": {
+        "Alice": "knight",
+        "Bob": "knave",
+        "Carol": "knave"
+      },
+      "id": "kk_grpo_v1_final_holdout_000714",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 170701532454289649
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": {
+              "left": {
+                "left": "Bob",
+                "op": "same",
+                "right": "Carol"
+              },
+              "op": "and",
+              "right": {
+                "left": "Alice",
+                "op": "same",
+                "right": "Bob"
+              }
+            },
+            "op": "or",
+            "right": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Carol"
+            }
+          },
+          "speaker": "Alice",
+          "text": "either (both (Bob and Carol are the same type) and (Alice and Bob are the same type)) or (Bob and Carol are the same type)."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": {
+                "left": "Alice",
+                "op": "different",
+                "right": "Bob"
+              },
+              "op": "and",
+              "right": {
+                "left": "Alice",
+                "op": "same",
+                "right": "Carol"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": {
+                "op": "person_is",
+                "person": "Carol",
+                "value": "knave"
+              },
+              "op": "or",
+              "right": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Carol"
+              }
+            }
+          },
+          "speaker": "Bob",
+          "text": "both (both (Alice and Bob are different types) and (Alice and Carol are the same type)) and (either (Carol is a knave) or (Bob and Carol are different types))."
+        },
+        {
+          "expr": {
+            "op": "person_is",
+            "person": "Bob",
+            "value": "knight"
+          },
+          "speaker": "Carol",
+          "text": "Bob is a knight."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 4,
+      "different_count": 2,
+      "and_count": 3,
+      "or_count": 2,
+      "not_count": 0,
+      "expression_nodes": 13,
+      "expression_depth": 3,
+      "statement_chars": 298,
+      "top_ops": "or+and+person_is",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+    "epoch4_pattern": "NNN",
+    "grpo_pattern": "KNN"
+  },
+  {
+    "id": "kk_grpo_v1_final_holdout_001875",
+    "ground_truth": {
+      "Alice": "knave",
+      "Bob": "knave",
+      "Carol": "knight"
+    },
+    "ground_truth_pattern": "NNK",
+    "puzzle": {
+      "answer": {
+        "Alice": "knave",
+        "Bob": "knave",
+        "Carol": "knight"
+      },
+      "id": "kk_grpo_v1_final_holdout_001875",
+      "metadata": {
+        "dataset_version": "kk-v2",
+        "generation_mode": "statement-first",
+        "generator_version": "kk-v2-statement-first",
+        "max_depth": 2,
+        "seed": 4235868720631878324
+      },
+      "people": [
+        "Alice",
+        "Bob",
+        "Carol"
+      ],
+      "solution_count": 1,
+      "statements": [
+        {
+          "expr": {
+            "left": "Bob",
+            "op": "different",
+            "right": "Alice"
+          },
+          "speaker": "Alice",
+          "text": "Bob and Alice are different types."
+        },
+        {
+          "expr": {
+            "left": "Bob",
+            "op": "same",
+            "right": "Carol"
+          },
+          "speaker": "Bob",
+          "text": "Bob and Carol are the same type."
+        },
+        {
+          "expr": {
+            "left": {
+              "left": {
+                "left": "Carol",
+                "op": "different",
+                "right": "Bob"
+              },
+              "op": "or",
+              "right": {
+                "left": "Bob",
+                "op": "different",
+                "right": "Carol"
+              }
+            },
+            "op": "and",
+            "right": {
+              "left": "Bob",
+              "op": "same",
+              "right": "Alice"
+            }
+          },
+          "speaker": "Carol",
+          "text": "both (either (Carol and Bob are different types) or (Bob and Carol are different types)) and (Bob and Alice are the same type)."
+        }
+      ]
+    },
+    "features": {
+      "same_count": 2,
+      "different_count": 3,
+      "and_count": 1,
+      "or_count": 1,
+      "not_count": 0,
+      "expression_nodes": 7,
+      "expression_depth": 3,
+      "statement_chars": 193,
+      "top_ops": "different+same+and",
+      "speaker_order": "Alice+Bob+Carol"
+    },
+    "epoch4_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "epoch5_prediction": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+    "grpo_prediction": "<answer>\nAlice: knave\nBob: knave\nCarol: knight\n</answer>",
+    "epoch4_pattern": "KNK",
+    "grpo_pattern": "NNK"
+  }
+]

@@ -1,0 +1,42 @@
+# Formal GRPO round 1 (full run) configuration.
+# Single-GPU custom trainer: scripts/train_grpo.py (no TRL GRPOTrainer).
+dataset_version: kk-v2-statement-first
+model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+init_checkpoint: outputs/sft_v2_5k_p800/checkpoint-1252
+
+seed: 20260830
+
+train_file: data/processed/grpo_v1_train.jsonl
+val_file: data/processed/v2_answer_only_val.jsonl
+output_dir: outputs/grpo_v1
+
+generation:
+  num_generations: 8
+  temperature: 0.8
+  top_p: 0.95
+  max_completion_length: 64
+  max_prompt_length: 512
+
+training:
+  bf16: true
+  gradient_checkpointing: false
+  beta: 0.0
+  clip_range: 0.2
+  # Unique prompts per optimizer step. In TRL 0.23 the trainer batch is
+  # prompt_batch_size * num_generations rows (each unique prompt repeated
+  # num_generations times), so per_device_train_batch_size is set to that product.
+  prompt_batch_size: 8
+  learning_rate: 1e-5
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  epochs: 1
+  max_steps: -1
+  eval_every: 100
+  save_every: 100
+  log_every: 1
+
+reward:
+  correct: 1.0
+  incorrect: 0.0
+  parse_failure: 0.0
+  format_invalid: 0.0

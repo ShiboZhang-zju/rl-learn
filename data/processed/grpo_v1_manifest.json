@@ -1,0 +1,39 @@
+{
+  "dataset_version": "kk-v2-statement-first",
+  "generator_version": "kk-v2-statement-first",
+  "seed": 20260830,
+  "people": [
+    "Alice",
+    "Bob",
+    "Carol"
+  ],
+  "generation_rule": "statement-first, exact solve, retain solution_count == 1; dedup against legacy+v2+grpo-v1",
+  "dedup_universe": {
+    "legacy_raw": [
+      "data/raw/train.jsonl",
+      "data/raw/val.jsonl",
+      "data/raw/test.jsonl"
+    ],
+    "v2_raw": [
+      "data/raw_v2/train.jsonl",
+      "data/raw_v2/val.jsonl",
+      "data/raw_v2/test.jsonl"
+    ],
+    "universe_key_count": 7999
+  },
+  "splits": {
+    "train": {
+      "count": 5000,
+      "raw_file": "data/raw_grpo_v1/train.jsonl",
+      "processed_file": "data/processed/grpo_v1_train.jsonl",
+      "seed": 20260830
+    },
+    "final_holdout": {
+      "count": 2000,
+      "raw_file": "data/raw_grpo_v1/final_holdout.jsonl",
+      "processed_file": "data/processed/grpo_v1_final_holdout.jsonl",
+      "seed": 21260833
+    }
+  },
+  "total_unique_puzzles": 14999
+}

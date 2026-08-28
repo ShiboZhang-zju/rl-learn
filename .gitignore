@@ -14,6 +14,13 @@ outputs/**/model*.bin
 wandb/
 mlruns/
 
+# Training-state blobs (large, regenerable) and build metadata
+optimizer.pt
+rng_state.pth
+scheduler.pt
+training_args.bin
+*.egg-info/
+
 # Local model/cache directories
 models/
 .cache/

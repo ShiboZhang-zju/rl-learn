@@ -1,0 +1,1003 @@
+{
+  "models": {
+    "sft_epoch4": {
+      "adapter": "outputs/sft_v2_5k_p800/checkpoint-1252",
+      "datasets": {
+        "v2_val": {
+          "count": 500,
+          "exact_accuracy": 0.722,
+          "format_accuracy": 1.0,
+          "parse_success_rate": 1.0,
+          "ground_truth_distribution": {
+            "KKK": 60,
+            "KKN": 73,
+            "KNK": 52,
+            "KNN": 63,
+            "NKK": 60,
+            "NKN": 63,
+            "NNK": 65,
+            "NNN": 64
+          },
+          "prediction_distribution": {
+            "KKK": 60,
+            "KKN": 59,
+            "KNK": 47,
+            "KNN": 56,
+            "NKK": 52,
+            "NKN": 74,
+            "NNK": 83,
+            "NNN": 69
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 56,
+              "KKN": 3,
+              "KNK": 0,
+              "KNN": 1,
+              "NKK": 0,
+              "NKN": 0,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 0,
+              "KKN": 50,
+              "KNK": 3,
+              "KNN": 5,
+              "NKK": 5,
+              "NKN": 4,
+              "NNK": 1,
+              "NNN": 5
+            },
+            "KNK": {
+              "KKK": 0,
+              "KKN": 1,
+              "KNK": 31,
+              "KNN": 1,
+              "NKK": 7,
+              "NKN": 3,
+              "NNK": 3,
+              "NNN": 6
+            },
+            "KNN": {
+              "KKK": 1,
+              "KKN": 2,
+              "KNK": 3,
+              "KNN": 38,
+              "NKK": 4,
+              "NKN": 3,
+              "NNK": 11,
+              "NNN": 1
+            },
+            "NKK": {
+              "KKK": 3,
+              "KKN": 1,
+              "KNK": 3,
+              "KNN": 5,
+              "NKK": 32,
+              "NKN": 11,
+              "NNK": 3,
+              "NNN": 2
+            },
+            "NKN": {
+              "KKK": 0,
+              "KKN": 2,
+              "KNK": 1,
+              "KNN": 5,
+              "NKK": 1,
+              "NKN": 46,
+              "NNK": 7,
+              "NNN": 1
+            },
+            "NNK": {
+              "KKK": 0,
+              "KKN": 0,
+              "KNK": 3,
+              "KNN": 0,
+              "NKK": 2,
+              "NKN": 6,
+              "NNK": 54,
+              "NNN": 0
+            },
+            "NNN": {
+              "KKK": 0,
+              "KKN": 0,
+              "KNK": 3,
+              "KNN": 1,
+              "NKK": 1,
+              "NKN": 1,
+              "NNK": 4,
+              "NNN": 54
+            }
+          },
+          "prediction_file": "outputs/grpo_v1_final/sft_epoch4_v2_val.jsonl"
+        },
+        "v2_test": {
+          "count": 1000,
+          "exact_accuracy": 0.757,
+          "format_accuracy": 0.999,
+          "parse_success_rate": 0.999,
+          "ground_truth_distribution": {
+            "KKK": 126,
+            "KKN": 120,
+            "KNK": 128,
+            "KNN": 140,
+            "NKK": 98,
+            "NKN": 133,
+            "NNK": 129,
+            "NNN": 126
+          },
+          "prediction_distribution": {
+            "INVALID": 1,
+            "KKK": 124,
+            "KKN": 90,
+            "KNK": 115,
+            "KNN": 139,
+            "NKK": 86,
+            "NKN": 146,
+            "NNK": 143,
+            "NNN": 156
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 121,
+              "KKN": 2,
+              "KNK": 0,
+              "KNN": 1,
+              "NKK": 0,
+              "NKN": 2,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 0,
+              "KKN": 77,
+              "KNK": 13,
+              "KNN": 15,
+              "NKK": 4,
+              "NKN": 3,
+              "NNK": 0,
+              "NNN": 8
+            },
+            "KNK": {
+              "KKK": 0,
+              "KKN": 3,
+              "KNK": 90,
+              "KNN": 13,
+              "NKK": 7,
+              "NKN": 4,
+              "NNK": 7,
+              "NNN": 4
+            },
+            "KNN": {
+              "KKK": 1,
+              "KKN": 1,
+              "KNK": 2,
+              "KNN": 95,
+              "NKK": 1,
+              "NKN": 14,
+              "NNK": 19,
+              "NNN": 7
+            },
+            "NKK": {
+              "KKK": 2,
+              "KKN": 0,
+              "KNK": 5,
+              "KNN": 1,
+              "NKK": 62,
+              "NKN": 16,
+              "NNK": 7,
+              "NNN": 5
+            },
+            "NKN": {
+              "KKK": 0,
+              "KKN": 4,
+              "KNK": 2,
+              "KNN": 4,
+              "NKK": 2,
+              "NKN": 98,
+              "NNK": 10,
+              "NNN": 12
+            },
+            "NNK": {
+              "KKK": 0,
+              "KKN": 2,
+              "KNK": 2,
+              "KNN": 7,
+              "NKK": 8,
+              "NKN": 8,
+              "NNK": 98,
+              "NNN": 4
+            },
+            "NNN": {
+              "KKK": 0,
+              "KKN": 1,
+              "KNK": 1,
+              "KNN": 3,
+              "NKK": 2,
+              "NKN": 1,
+              "NNK": 2,
+              "NNN": 116
+            }
+          },
+          "prediction_file": "outputs/grpo_v1_final/sft_epoch4_v2_test.jsonl"
+        },
+        "final_holdout": {
+          "count": 2000,
+          "exact_accuracy": 0.749,
+          "format_accuracy": 1.0,
+          "parse_success_rate": 1.0,
+          "ground_truth_distribution": {
+            "KKK": 274,
+            "KKN": 238,
+            "KNK": 275,
+            "KNN": 233,
+            "NKK": 238,
+            "NKN": 239,
+            "NNK": 251,
+            "NNN": 252
+          },
+          "prediction_distribution": {
+            "KKK": 255,
+            "KKN": 197,
+            "KNK": 255,
+            "KNN": 241,
+            "NKK": 207,
+            "NKN": 278,
+            "NNK": 281,
+            "NNN": 286
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 248,
+              "KKN": 8,
+              "KNK": 3,
+              "KNN": 7,
+              "NKK": 1,
+              "NKN": 7,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 0,
+              "KKN": 155,
+              "KNK": 26,
+              "KNN": 19,
+              "NKK": 16,
+              "NKN": 9,
+              "NNK": 2,
+              "NNN": 11
+            },
+            "KNK": {
+              "KKK": 3,
+              "KKN": 7,
+              "KNK": 194,
+              "KNN": 19,
+              "NKK": 13,
+              "NKN": 13,
+              "NNK": 12,
+              "NNN": 14
+            },
+            "KNN": {
+              "KKK": 1,
+              "KKN": 4,
+              "KNK": 4,
+              "KNN": 156,
+              "NKK": 7,
+              "NKN": 18,
+              "NNK": 28,
+              "NNN": 15
+            },
+            "NKK": {
+              "KKK": 0,
+              "KKN": 13,
+              "KNK": 10,
+              "KNN": 6,
+              "NKK": 152,
+              "NKN": 32,
+              "NNK": 18,
+              "NNN": 7
+            },
+            "NKN": {
+              "KKK": 0,
+              "KKN": 7,
+              "KNK": 6,
+              "KNN": 17,
+              "NKK": 2,
+              "NKN": 176,
+              "NNK": 21,
+              "NNN": 10
+            },
+            "NNK": {
+              "KKK": 1,
+              "KKN": 1,
+              "KNK": 6,
+              "KNN": 12,
+              "NKK": 11,
+              "NKN": 16,
+              "NNK": 196,
+              "NNN": 8
+            },
+            "NNN": {
+              "KKK": 2,
+              "KKN": 2,
+              "KNK": 6,
+              "KNN": 5,
+              "NKK": 5,
+              "NKN": 7,
+              "NNK": 4,
+              "NNN": 221
+            }
+          },
+          "prediction_file": "outputs/grpo_v1_final/sft_epoch4_final_holdout.jsonl"
+        }
+      }
+    },
+    "sft_epoch5": {
+      "adapter": "outputs/sft_v2_5k_p800/checkpoint-1565",
+      "datasets": {
+        "v2_val": {
+          "count": 500,
+          "exact_accuracy": 0.748,
+          "format_accuracy": 1.0,
+          "parse_success_rate": 1.0,
+          "ground_truth_distribution": {
+            "KKK": 60,
+            "KKN": 73,
+            "KNK": 52,
+            "KNN": 63,
+            "NKK": 60,
+            "NKN": 63,
+            "NNK": 65,
+            "NNN": 64
+          },
+          "prediction_distribution": {
+            "KKK": 61,
+            "KKN": 70,
+            "KNK": 55,
+            "KNN": 61,
+            "NKK": 64,
+            "NKN": 60,
+            "NNK": 69,
+            "NNN": 60
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 56,
+              "KKN": 3,
+              "KNK": 1,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 0,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 1,
+              "KKN": 54,
+              "KNK": 3,
+              "KNN": 4,
+              "NKK": 4,
+              "NKN": 4,
+              "NNK": 0,
+              "NNN": 3
+            },
+            "KNK": {
+              "KKK": 0,
+              "KKN": 2,
+              "KNK": 39,
+              "KNN": 1,
+              "NKK": 7,
+              "NKN": 2,
+              "NNK": 0,
+              "NNN": 1
+            },
+            "KNN": {
+              "KKK": 1,
+              "KKN": 4,
+              "KNK": 3,
+              "KNN": 40,
+              "NKK": 6,
+              "NKN": 2,
+              "NNK": 6,
+              "NNN": 1
+            },
+            "NKK": {
+              "KKK": 3,
+              "KKN": 4,
+              "KNK": 1,
+              "KNN": 5,
+              "NKK": 40,
+              "NKN": 3,
+              "NNK": 3,
+              "NNN": 1
+            },
+            "NKN": {
+              "KKK": 0,
+              "KKN": 3,
+              "KNK": 2,
+              "KNN": 7,
+              "NKK": 2,
+              "NKN": 42,
+              "NNK": 6,
+              "NNN": 1
+            },
+            "NNK": {
+              "KKK": 0,
+              "KKN": 0,
+              "KNK": 3,
+              "KNN": 3,
+              "NKK": 3,
+              "NKN": 6,
+              "NNK": 50,
+              "NNN": 0
+            },
+            "NNN": {
+              "KKK": 0,
+              "KKN": 0,
+              "KNK": 3,
+              "KNN": 1,
+              "NKK": 2,
+              "NKN": 1,
+              "NNK": 4,
+              "NNN": 53
+            }
+          },
+          "prediction_file": "outputs/grpo_v1_final/sft_epoch5_v2_val.jsonl"
+        },
+        "v2_test": {
+          "count": 1000,
+          "exact_accuracy": 0.779,
+          "format_accuracy": 1.0,
+          "parse_success_rate": 1.0,
+          "ground_truth_distribution": {
+            "KKK": 126,
+            "KKN": 120,
+            "KNK": 128,
+            "KNN": 140,
+            "NKK": 98,
+            "NKN": 133,
+            "NNK": 129,
+            "NNN": 126
+          },
+          "prediction_distribution": {
+            "KKK": 129,
+            "KKN": 105,
+            "KNK": 131,
+            "KNN": 138,
+            "NKK": 114,
+            "NKN": 127,
+            "NNK": 124,
+            "NNN": 132
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 122,
+              "KKN": 1,
+              "KNK": 1,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 2,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 0,
+              "KKN": 88,
+              "KNK": 10,
+              "KNN": 8,
+              "NKK": 6,
+              "NKN": 2,
+              "NNK": 0,
+              "NNN": 6
+            },
+            "KNK": {
+              "KKK": 1,
+              "KKN": 3,
+              "KNK": 101,
+              "KNN": 8,
+              "NKK": 6,
+              "NKN": 2,
+              "NNK": 2,
+              "NNN": 5
+            },
+            "KNN": {
+              "KKK": 1,
+              "KKN": 4,
+              "KNK": 4,
+              "KNN": 101,
+              "NKK": 2,
+              "NKN": 11,
+              "NNK": 15,
+              "NNN": 2
+            },
+            "NKK": {
+              "KKK": 3,
+              "KKN": 0,
+              "KNK": 5,
+              "KNN": 2,
+              "NKK": 75,
+              "NKN": 6,
+              "NNK": 4,
+              "NNN": 3
+            },
+            "NKN": {
+              "KKK": 1,
+              "KKN": 5,
+              "KNK": 2,
+              "KNN": 6,
+              "NKK": 9,
+              "NKN": 94,
+              "NNK": 10,
+              "NNN": 6
+            },
+            "NNK": {
+              "KKK": 0,
+              "KKN": 3,
+              "KNK": 4,
+              "KNN": 10,
+              "NKK": 10,
+              "NKN": 8,
+              "NNK": 91,
+              "NNN": 3
+            },
+            "NNN": {
+              "KKK": 1,
+              "KKN": 1,
+              "KNK": 4,
+              "KNN": 3,
+              "NKK": 6,
+              "NKN": 2,
+              "NNK": 2,
+              "NNN": 107
+            }
+          },
+          "prediction_file": "outputs/grpo_v1_final/sft_epoch5_v2_test.jsonl"
+        },
+        "final_holdout": {
+          "count": 2000,
+          "exact_accuracy": 0.775,
+          "format_accuracy": 1.0,
+          "parse_success_rate": 1.0,
+          "ground_truth_distribution": {
+            "KKK": 274,
+            "KKN": 238,
+            "KNK": 275,
+            "KNN": 233,
+            "NKK": 238,
+            "NKN": 239,
+            "NNK": 251,
+            "NNN": 252
+          },
+          "prediction_distribution": {
+            "KKK": 268,
+            "KKN": 232,
+            "KNK": 266,
+            "KNN": 247,
+            "NKK": 247,
+            "NKN": 249,
+            "NNK": 248,
+            "NNN": 243
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 255,
+              "KKN": 5,
+              "KNK": 4,
+              "KNN": 4,
+              "NKK": 2,
+              "NKN": 4,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 0,
+              "KKN": 180,
+              "KNK": 16,
+              "KNN": 12,
+              "NKK": 16,
+              "NKN": 7,
+              "NNK": 1,
+              "NNN": 6
+            },
+            "KNK": {
+              "KKK": 6,
+              "KKN": 9,
+              "KNK": 205,
+              "KNN": 15,
+              "NKK": 14,
+              "NKN": 13,
+              "NNK": 7,
+              "NNN": 6
+            },
+            "KNN": {
+              "KKK": 1,
+              "KKN": 7,
+              "KNK": 7,
+              "KNN": 169,
+              "NKK": 9,
+              "NKN": 12,
+              "NNK": 18,
+              "NNN": 10
+            },
+            "NKK": {
+              "KKK": 3,
+              "KKN": 16,
+              "KNK": 9,
+              "KNN": 9,
+              "NKK": 171,
+              "NKN": 12,
+              "NNK": 14,
+              "NNN": 4
+            },
+            "NKN": {
+              "KKK": 1,
+              "KKN": 8,
+              "KNK": 9,
+              "KNN": 17,
+              "NKK": 8,
+              "NKN": 175,
+              "NNK": 17,
+              "NNN": 4
+            },
+            "NNK": {
+              "KKK": 1,
+              "KKN": 3,
+              "KNK": 6,
+              "KNN": 16,
+              "NKK": 14,
+              "NKN": 17,
+              "NNK": 188,
+              "NNN": 6
+            },
+            "NNN": {
+              "KKK": 1,
+              "KKN": 4,
+              "KNK": 10,
+              "KNN": 5,
+              "NKK": 13,
+              "NKN": 9,
+              "NNK": 3,
+              "NNN": 207
+            }
+          },
+          "prediction_file": "outputs/grpo_v1_final/sft_epoch5_final_holdout.jsonl"
+        }
+      }
+    },
+    "grpo_best": {
+      "adapter": "outputs/grpo_v1/checkpoint-200",
+      "datasets": {
+        "v2_val": {
+          "count": 500,
+          "exact_accuracy": 0.766,
+          "format_accuracy": 1.0,
+          "parse_success_rate": 1.0,
+          "ground_truth_distribution": {
+            "KKK": 60,
+            "KKN": 73,
+            "KNK": 52,
+            "KNN": 63,
+            "NKK": 60,
+            "NKN": 63,
+            "NNK": 65,
+            "NNN": 64
+          },
+          "prediction_distribution": {
+            "KKK": 66,
+            "KKN": 62,
+            "KNK": 39,
+            "KNN": 46,
+            "NKK": 72,
+            "NKN": 73,
+            "NNK": 79,
+            "NNN": 63
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 59,
+              "KKN": 1,
+              "KNK": 0,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 0,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 2,
+              "KKN": 48,
+              "KNK": 0,
+              "KNN": 5,
+              "NKK": 8,
+              "NKN": 4,
+              "NNK": 2,
+              "NNN": 4
+            },
+            "KNK": {
+              "KKK": 0,
+              "KKN": 5,
+              "KNK": 32,
+              "KNN": 1,
+              "NKK": 7,
+              "NKN": 2,
+              "NNK": 2,
+              "NNN": 3
+            },
+            "KNN": {
+              "KKK": 2,
+              "KKN": 4,
+              "KNK": 3,
+              "KNN": 36,
+              "NKK": 2,
+              "NKN": 6,
+              "NNK": 9,
+              "NNN": 1
+            },
+            "NKK": {
+              "KKK": 3,
+              "KKN": 2,
+              "KNK": 0,
+              "KNN": 2,
+              "NKK": 46,
+              "NKN": 3,
+              "NNK": 3,
+              "NNN": 1
+            },
+            "NKN": {
+              "KKK": 0,
+              "KKN": 1,
+              "KNK": 1,
+              "KNN": 1,
+              "NKK": 3,
+              "NKN": 53,
+              "NNK": 3,
+              "NNN": 1
+            },
+            "NNK": {
+              "KKK": 0,
+              "KKN": 0,
+              "KNK": 1,
+              "KNN": 0,
+              "NKK": 4,
+              "NKN": 4,
+              "NNK": 56,
+              "NNN": 0
+            },
+            "NNN": {
+              "KKK": 0,
+              "KKN": 1,
+              "KNK": 2,
+              "KNN": 1,
+              "NKK": 2,
+              "NKN": 1,
+              "NNK": 4,
+              "NNN": 53
+            }
+          },
+          "prediction_file": "outputs/grpo_v1_final/grpo_best_v2_val.jsonl"
+        },
+        "v2_test": {
+          "count": 1000,
+          "exact_accuracy": 0.75,
+          "format_accuracy": 0.996,
+          "parse_success_rate": 0.996,
+          "ground_truth_distribution": {
+            "KKK": 126,
+            "KKN": 120,
+            "KNK": 128,
+            "KNN": 140,
+            "NKK": 98,
+            "NKN": 133,
+            "NNK": 129,
+            "NNN": 126
+          },
+          "prediction_distribution": {
+            "INVALID": 4,
+            "KKK": 136,
+            "KKN": 83,
+            "KNK": 108,
+            "KNN": 103,
+            "NKK": 144,
+            "NKN": 135,
+            "NNK": 145,
+            "NNN": 142
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 121,
+              "KKN": 1,
+              "KNK": 1,
+              "KNN": 0,
+              "NKK": 0,
+              "NKN": 2,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 3,
+              "KKN": 70,
+              "KNK": 8,
+              "KNN": 7,
+              "NKK": 17,
+              "NKN": 5,
+              "NNK": 3,
+              "NNN": 6
+            },
+            "KNK": {
+              "KKK": 1,
+              "KKN": 5,
+              "KNK": 89,
+              "KNN": 5,
+              "NKK": 14,
+              "NKN": 4,
+              "NNK": 6,
+              "NNN": 4
+            },
+            "KNN": {
+              "KKK": 3,
+              "KKN": 5,
+              "KNK": 5,
+              "KNN": 79,
+              "NKK": 6,
+              "NKN": 14,
+              "NNK": 21,
+              "NNN": 7
+            },
+            "NKK": {
+              "KKK": 3,
+              "KKN": 0,
+              "KNK": 2,
+              "KNN": 0,
+              "NKK": 82,
+              "NKN": 3,
+              "NNK": 5,
+              "NNN": 3
+            },
+            "NKN": {
+              "KKK": 3,
+              "KKN": 2,
+              "KNK": 2,
+              "KNN": 3,
+              "NKK": 10,
+              "NKN": 97,
+              "NNK": 10,
+              "NNN": 6
+            },
+            "NNK": {
+              "KKK": 1,
+              "KKN": 0,
+              "KNK": 0,
+              "KNN": 7,
+              "NKK": 9,
+              "NKN": 8,
+              "NNK": 99,
+              "NNN": 3
+            },
+            "NNN": {
+              "KKK": 1,
+              "KKN": 0,
+              "KNK": 1,
+              "KNN": 2,
+              "NKK": 6,
+              "NKN": 2,
+              "NNK": 1,
+              "NNN": 113
+            }
+          },
+          "prediction_file": "outputs/grpo_v1_final/grpo_best_v2_test.jsonl"
+        },
+        "final_holdout": {
+          "count": 2000,
+          "exact_accuracy": 0.7595,
+          "format_accuracy": 0.9975,
+          "parse_success_rate": 0.9975,
+          "ground_truth_distribution": {
+            "KKK": 274,
+            "KKN": 238,
+            "KNK": 275,
+            "KNN": 233,
+            "NKK": 238,
+            "NKN": 239,
+            "NNK": 251,
+            "NNN": 252
+          },
+          "prediction_distribution": {
+            "INVALID": 5,
+            "KKK": 280,
+            "KKN": 210,
+            "KNK": 223,
+            "KNN": 181,
+            "NKK": 294,
+            "NKN": 269,
+            "NNK": 280,
+            "NNN": 258
+          },
+          "confusion_matrix": {
+            "KKK": {
+              "KKK": 258,
+              "KKN": 2,
+              "KNK": 3,
+              "KNN": 3,
+              "NKK": 3,
+              "NKN": 5,
+              "NNK": 0,
+              "NNN": 0
+            },
+            "KKN": {
+              "KKK": 2,
+              "KKN": 163,
+              "KNK": 12,
+              "KNN": 11,
+              "NKK": 25,
+              "NKN": 14,
+              "NNK": 1,
+              "NNN": 10
+            },
+            "KNK": {
+              "KKK": 8,
+              "KKN": 12,
+              "KNK": 180,
+              "KNN": 7,
+              "NKK": 26,
+              "NKN": 11,
+              "NNK": 16,
+              "NNN": 15
+            },
+            "KNN": {
+              "KKK": 5,
+              "KKN": 11,
+              "KNK": 8,
+              "KNN": 136,
+              "NKK": 11,
+              "NKN": 13,
+              "NNK": 36,
+              "NNN": 11
+            },
+            "NKK": {
+              "KKK": 1,
+              "KKN": 11,
+              "KNK": 4,
+              "KNN": 2,
+              "NKK": 194,
+              "NKN": 3,
+              "NNK": 16,
+              "NNN": 7
+            },
+            "NKN": {
+              "KKK": 2,
+              "KKN": 5,
+              "KNK": 7,
+              "KNN": 7,
+              "NKK": 9,
+              "NKN": 191,
+              "NNK": 12,
+              "NNN": 6
+            },
+            "NNK": {
+              "KKK": 3,
+              "KKN": 1,
+              "KNK": 2,
+              "KNN": 9,
+              "NKK": 15,
+              "NKN": 20,
+              "NNK": 193,
+              "NNN": 5
+            },
+            "NNN": {
+              "KKK": 1,
+              "KKN": 5,
+              "KNK": 7,
+              "KNN": 6,
+              "NKK": 11,
+              "NKN": 12,
+              "NNK": 6,
+              "NNN": 204
+            }
+          },
+          "prediction_file": "outputs/grpo_v1_final/grpo_best_final_holdout.jsonl"
+        }
+      }
+    }
+  }
+}
