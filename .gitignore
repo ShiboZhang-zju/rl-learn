@@ -6,9 +6,8 @@ __pycache__/
 venv/
 env/
 
-# Generated experiment data and results are intentionally versioned.
-# Keep only model weights and local caches out of GitHub.
-outputs/**/adapter_model.safetensors
+# Generated experiment data, results, and model weights are versioned.
+# Keep only local caches and full-model artifacts out of GitHub.
 outputs/**/pytorch_model*.bin
 outputs/**/model*.safetensors
 outputs/**/model*.bin
