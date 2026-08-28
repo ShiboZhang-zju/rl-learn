@@ -1,0 +1,49 @@
+model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+output_dir: outputs/sft_full_p800
+
+seed: 42
+max_length: 512
+
+# P800: 使用全量训练集跑 1 个 epoch
+num_train_epochs: 1
+max_steps: -1
+
+# P800 有 96 GiB 显存，增大 batch 并取消梯度累积以提高吞吐
+per_device_train_batch_size: 16
+per_device_eval_batch_size: 16
+gradient_accumulation_steps: 1
+
+learning_rate: 0.0001
+weight_decay: 0.0
+warmup_ratio: 0.05
+
+logging_steps: 10
+
+# 1000 条样本 / batch 16，约 63 个 optimizer steps
+save_steps: 50
+eval_steps: 50
+save_total_limit: 1
+
+lora_r: 8
+lora_alpha: 16
+lora_dropout: 0.05
+
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# P800 已验证支持 BF16；避免使用 FP16
+bf16: true
+fp16: false
+pad_to_multiple_of: 8
+
+gradient_checkpointing: false
+packing: false
+completion_only_loss: true
+
+report_to: "none"

@@ -1,0 +1,10 @@
+model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+device: cuda
+
+# P800：单进程批量推理，避免同一 GPU 上启动大量模型副本
+batch_size: 16
+max_prompt_length: 512
+# 训练 completion 的 answer 结束位置约 278 tokens，96 会在 answer 前截断
+max_new_tokens: 320
+dtype: bfloat16
+flush_every: 1
