@@ -175,6 +175,7 @@ def main() -> None:
             "dtype": args.dtype,
         },
         "mean_rollout_reward": sum(record["reward_mean"] for record in records) / total,
+        "average_reward_std_per_group": sum(record["reward_std"] for record in records) / total,
         "zero_variance_group_ratio": zero / total,
         "mixed_reward_group_ratio": mixed / total,
         "all_wrong_group_ratio": all_wrong / total,
