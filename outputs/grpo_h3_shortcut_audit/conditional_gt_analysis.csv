@@ -1,0 +1,6 @@
+gt,signature_type,signature,n,acc_epoch4,acc_epoch5,acc_v1,acc_v2,acc_v3,delta_epoch5,delta_v1,delta_v2,delta_v3
+KKK,top_ops_multiset,or|person_is|same,26,0.9615,0.9615,1.0000,0.9231,0.9615,+0.0000,+0.0385,-0.0385,+0.0000
+KKK,top_ops_multiset,or|same|same,43,0.9070,0.9535,0.9535,0.9302,0.9535,+0.0465,+0.0465,+0.0233,+0.0465
+NKN,top_ops_multiset,and|person_is|same,21,0.6190,0.5714,0.6667,0.6667,0.7143,-0.0476,+0.0476,+0.0476,+0.0952
+NNN,top_ops_multiset,and|different|different,27,0.8889,0.8148,0.8889,0.8519,0.8889,-0.0741,+0.0000,-0.0370,+0.0000
+NNN,top_ops_multiset,and|different|person_is,25,0.8000,0.7200,0.7600,0.7600,0.7600,-0.0800,-0.0400,-0.0400,-0.0400

@@ -1,0 +1,562 @@
+{
+  "epoch4": {
+    "same_count": {
+      "observed_mi": 0.0619127094726505,
+      "null_mean": 0.013287460019359085,
+      "null_std": 0.002217316355461407,
+      "null_p95": 0.01707016149871234,
+      "null_max": 0.02102500380877647,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 8
+    },
+    "different_count": {
+      "observed_mi": 0.05812570768784985,
+      "null_mean": 0.011311776851746096,
+      "null_std": 0.00214720673827982,
+      "null_p95": 0.015043481982067355,
+      "null_max": 0.01972112069013495,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "and_count": {
+      "observed_mi": 0.03015142148538801,
+      "null_mean": 0.010273184039769113,
+      "null_std": 0.001973099192727977,
+      "null_p95": 0.013824597405973369,
+      "null_max": 0.016753873049043348,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "or_count": {
+      "observed_mi": 0.02854315002309229,
+      "null_mean": 0.010528986791359862,
+      "null_std": 0.0020139822191461566,
+      "null_p95": 0.013948913610778269,
+      "null_max": 0.019591429853628592,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "not_count": {
+      "observed_mi": 0.008769529581248964,
+      "null_mean": 0.00785652602428351,
+      "null_std": 0.001718162459264419,
+      "null_p95": 0.010946522769149696,
+      "null_max": 0.013742538322974712,
+      "empirical_p": 0.26673326673326675,
+      "permutations": 1000,
+      "cardinality": 5
+    },
+    "person_is_count": {
+      "observed_mi": 0.012292299051015407,
+      "null_mean": 0.011730910397839512,
+      "null_std": 0.002247139840511063,
+      "null_p95": 0.01577224905570193,
+      "null_max": 0.0206882074226223,
+      "empirical_p": 0.3726273726273726,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "expression_nodes": {
+      "observed_mi": 0.033877925964436714,
+      "null_mean": 0.02659672622212694,
+      "null_std": 0.003470106736909102,
+      "null_p95": 0.03256497286862102,
+      "null_max": 0.04006297172331746,
+      "empirical_p": 0.029970029970029972,
+      "permutations": 1000,
+      "cardinality": 15
+    },
+    "expression_depth": {
+      "observed_mi": 0.00527312274530025,
+      "null_mean": 0.003979827440369882,
+      "null_std": 0.0014581622030708263,
+      "null_p95": 0.006862838133474491,
+      "null_max": 0.010056577592729326,
+      "empirical_p": 0.16083916083916083,
+      "permutations": 1000,
+      "cardinality": 3
+    },
+    "top_ops": {
+      "observed_mi": 0.7359864983779527,
+      "null_mean": 0.41825060389115665,
+      "null_std": 0.012059096649349416,
+      "null_p95": 0.43946621461926166,
+      "null_max": 0.45457079156078584,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 211
+    },
+    "top_ops_multiset": {
+      "observed_mi": 0.3399718071956131,
+      "null_mean": 0.10299017942745367,
+      "null_std": 0.006761499726130766,
+      "null_p95": 0.11505141366189404,
+      "null_max": 0.12401484462061256,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 55
+    },
+    "op_signature": {
+      "observed_mi": 0.904599085061143,
+      "null_mean": 0.8323299190176341,
+      "null_std": 0.009849961701872894,
+      "null_p95": 0.849411949512528,
+      "null_max": 0.8622759386296914,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 582
+    }
+  },
+  "epoch5": {
+    "same_count": {
+      "observed_mi": 0.06060896551010322,
+      "null_mean": 0.012559443791929166,
+      "null_std": 0.002233894972287162,
+      "null_p95": 0.016366627036973433,
+      "null_max": 0.01908113187480644,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 8
+    },
+    "different_count": {
+      "observed_mi": 0.05609081981662509,
+      "null_mean": 0.010628532361080235,
+      "null_std": 0.0021223344309047776,
+      "null_p95": 0.014488928566567298,
+      "null_max": 0.01968552031575059,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "and_count": {
+      "observed_mi": 0.022088246143029372,
+      "null_mean": 0.009843867687309237,
+      "null_std": 0.001967424728692899,
+      "null_p95": 0.0134268009140927,
+      "null_max": 0.016291614509390106,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "or_count": {
+      "observed_mi": 0.02322599322131548,
+      "null_mean": 0.009929276411498744,
+      "null_std": 0.0019691670244695197,
+      "null_p95": 0.013279655636250573,
+      "null_max": 0.0187876173416558,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "not_count": {
+      "observed_mi": 0.0070889751013654655,
+      "null_mean": 0.007309668311666748,
+      "null_std": 0.0018042146465797847,
+      "null_p95": 0.010604912853930741,
+      "null_max": 0.013660163620766181,
+      "empirical_p": 0.5124875124875125,
+      "permutations": 1000,
+      "cardinality": 5
+    },
+    "person_is_count": {
+      "observed_mi": 0.008589496181014535,
+      "null_mean": 0.010891200470901126,
+      "null_std": 0.0021106582854881024,
+      "null_p95": 0.014519570874680575,
+      "null_max": 0.017976499130902768,
+      "empirical_p": 0.8641358641358642,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "expression_nodes": {
+      "observed_mi": 0.02645207854480961,
+      "null_mean": 0.02554225274461246,
+      "null_std": 0.003365162688200377,
+      "null_p95": 0.031143997760871116,
+      "null_max": 0.039851637108973915,
+      "empirical_p": 0.3776223776223776,
+      "permutations": 1000,
+      "cardinality": 15
+    },
+    "expression_depth": {
+      "observed_mi": 0.0034221094266612146,
+      "null_mean": 0.003561178301043535,
+      "null_std": 0.0013573652774913742,
+      "null_p95": 0.006027894719546345,
+      "null_max": 0.009203213964672084,
+      "empirical_p": 0.4955044955044955,
+      "permutations": 1000,
+      "cardinality": 3
+    },
+    "top_ops": {
+      "observed_mi": 0.7325001490354934,
+      "null_mean": 0.4162262846440928,
+      "null_std": 0.011257303348575581,
+      "null_p95": 0.4356149044959767,
+      "null_max": 0.4487868717634954,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 211
+    },
+    "top_ops_multiset": {
+      "observed_mi": 0.32443252565140146,
+      "null_mean": 0.10093748188105049,
+      "null_std": 0.006936126636654897,
+      "null_p95": 0.11284154251909201,
+      "null_max": 0.12184202640752682,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 55
+    },
+    "op_signature": {
+      "observed_mi": 0.9100476106066173,
+      "null_mean": 0.8322010892277751,
+      "null_std": 0.009958537029400154,
+      "null_p95": 0.8481922007763391,
+      "null_max": 0.872731646988755,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 582
+    }
+  },
+  "v1": {
+    "same_count": {
+      "observed_mi": 0.06950895334997768,
+      "null_mean": 0.01333154321005586,
+      "null_std": 0.0022492139471464133,
+      "null_p95": 0.017282474165477887,
+      "null_max": 0.02256873573169983,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 8
+    },
+    "different_count": {
+      "observed_mi": 0.05683540156629996,
+      "null_mean": 0.011253582552745623,
+      "null_std": 0.002111719971020908,
+      "null_p95": 0.015264093381765917,
+      "null_max": 0.018410910613836626,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "and_count": {
+      "observed_mi": 0.024530372951948293,
+      "null_mean": 0.010275469611284333,
+      "null_std": 0.0019589392689596933,
+      "null_p95": 0.013781389909125084,
+      "null_max": 0.01714930155698121,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "or_count": {
+      "observed_mi": 0.03640851581426217,
+      "null_mean": 0.010649645743509193,
+      "null_std": 0.002058941752129824,
+      "null_p95": 0.014259451884990185,
+      "null_max": 0.018521930498057344,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "not_count": {
+      "observed_mi": 0.008319444738087513,
+      "null_mean": 0.007822162512416743,
+      "null_std": 0.001756188512190476,
+      "null_p95": 0.010998148094287447,
+      "null_max": 0.014793059370827854,
+      "empirical_p": 0.35264735264735264,
+      "permutations": 1000,
+      "cardinality": 5
+    },
+    "person_is_count": {
+      "observed_mi": 0.012095849210574414,
+      "null_mean": 0.011664581915339308,
+      "null_std": 0.0022363363592277545,
+      "null_p95": 0.015489313716858124,
+      "null_max": 0.019647659910124828,
+      "empirical_p": 0.4155844155844156,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "expression_nodes": {
+      "observed_mi": 0.034516454415826806,
+      "null_mean": 0.026540542629423566,
+      "null_std": 0.0032382951184205333,
+      "null_p95": 0.03183905753089001,
+      "null_max": 0.037534629192427435,
+      "empirical_p": 0.006993006993006993,
+      "permutations": 1000,
+      "cardinality": 15
+    },
+    "expression_depth": {
+      "observed_mi": 0.002884083251616319,
+      "null_mean": 0.0038999848622806475,
+      "null_std": 0.0013666775965590703,
+      "null_p95": 0.006359424704148909,
+      "null_max": 0.009829252047020344,
+      "empirical_p": 0.7662337662337663,
+      "permutations": 1000,
+      "cardinality": 3
+    },
+    "top_ops": {
+      "observed_mi": 0.7637074412901989,
+      "null_mean": 0.41877996971953235,
+      "null_std": 0.011947354485518598,
+      "null_p95": 0.43817062755656433,
+      "null_max": 0.454499773463425,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 211
+    },
+    "top_ops_multiset": {
+      "observed_mi": 0.3354713705309698,
+      "null_mean": 0.10316113292581643,
+      "null_std": 0.006899369299095884,
+      "null_p95": 0.11485927386901264,
+      "null_max": 0.1263637606592386,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 55
+    },
+    "op_signature": {
+      "observed_mi": 0.9057021516867483,
+      "null_mean": 0.8325191284975142,
+      "null_std": 0.01024048384614157,
+      "null_p95": 0.8483718293600697,
+      "null_max": 0.8625403645739664,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 582
+    }
+  },
+  "v2": {
+    "same_count": {
+      "observed_mi": 0.056742008082242806,
+      "null_mean": 0.013348659197773095,
+      "null_std": 0.002223714554259334,
+      "null_p95": 0.017267058760391623,
+      "null_max": 0.021430397808214995,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 8
+    },
+    "different_count": {
+      "observed_mi": 0.0538212807465438,
+      "null_mean": 0.011330183109100708,
+      "null_std": 0.0022038654766699975,
+      "null_p95": 0.015160305087427921,
+      "null_max": 0.019872923984796807,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "and_count": {
+      "observed_mi": 0.026208678398930006,
+      "null_mean": 0.010361507723337736,
+      "null_std": 0.0019273747544810687,
+      "null_p95": 0.013764399153879824,
+      "null_max": 0.018030789754278444,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "or_count": {
+      "observed_mi": 0.02385162364545789,
+      "null_mean": 0.010532162965097349,
+      "null_std": 0.002005639414973376,
+      "null_p95": 0.013855755659862834,
+      "null_max": 0.018835995732759594,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "not_count": {
+      "observed_mi": 0.010303063162125993,
+      "null_mean": 0.00792463157754728,
+      "null_std": 0.0017611514819790564,
+      "null_p95": 0.010923783379459264,
+      "null_max": 0.015572400066357383,
+      "empirical_p": 0.09490509490509491,
+      "permutations": 1000,
+      "cardinality": 5
+    },
+    "person_is_count": {
+      "observed_mi": 0.008467590180521385,
+      "null_mean": 0.011659684258137912,
+      "null_std": 0.0022008928968825885,
+      "null_p95": 0.01548868323502759,
+      "null_max": 0.02007533193182178,
+      "empirical_p": 0.929070929070929,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "expression_nodes": {
+      "observed_mi": 0.031786489533397105,
+      "null_mean": 0.02660983518952081,
+      "null_std": 0.003466290666893971,
+      "null_p95": 0.03263497170493397,
+      "null_max": 0.03917594052840015,
+      "empirical_p": 0.07392607392607392,
+      "permutations": 1000,
+      "cardinality": 15
+    },
+    "expression_depth": {
+      "observed_mi": 0.0032239729274613368,
+      "null_mean": 0.003977508885102594,
+      "null_std": 0.0014338764409021969,
+      "null_p95": 0.006536291372787427,
+      "null_max": 0.009837989893550282,
+      "empirical_p": 0.6673326673326674,
+      "permutations": 1000,
+      "cardinality": 3
+    },
+    "top_ops": {
+      "observed_mi": 0.7349087773524061,
+      "null_mean": 0.41867257809458897,
+      "null_std": 0.01159094408705325,
+      "null_p95": 0.43722758530202865,
+      "null_max": 0.4582527195996041,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 211
+    },
+    "top_ops_multiset": {
+      "observed_mi": 0.3262049840292678,
+      "null_mean": 0.10301709786133666,
+      "null_std": 0.00685344034802567,
+      "null_p95": 0.11482762414452383,
+      "null_max": 0.12641697491145282,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 55
+    },
+    "op_signature": {
+      "observed_mi": 0.9104357384068811,
+      "null_mean": 0.8340043033525897,
+      "null_std": 0.010452116017470958,
+      "null_p95": 0.8522111136005626,
+      "null_max": 0.8692799118283624,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 582
+    }
+  },
+  "v3": {
+    "same_count": {
+      "observed_mi": 0.06157580218944995,
+      "null_mean": 0.013634953192641746,
+      "null_std": 0.0023381940370099472,
+      "null_p95": 0.017841263625887407,
+      "null_max": 0.022445202075104174,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 8
+    },
+    "different_count": {
+      "observed_mi": 0.05359458815164186,
+      "null_mean": 0.011410424914345935,
+      "null_std": 0.0021813645161104863,
+      "null_p95": 0.015304133575415003,
+      "null_max": 0.021482021366405344,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "and_count": {
+      "observed_mi": 0.024369969880645485,
+      "null_mean": 0.010491147280875784,
+      "null_std": 0.002071583626873957,
+      "null_p95": 0.014009777250641104,
+      "null_max": 0.018733966394381362,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "or_count": {
+      "observed_mi": 0.03113877667913398,
+      "null_mean": 0.010734170311137155,
+      "null_std": 0.0019951782022554964,
+      "null_p95": 0.014363248100590767,
+      "null_max": 0.017213686713325717,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "not_count": {
+      "observed_mi": 0.00915569522170187,
+      "null_mean": 0.008017753027568015,
+      "null_std": 0.0017746282058546056,
+      "null_p95": 0.011064631139753011,
+      "null_max": 0.017653267196338022,
+      "empirical_p": 0.24575424575424576,
+      "permutations": 1000,
+      "cardinality": 5
+    },
+    "person_is_count": {
+      "observed_mi": 0.009960677769078746,
+      "null_mean": 0.011861416320876207,
+      "null_std": 0.002252637962954275,
+      "null_p95": 0.015995499813987894,
+      "null_max": 0.019327683044446584,
+      "empirical_p": 0.7982017982017982,
+      "permutations": 1000,
+      "cardinality": 7
+    },
+    "expression_nodes": {
+      "observed_mi": 0.030962017423031257,
+      "null_mean": 0.02702509143858949,
+      "null_std": 0.003492554866184395,
+      "null_p95": 0.03326283584768778,
+      "null_max": 0.038693685681362965,
+      "empirical_p": 0.11988011988011989,
+      "permutations": 1000,
+      "cardinality": 15
+    },
+    "expression_depth": {
+      "observed_mi": 0.0030403475350064715,
+      "null_mean": 0.003980034299330689,
+      "null_std": 0.0014389594306829486,
+      "null_p95": 0.006573278516694167,
+      "null_max": 0.009507249553862517,
+      "empirical_p": 0.7232767232767233,
+      "permutations": 1000,
+      "cardinality": 3
+    },
+    "top_ops": {
+      "observed_mi": 0.7228494096562439,
+      "null_mean": 0.4205327103158227,
+      "null_std": 0.011692564948443654,
+      "null_p95": 0.43976016513438165,
+      "null_max": 0.45900917189879187,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 211
+    },
+    "top_ops_multiset": {
+      "observed_mi": 0.315083604582917,
+      "null_mean": 0.10425020724588842,
+      "null_std": 0.007068156226738176,
+      "null_p95": 0.11570026471622886,
+      "null_max": 0.12779917774038346,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 55
+    },
+    "op_signature": {
+      "observed_mi": 0.8971392194113381,
+      "null_mean": 0.8352085782423708,
+      "null_std": 0.010247531649228151,
+      "null_p95": 0.8532473164845445,
+      "null_max": 0.8659142421598469,
+      "empirical_p": 0.000999000999000999,
+      "permutations": 1000,
+      "cardinality": 582
+    }
+  }
+}

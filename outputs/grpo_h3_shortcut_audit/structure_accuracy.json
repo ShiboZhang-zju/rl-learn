@@ -1,0 +1,3208 @@
+[
+  {
+    "signature_type": "top_ops",
+    "signature": "different+different+or",
+    "n": 20,
+    "accuracy": {
+      "epoch4": 0.9,
+      "epoch5": 0.9,
+      "v1": 0.9,
+      "v2": 0.8,
+      "v3": 0.9
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0,
+      "v1": 0.0,
+      "v2": -0.09999999999999998,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKN": 1,
+      "KNK": 2,
+      "KNN": 2,
+      "NKK": 5,
+      "NNK": 4,
+      "NNN": 6
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 1,
+        "KNK": 2,
+        "KNN": 1,
+        "NKK": 4,
+        "NKN": 1,
+        "NNK": 4,
+        "NNN": 7
+      },
+      "epoch5": {
+        "KKN": 1,
+        "KNK": 2,
+        "KNN": 1,
+        "NKK": 4,
+        "NKN": 1,
+        "NNK": 4,
+        "NNN": 7
+      },
+      "v1": {
+        "KKN": 1,
+        "KNK": 2,
+        "KNN": 1,
+        "NKK": 4,
+        "NKN": 1,
+        "NNK": 4,
+        "NNN": 7
+      },
+      "v2": {
+        "KKN": 1,
+        "KNK": 3,
+        "KNN": 1,
+        "NKK": 3,
+        "NKN": 1,
+        "NNK": 3,
+        "NNN": 8
+      },
+      "v3": {
+        "KKN": 1,
+        "KNK": 2,
+        "KNN": 1,
+        "NKK": 4,
+        "NKN": 1,
+        "NNK": 4,
+        "NNN": 7
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops",
+    "signature": "or+different+person_is",
+    "n": 21,
+    "accuracy": {
+      "epoch4": 0.6666666666666666,
+      "epoch5": 0.6190476190476191,
+      "v1": 0.6666666666666666,
+      "v2": 0.7619047619047619,
+      "v3": 0.5714285714285714
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": -0.04761904761904756,
+      "v1": 0.0,
+      "v2": 0.09523809523809523,
+      "v3": -0.09523809523809523
+    },
+    "gt_distribution": {
+      "KKN": 4,
+      "KNK": 2,
+      "KNN": 4,
+      "NKK": 2,
+      "NKN": 5,
+      "NNK": 2,
+      "NNN": 2
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 4,
+        "KNK": 4,
+        "KNN": 5,
+        "NKN": 1,
+        "NNK": 3,
+        "NNN": 4
+      },
+      "epoch5": {
+        "KKN": 5,
+        "KNK": 4,
+        "KNN": 4,
+        "NKK": 1,
+        "NKN": 1,
+        "NNK": 3,
+        "NNN": 3
+      },
+      "v1": {
+        "KKK": 1,
+        "KKN": 5,
+        "KNK": 3,
+        "KNN": 4,
+        "NKN": 7,
+        "NNN": 1
+      },
+      "v2": {
+        "KKK": 1,
+        "KKN": 5,
+        "KNK": 4,
+        "KNN": 3,
+        "NKK": 1,
+        "NKN": 3,
+        "NNK": 2,
+        "NNN": 2
+      },
+      "v3": {
+        "KKN": 8,
+        "KNK": 1,
+        "KNN": 4,
+        "NKN": 1,
+        "NNK": 3,
+        "NNN": 4
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops",
+    "signature": "or+same+same",
+    "n": 23,
+    "accuracy": {
+      "epoch4": 0.9565217391304348,
+      "epoch5": 0.9565217391304348,
+      "v1": 0.9130434782608695,
+      "v2": 0.9130434782608695,
+      "v3": 0.8695652173913043
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0,
+      "v1": -0.0434782608695653,
+      "v2": -0.0434782608695653,
+      "v3": -0.08695652173913049
+    },
+    "gt_distribution": {
+      "KKK": 12,
+      "KKN": 2,
+      "KNK": 2,
+      "KNN": 6,
+      "NKK": 1
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 11,
+        "KKN": 3,
+        "KNK": 2,
+        "KNN": 6,
+        "NKK": 1
+      },
+      "epoch5": {
+        "KKK": 11,
+        "KKN": 3,
+        "KNK": 2,
+        "KNN": 6,
+        "NKK": 1
+      },
+      "v1": {
+        "KKK": 12,
+        "KKN": 3,
+        "KNK": 2,
+        "KNN": 6
+      },
+      "v2": {
+        "KKK": 11,
+        "KKN": 4,
+        "KNK": 2,
+        "KNN": 6
+      },
+      "v3": {
+        "KKK": 11,
+        "KKN": 4,
+        "KNK": 3,
+        "KNN": 5
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops",
+    "signature": "same+or+not",
+    "n": 20,
+    "accuracy": {
+      "epoch4": 0.7,
+      "epoch5": 0.9,
+      "v1": 0.85,
+      "v2": 0.9,
+      "v3": 0.9
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.20000000000000007,
+      "v1": 0.15000000000000002,
+      "v2": 0.20000000000000007,
+      "v3": 0.20000000000000007
+    },
+    "gt_distribution": {
+      "KKK": 8,
+      "NKK": 5,
+      "NKN": 4,
+      "NNK": 3
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 8,
+        "NKK": 6,
+        "NKN": 5,
+        "NNK": 1
+      },
+      "epoch5": {
+        "KKK": 8,
+        "NKK": 7,
+        "NKN": 4,
+        "NNK": 1
+      },
+      "v1": {
+        "KKK": 8,
+        "NKK": 8,
+        "NKN": 4
+      },
+      "v2": {
+        "KKK": 8,
+        "NKK": 7,
+        "NKN": 4,
+        "NNK": 1
+      },
+      "v3": {
+        "KKK": 8,
+        "NKK": 7,
+        "NKN": 4,
+        "NNK": 1
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops",
+    "signature": "same+same+or",
+    "n": 28,
+    "accuracy": {
+      "epoch4": 0.9285714285714286,
+      "epoch5": 1.0,
+      "v1": 1.0,
+      "v2": 0.9642857142857143,
+      "v3": 1.0
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0714285714285714,
+      "v1": 0.0714285714285714,
+      "v2": 0.0357142857142857,
+      "v3": 0.0714285714285714
+    },
+    "gt_distribution": {
+      "KKK": 19,
+      "KNK": 1,
+      "NKK": 3,
+      "NNK": 5
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 17,
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 1,
+        "NKK": 3,
+        "NNK": 5
+      },
+      "epoch5": {
+        "KKK": 19,
+        "KNK": 1,
+        "NKK": 3,
+        "NNK": 5
+      },
+      "v1": {
+        "KKK": 19,
+        "KNK": 1,
+        "NKK": 3,
+        "NNK": 5
+      },
+      "v2": {
+        "KKK": 18,
+        "KKN": 1,
+        "KNK": 1,
+        "NKK": 3,
+        "NNK": 5
+      },
+      "v3": {
+        "KKK": 19,
+        "KNK": 1,
+        "NKK": 3,
+        "NNK": 5
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|and|different",
+    "n": 33,
+    "accuracy": {
+      "epoch4": 0.7878787878787878,
+      "epoch5": 0.6363636363636364,
+      "v1": 0.7878787878787878,
+      "v2": 0.7575757575757576,
+      "v3": 0.696969696969697
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": -0.1515151515151515,
+      "v1": 0.0,
+      "v2": -0.030303030303030276,
+      "v3": -0.09090909090909083
+    },
+    "gt_distribution": {
+      "KKN": 2,
+      "KNK": 3,
+      "KNN": 2,
+      "NKK": 2,
+      "NKN": 6,
+      "NNK": 4,
+      "NNN": 14
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 2,
+        "KNK": 4,
+        "KNN": 1,
+        "NKK": 2,
+        "NKN": 7,
+        "NNK": 2,
+        "NNN": 15
+      },
+      "epoch5": {
+        "KKN": 4,
+        "KNK": 2,
+        "KNN": 2,
+        "NKK": 3,
+        "NKN": 8,
+        "NNK": 2,
+        "NNN": 12
+      },
+      "v1": {
+        "KKN": 3,
+        "KNK": 3,
+        "KNN": 1,
+        "NKK": 3,
+        "NKN": 7,
+        "NNK": 3,
+        "NNN": 13
+      },
+      "v2": {
+        "KKN": 2,
+        "KNK": 4,
+        "KNN": 2,
+        "NKK": 3,
+        "NKN": 6,
+        "NNK": 2,
+        "NNN": 14
+      },
+      "v3": {
+        "KKN": 3,
+        "KNK": 3,
+        "KNN": 1,
+        "NKK": 1,
+        "NKN": 4,
+        "NNK": 3,
+        "NNN": 18
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|and|not",
+    "n": 22,
+    "accuracy": {
+      "epoch4": 0.5,
+      "epoch5": 0.45454545454545453,
+      "v1": 0.5909090909090909,
+      "v2": 0.7272727272727273,
+      "v3": 0.5909090909090909
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": -0.04545454545454547,
+      "v1": 0.09090909090909094,
+      "v2": 0.2272727272727273,
+      "v3": 0.09090909090909094
+    },
+    "gt_distribution": {
+      "KKK": 1,
+      "KKN": 1,
+      "KNK": 2,
+      "KNN": 2,
+      "NKK": 3,
+      "NKN": 3,
+      "NNK": 5,
+      "NNN": 5
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 1,
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 1,
+        "NKN": 5,
+        "NNK": 7,
+        "NNN": 6
+      },
+      "epoch5": {
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 4,
+        "NKK": 2,
+        "NKN": 3,
+        "NNK": 6,
+        "NNN": 5
+      },
+      "v1": {
+        "KKK": 1,
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 2,
+        "NKK": 3,
+        "NKN": 3,
+        "NNK": 6,
+        "NNN": 5
+      },
+      "v2": {
+        "KKK": 1,
+        "KKN": 1,
+        "KNK": 2,
+        "KNN": 3,
+        "NKK": 2,
+        "NKN": 3,
+        "NNK": 4,
+        "NNN": 6
+      },
+      "v3": {
+        "KKK": 1,
+        "KKN": 1,
+        "KNK": 2,
+        "KNN": 2,
+        "NKK": 2,
+        "NKN": 2,
+        "NNK": 7,
+        "NNN": 5
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|and|or",
+    "n": 21,
+    "accuracy": {
+      "epoch4": 0.6666666666666666,
+      "epoch5": 0.6666666666666666,
+      "v1": 0.6190476190476191,
+      "v2": 0.6666666666666666,
+      "v3": 0.5714285714285714
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0,
+      "v1": -0.04761904761904756,
+      "v2": 0.0,
+      "v3": -0.09523809523809523
+    },
+    "gt_distribution": {
+      "KKK": 3,
+      "KKN": 1,
+      "KNK": 1,
+      "KNN": 3,
+      "NKK": 2,
+      "NKN": 3,
+      "NNK": 6,
+      "NNN": 2
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 2,
+        "KKN": 2,
+        "KNN": 3,
+        "NKK": 1,
+        "NKN": 1,
+        "NNK": 10,
+        "NNN": 2
+      },
+      "epoch5": {
+        "KKK": 2,
+        "KKN": 3,
+        "KNK": 1,
+        "KNN": 4,
+        "NKN": 1,
+        "NNK": 9,
+        "NNN": 1
+      },
+      "v1": {
+        "KKK": 3,
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 5,
+        "NKK": 2,
+        "NKN": 1,
+        "NNK": 7,
+        "NNN": 1
+      },
+      "v2": {
+        "KKK": 2,
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 6,
+        "NKN": 1,
+        "NNK": 9,
+        "NNN": 1
+      },
+      "v3": {
+        "KKK": 3,
+        "KKN": 2,
+        "KNK": 2,
+        "KNN": 4,
+        "NKN": 1,
+        "NNK": 7,
+        "NNN": 2
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|and|person_is",
+    "n": 29,
+    "accuracy": {
+      "epoch4": 0.6206896551724138,
+      "epoch5": 0.6206896551724138,
+      "v1": 0.5517241379310345,
+      "v2": 0.6896551724137931,
+      "v3": 0.6206896551724138
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0,
+      "v1": -0.06896551724137934,
+      "v2": 0.06896551724137934,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKN": 1,
+      "KNK": 1,
+      "KNN": 5,
+      "NKK": 1,
+      "NKN": 2,
+      "NNK": 4,
+      "NNN": 15
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 2,
+        "NKK": 1,
+        "NKN": 3,
+        "NNK": 8,
+        "NNN": 13
+      },
+      "epoch5": {
+        "KKN": 1,
+        "KNK": 2,
+        "KNN": 3,
+        "NKK": 3,
+        "NKN": 4,
+        "NNK": 5,
+        "NNN": 11
+      },
+      "v1": {
+        "KKN": 1,
+        "KNK": 2,
+        "KNN": 2,
+        "NKK": 1,
+        "NKN": 4,
+        "NNK": 9,
+        "NNN": 10
+      },
+      "v2": {
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 4,
+        "NKN": 3,
+        "NNK": 8,
+        "NNN": 12
+      },
+      "v3": {
+        "KKN": 2,
+        "KNK": 2,
+        "KNN": 2,
+        "NKN": 2,
+        "NNK": 10,
+        "NNN": 11
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|and|same",
+    "n": 24,
+    "accuracy": {
+      "epoch4": 0.625,
+      "epoch5": 0.75,
+      "v1": 0.7083333333333334,
+      "v2": 0.625,
+      "v3": 0.75
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.125,
+      "v1": 0.08333333333333337,
+      "v2": 0.0,
+      "v3": 0.125
+    },
+    "gt_distribution": {
+      "KKK": 3,
+      "KKN": 2,
+      "KNK": 1,
+      "KNN": 8,
+      "NKK": 2,
+      "NKN": 4,
+      "NNK": 4
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 3,
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 4,
+        "NKK": 1,
+        "NKN": 5,
+        "NNK": 9
+      },
+      "epoch5": {
+        "KKK": 3,
+        "KKN": 2,
+        "KNN": 5,
+        "NKK": 2,
+        "NKN": 4,
+        "NNK": 8
+      },
+      "v1": {
+        "KKK": 3,
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 3,
+        "NKK": 2,
+        "NKN": 5,
+        "NNK": 9
+      },
+      "v2": {
+        "KKK": 3,
+        "KKN": 2,
+        "KNK": 2,
+        "KNN": 2,
+        "NKK": 1,
+        "NKN": 4,
+        "NNK": 10
+      },
+      "v3": {
+        "KKK": 3,
+        "KKN": 2,
+        "KNK": 1,
+        "KNN": 3,
+        "NKK": 1,
+        "NKN": 4,
+        "NNK": 10
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|different|different",
+    "n": 34,
+    "accuracy": {
+      "epoch4": 0.9117647058823529,
+      "epoch5": 0.8529411764705882,
+      "v1": 0.9117647058823529,
+      "v2": 0.8823529411764706,
+      "v3": 0.9117647058823529
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": -0.05882352941176472,
+      "v1": 0.0,
+      "v2": -0.02941176470588236,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KNK": 1,
+      "KNN": 1,
+      "NKK": 2,
+      "NKN": 1,
+      "NNK": 2,
+      "NNN": 27
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KNK": 1,
+        "KNN": 2,
+        "NKK": 4,
+        "NKN": 1,
+        "NNK": 2,
+        "NNN": 24
+      },
+      "epoch5": {
+        "KKN": 3,
+        "KNK": 2,
+        "KNN": 1,
+        "NKK": 3,
+        "NKN": 1,
+        "NNK": 2,
+        "NNN": 22
+      },
+      "v1": {
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 2,
+        "NKK": 3,
+        "NKN": 1,
+        "NNK": 2,
+        "NNN": 24
+      },
+      "v2": {
+        "KKN": 1,
+        "KNK": 2,
+        "KNN": 3,
+        "NKK": 2,
+        "NKN": 1,
+        "NNK": 2,
+        "NNN": 23
+      },
+      "v3": {
+        "KKN": 2,
+        "KNK": 1,
+        "KNN": 1,
+        "NKK": 2,
+        "NKN": 1,
+        "NNK": 3,
+        "NNN": 24
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|different|not",
+    "n": 44,
+    "accuracy": {
+      "epoch4": 0.5909090909090909,
+      "epoch5": 0.6363636363636364,
+      "v1": 0.6136363636363636,
+      "v2": 0.6818181818181818,
+      "v3": 0.5454545454545454
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.045454545454545414,
+      "v1": 0.022727272727272707,
+      "v2": 0.09090909090909083,
+      "v3": -0.045454545454545525
+    },
+    "gt_distribution": {
+      "KKN": 5,
+      "KNK": 5,
+      "KNN": 7,
+      "NKK": 6,
+      "NKN": 4,
+      "NNK": 5,
+      "NNN": 12
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 4,
+        "KNK": 7,
+        "KNN": 6,
+        "NKK": 3,
+        "NKN": 6,
+        "NNK": 9,
+        "NNN": 9
+      },
+      "epoch5": {
+        "KKN": 6,
+        "KNK": 9,
+        "KNN": 5,
+        "NKK": 4,
+        "NKN": 6,
+        "NNK": 8,
+        "NNN": 6
+      },
+      "v1": {
+        "KKN": 5,
+        "KNK": 7,
+        "KNN": 2,
+        "NKK": 4,
+        "NKN": 7,
+        "NNK": 8,
+        "NNN": 11
+      },
+      "v2": {
+        "KKN": 4,
+        "KNK": 8,
+        "KNN": 6,
+        "NKK": 4,
+        "NKN": 6,
+        "NNK": 9,
+        "NNN": 7
+      },
+      "v3": {
+        "KKN": 5,
+        "KNK": 8,
+        "KNN": 4,
+        "NKK": 4,
+        "NKN": 4,
+        "NNK": 11,
+        "NNN": 8
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|different|or",
+    "n": 60,
+    "accuracy": {
+      "epoch4": 0.7,
+      "epoch5": 0.7166666666666667,
+      "v1": 0.8,
+      "v2": 0.7,
+      "v3": 0.6833333333333333
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.01666666666666672,
+      "v1": 0.10000000000000009,
+      "v2": 0.0,
+      "v3": -0.016666666666666607
+    },
+    "gt_distribution": {
+      "KKN": 15,
+      "KNK": 12,
+      "KNN": 7,
+      "NKK": 8,
+      "NKN": 7,
+      "NNK": 4,
+      "NNN": 7
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 6,
+        "KNK": 19,
+        "KNN": 8,
+        "NKK": 6,
+        "NKN": 7,
+        "NNK": 5,
+        "NNN": 9
+      },
+      "epoch5": {
+        "KKN": 7,
+        "KNK": 18,
+        "KNN": 7,
+        "NKK": 8,
+        "NKN": 7,
+        "NNK": 5,
+        "NNN": 8
+      },
+      "v1": {
+        "KKN": 10,
+        "KNK": 14,
+        "KNN": 6,
+        "NKK": 8,
+        "NKN": 9,
+        "NNK": 4,
+        "NNN": 9
+      },
+      "v2": {
+        "KKN": 10,
+        "KNK": 17,
+        "KNN": 6,
+        "NKK": 7,
+        "NKN": 5,
+        "NNK": 6,
+        "NNN": 9
+      },
+      "v3": {
+        "KKN": 12,
+        "KNK": 13,
+        "KNN": 6,
+        "NKK": 8,
+        "NKN": 5,
+        "NNK": 4,
+        "NNN": 12
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|different|person_is",
+    "n": 70,
+    "accuracy": {
+      "epoch4": 0.7714285714285715,
+      "epoch5": 0.8285714285714286,
+      "v1": 0.7428571428571429,
+      "v2": 0.8,
+      "v3": 0.7428571428571429
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.05714285714285716,
+      "v1": -0.02857142857142858,
+      "v2": 0.02857142857142858,
+      "v3": -0.02857142857142858
+    },
+    "gt_distribution": {
+      "KKN": 5,
+      "KNK": 7,
+      "KNN": 10,
+      "NKK": 5,
+      "NKN": 10,
+      "NNK": 8,
+      "NNN": 25
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 4,
+        "KNK": 10,
+        "KNN": 8,
+        "NKK": 4,
+        "NKN": 10,
+        "NNK": 9,
+        "NNN": 25
+      },
+      "epoch5": {
+        "KKN": 6,
+        "KNK": 10,
+        "KNN": 8,
+        "NKK": 8,
+        "NKN": 10,
+        "NNK": 9,
+        "NNN": 19
+      },
+      "v1": {
+        "KKN": 4,
+        "KNK": 6,
+        "KNN": 7,
+        "NKK": 5,
+        "NKN": 14,
+        "NNK": 10,
+        "NNN": 24
+      },
+      "v2": {
+        "KKN": 6,
+        "KNK": 11,
+        "KNN": 7,
+        "NKK": 7,
+        "NKN": 8,
+        "NNK": 10,
+        "NNN": 21
+      },
+      "v3": {
+        "KKN": 5,
+        "KNK": 11,
+        "KNN": 7,
+        "NKK": 3,
+        "NKN": 13,
+        "NNK": 9,
+        "NNN": 22
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|different|same",
+    "n": 67,
+    "accuracy": {
+      "epoch4": 0.746268656716418,
+      "epoch5": 0.8059701492537313,
+      "v1": 0.7761194029850746,
+      "v2": 0.7910447761194029,
+      "v3": 0.7611940298507462
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.05970149253731338,
+      "v1": 0.02985074626865669,
+      "v2": 0.04477611940298498,
+      "v3": 0.01492537313432829
+    },
+    "gt_distribution": {
+      "KKN": 8,
+      "KNK": 10,
+      "KNN": 14,
+      "NKK": 11,
+      "NKN": 10,
+      "NNK": 14
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 1,
+        "KKN": 5,
+        "KNK": 12,
+        "KNN": 11,
+        "NKK": 8,
+        "NKN": 14,
+        "NNK": 16
+      },
+      "epoch5": {
+        "KKK": 1,
+        "KKN": 7,
+        "KNK": 11,
+        "KNN": 14,
+        "NKK": 11,
+        "NKN": 10,
+        "NNK": 13
+      },
+      "v1": {
+        "KKN": 6,
+        "KNK": 10,
+        "KNN": 10,
+        "NKK": 12,
+        "NKN": 13,
+        "NNK": 16
+      },
+      "v2": {
+        "KKK": 1,
+        "KKN": 6,
+        "KNK": 12,
+        "KNN": 15,
+        "NKK": 6,
+        "NKN": 12,
+        "NNK": 15
+      },
+      "v3": {
+        "KKK": 2,
+        "KKN": 7,
+        "KNK": 10,
+        "KNN": 11,
+        "NKK": 8,
+        "NKN": 11,
+        "NNK": 15,
+        "NNN": 3
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|not|or",
+    "n": 39,
+    "accuracy": {
+      "epoch4": 0.5897435897435898,
+      "epoch5": 0.6666666666666666,
+      "v1": 0.6153846153846154,
+      "v2": 0.5641025641025641,
+      "v3": 0.5897435897435898
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.07692307692307687,
+      "v1": 0.02564102564102566,
+      "v2": -0.02564102564102566,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKK": 4,
+      "KKN": 4,
+      "KNK": 1,
+      "KNN": 7,
+      "NKK": 7,
+      "NKN": 6,
+      "NNK": 8,
+      "NNN": 2
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 4,
+        "KKN": 3,
+        "KNK": 4,
+        "KNN": 5,
+        "NKK": 3,
+        "NKN": 11,
+        "NNK": 5,
+        "NNN": 4
+      },
+      "epoch5": {
+        "KKK": 4,
+        "KKN": 4,
+        "KNK": 2,
+        "KNN": 6,
+        "NKK": 4,
+        "NKN": 9,
+        "NNK": 7,
+        "NNN": 3
+      },
+      "v1": {
+        "KKK": 4,
+        "KKN": 4,
+        "KNK": 2,
+        "KNN": 5,
+        "NKK": 7,
+        "NKN": 7,
+        "NNK": 6,
+        "NNN": 4
+      },
+      "v2": {
+        "KKK": 4,
+        "KKN": 5,
+        "KNN": 7,
+        "NKK": 5,
+        "NKN": 8,
+        "NNK": 7,
+        "NNN": 3
+      },
+      "v3": {
+        "KKK": 5,
+        "KKN": 3,
+        "KNK": 3,
+        "KNN": 4,
+        "NKK": 8,
+        "NKN": 2,
+        "NNK": 9,
+        "NNN": 5
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|not|person_is",
+    "n": 53,
+    "accuracy": {
+      "epoch4": 0.6415094339622641,
+      "epoch5": 0.7169811320754716,
+      "v1": 0.6981132075471698,
+      "v2": 0.6792452830188679,
+      "v3": 0.6981132075471698
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.07547169811320753,
+      "v1": 0.05660377358490565,
+      "v2": 0.037735849056603765,
+      "v3": 0.05660377358490565
+    },
+    "gt_distribution": {
+      "KKK": 2,
+      "KKN": 4,
+      "KNK": 7,
+      "KNN": 6,
+      "NKK": 7,
+      "NKN": 7,
+      "NNK": 8,
+      "NNN": 12
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 2,
+        "KKN": 2,
+        "KNK": 3,
+        "KNN": 5,
+        "NKK": 3,
+        "NKN": 10,
+        "NNK": 10,
+        "NNN": 18
+      },
+      "epoch5": {
+        "KKK": 2,
+        "KKN": 3,
+        "KNK": 5,
+        "KNN": 6,
+        "NKK": 5,
+        "NKN": 9,
+        "NNK": 9,
+        "NNN": 14
+      },
+      "v1": {
+        "INVALID": 1,
+        "KKK": 2,
+        "KKN": 2,
+        "KNK": 5,
+        "KNN": 6,
+        "NKK": 7,
+        "NKN": 7,
+        "NNK": 7,
+        "NNN": 16
+      },
+      "v2": {
+        "KKK": 2,
+        "KKN": 2,
+        "KNK": 6,
+        "KNN": 7,
+        "NKK": 4,
+        "NKN": 8,
+        "NNK": 8,
+        "NNN": 16
+      },
+      "v3": {
+        "KKK": 2,
+        "KKN": 3,
+        "KNK": 6,
+        "KNN": 6,
+        "NKK": 4,
+        "NKN": 6,
+        "NNK": 10,
+        "NNN": 16
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|not|same",
+    "n": 50,
+    "accuracy": {
+      "epoch4": 0.66,
+      "epoch5": 0.72,
+      "v1": 0.78,
+      "v2": 0.76,
+      "v3": 0.76
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.05999999999999994,
+      "v1": 0.12,
+      "v2": 0.09999999999999998,
+      "v3": 0.09999999999999998
+    },
+    "gt_distribution": {
+      "KKK": 7,
+      "KKN": 8,
+      "KNK": 6,
+      "KNN": 4,
+      "NKK": 7,
+      "NKN": 8,
+      "NNK": 10
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 7,
+        "KKN": 3,
+        "KNK": 7,
+        "KNN": 5,
+        "NKK": 7,
+        "NKN": 8,
+        "NNK": 13
+      },
+      "epoch5": {
+        "KKK": 7,
+        "KKN": 6,
+        "KNK": 8,
+        "KNN": 4,
+        "NKK": 8,
+        "NKN": 6,
+        "NNK": 11
+      },
+      "v1": {
+        "KKK": 8,
+        "KKN": 5,
+        "KNK": 6,
+        "KNN": 3,
+        "NKK": 8,
+        "NKN": 8,
+        "NNK": 12
+      },
+      "v2": {
+        "KKK": 7,
+        "KKN": 5,
+        "KNK": 9,
+        "KNN": 4,
+        "NKK": 7,
+        "NKN": 7,
+        "NNK": 10,
+        "NNN": 1
+      },
+      "v3": {
+        "KKK": 8,
+        "KKN": 5,
+        "KNK": 7,
+        "KNN": 4,
+        "NKK": 7,
+        "NKN": 8,
+        "NNK": 10,
+        "NNN": 1
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|or|person_is",
+    "n": 51,
+    "accuracy": {
+      "epoch4": 0.47058823529411764,
+      "epoch5": 0.45098039215686275,
+      "v1": 0.5294117647058824,
+      "v2": 0.6078431372549019,
+      "v3": 0.47058823529411764
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": -0.019607843137254888,
+      "v1": 0.05882352941176472,
+      "v2": 0.13725490196078427,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKK": 2,
+      "KKN": 11,
+      "KNK": 8,
+      "KNN": 6,
+      "NKK": 2,
+      "NKN": 7,
+      "NNK": 9,
+      "NNN": 6
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 2,
+        "KKN": 7,
+        "KNK": 15,
+        "KNN": 8,
+        "NKK": 1,
+        "NKN": 8,
+        "NNK": 6,
+        "NNN": 4
+      },
+      "epoch5": {
+        "KKK": 1,
+        "KKN": 7,
+        "KNK": 16,
+        "KNN": 8,
+        "NKK": 1,
+        "NKN": 7,
+        "NNK": 7,
+        "NNN": 4
+      },
+      "v1": {
+        "KKK": 2,
+        "KKN": 7,
+        "KNK": 16,
+        "KNN": 7,
+        "NKK": 5,
+        "NKN": 6,
+        "NNK": 6,
+        "NNN": 2
+      },
+      "v2": {
+        "KKK": 2,
+        "KKN": 7,
+        "KNK": 13,
+        "KNN": 8,
+        "NKK": 1,
+        "NKN": 7,
+        "NNK": 8,
+        "NNN": 5
+      },
+      "v3": {
+        "KKK": 3,
+        "KKN": 7,
+        "KNK": 12,
+        "KNN": 10,
+        "NKK": 4,
+        "NKN": 2,
+        "NNK": 6,
+        "NNN": 7
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|or|same",
+    "n": 61,
+    "accuracy": {
+      "epoch4": 0.7868852459016393,
+      "epoch5": 0.8360655737704918,
+      "v1": 0.8032786885245902,
+      "v2": 0.819672131147541,
+      "v3": 0.8032786885245902
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.049180327868852514,
+      "v1": 0.016393442622950838,
+      "v2": 0.032786885245901676,
+      "v3": 0.016393442622950838
+    },
+    "gt_distribution": {
+      "KKK": 10,
+      "KKN": 12,
+      "KNK": 11,
+      "KNN": 4,
+      "NKK": 6,
+      "NKN": 11,
+      "NNK": 7
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 10,
+        "KKN": 9,
+        "KNK": 11,
+        "KNN": 6,
+        "NKK": 7,
+        "NKN": 12,
+        "NNK": 6
+      },
+      "epoch5": {
+        "KKK": 10,
+        "KKN": 13,
+        "KNK": 9,
+        "KNN": 5,
+        "NKK": 7,
+        "NKN": 10,
+        "NNK": 7
+      },
+      "v1": {
+        "KKK": 9,
+        "KKN": 13,
+        "KNK": 11,
+        "KNN": 3,
+        "NKK": 8,
+        "NKN": 11,
+        "NNK": 6
+      },
+      "v2": {
+        "KKK": 10,
+        "KKN": 13,
+        "KNK": 12,
+        "KNN": 5,
+        "NKK": 5,
+        "NKN": 11,
+        "NNK": 5
+      },
+      "v3": {
+        "KKK": 10,
+        "KKN": 14,
+        "KNK": 11,
+        "KNN": 3,
+        "NKK": 6,
+        "NKN": 10,
+        "NNK": 7
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|person_is|person_is",
+    "n": 31,
+    "accuracy": {
+      "epoch4": 0.5483870967741935,
+      "epoch5": 0.6774193548387096,
+      "v1": 0.5483870967741935,
+      "v2": 0.6774193548387096,
+      "v3": 0.6129032258064516
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.12903225806451613,
+      "v1": 0.0,
+      "v2": 0.12903225806451613,
+      "v3": 0.06451612903225812
+    },
+    "gt_distribution": {
+      "KKK": 2,
+      "KKN": 5,
+      "KNK": 4,
+      "KNN": 3,
+      "NKK": 1,
+      "NKN": 4,
+      "NNK": 5,
+      "NNN": 7
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 3,
+        "KKN": 1,
+        "KNK": 2,
+        "NKK": 4,
+        "NKN": 6,
+        "NNK": 8,
+        "NNN": 7
+      },
+      "epoch5": {
+        "KKK": 3,
+        "KKN": 3,
+        "KNK": 5,
+        "NKK": 4,
+        "NKN": 5,
+        "NNK": 5,
+        "NNN": 6
+      },
+      "v1": {
+        "KKK": 3,
+        "KKN": 1,
+        "KNK": 1,
+        "NKK": 4,
+        "NKN": 7,
+        "NNK": 8,
+        "NNN": 7
+      },
+      "v2": {
+        "KKK": 3,
+        "KKN": 3,
+        "KNK": 4,
+        "KNN": 1,
+        "NKK": 3,
+        "NKN": 5,
+        "NNK": 5,
+        "NNN": 7
+      },
+      "v3": {
+        "KKK": 3,
+        "KKN": 3,
+        "KNK": 4,
+        "NKK": 1,
+        "NKN": 7,
+        "NNK": 6,
+        "NNN": 7
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|person_is|same",
+    "n": 93,
+    "accuracy": {
+      "epoch4": 0.7419354838709677,
+      "epoch5": 0.7956989247311828,
+      "v1": 0.7419354838709677,
+      "v2": 0.7634408602150538,
+      "v3": 0.7634408602150538
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.053763440860215006,
+      "v1": 0.0,
+      "v2": 0.021505376344086002,
+      "v3": 0.021505376344086002
+    },
+    "gt_distribution": {
+      "KKK": 15,
+      "KKN": 15,
+      "KNK": 8,
+      "KNN": 17,
+      "NKK": 7,
+      "NKN": 21,
+      "NNK": 10
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 15,
+        "KKN": 9,
+        "KNK": 10,
+        "KNN": 13,
+        "NKK": 9,
+        "NKN": 20,
+        "NNK": 16,
+        "NNN": 1
+      },
+      "epoch5": {
+        "KKK": 16,
+        "KKN": 12,
+        "KNK": 10,
+        "KNN": 14,
+        "NKK": 11,
+        "NKN": 17,
+        "NNK": 12,
+        "NNN": 1
+      },
+      "v1": {
+        "KKK": 16,
+        "KKN": 10,
+        "KNK": 9,
+        "KNN": 11,
+        "NKK": 9,
+        "NKN": 20,
+        "NNK": 17,
+        "NNN": 1
+      },
+      "v2": {
+        "KKK": 15,
+        "KKN": 10,
+        "KNK": 9,
+        "KNN": 17,
+        "NKK": 10,
+        "NKN": 19,
+        "NNK": 13
+      },
+      "v3": {
+        "KKK": 15,
+        "KKN": 11,
+        "KNK": 11,
+        "KNN": 12,
+        "NKK": 5,
+        "NKN": 21,
+        "NNK": 17,
+        "NNN": 1
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "and|same|same",
+    "n": 52,
+    "accuracy": {
+      "epoch4": 0.9230769230769231,
+      "epoch5": 0.9230769230769231,
+      "v1": 0.9230769230769231,
+      "v2": 0.9230769230769231,
+      "v3": 0.8846153846153846
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0,
+      "v1": 0.0,
+      "v2": 0.0,
+      "v3": -0.03846153846153855
+    },
+    "gt_distribution": {
+      "KKK": 15,
+      "KKN": 4,
+      "KNK": 3,
+      "KNN": 11,
+      "NKK": 7,
+      "NKN": 8,
+      "NNK": 4
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 14,
+        "KKN": 3,
+        "KNK": 3,
+        "KNN": 11,
+        "NKK": 5,
+        "NKN": 11,
+        "NNK": 5
+      },
+      "epoch5": {
+        "KKK": 15,
+        "KKN": 3,
+        "KNK": 3,
+        "KNN": 10,
+        "NKK": 6,
+        "NKN": 10,
+        "NNK": 5
+      },
+      "v1": {
+        "KKK": 15,
+        "KKN": 3,
+        "KNK": 3,
+        "KNN": 10,
+        "NKK": 7,
+        "NKN": 9,
+        "NNK": 5
+      },
+      "v2": {
+        "KKK": 14,
+        "KKN": 4,
+        "KNK": 3,
+        "KNN": 10,
+        "NKK": 7,
+        "NKN": 9,
+        "NNK": 5
+      },
+      "v3": {
+        "KKK": 15,
+        "KKN": 3,
+        "KNK": 3,
+        "KNN": 10,
+        "NKK": 6,
+        "NKN": 8,
+        "NNK": 7
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "different|different|not",
+    "n": 31,
+    "accuracy": {
+      "epoch4": 0.8064516129032258,
+      "epoch5": 0.8387096774193549,
+      "v1": 0.7741935483870968,
+      "v2": 0.9354838709677419,
+      "v3": 0.8709677419354839
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.032258064516129115,
+      "v1": -0.032258064516129004,
+      "v2": 0.12903225806451613,
+      "v3": 0.06451612903225812
+    },
+    "gt_distribution": {
+      "KKN": 4,
+      "KNK": 3,
+      "KNN": 3,
+      "NKK": 3,
+      "NKN": 3,
+      "NNK": 1,
+      "NNN": 14
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 7,
+        "KNK": 1,
+        "KNN": 2,
+        "NKK": 2,
+        "NKN": 3,
+        "NNK": 1,
+        "NNN": 15
+      },
+      "epoch5": {
+        "KKN": 7,
+        "KNK": 2,
+        "KNN": 2,
+        "NKK": 4,
+        "NKN": 3,
+        "NNK": 1,
+        "NNN": 12
+      },
+      "v1": {
+        "KKN": 5,
+        "KNK": 1,
+        "KNN": 2,
+        "NKK": 5,
+        "NKN": 3,
+        "NNK": 1,
+        "NNN": 14
+      },
+      "v2": {
+        "KKN": 5,
+        "KNK": 3,
+        "KNN": 3,
+        "NKK": 1,
+        "NKN": 3,
+        "NNK": 1,
+        "NNN": 15
+      },
+      "v3": {
+        "KKN": 7,
+        "KNK": 2,
+        "KNN": 2,
+        "NKK": 1,
+        "NKN": 3,
+        "NNK": 1,
+        "NNN": 15
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "different|different|or",
+    "n": 54,
+    "accuracy": {
+      "epoch4": 0.8888888888888888,
+      "epoch5": 0.9444444444444444,
+      "v1": 0.8888888888888888,
+      "v2": 0.8518518518518519,
+      "v3": 0.9444444444444444
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.05555555555555558,
+      "v1": 0.0,
+      "v2": -0.03703703703703698,
+      "v3": 0.05555555555555558
+    },
+    "gt_distribution": {
+      "KKN": 9,
+      "KNK": 7,
+      "KNN": 7,
+      "NKK": 8,
+      "NKN": 2,
+      "NNK": 8,
+      "NNN": 13
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 8,
+        "KNK": 6,
+        "KNN": 6,
+        "NKK": 6,
+        "NKN": 3,
+        "NNK": 9,
+        "NNN": 16
+      },
+      "epoch5": {
+        "KKN": 9,
+        "KNK": 7,
+        "KNN": 5,
+        "NKK": 7,
+        "NKN": 3,
+        "NNK": 9,
+        "NNN": 14
+      },
+      "v1": {
+        "KKN": 9,
+        "KNK": 7,
+        "KNN": 5,
+        "NKK": 7,
+        "NKN": 4,
+        "NNK": 8,
+        "NNN": 14
+      },
+      "v2": {
+        "KKN": 7,
+        "KNK": 9,
+        "KNN": 6,
+        "NKK": 6,
+        "NKN": 4,
+        "NNK": 7,
+        "NNN": 15
+      },
+      "v3": {
+        "KKN": 9,
+        "KNK": 7,
+        "KNN": 5,
+        "NKK": 7,
+        "NKN": 3,
+        "NNK": 9,
+        "NNN": 14
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "different|not|not",
+    "n": 27,
+    "accuracy": {
+      "epoch4": 0.8518518518518519,
+      "epoch5": 0.7407407407407407,
+      "v1": 0.7407407407407407,
+      "v2": 0.8148148148148148,
+      "v3": 0.9259259259259259
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": -0.11111111111111116,
+      "v1": -0.11111111111111116,
+      "v2": -0.03703703703703709,
+      "v3": 0.07407407407407407
+    },
+    "gt_distribution": {
+      "KKN": 4,
+      "KNK": 1,
+      "KNN": 4,
+      "NKK": 4,
+      "NKN": 3,
+      "NNK": 3,
+      "NNN": 8
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 3,
+        "KNK": 1,
+        "KNN": 5,
+        "NKK": 3,
+        "NKN": 5,
+        "NNK": 2,
+        "NNN": 8
+      },
+      "epoch5": {
+        "KKN": 4,
+        "KNK": 1,
+        "KNN": 4,
+        "NKK": 6,
+        "NKN": 4,
+        "NNK": 2,
+        "NNN": 6
+      },
+      "v1": {
+        "KKN": 4,
+        "KNK": 1,
+        "KNN": 4,
+        "NKK": 6,
+        "NKN": 4,
+        "NNK": 2,
+        "NNN": 6
+      },
+      "v2": {
+        "KKN": 4,
+        "KNK": 1,
+        "KNN": 5,
+        "NKK": 5,
+        "NKN": 4,
+        "NNK": 1,
+        "NNN": 7
+      },
+      "v3": {
+        "KKN": 3,
+        "KNK": 1,
+        "KNN": 4,
+        "NKK": 5,
+        "NKN": 2,
+        "NNK": 3,
+        "NNN": 9
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "different|not|or",
+    "n": 48,
+    "accuracy": {
+      "epoch4": 0.7083333333333334,
+      "epoch5": 0.75,
+      "v1": 0.6875,
+      "v2": 0.8125,
+      "v3": 0.7291666666666666
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.04166666666666663,
+      "v1": -0.02083333333333337,
+      "v2": 0.10416666666666663,
+      "v3": 0.02083333333333326
+    },
+    "gt_distribution": {
+      "KKN": 7,
+      "KNK": 13,
+      "KNN": 5,
+      "NKK": 5,
+      "NKN": 7,
+      "NNK": 8,
+      "NNN": 3
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 9,
+        "KNK": 14,
+        "KNN": 7,
+        "NKK": 1,
+        "NKN": 7,
+        "NNK": 7,
+        "NNN": 3
+      },
+      "epoch5": {
+        "KKN": 14,
+        "KNK": 12,
+        "KNN": 5,
+        "NKK": 3,
+        "NKN": 4,
+        "NNK": 7,
+        "NNN": 3
+      },
+      "v1": {
+        "KKK": 1,
+        "KKN": 12,
+        "KNK": 11,
+        "KNN": 2,
+        "NKK": 6,
+        "NKN": 5,
+        "NNK": 8,
+        "NNN": 3
+      },
+      "v2": {
+        "KKN": 12,
+        "KNK": 9,
+        "KNN": 8,
+        "NKK": 4,
+        "NKN": 5,
+        "NNK": 7,
+        "NNN": 3
+      },
+      "v3": {
+        "KKN": 14,
+        "KNK": 13,
+        "KNN": 2,
+        "NKK": 3,
+        "NKN": 5,
+        "NNK": 8,
+        "NNN": 3
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "different|not|person_is",
+    "n": 81,
+    "accuracy": {
+      "epoch4": 0.7654320987654321,
+      "epoch5": 0.7777777777777778,
+      "v1": 0.7654320987654321,
+      "v2": 0.7901234567901234,
+      "v3": 0.7654320987654321
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.012345679012345734,
+      "v1": 0.0,
+      "v2": 0.024691358024691357,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKN": 11,
+      "KNK": 13,
+      "KNN": 6,
+      "NKK": 10,
+      "NKN": 10,
+      "NNK": 12,
+      "NNN": 19
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 8,
+        "KNK": 14,
+        "KNN": 6,
+        "NKK": 9,
+        "NKN": 9,
+        "NNK": 13,
+        "NNN": 22
+      },
+      "epoch5": {
+        "KKN": 13,
+        "KNK": 14,
+        "KNN": 7,
+        "NKK": 8,
+        "NKN": 9,
+        "NNK": 12,
+        "NNN": 18
+      },
+      "v1": {
+        "KKN": 7,
+        "KNK": 10,
+        "KNN": 5,
+        "NKK": 11,
+        "NKN": 14,
+        "NNK": 11,
+        "NNN": 23
+      },
+      "v2": {
+        "KKN": 11,
+        "KNK": 18,
+        "KNN": 9,
+        "NKK": 5,
+        "NKN": 8,
+        "NNK": 12,
+        "NNN": 18
+      },
+      "v3": {
+        "KKK": 1,
+        "KKN": 11,
+        "KNK": 11,
+        "KNN": 9,
+        "NKK": 7,
+        "NKN": 10,
+        "NNK": 12,
+        "NNN": 20
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "different|not|same",
+    "n": 72,
+    "accuracy": {
+      "epoch4": 0.8611111111111112,
+      "epoch5": 0.8611111111111112,
+      "v1": 0.8472222222222222,
+      "v2": 0.8888888888888888,
+      "v3": 0.8472222222222222
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0,
+      "v1": -0.01388888888888895,
+      "v2": 0.02777777777777768,
+      "v3": -0.01388888888888895
+    },
+    "gt_distribution": {
+      "KKN": 11,
+      "KNK": 12,
+      "KNN": 13,
+      "NKK": 13,
+      "NKN": 10,
+      "NNK": 13
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "INVALID": 1,
+        "KKN": 9,
+        "KNK": 11,
+        "KNN": 13,
+        "NKK": 15,
+        "NKN": 9,
+        "NNK": 14
+      },
+      "epoch5": {
+        "KKN": 12,
+        "KNK": 13,
+        "KNN": 13,
+        "NKK": 14,
+        "NKN": 7,
+        "NNK": 13
+      },
+      "v1": {
+        "KKK": 1,
+        "KKN": 9,
+        "KNK": 8,
+        "KNN": 13,
+        "NKK": 16,
+        "NKN": 10,
+        "NNK": 15
+      },
+      "v2": {
+        "KKK": 1,
+        "KKN": 15,
+        "KNK": 11,
+        "KNN": 15,
+        "NKK": 12,
+        "NKN": 6,
+        "NNK": 12
+      },
+      "v3": {
+        "KKK": 2,
+        "KKN": 10,
+        "KNK": 9,
+        "KNN": 11,
+        "NKK": 15,
+        "NKN": 10,
+        "NNK": 14,
+        "NNN": 1
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "different|or|or",
+    "n": 29,
+    "accuracy": {
+      "epoch4": 0.6551724137931034,
+      "epoch5": 0.6206896551724138,
+      "v1": 0.6551724137931034,
+      "v2": 0.6206896551724138,
+      "v3": 0.5172413793103449
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": -0.03448275862068961,
+      "v1": 0.0,
+      "v2": -0.03448275862068961,
+      "v3": -0.13793103448275856
+    },
+    "gt_distribution": {
+      "KKN": 8,
+      "KNK": 7,
+      "NKK": 5,
+      "NKN": 3,
+      "NNK": 2,
+      "NNN": 4
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 12,
+        "KNK": 8,
+        "KNN": 2,
+        "NKK": 1,
+        "NKN": 1,
+        "NNK": 2,
+        "NNN": 3
+      },
+      "epoch5": {
+        "KKN": 16,
+        "KNK": 6,
+        "NKK": 2,
+        "NKN": 1,
+        "NNK": 1,
+        "NNN": 3
+      },
+      "v1": {
+        "KKN": 14,
+        "KNK": 6,
+        "NKK": 4,
+        "NKN": 1,
+        "NNK": 1,
+        "NNN": 3
+      },
+      "v2": {
+        "KKN": 17,
+        "KNK": 5,
+        "NKK": 1,
+        "NKN": 1,
+        "NNK": 2,
+        "NNN": 3
+      },
+      "v3": {
+        "KKK": 3,
+        "KKN": 14,
+        "KNK": 5,
+        "NKK": 2,
+        "NNK": 2,
+        "NNN": 3
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "different|or|person_is",
+    "n": 78,
+    "accuracy": {
+      "epoch4": 0.6410256410256411,
+      "epoch5": 0.7435897435897436,
+      "v1": 0.6923076923076923,
+      "v2": 0.717948717948718,
+      "v3": 0.6666666666666666
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.10256410256410253,
+      "v1": 0.05128205128205121,
+      "v2": 0.07692307692307687,
+      "v3": 0.02564102564102555
+    },
+    "gt_distribution": {
+      "KKN": 12,
+      "KNK": 11,
+      "KNN": 10,
+      "NKK": 12,
+      "NKN": 9,
+      "NNK": 11,
+      "NNN": 13
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 7,
+        "KNK": 20,
+        "KNN": 10,
+        "NKK": 4,
+        "NKN": 7,
+        "NNK": 10,
+        "NNN": 20
+      },
+      "epoch5": {
+        "KKN": 12,
+        "KNK": 18,
+        "KNN": 11,
+        "NKK": 7,
+        "NKN": 6,
+        "NNK": 11,
+        "NNN": 13
+      },
+      "v1": {
+        "KKK": 2,
+        "KKN": 11,
+        "KNK": 14,
+        "KNN": 8,
+        "NKK": 7,
+        "NKN": 14,
+        "NNK": 8,
+        "NNN": 14
+      },
+      "v2": {
+        "KKK": 2,
+        "KKN": 13,
+        "KNK": 20,
+        "KNN": 9,
+        "NKK": 5,
+        "NKN": 7,
+        "NNK": 9,
+        "NNN": 13
+      },
+      "v3": {
+        "KKK": 3,
+        "KKN": 13,
+        "KNK": 12,
+        "KNN": 8,
+        "NKK": 7,
+        "NKN": 6,
+        "NNK": 12,
+        "NNN": 17
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "different|or|same",
+    "n": 92,
+    "accuracy": {
+      "epoch4": 0.7717391304347826,
+      "epoch5": 0.7934782608695652,
+      "v1": 0.8152173913043478,
+      "v2": 0.7717391304347826,
+      "v3": 0.7717391304347826
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.021739130434782594,
+      "v1": 0.04347826086956519,
+      "v2": 0.0,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKN": 14,
+      "KNK": 16,
+      "KNN": 17,
+      "NKK": 19,
+      "NKN": 18,
+      "NNK": 8
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKN": 16,
+        "KNK": 15,
+        "KNN": 21,
+        "NKK": 17,
+        "NKN": 17,
+        "NNK": 6
+      },
+      "epoch5": {
+        "KKN": 16,
+        "KNK": 17,
+        "KNN": 21,
+        "NKK": 16,
+        "NKN": 16,
+        "NNK": 6
+      },
+      "v1": {
+        "KKN": 16,
+        "KNK": 12,
+        "KNN": 13,
+        "NKK": 22,
+        "NKN": 20,
+        "NNK": 9
+      },
+      "v2": {
+        "KKN": 19,
+        "KNK": 20,
+        "KNN": 21,
+        "NKK": 13,
+        "NKN": 14,
+        "NNK": 5
+      },
+      "v3": {
+        "KKK": 2,
+        "KKN": 17,
+        "KNK": 13,
+        "KNN": 17,
+        "NKK": 19,
+        "NKN": 17,
+        "NNK": 6,
+        "NNN": 1
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "not|not|same",
+    "n": 24,
+    "accuracy": {
+      "epoch4": 0.7916666666666666,
+      "epoch5": 0.8333333333333334,
+      "v1": 0.7916666666666666,
+      "v2": 0.8333333333333334,
+      "v3": 0.8333333333333334
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.04166666666666674,
+      "v1": 0.0,
+      "v2": 0.04166666666666674,
+      "v3": 0.04166666666666674
+    },
+    "gt_distribution": {
+      "KKK": 5,
+      "KKN": 1,
+      "KNK": 1,
+      "KNN": 3,
+      "NKK": 6,
+      "NKN": 3,
+      "NNK": 5
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 5,
+        "KKN": 2,
+        "KNK": 1,
+        "KNN": 3,
+        "NKK": 6,
+        "NKN": 3,
+        "NNK": 4
+      },
+      "epoch5": {
+        "KKK": 5,
+        "KKN": 2,
+        "KNK": 1,
+        "KNN": 3,
+        "NKK": 7,
+        "NKN": 2,
+        "NNK": 4
+      },
+      "v1": {
+        "KKK": 5,
+        "KKN": 2,
+        "KNK": 1,
+        "KNN": 3,
+        "NKK": 6,
+        "NKN": 3,
+        "NNK": 4
+      },
+      "v2": {
+        "KKK": 5,
+        "KKN": 3,
+        "KNK": 1,
+        "KNN": 3,
+        "NKK": 5,
+        "NKN": 2,
+        "NNK": 5
+      },
+      "v3": {
+        "KKK": 5,
+        "KKN": 2,
+        "KNK": 1,
+        "KNN": 3,
+        "NKK": 5,
+        "NKN": 3,
+        "NNK": 5
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "not|or|person_is",
+    "n": 49,
+    "accuracy": {
+      "epoch4": 0.6122448979591837,
+      "epoch5": 0.6530612244897959,
+      "v1": 0.6530612244897959,
+      "v2": 0.6326530612244898,
+      "v3": 0.7142857142857143
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.04081632653061218,
+      "v1": 0.04081632653061218,
+      "v2": 0.020408163265306145,
+      "v3": 0.10204081632653061
+    },
+    "gt_distribution": {
+      "KKK": 5,
+      "KKN": 10,
+      "KNK": 7,
+      "KNN": 5,
+      "NKK": 10,
+      "NKN": 4,
+      "NNK": 5,
+      "NNN": 3
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 5,
+        "KKN": 7,
+        "KNK": 8,
+        "KNN": 6,
+        "NKK": 8,
+        "NKN": 6,
+        "NNK": 4,
+        "NNN": 5
+      },
+      "epoch5": {
+        "KKK": 7,
+        "KKN": 9,
+        "KNK": 8,
+        "KNN": 4,
+        "NKK": 10,
+        "NKN": 5,
+        "NNK": 3,
+        "NNN": 3
+      },
+      "v1": {
+        "KKK": 7,
+        "KKN": 9,
+        "KNK": 6,
+        "KNN": 5,
+        "NKK": 10,
+        "NKN": 5,
+        "NNK": 3,
+        "NNN": 4
+      },
+      "v2": {
+        "KKK": 7,
+        "KKN": 12,
+        "KNK": 10,
+        "KNN": 5,
+        "NKK": 5,
+        "NKN": 5,
+        "NNK": 3,
+        "NNN": 2
+      },
+      "v3": {
+        "KKK": 7,
+        "KKN": 10,
+        "KNK": 5,
+        "KNN": 5,
+        "NKK": 10,
+        "NKN": 5,
+        "NNK": 3,
+        "NNN": 4
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "not|or|same",
+    "n": 61,
+    "accuracy": {
+      "epoch4": 0.7540983606557377,
+      "epoch5": 0.7868852459016393,
+      "v1": 0.8032786885245902,
+      "v2": 0.7540983606557377,
+      "v3": 0.8032786885245902
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.032786885245901676,
+      "v1": 0.049180327868852514,
+      "v2": 0.0,
+      "v3": 0.049180327868852514
+    },
+    "gt_distribution": {
+      "KKK": 19,
+      "KKN": 7,
+      "KNK": 9,
+      "KNN": 4,
+      "NKK": 9,
+      "NKN": 8,
+      "NNK": 5
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 19,
+        "KKN": 3,
+        "KNK": 12,
+        "KNN": 5,
+        "NKK": 9,
+        "NKN": 11,
+        "NNK": 2
+      },
+      "epoch5": {
+        "KKK": 19,
+        "KKN": 3,
+        "KNK": 12,
+        "KNN": 3,
+        "NKK": 12,
+        "NKN": 10,
+        "NNK": 2
+      },
+      "v1": {
+        "KKK": 22,
+        "KKN": 6,
+        "KNK": 10,
+        "KNN": 1,
+        "NKK": 12,
+        "NKN": 8,
+        "NNK": 2
+      },
+      "v2": {
+        "INVALID": 1,
+        "KKK": 18,
+        "KKN": 5,
+        "KNK": 10,
+        "KNN": 6,
+        "NKK": 11,
+        "NKN": 7,
+        "NNK": 3
+      },
+      "v3": {
+        "KKK": 21,
+        "KKN": 6,
+        "KNK": 9,
+        "KNN": 3,
+        "NKK": 11,
+        "NKN": 8,
+        "NNK": 3
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "not|person_is|person_is",
+    "n": 21,
+    "accuracy": {
+      "epoch4": 0.7142857142857143,
+      "epoch5": 0.8095238095238095,
+      "v1": 0.7142857142857143,
+      "v2": 0.8095238095238095,
+      "v3": 0.7142857142857143
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.09523809523809523,
+      "v1": 0.0,
+      "v2": 0.09523809523809523,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKK": 5,
+      "KKN": 3,
+      "KNK": 1,
+      "KNN": 3,
+      "NKK": 1,
+      "NKN": 1,
+      "NNK": 2,
+      "NNN": 5
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 4,
+        "KNK": 1,
+        "KNN": 2,
+        "NKK": 3,
+        "NKN": 2,
+        "NNK": 3,
+        "NNN": 6
+      },
+      "epoch5": {
+        "KKK": 5,
+        "KKN": 2,
+        "KNK": 2,
+        "KNN": 2,
+        "NKK": 2,
+        "NKN": 2,
+        "NNK": 1,
+        "NNN": 5
+      },
+      "v1": {
+        "KKK": 5,
+        "KNK": 1,
+        "KNN": 1,
+        "NKK": 3,
+        "NKN": 2,
+        "NNK": 4,
+        "NNN": 5
+      },
+      "v2": {
+        "KKK": 5,
+        "KKN": 2,
+        "KNK": 2,
+        "KNN": 2,
+        "NKK": 2,
+        "NKN": 2,
+        "NNK": 1,
+        "NNN": 5
+      },
+      "v3": {
+        "KKK": 5,
+        "KKN": 1,
+        "KNK": 1,
+        "KNN": 1,
+        "NKK": 3,
+        "NKN": 1,
+        "NNK": 4,
+        "NNN": 5
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "not|person_is|same",
+    "n": 60,
+    "accuracy": {
+      "epoch4": 0.75,
+      "epoch5": 0.7833333333333333,
+      "v1": 0.7666666666666667,
+      "v2": 0.85,
+      "v3": 0.8333333333333334
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.033333333333333326,
+      "v1": 0.01666666666666672,
+      "v2": 0.09999999999999998,
+      "v3": 0.08333333333333337
+    },
+    "gt_distribution": {
+      "KKK": 13,
+      "KKN": 11,
+      "KNK": 4,
+      "KNN": 9,
+      "NKK": 12,
+      "NKN": 6,
+      "NNK": 5
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 13,
+        "KKN": 6,
+        "KNK": 3,
+        "KNN": 6,
+        "NKK": 13,
+        "NKN": 10,
+        "NNK": 9
+      },
+      "epoch5": {
+        "KKK": 14,
+        "KKN": 5,
+        "KNK": 3,
+        "KNN": 7,
+        "NKK": 14,
+        "NKN": 9,
+        "NNK": 8
+      },
+      "v1": {
+        "KKK": 13,
+        "KKN": 6,
+        "KNK": 3,
+        "KNN": 6,
+        "NKK": 15,
+        "NKN": 9,
+        "NNK": 8
+      },
+      "v2": {
+        "KKK": 13,
+        "KKN": 8,
+        "KNK": 3,
+        "KNN": 9,
+        "NKK": 13,
+        "NKN": 7,
+        "NNK": 7
+      },
+      "v3": {
+        "KKK": 13,
+        "KKN": 8,
+        "KNK": 3,
+        "KNN": 6,
+        "NKK": 14,
+        "NKN": 7,
+        "NNK": 9
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "not|same|same",
+    "n": 40,
+    "accuracy": {
+      "epoch4": 0.9,
+      "epoch5": 0.95,
+      "v1": 0.975,
+      "v2": 0.975,
+      "v3": 0.9
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.04999999999999993,
+      "v1": 0.07499999999999996,
+      "v2": 0.07499999999999996,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKK": 16,
+      "KKN": 2,
+      "KNK": 5,
+      "KNN": 7,
+      "NKK": 3,
+      "NKN": 2,
+      "NNK": 5
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 17,
+        "KKN": 3,
+        "KNK": 4,
+        "KNN": 7,
+        "NKK": 2,
+        "NKN": 2,
+        "NNK": 5
+      },
+      "epoch5": {
+        "KKK": 18,
+        "KKN": 2,
+        "KNK": 4,
+        "KNN": 7,
+        "NKK": 3,
+        "NKN": 1,
+        "NNK": 5
+      },
+      "v1": {
+        "KKK": 17,
+        "KKN": 2,
+        "KNK": 5,
+        "KNN": 7,
+        "NKK": 3,
+        "NKN": 1,
+        "NNK": 5
+      },
+      "v2": {
+        "KKK": 17,
+        "KKN": 2,
+        "KNK": 5,
+        "KNN": 7,
+        "NKK": 3,
+        "NKN": 1,
+        "NNK": 5
+      },
+      "v3": {
+        "KKK": 18,
+        "KKN": 4,
+        "KNK": 3,
+        "KNN": 6,
+        "NKK": 3,
+        "NKN": 1,
+        "NNK": 5
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "or|or|person_is",
+    "n": 27,
+    "accuracy": {
+      "epoch4": 0.6296296296296297,
+      "epoch5": 0.6296296296296297,
+      "v1": 0.7037037037037037,
+      "v2": 0.6296296296296297,
+      "v3": 0.6296296296296297
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0,
+      "v1": 0.07407407407407407,
+      "v2": 0.0,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKK": 13,
+      "KNK": 4,
+      "KNN": 2,
+      "NKK": 2,
+      "NKN": 1,
+      "NNK": 3,
+      "NNN": 2
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 12,
+        "KNK": 6,
+        "NKK": 3,
+        "NKN": 2,
+        "NNK": 2,
+        "NNN": 2
+      },
+      "epoch5": {
+        "KKK": 12,
+        "KNK": 6,
+        "NKK": 3,
+        "NKN": 3,
+        "NNK": 2,
+        "NNN": 1
+      },
+      "v1": {
+        "KKK": 13,
+        "KKN": 1,
+        "KNK": 5,
+        "KNN": 1,
+        "NKK": 3,
+        "NKN": 2,
+        "NNK": 1,
+        "NNN": 1
+      },
+      "v2": {
+        "KKK": 13,
+        "KKN": 1,
+        "KNK": 4,
+        "KNN": 2,
+        "NKK": 3,
+        "NKN": 2,
+        "NNK": 1,
+        "NNN": 1
+      },
+      "v3": {
+        "KKK": 12,
+        "KKN": 2,
+        "KNK": 5,
+        "NKK": 4,
+        "NKN": 2,
+        "NNK": 1,
+        "NNN": 1
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "or|or|same",
+    "n": 33,
+    "accuracy": {
+      "epoch4": 0.7878787878787878,
+      "epoch5": 0.7575757575757576,
+      "v1": 0.8181818181818182,
+      "v2": 0.7878787878787878,
+      "v3": 0.7878787878787878
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": -0.030303030303030276,
+      "v1": 0.030303030303030387,
+      "v2": 0.0,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKK": 18,
+      "KKN": 3,
+      "KNK": 4,
+      "KNN": 3,
+      "NKK": 2,
+      "NKN": 2,
+      "NNK": 1
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 16,
+        "KKN": 3,
+        "KNK": 5,
+        "KNN": 5,
+        "NKK": 2,
+        "NKN": 2
+      },
+      "epoch5": {
+        "KKK": 18,
+        "KKN": 3,
+        "KNK": 4,
+        "KNN": 4,
+        "NKK": 2,
+        "NKN": 2
+      },
+      "v1": {
+        "KKK": 20,
+        "KKN": 3,
+        "KNK": 5,
+        "KNN": 1,
+        "NKK": 2,
+        "NKN": 2
+      },
+      "v2": {
+        "KKK": 16,
+        "KKN": 4,
+        "KNK": 4,
+        "KNN": 5,
+        "NKK": 2,
+        "NKN": 2
+      },
+      "v3": {
+        "KKK": 20,
+        "KKN": 3,
+        "KNK": 3,
+        "KNN": 3,
+        "NKK": 2,
+        "NKN": 2
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "or|person_is|person_is",
+    "n": 38,
+    "accuracy": {
+      "epoch4": 0.8157894736842105,
+      "epoch5": 0.8157894736842105,
+      "v1": 0.7631578947368421,
+      "v2": 0.868421052631579,
+      "v3": 0.868421052631579
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0,
+      "v1": -0.05263157894736836,
+      "v2": 0.052631578947368474,
+      "v3": 0.052631578947368474
+    },
+    "gt_distribution": {
+      "KKK": 11,
+      "KKN": 3,
+      "KNK": 9,
+      "KNN": 4,
+      "NKK": 5,
+      "NKN": 1,
+      "NNK": 3,
+      "NNN": 2
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 11,
+        "KKN": 3,
+        "KNK": 8,
+        "KNN": 4,
+        "NKK": 5,
+        "NKN": 3,
+        "NNK": 2,
+        "NNN": 2
+      },
+      "epoch5": {
+        "KKK": 11,
+        "KKN": 3,
+        "KNK": 8,
+        "KNN": 4,
+        "NKK": 5,
+        "NKN": 3,
+        "NNK": 2,
+        "NNN": 2
+      },
+      "v1": {
+        "KKK": 12,
+        "KKN": 1,
+        "KNK": 8,
+        "KNN": 1,
+        "NKK": 8,
+        "NKN": 2,
+        "NNK": 4,
+        "NNN": 2
+      },
+      "v2": {
+        "KKK": 11,
+        "KKN": 2,
+        "KNK": 9,
+        "KNN": 4,
+        "NKK": 5,
+        "NKN": 2,
+        "NNK": 3,
+        "NNN": 2
+      },
+      "v3": {
+        "KKK": 11,
+        "KKN": 3,
+        "KNK": 9,
+        "KNN": 3,
+        "NKK": 4,
+        "NKN": 2,
+        "NNK": 4,
+        "NNN": 2
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "or|person_is|same",
+    "n": 72,
+    "accuracy": {
+      "epoch4": 0.8055555555555556,
+      "epoch5": 0.8055555555555556,
+      "v1": 0.8333333333333334,
+      "v2": 0.75,
+      "v3": 0.7777777777777778
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.0,
+      "v1": 0.02777777777777779,
+      "v2": -0.05555555555555558,
+      "v3": -0.02777777777777779
+    },
+    "gt_distribution": {
+      "KKK": 26,
+      "KKN": 7,
+      "KNK": 5,
+      "KNN": 7,
+      "NKK": 10,
+      "NKN": 6,
+      "NNK": 11
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 25,
+        "KKN": 6,
+        "KNK": 5,
+        "KNN": 9,
+        "NKK": 8,
+        "NKN": 7,
+        "NNK": 12
+      },
+      "epoch5": {
+        "KKK": 25,
+        "KKN": 8,
+        "KNK": 5,
+        "KNN": 6,
+        "NKK": 7,
+        "NKN": 7,
+        "NNK": 14
+      },
+      "v1": {
+        "KKK": 26,
+        "KKN": 7,
+        "KNK": 4,
+        "KNN": 8,
+        "NKK": 10,
+        "NKN": 7,
+        "NNK": 10
+      },
+      "v2": {
+        "KKK": 25,
+        "KKN": 9,
+        "KNK": 5,
+        "KNN": 9,
+        "NKK": 8,
+        "NKN": 6,
+        "NNK": 10
+      },
+      "v3": {
+        "KKK": 26,
+        "KKN": 8,
+        "KNK": 5,
+        "KNN": 8,
+        "NKK": 9,
+        "NKN": 5,
+        "NNK": 11
+      }
+    }
+  },
+  {
+    "signature_type": "top_ops_multiset",
+    "signature": "or|same|same",
+    "n": 66,
+    "accuracy": {
+      "epoch4": 0.9393939393939394,
+      "epoch5": 0.9545454545454546,
+      "v1": 0.9545454545454546,
+      "v2": 0.9393939393939394,
+      "v3": 0.9393939393939394
+    },
+    "delta_vs_epoch4": {
+      "epoch4": 0.0,
+      "epoch5": 0.015151515151515138,
+      "v1": 0.015151515151515138,
+      "v2": 0.0,
+      "v3": 0.0
+    },
+    "gt_distribution": {
+      "KKK": 43,
+      "KKN": 4,
+      "KNK": 3,
+      "KNN": 6,
+      "NKK": 4,
+      "NKN": 1,
+      "NNK": 5
+    },
+    "prediction_distribution": {
+      "epoch4": {
+        "KKK": 39,
+        "KKN": 6,
+        "KNK": 3,
+        "KNN": 7,
+        "NKK": 4,
+        "NKN": 1,
+        "NNK": 6
+      },
+      "epoch5": {
+        "KKK": 42,
+        "KKN": 5,
+        "KNK": 3,
+        "KNN": 6,
+        "NKK": 5,
+        "NNK": 5
+      },
+      "v1": {
+        "KKK": 42,
+        "KKN": 5,
+        "KNK": 3,
+        "KNN": 6,
+        "NKK": 4,
+        "NKN": 1,
+        "NNK": 5
+      },
+      "v2": {
+        "KKK": 40,
+        "KKN": 7,
+        "KNK": 3,
+        "KNN": 6,
+        "NKK": 4,
+        "NKN": 1,
+        "NNK": 5
+      },
+      "v3": {
+        "INVALID": 1,
+        "KKK": 41,
+        "KKN": 6,
+        "KNK": 4,
+        "KNN": 5,
+        "NKK": 3,
+        "NKN": 1,
+        "NNK": 5
+      }
+    }
+  }
+]

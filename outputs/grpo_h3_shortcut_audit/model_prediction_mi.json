@@ -1,0 +1,433 @@
+{
+  "epoch4": {
+    "features": {
+      "same_count": {
+        "mi": 0.0619127094726505,
+        "nmi_over_pred_entropy": 0.029851839529772613,
+        "conditional_mi_given_gt": 0.07172686967207204,
+        "conditional_nmi_given_gt": 0.07196685264509914
+      },
+      "different_count": {
+        "mi": 0.05812570768784985,
+        "nmi_over_pred_entropy": 0.028025898288600314,
+        "conditional_mi_given_gt": 0.07226243429605826,
+        "conditional_nmi_given_gt": 0.07250420915532409
+      },
+      "and_count": {
+        "mi": 0.03015142148538801,
+        "nmi_over_pred_entropy": 0.014537813050710419,
+        "conditional_mi_given_gt": 0.07150340060537712,
+        "conditional_nmi_given_gt": 0.07174263589805444
+      },
+      "or_count": {
+        "mi": 0.02854315002309229,
+        "nmi_over_pred_entropy": 0.013762368686835945,
+        "conditional_mi_given_gt": 0.06873360717374113,
+        "conditional_nmi_given_gt": 0.0689635753219657
+      },
+      "not_count": {
+        "mi": 0.008769529581248964,
+        "nmi_over_pred_entropy": 0.0042283174495324006,
+        "conditional_mi_given_gt": 0.04545603082808325,
+        "conditional_nmi_given_gt": 0.04560811711694554
+      },
+      "person_is_count": {
+        "mi": 0.012292299051015407,
+        "nmi_over_pred_entropy": 0.0059268564055492455,
+        "conditional_mi_given_gt": 0.09192409391928977,
+        "conditional_nmi_given_gt": 0.09223165254344876
+      },
+      "expression_nodes": {
+        "mi": 0.033877925964436714,
+        "nmi_over_pred_entropy": 0.01633458490358308,
+        "conditional_mi_given_gt": 0.15895021761535497,
+        "conditional_nmi_given_gt": 0.15948203150826615
+      },
+      "expression_depth": {
+        "mi": 0.00527312274530025,
+        "nmi_over_pred_entropy": 0.002542489504243598,
+        "conditional_mi_given_gt": 0.032213361054282026,
+        "conditional_nmi_given_gt": 0.03232114016401239
+      },
+      "top_ops": {
+        "mi": 0.7359864983779527,
+        "nmi_over_pred_entropy": 0.354863339575911,
+        "conditional_mi_given_gt": 0.7223787243702854,
+        "conditional_nmi_given_gt": 0.7247956511749609
+      },
+      "top_ops_multiset": {
+        "mi": 0.3399718071956131,
+        "nmi_over_pred_entropy": 0.163920847908189,
+        "conditional_mi_given_gt": 0.41971323871259986,
+        "conditional_nmi_given_gt": 0.42111751065846315
+      },
+      "op_signature": {
+        "mi": 0.904599085061143,
+        "nmi_over_pred_entropy": 0.43616160487941763,
+        "conditional_mi_given_gt": 0.8113385644336188,
+        "conditional_nmi_given_gt": 0.8140531320944481
+      }
+    },
+    "prediction_entropy": 2.0739998086517284,
+    "prediction_entropy_given_gt": 0.9966653679547366,
+    "exact_accuracy": 0.7335,
+    "prediction_distribution": {
+      "INVALID": 1,
+      "KKK": 259,
+      "KKN": 191,
+      "KNK": 274,
+      "KNN": 242,
+      "NKK": 207,
+      "NKN": 281,
+      "NNK": 286,
+      "NNN": 259
+    }
+  },
+  "epoch5": {
+    "features": {
+      "same_count": {
+        "mi": 0.06060896551010322,
+        "nmi_over_pred_entropy": 0.029194879375414803,
+        "conditional_mi_given_gt": 0.07557983162205476,
+        "conditional_nmi_given_gt": 0.08017346956402256
+      },
+      "different_count": {
+        "mi": 0.05609081981662509,
+        "nmi_over_pred_entropy": 0.027018522834571755,
+        "conditional_mi_given_gt": 0.07162633038175827,
+        "conditional_nmi_given_gt": 0.0759796799701894
+      },
+      "and_count": {
+        "mi": 0.022088246143029372,
+        "nmi_over_pred_entropy": 0.010639740776514625,
+        "conditional_mi_given_gt": 0.0631620142760582,
+        "conditional_nmi_given_gt": 0.06700091440381328
+      },
+      "or_count": {
+        "mi": 0.02322599322131548,
+        "nmi_over_pred_entropy": 0.011187784921976184,
+        "conditional_mi_given_gt": 0.07088833557101243,
+        "conditional_nmi_given_gt": 0.07519683085253573
+      },
+      "not_count": {
+        "mi": 0.0070889751013654655,
+        "nmi_over_pred_entropy": 0.0034147055841958593,
+        "conditional_mi_given_gt": 0.04693931183814449,
+        "conditional_nmi_given_gt": 0.0497922184827081
+      },
+      "person_is_count": {
+        "mi": 0.008589496181014535,
+        "nmi_over_pred_entropy": 0.0041374952169164385,
+        "conditional_mi_given_gt": 0.08949926190546581,
+        "conditional_nmi_given_gt": 0.09493890362526942
+      },
+      "expression_nodes": {
+        "mi": 0.02645207854480961,
+        "nmi_over_pred_entropy": 0.012741765774173817,
+        "conditional_mi_given_gt": 0.16759784866110133,
+        "conditional_nmi_given_gt": 0.17778421478654738
+      },
+      "expression_depth": {
+        "mi": 0.0034221094266612146,
+        "nmi_over_pred_entropy": 0.001648404177170618,
+        "conditional_mi_given_gt": 0.03747193966697053,
+        "conditional_nmi_given_gt": 0.039749432486405376
+      },
+      "top_ops": {
+        "mi": 0.7325001490354934,
+        "nmi_over_pred_entropy": 0.3528397707101564,
+        "conditional_mi_given_gt": 0.6858559733681142,
+        "conditional_nmi_given_gt": 0.7275413536391874
+      },
+      "top_ops_multiset": {
+        "mi": 0.32443252565140146,
+        "nmi_over_pred_entropy": 0.15627668897062658,
+        "conditional_mi_given_gt": 0.4119910893486015,
+        "conditional_nmi_given_gt": 0.43703133962658874
+      },
+      "op_signature": {
+        "mi": 0.9100476106066173,
+        "nmi_over_pred_entropy": 0.4383630374472532,
+        "conditional_mi_given_gt": 0.7900916112688029,
+        "conditional_nmi_given_gt": 0.8381122898713174
+      }
+    },
+    "prediction_entropy": 2.0760135615132023,
+    "prediction_entropy_given_gt": 0.9427037651364264,
+    "exact_accuracy": 0.7625,
+    "prediction_distribution": {
+      "KKK": 269,
+      "KKN": 248,
+      "KNK": 283,
+      "KNN": 238,
+      "NKK": 246,
+      "NKN": 248,
+      "NNK": 259,
+      "NNN": 209
+    }
+  },
+  "v1": {
+    "features": {
+      "same_count": {
+        "mi": 0.06950895334997768,
+        "nmi_over_pred_entropy": 0.033522168657648115,
+        "conditional_mi_given_gt": 0.07866502072306235,
+        "conditional_nmi_given_gt": 0.08195649922423807
+      },
+      "different_count": {
+        "mi": 0.05683540156629996,
+        "nmi_over_pred_entropy": 0.027410079208612867,
+        "conditional_mi_given_gt": 0.06976238534295225,
+        "conditional_nmi_given_gt": 0.07268136241098656
+      },
+      "and_count": {
+        "mi": 0.024530372951948293,
+        "nmi_over_pred_entropy": 0.01183029321690231,
+        "conditional_mi_given_gt": 0.060203519131076036,
+        "conditional_nmi_given_gt": 0.0627225369498429
+      },
+      "or_count": {
+        "mi": 0.03640851581426217,
+        "nmi_over_pred_entropy": 0.017558779824451733,
+        "conditional_mi_given_gt": 0.06909412500376388,
+        "conditional_nmi_given_gt": 0.071985140920585
+      },
+      "not_count": {
+        "mi": 0.008319444738087513,
+        "nmi_over_pred_entropy": 0.004012228874228075,
+        "conditional_mi_given_gt": 0.04855218335380576,
+        "conditional_nmi_given_gt": 0.05058368943141545
+      },
+      "person_is_count": {
+        "mi": 0.012095849210574414,
+        "nmi_over_pred_entropy": 0.005833480116622782,
+        "conditional_mi_given_gt": 0.08718396348230276,
+        "conditional_nmi_given_gt": 0.09083188906360447
+      },
+      "expression_nodes": {
+        "mi": 0.034516454415826806,
+        "nmi_over_pred_entropy": 0.016646293040344574,
+        "conditional_mi_given_gt": 0.17052748075790644,
+        "conditional_nmi_given_gt": 0.17766264110764182
+      },
+      "expression_depth": {
+        "mi": 0.002884083251616319,
+        "nmi_over_pred_entropy": 0.0013909103867036068,
+        "conditional_mi_given_gt": 0.02970638513797091,
+        "conditional_nmi_given_gt": 0.03094935090764256
+      },
+      "top_ops": {
+        "mi": 0.7637074412901989,
+        "nmi_over_pred_entropy": 0.36831412959319376,
+        "conditional_mi_given_gt": 0.7155191351219551,
+        "conditional_nmi_given_gt": 0.7454576748793508
+      },
+      "top_ops_multiset": {
+        "mi": 0.3354713705309698,
+        "nmi_over_pred_entropy": 0.16178819160359495,
+        "conditional_mi_given_gt": 0.4199551794048228,
+        "conditional_nmi_given_gt": 0.4375268196556354
+      },
+      "op_signature": {
+        "mi": 0.9057021516867483,
+        "nmi_over_pred_entropy": 0.4367940936985454,
+        "conditional_mi_given_gt": 0.7856593784937317,
+        "conditional_nmi_given_gt": 0.8185327055429047
+      }
+    },
+    "prediction_entropy": 2.0735219746625537,
+    "prediction_entropy_given_gt": 0.9598387128253242,
+    "exact_accuracy": 0.755,
+    "prediction_distribution": {
+      "INVALID": 1,
+      "KKK": 285,
+      "KKN": 218,
+      "KNK": 239,
+      "KNN": 189,
+      "NKK": 284,
+      "NKN": 277,
+      "NNK": 275,
+      "NNN": 232
+    }
+  },
+  "v2": {
+    "features": {
+      "same_count": {
+        "mi": 0.056742008082242806,
+        "nmi_over_pred_entropy": 0.027315770391117333,
+        "conditional_mi_given_gt": 0.06673157046295655,
+        "conditional_nmi_given_gt": 0.07280915157508655
+      },
+      "different_count": {
+        "mi": 0.0538212807465438,
+        "nmi_over_pred_entropy": 0.025909723619537153,
+        "conditional_mi_given_gt": 0.06254614015520359,
+        "conditional_nmi_given_gt": 0.06824253299305708
+      },
+      "and_count": {
+        "mi": 0.026208678398930006,
+        "nmi_over_pred_entropy": 0.012616935240680176,
+        "conditional_mi_given_gt": 0.0629522175988607,
+        "conditional_nmi_given_gt": 0.06868559396017258
+      },
+      "or_count": {
+        "mi": 0.02385162364545789,
+        "nmi_over_pred_entropy": 0.011482242116111593,
+        "conditional_mi_given_gt": 0.0669114256948861,
+        "conditional_nmi_given_gt": 0.07300538713124509
+      },
+      "not_count": {
+        "mi": 0.010303063162125993,
+        "nmi_over_pred_entropy": 0.004959925056827293,
+        "conditional_mi_given_gt": 0.047688570132397835,
+        "conditional_nmi_given_gt": 0.052031809038517035
+      },
+      "person_is_count": {
+        "mi": 0.008467590180521385,
+        "nmi_over_pred_entropy": 0.00407632293876441,
+        "conditional_mi_given_gt": 0.09831865848224765,
+        "conditional_nmi_given_gt": 0.1072730352130241
+      },
+      "expression_nodes": {
+        "mi": 0.031786489533397105,
+        "nmi_over_pred_entropy": 0.015302110005966676,
+        "conditional_mi_given_gt": 0.166691826465868,
+        "conditional_nmi_given_gt": 0.18187329288494147
+      },
+      "expression_depth": {
+        "mi": 0.0032239729274613368,
+        "nmi_over_pred_entropy": 0.0015520300956932815,
+        "conditional_mi_given_gt": 0.030853856631706936,
+        "conditional_nmi_given_gt": 0.033663873165115536
+      },
+      "top_ops": {
+        "mi": 0.7349087773524061,
+        "nmi_over_pred_entropy": 0.3537872574315424,
+        "conditional_mi_given_gt": 0.6667700399562673,
+        "conditional_nmi_given_gt": 0.727496154640199
+      },
+      "top_ops_multiset": {
+        "mi": 0.3262049840292678,
+        "nmi_over_pred_entropy": 0.15703604340661492,
+        "conditional_mi_given_gt": 0.3958648279356872,
+        "conditional_nmi_given_gt": 0.4319182369072933
+      },
+      "op_signature": {
+        "mi": 0.9104357384068811,
+        "nmi_over_pred_entropy": 0.43828645525099885,
+        "conditional_mi_given_gt": 0.7653180823596024,
+        "conditional_nmi_given_gt": 0.8350194649263779
+      }
+    },
+    "prediction_entropy": 2.0772618626452664,
+    "prediction_entropy_given_gt": 0.916527236196918,
+    "exact_accuracy": 0.7695,
+    "prediction_distribution": {
+      "INVALID": 1,
+      "KKK": 268,
+      "KKN": 255,
+      "KNK": 291,
+      "KNN": 264,
+      "NKK": 204,
+      "NKN": 229,
+      "NNK": 260,
+      "NNN": 228
+    }
+  },
+  "v3": {
+    "features": {
+      "same_count": {
+        "mi": 0.06157580218944995,
+        "nmi_over_pred_entropy": 0.029633563668859858,
+        "conditional_mi_given_gt": 0.07775003122550997,
+        "conditional_nmi_given_gt": 0.07948100495595017
+      },
+      "different_count": {
+        "mi": 0.05359458815164186,
+        "nmi_over_pred_entropy": 0.02579257734087814,
+        "conditional_mi_given_gt": 0.060423684384273625,
+        "conditional_nmi_given_gt": 0.06176891613166964
+      },
+      "and_count": {
+        "mi": 0.024369969880645485,
+        "nmi_over_pred_entropy": 0.011728130668024613,
+        "conditional_mi_given_gt": 0.06941582046925016,
+        "conditional_nmi_given_gt": 0.07096124700883207
+      },
+      "or_count": {
+        "mi": 0.03113877667913398,
+        "nmi_over_pred_entropy": 0.014985641899597123,
+        "conditional_mi_given_gt": 0.07173943464869534,
+        "conditional_nmi_given_gt": 0.07333659255147931
+      },
+      "not_count": {
+        "mi": 0.00915569522170187,
+        "nmi_over_pred_entropy": 0.004406209381572037,
+        "conditional_mi_given_gt": 0.05243830853091088,
+        "conditional_nmi_given_gt": 0.0536057593100939
+      },
+      "person_is_count": {
+        "mi": 0.009960677769078746,
+        "nmi_over_pred_entropy": 0.004793609962998823,
+        "conditional_mi_given_gt": 0.0887445729228877,
+        "conditional_nmi_given_gt": 0.09072032163999243
+      },
+      "expression_nodes": {
+        "mi": 0.030962017423031257,
+        "nmi_over_pred_entropy": 0.0149005759080301,
+        "conditional_mi_given_gt": 0.1712980342565621,
+        "conditional_nmi_given_gt": 0.17511169699984944
+      },
+      "expression_depth": {
+        "mi": 0.0030403475350064715,
+        "nmi_over_pred_entropy": 0.0014631775640839642,
+        "conditional_mi_given_gt": 0.03206632572059723,
+        "conditional_nmi_given_gt": 0.03278022855226428
+      },
+      "top_ops": {
+        "mi": 0.7228494096562439,
+        "nmi_over_pred_entropy": 0.34787373030304025,
+        "conditional_mi_given_gt": 0.7120170163479917,
+        "conditional_nmi_given_gt": 0.7278688781607547
+      },
+      "top_ops_multiset": {
+        "mi": 0.315083604582917,
+        "nmi_over_pred_entropy": 0.1516350534694535,
+        "conditional_mi_given_gt": 0.4218373865382088,
+        "conditional_nmi_given_gt": 0.4312288867486372
+      },
+      "op_signature": {
+        "mi": 0.8971392194113381,
+        "nmi_over_pred_entropy": 0.431751292438901,
+        "conditional_mi_given_gt": 0.7989912170910776,
+        "conditional_nmi_given_gt": 0.8167794132607445
+      }
+    },
+    "prediction_entropy": 2.0779074321782054,
+    "prediction_entropy_given_gt": 0.978221541972204,
+    "exact_accuracy": 0.752,
+    "prediction_distribution": {
+      "INVALID": 2,
+      "KKK": 291,
+      "KKN": 256,
+      "KNK": 255,
+      "KNN": 205,
+      "NKK": 219,
+      "NKN": 223,
+      "NNK": 293,
+      "NNN": 256
+    }
+  },
+  "_meta": {
+    "dataset": "data/processed/grpo_v3_final_holdout.jsonl",
+    "n": 2000,
+    "models": {
+      "epoch4": "sft_epoch4",
+      "epoch5": "sft_epoch5",
+      "v1": "grpo_v1_best",
+      "v2": "grpo_v2_best",
+      "v3": "grpo_v3_best"
+    },
+    "note": "Raw MI is bounded by H(prediction); GRPO lowers H(prediction), so use nmi_over_pred_entropy and conditional_nmi_given_gt for cross-model comparison."
+  }
+}
