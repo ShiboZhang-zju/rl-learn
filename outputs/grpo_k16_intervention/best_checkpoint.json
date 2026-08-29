@@ -1,0 +1,5 @@
+{
+  "step": 625,
+  "exact": 0.768,
+  "checkpoint": "outputs/grpo_k16_intervention/checkpoint-625"
+}

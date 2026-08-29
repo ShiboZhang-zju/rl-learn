@@ -1,0 +1,48 @@
+{
+  "epoch4": {
+    "n": 200,
+    "pass_at_8": 0.935,
+    "all_correct": 0.375,
+    "all_wrong": 0.065,
+    "mixed": 0.56,
+    "avg_correct_per_group": 5.335,
+    "avg_unique_answers": 1.825,
+    "mean_reward_mean": 0.666875
+  },
+  "k8": {
+    "n": 200,
+    "pass_at_8": 0.84,
+    "all_correct": 0.59,
+    "all_wrong": 0.16,
+    "mixed": 0.25,
+    "avg_correct_per_group": 6.035,
+    "avg_unique_answers": 1.335,
+    "mean_reward_mean": 0.754375
+  },
+  "k16": {
+    "n": 200,
+    "pass_at_8": 0.845,
+    "all_correct": 0.61,
+    "all_wrong": 0.155,
+    "mixed": 0.235,
+    "avg_correct_per_group": 5.84,
+    "avg_unique_answers": 1.3,
+    "mean_reward_mean": 0.73
+  },
+  "epoch4_to_k8": {
+    "all-correct -> all-correct": 75,
+    "all-wrong -> all-wrong": 13,
+    "mixed -> all-correct": 43,
+    "mixed -> all-wrong": 19,
+    "mixed -> mixed": 50
+  },
+  "epoch4_to_k16": {
+    "all-correct -> all-correct": 71,
+    "all-correct -> mixed": 4,
+    "all-wrong -> all-correct": 1,
+    "all-wrong -> all-wrong": 12,
+    "mixed -> all-correct": 50,
+    "mixed -> all-wrong": 19,
+    "mixed -> mixed": 43
+  }
+}

@@ -1,0 +1,56 @@
+# H5 causal intervention: K = 8 -> 16.
+#
+# Identical to configs/grpo_v2_kl001.yaml except `generation.num_generations`: 8 -> 16.
+# Sampler alignment was verified before training (see
+# outputs/grpo_k16_intervention/audit/sampler_alignment.json): with
+# prompt_batch_size = 8 both runs see the same 8 unique prompts per optimizer step in
+# the same order for at least the first 100 steps; only the rollouts per prompt differ
+# (64 vs 128 completions per step).
+#
+# Design is preregistered in outputs/grpo_k16_intervention/preregistered_design.md.
+dataset_version: kk-v2-statement-first
+model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+init_checkpoint: outputs/sft_v2_5k_p800/checkpoint-1252
+reference_checkpoint: outputs/sft_v2_5k_p800/checkpoint-1252
+
+seed: 20260830
+
+train_file: data/processed/grpo_v1_train.jsonl
+val_file: data/processed/v2_answer_only_val.jsonl
+output_dir: outputs/grpo_k16_intervention
+
+generation:
+  # THE single algorithmic variable: K = 8 (GRPO-V2) -> 16.
+  num_generations: 16
+  temperature: 0.8
+  top_p: 0.95
+  max_completion_length: 64
+  max_prompt_length: 512
+
+training:
+  bf16: true
+  gradient_checkpointing: false
+
+  beta: 0.01
+
+  clip_range: 0.2
+  # Unique prompts per optimizer step. In TRL 0.23 the trainer batch is
+  # prompt_batch_size * num_generations rows (each unique prompt repeated
+  # num_generations times), so per_device_train_batch_size is set to that product.
+  prompt_batch_size: 8
+  learning_rate: 1e-5
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  epochs: 1
+  max_steps: -1
+  eval_every: 100
+  save_every: 100
+  log_every: 1
+
+reward:
+  # exact: +1 iff parsed answer == ground truth, else 0. Same as GRPO-V2.
+  mode: exact
+  correct: 1.0
+  incorrect: 0.0
+  parse_failure: 0.0
+  format_invalid: 0.0
