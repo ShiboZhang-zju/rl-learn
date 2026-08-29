@@ -9,10 +9,10 @@
 ## Last known good commit
 
 ```text
-d3bb35c   # Complete H5 causal intervention: K=8 vs K=16
+94958e4   # Complete H6 advantage geometry diagnosis
 ```
 
-上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（K16 因果干预完成）。
+上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（H6 诊断完成）。
 
 ```text
 GRPO-V1 结果由 30976e5 产生。
@@ -21,7 +21,8 @@ GRPO-V3 结果由 dc0526a 产生。
 H3 诊断结果由 63abc47 产生。
 H4 诊断结果由 247cb21 产生。
 H5 诊断结果由 b633eda 产生。
-K16 因果干预结果由 d3bb35c 产生。
+K16 因果干预结果由 d3bb35c 产生（报告修正随 94958e4 一并冻结）。
+H6 诊断结果由 94958e4 产生。
 ```
 
 恢复时先比较（避免「文档描述状态 A，但 checkout 的代码是状态 B」）：
@@ -66,6 +67,7 @@ H3 Diagnosis   COMPLETE   (structure/operator shortcut，零训练)
 H4 Diagnosis   COMPLETE   (8-way probability landscape，零训练)
 H5 Diagnosis   COMPLETE   (finite-K sampling feedback，零训练)
 K8 vs K16      COMPLETE   (H5 因果干预，K=8 -> K=16)
+H6 Diagnosis   COMPLETE   (advantage geometry，零训练)
 GRPO-V4        NOT STARTED
 ```
 
@@ -91,6 +93,14 @@ H5 CAUSAL     NOT_SUPPORTED   (K=8 -> K=16 干预，2026-08-29)
               K16 确实提高 sampling coverage，
               但 lower tail / p10 / common-eval all-wrong / Pass@8 均无改善；
               低支持区(initial q<0.20)反而显著更差
+
+H6 GEOMETRY   SUPPORTED       (零训练诊断，2026-08-29)
+              K16 vs synthetic-K8 在固定 completion/reward 下：
+              gradient norm ratio 1.2180 CI [1.1813,1.2564]，
+              cosine 0.9965 CI [0.9932,0.9987] -> 放大强度而非改变方向
+              rare-success (m=1..3) 差异最大：norm ratio 1.2688
+
+H6 CAUSAL     NOT YET TESTED  (本轮禁止训练干预)
 ```
 
 **不要重新运行已经完成的实验。**
@@ -1009,8 +1019,16 @@ Primary bootstrap (10000, seed 20260903), K16 - K8:
   McNemar exact p = 0.6643
 
 低支持区 (initial q<0.20, n=217):
-  median Δgold_q   K8 -0.02208  K16 -0.03634  diff -0.01355 CI [-0.02760,-0.00000] EXCL0
-  frac q<0.05      K8  0.379    K16  0.547    diff +0.08336 CI [+0.02304,+0.14747] EXCL0
+  median Δgold_q      K8 -0.02208   K16 -0.03634   diff -0.01355 CI [-0.02760,-0.00000] EXCL0
+  frac final q < 0.05 K8  0.58986   K16  0.67281   diff +0.08295 CI [+0.02304,+0.14747] EXCL0
+    (bootstrap 均值 +0.08336)
+
+非单调：K16 对 low-support region 的作用不是一致的
+  [0.00,0.05) N=66  medΔ -0.0100 -> -0.0090  q<.05 0.864 -> 0.803   K16 略好
+  [0.05,0.10) N=56  medΔ -0.0532 -> -0.0582  q<.05 0.625 -> 0.732   K16 更差
+  [0.10,0.20) N=95  medΔ -0.0662 -> -0.0983  q<.05 0.379 -> 0.547   K16 更差
+  即极低支持 [0,.05) 略有 rescue，但 [.05,.20) 明显恶化，
+  使 <.20 聚合结果整体显著更差。
 
 Common K_eval=8 (200-prompt):
   Pass@8      E4 0.9350 | K8 0.8400 | K16 0.8450
@@ -1048,9 +1066,59 @@ KL mean 0.01544 vs K8 0.00908，但 Top1 几乎不变。
 
 更像：更多 rollout -> 组统计量噪声更小 -> 更新更自信 -> sharpening 更强，
 而不是：更多 rollout -> 低支持答案被救回来。
+```
 
-结合 H4：GRPO 的可观测作用是 answer-space 概率重分配 / sharpening；
-本轮说明 sampling coverage 不是该 sharpening 的瓶颈。
+### 对 coverage 结论的严格限定
+
+```text
+Increasing K from 8 to 16 increased sampling coverage,
+but did not mitigate lower-tail collapse.
+
+Finite-K miss is therefore not a sufficient explanation
+of the observed polarization.
+
+Because changing K also changes group-normalized advantage geometry,
+the K16 intervention is not a pure coverage-only intervention.
+```
+
+**禁止写：**
+
+```text
+sampling coverage is not the bottleneck
+```
+
+低支持区（initial gold_q < 0.20）聚合与非单调性：
+
+```text
+initial gold_q < 0.20, N=217
+
+frac final gold_q < 0.05:
+K8  = 0.58986
+K16 = 0.67281
+
+observed difference = +0.08295
+
+paired bootstrap mean difference = +0.08336
+95% CI = [+0.02304, +0.14747]
+```
+
+注意：
+
+```text
+0.379 -> 0.547 只属于 initial q ∈ [0.10,0.20) 这一 bin，
+不是 <0.20 的聚合值。
+
+[0.00,0.05):
+K16 slightly improves/rescues
+
+[0.05,0.10):
+K16 worsens
+
+[0.10,0.20):
+K16 worsens
+
+Thus the K effect is non-monotonic within the low-support region,
+although the aggregated initial-q<0.20 result is significantly worse.
 ```
 
 ### 已按规格不执行
@@ -1060,15 +1128,315 @@ KL mean 0.01544 vs K8 0.00908，但 Top1 几乎不变。
 未改 reward / beta / LR / init / 训练数据 / epoch / generator
 ```
 
+## H6 诊断结论（advantage geometry，零训练，2026-08-29）
+
+脚本：`scripts/audit_h6_advantage_geometry.py`（Phase A+B）、
+`scripts/audit_h6_gradient_geometry.py`（Phase C）；
+报告：`outputs/grpo_h6_advantage_audit/h6_advantage_geometry_report.md`。
+
+### 判定
+
+```text
+H6-A Group-Normalized Advantage Geometry:
+SUPPORTED
+
+H6-B Geometry Causes Polarization:
+NOT YET CAUSALLY TESTED
+```
+
+### H6 数学结果
+
+```text
+TRL 0.23:
+scale_rewards="group"
+
+A_i = (r_i - group_mean) / (sample_std + 1e-4)
+sample std uses ddof=1.
+```
+
+analytic gate：
+
+```text
+H6_ANALYTIC_FORMULA_VALID
+max error vs torch.std(correction=1): 1.89e-08
+```
+
+rare success m=1：
+
+```text
+K8:
+A+ ≈ +2.4742
+A- ≈ -0.3535
+
+K16:
+A+ ≈ +3.7485
+A- ≈ -0.2499
+```
+
+解释：
+
+```text
+single rare-success positive advantage:
++51.5%
+
+mean |advantage|:
+-24.2%
+```
+
+因此**不能**简单理解为 "K16 makes all advantages larger"。
+真正变化包括 advantage allocation、zero/non-zero structure、positive/negative weighting。
+
+### 固定 completion counterfactual 设计
+
+```text
+200 prompts
+16 fixed completions / prompt
+
+same:
+prompt
+completion
+reward
+policy
+
+counterfactual only changes:
+K16 normalization
+vs
+two synthetic K8 normalization groups
+```
+
+因此它隔离的是 grouping / group-normalization geometry，**不是** sampling coverage。
+
+### 真实 group composition
+
+```text
+m=0:      13
+m=1:       1
+m=2:       6
+m=3:       5
+m=4-7:    24
+m=8:       6
+m=9-12:   26
+m=13-15:  33
+m=16:     86
+
+zero-variance groups: 49.5%
+rare-success m=1..3:  12 / 200 = 6%
+```
+
+```text
+The strongest rare-success geometry effect exists, but it applies
+to a relatively small subset of the observed Epoch4 groups.
+```
+
+### newly-nonzero effect（最重要的结构性现象）
+
+synthetic K8 advantage = 0 → K16 advantage < 0 的 wrong completions（每 prompt）：
+
+```text
+m=1:    mean 8.000
+m=2:    mean 3.867
+m=3:    mean 1.920
+m=4-7:  mean 0.117
+m>=8:   ~0
+```
+
+```text
+Larger grouping can convert samples that would belong to an
+all-wrong synthetic K8 subgroup and therefore receive zero task
+advantage into negative-advantage samples inside a mixed K16 group.
+```
+
+这可能加强 reward-relative discrimination，
+但**不要**说它已经导致 polarization。
+
+```text
+Q9. Does this establish that geometry caused polarization?
+    NO — not yet causally tested.
+```
+
+### 关键数字
+
+```text
+Phase A (解析，gate H6_ANALYTIC_FORMULA_VALID，误差 1.89e-08):
+  K=8  m=1: A+=+2.4742  A-=-0.3535  sum+=2.4742  mean|A|=0.6185
+  K=16 m=1: A+=+3.7485  A-=-0.2499  sum+=3.7485  mean|A|=0.4686
+  -> 单个 rare success 权重 +51.5%，但 mean|A| −24.2%
+
+Phase B (固定 200×16 completion，一次性生成，seed 20260904):
+  m 分布: m=0:13  m=1:1  m=2:6  m=3:5  m=4-7:24  m=8:6  m=9-12:26  m=13-15:33  m=16:86
+  零方差组(无 geometry 差异) 99/200 = 49.5%；mixed 101/200 = 50.5%；rare-success 12/200 = 6%
+  mixed 组 mean|ΔA| 0.19-0.25，cosine 0.95-0.97
+
+  newly_nonzero_wrong (synthetic-K8 零 -> K16 负) per prompt:
+    m=1: 8.000   m=2: 3.867   m=3: 1.920   m=4-7: 0.117   m>=8: 0
+  对称地 newly_nonzero_correct 集中在 m=13-15: 4.048
+  总量(20 partitions × 200 prompts): wrong 872 / correct 2784
+  nonzero advantages: K16 8.080 vs K8 7.166；正/负总权重 ratio 1.129
+
+Phase C (64 prompts × 20 partitions，10000 次 prompt 配对 bootstrap):
+  norm ratio ‖g16‖/‖g8‖   1.2180  CI [1.1813,1.2564]   <- CI 不跨 1
+  cosine(g16, g8)         0.9965  CI [0.9932,0.9987]   <- 方向几乎不变
+  ‖g16-g8‖/‖g8‖           0.2345  CI [0.1978,0.2722]
+
+  rare-success (m=1..3, n=12):
+    norm ratio 1.2688 CI [1.2096,1.3341]
+    cosine     0.9957 CI [0.9918,0.9988]
+    相对差     0.2825 CI [0.2204,0.3494]
+```
+
+### Gradient geometry（primary）
+
+```text
+gradient norm ratio
+||g16|| / ||g8||
+= 1.2180
+95% CI [1.1813, 1.2564]
+
+即 task-gradient magnitude ≈ +21.8%
+
+gradient cosine:
+0.9965
+95% CI [0.9932, 0.9987]
+
+相对差:
+||g16 - g8|| / ||g8||
+= 0.2345
+```
+
+Canonical conclusion：
+
+```text
+The dominant observed geometry effect is task-gradient
+magnitude amplification, not a substantial rotation
+of the gradient direction.
+```
+
+### Rare-success subgroup
+
+```text
+m=1..3
+
+gradient norm ratio:
+1.2688
+95% CI [1.2096, 1.3341]
+
+relative gradient difference:
+0.2825
+95% CI [0.2204, 0.3494]
+
+The geometry effect is stronger in rare-success groups.
+
+注：rare-success subgroup n=12，样本较小。
+```
+
+### H6 正确结论
+
+允许写：
+
+```text
+H6_GEOMETRY_SUPPORTED
+
+Holding prompts, completions, rewards and policy fixed,
+changing only group normalization from synthetic K8
+to K16 produces a measurable change in the
+reward-relative task gradient.
+
+The dominant effect is approximately a magnitude
+amplification rather than a change in gradient direction.
+```
+
+**禁止写：**
+
+```text
+Advantage geometry caused K16 polarization.
+```
+
+因为 H6-B = NOT YET CAUSALLY TESTED。
+
+### 对 K16 的新解释（hypothesis / lead，非因果）
+
+```text
+K16 increased sampling coverage,
+but also increased effective reward-relative gradient magnitude.
+
+This provides a plausible explanation for why additional
+coverage did not automatically rescue the lower tail and why
+K16 showed even stronger sharpening.
+
+plausible mechanism
+not causal conclusion
+```
+
+### 限定
+
+```text
+1. 约一半 prompt（m=0 / m=16，99/200）完全不受影响。
+2. rare-success 只占 6%（12/200），梯度子组 n=12，CI 较宽。
+3. 只使用 SFT Epoch4 一个 policy（规格 §16 指定 Epoch4 为 primary）。
+4. KL 被排除：H6 只隔离 reward-relative gradient；
+   实际训练 beta=0.01 存在，但在 SFT 初始化处 reference≈policy，KL 接近 0。
+```
+
 ## 下一个问题
 
 ```text
-H5 已在两个层面都被检验：
-  - 相关性：       SUPPORTED   (predictive / path-dependent)
-  - 因果 (K=8->16)：NOT_SUPPORTED
+Next question:
 
-下一步未定，需人工确认。不建议继续沿 K 方向扩大（K=32），
-因为 K16 已证明 coverage 提升不改变 lower-tail collapse。
+Does group/sample-std reward normalization itself
+contribute causally to probability sharpening?
+```
+
+下一步**只有在确认 TRL 0.23 合法的 reward-scaling / normalization 选项之后**才设计。
+
+潜在 intervention：
+
+```text
+same K
+same rollouts
+same reward
+same beta
+same LR
+
+change only:
+reward/advantage scaling rule
+```
+
+目的：
+
+```text
+hold sampling coverage fixed
+while manipulating advantage geometry
+```
+
+但是：
+
+```text
+DO NOT RUN YET
+```
+
+当前不要开始任何新训练。禁止自动启动 normalization intervention。
+
+不建议继续沿 K 方向扩大（K=32）：K16 已证明 K 的提升不改变 lower-tail collapse，
+且 K 同时改变 coverage 与 advantage geometry，不是单变量。
+
+若做 normalization intervention（下一候选）：
+
+```text
+固定 K，改变 reward scaling / normalization。
+例如比较 group sample-std normalization vs 不做 group-std scaling / fixed scaling。
+目标：保留完全相同的 sampling coverage，只操纵 advantage geometry。
+
+前置条件：必须先确认 TRL 0.23 支持哪些合法 scale_rewards 选项
+（本轮未训练，也未做该确认）。
+
+是否值得做，取决于 H6-A 的结论是否被认为足够重要：
+  - 支持做：gradient norm ratio 1.218 且 rare-success 1.269，量级不小；
+            且它给出了 K16 sharpening 更强的一个自洽解释。
+  - 反对做：cosine ≈ 0.9965 说明方向未变，只是强度放大；
+            而"强度放大"在固定 LR 下近似等价于更大的有效学习率，
+            可能不产生质变。
+
+本轮不执行。
 ```
 
 ## 下一个问题（K 干预之前的版本，保留作历史）
