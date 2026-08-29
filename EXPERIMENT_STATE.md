@@ -9,10 +9,10 @@
 ## Last known good commit
 
 ```text
-247cb21   # Complete H4 probability landscape diagnosis
+b633eda   # Complete H5 finite-K sampling feedback diagnosis
 ```
 
-上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（H4 诊断完成）。
+上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（H5 诊断完成）。
 
 ```text
 GRPO-V1 结果由 30976e5 产生。
@@ -20,6 +20,7 @@ GRPO-V2 结果由 87762e2 产生。
 GRPO-V3 结果由 dc0526a 产生。
 H3 诊断结果由 63abc47 产生。
 H4 诊断结果由 247cb21 产生。
+H5 诊断结果由 b633eda 产生。
 ```
 
 恢复时先比较（避免「文档描述状态 A，但 checkout 的代码是状态 B」）：
@@ -62,7 +63,8 @@ GRPO-V2        COMPLETE   (KL regularization 单变量验证，beta=0.01)
 GRPO-V3        COMPLETE   (binary reward sparsity 单变量验证，reward.mode=partial)
 H3 Diagnosis   COMPLETE   (structure/operator shortcut，零训练)
 H4 Diagnosis   COMPLETE   (8-way probability landscape，零训练)
-GRPO-V4        NOT STARTED
+H5 Diagnosis   COMPLETE   (finite-K sampling feedback，零训练)
+GRPO-V4        NOT STARTED  (H5 若转因果实验则为 K 干预，不是 V4)
 ```
 
 ```text
@@ -77,6 +79,11 @@ H3            NOT_SUPPORTED   (零训练诊断，未训练 V4)
 H4            SUPPORTED       (零训练诊断，未训练 V4)
               GRPO 主要在 8 个合法答案上重分配/sharpen 概率，
               而非广泛扩大 gold answer 的 high-rank support
+
+H5            SUPPORTED       (零训练诊断，6/7 判据，判据 4 未检验)
+
+              H5 is supported as a predictive/path-dependent mechanism,
+              not yet established causally.
 ```
 
 **不要重新运行已经完成的实验。**
@@ -759,7 +766,259 @@ GRPO-specific（Epoch5 不出现或反向）:
    但与实测值高度吻合，且与 rollout 正确比例 spearman rho = 0.88~0.93。
 ```
 
+## H5 诊断结论（零训练，2026-08-29）
+
+分析对象：**GRPO-V2**（标准 exact reward、beta=0.01、无 V3 代理目标混杂），
+Epoch4 checkpoint-1252 → checkpoint-600。
+数据：GRPO-V3 Fresh Holdout N=2000（复用 H4 的 8-way 概率）+ 200-prompt 诊断子集。
+脚本：`scripts/audit_h5_sampling_feedback.py`；
+报告：`outputs/grpo_h5_sampling_feedback/h5_sampling_feedback_report.md`。
+
+### 核心结论
+
+```text
+H5 = SUPPORTED   (7 条判据中 6 条成立，判据 4 数据不足无法检验)
+
+Finite-K on-policy sampling is consistent with a
+path-dependent feedback mechanism that preferentially
+reinforces already-supported answers and leaves low-support
+gold answers increasingly unlikely to receive positive
+reinforcement.
+```
+
+**不是因果结论。**
+
+```text
+H5 is supported as a predictive/path-dependent mechanism,
+not yet established causally.
+```
+
+允许写：
+
+```text
+The observations are consistent with finite-K
+on-policy sampling creating a path-dependent
+rich-get-richer / poor-get-poorer feedback mechanism.
+```
+
+**禁止写：**
+
+```text
+K=8 causes polarization.
+```
+
+真正的因果实验需要 K 干预（K=8 vs 更大 K），本轮禁止实施。
+
+### 核心证据（保留）
+
+```text
+Initial gold_q vs K=8 correct_count:
+Spearman rho = +0.9323
+
+Low-support region:
+initial gold_q < 0.20
+
+V2 shows:
+- negative median gold_q change
+- strong lower-tail collapse
+
+while Epoch5 SFT does not show the same pattern.
+```
+
+关键 V2 vs Epoch5（median gold_q change）：
+
+```text
+initial q [0.05,0.10):
+median Δ V2 = -0.0499
+median Δ E5 = -0.0109
+
+initial q [0.10,0.20):
+median Δ V2 = -0.0896
+median Δ E5 = +0.0266
+
+initial q [0.40,0.60):
+median Δ V2 = +0.2560
+median Δ E5 = +0.0905
+
+initial q [0.60,0.80):
+median Δ V2 = +0.2143
+median Δ E5 = +0.0939
+```
+
+低尾与分位数：
+
+```text
+gold_q < 0.05:
+
+Epoch4 = 3.30%
+Epoch5 = 4.35%
+GRPO-V2 = 10.55%
+```
+
+```text
+p10 gold_q:
+
+Epoch4 = 0.1642
+Epoch5 = 0.1816
+GRPO-V2 = 0.0450
+```
+
+### 证据缺口（必须保留）
+
+```text
+Criterion 4 NOT TESTED:
+
+MISS and task difficulty are strongly confounded.
+
+Within similar initial-gold_q bins,
+historical HIT/MISS sample sizes were too small
+to determine whether MISS independently predicts
+future deterioration.
+```
+
+```text
+B3 temporal rollout alignment unavailable:
+
+V2 probe IDs and the 200-prompt diagnostic IDs
+have no overlap.
+
+No new rollout or training was performed to fill this gap.
+```
+
+### 概率定义（必须遵守）
+
+```text
+gold_q 是 8 个 canonical legal answer 上重新归一化的概率，
+不是完整生成空间中的真实 P(generate exact correct completion)。
+
+真实 hit/miss 一律取自已保存 rollout 的 correct_count；
+1-(1-q)^8 只叫 "8-way implied hit probability"，仅用于解释与预测。
+实测：低 q 区真实 miss 比 implied 更严重（[0,0.05) 桶 implied 87.4% vs 实际 100%）。
+```
+
+### 关键数字
+
+```text
+Q1  spearman(initial gold_q, correct_count) = +0.9323
+Q2  q<0.10: 10/15 miss；q>0.20: 1/177 miss
+Q3  MISS(n=13) vs HIT(n=187):
+      delta gold_q  -0.0465 vs +0.0845   (差 +0.1304, CI [+0.0836,+0.1828] EXCL0)
+      P(final correct)  0.000 vs 0.829
+      final all-wrong   1.000 vs 0.102
+      final mean correct_count  0.0 vs 6.45
+    但 MISS 的初始 mean gold_q = 0.0657 vs HIT 0.6977 -> 与难度几乎完全共线
+Q4  控制初始 gold_q 后无法检验（每桶 MISS<=6、HIT<=3）
+Q5  step100 future all-correct 0.8767 vs future all-wrong 0.1826（step0: 0.8305/0.2127）
+Q6  low-quartile median 0.2112 -> 0.0952；低尾(q<0.05) 3.0% -> 11.5%
+Q7  整体低尾 E4 3.30% / E5 4.35% / V2 10.55%（V2 是 E5 的 6.9 倍）
+```
+
+### 最重要的一张表：bin 级 V2 vs Epoch5（10000 bootstrap）
+
+```text
+bin            N    medΔV2    medΔE5    medΔ差(V2-E5)              tail<0.05 V2/E5    tail差
+[0.00,0.05)    66   -0.0028   -0.0001   -0.0029 [-0.0082,-0.0002]   0.773 / 0.727    +0.046 n.s.
+[0.05,0.10)    60   -0.0499   -0.0109   -0.0397 [-0.0543,-0.0288]   0.667 / 0.383    +0.282
+[0.10,0.20)   118   -0.0896   +0.0266   -0.1187 [-0.1584,-0.0686]   0.449 / 0.110    +0.339
+[0.20,0.40)   201   -0.0177   +0.0480   -0.0545 n.s.                0.199 / 0.010    +0.189
+[0.40,0.60)   270   +0.2560   +0.0905   +0.1650 [+0.0984,+0.2172]   0.074 / 0.004    +0.071
+[0.60,0.80)   332   +0.2143   +0.0939   +0.1181 [+0.0996,+0.1347]   0.012 / 0.000    +0.012
+[0.80,1.00]   953   +0.0106   +0.0032   +0.0071 [+0.0036,+0.0107]   0.003 / 0.000    +0.003
+```
+
+低支持桶 V2 中位数显著为负、Epoch5 为正 → **GRPO 特有的恶化**；
+中高支持桶 V2 中位数增益是 Epoch5 的 2–3 倍 → **GRPO 特有的强化**。
+
+### 均值陷阱（必须记录）
+
+```text
+所有 bin 的 mean delta_gold_q 都是正的（含最低桶 +0.0646），
+因为低桶里少数题发生极大幅度跃升（0.02 -> 0.9）把均值拉正，
+而多数题其实在下降（最低桶 62.1% 下降）。
+
+本轮结论以 median / 下降比例 / 低尾占比 为准，均值仅作对照。
+```
+
+### Empirical low-support risk region
+
+```text
+初始 gold_q < 0.20：
+  - 实际 miss rate 明显上升（[0,0.10) 达 66.7%）
+  - 44.9%~100% 的题最终落入 q<0.05
+  - V2 median delta 转负，Epoch5 为正
+初始 gold_q > 0.40：
+  - 落入低尾比例 < 8%
+  - V2 median delta 强正（+0.21~+0.26）
+
+注意：correct→wrong 组（n=13）起始 median 0.5085 仍崩塌，
+      说明初始支持度不是唯一决定因素。
+```
+
+### 未完成的 B3（如实报告）
+
+```text
+V2 probe rollouts 的 20 个 prompt 取自 v2_answer_only_val.jsonl，
+200-prompt 诊断子集取自 grpo_v1_final_holdout，两者 id 无交集，
+因此 "gold_q(t) -> correct_count(t) -> gold_q(t+1)" 的逐步对齐未能完成。
+本轮不为此重新推理或重新训练。
+```
+
 ## 下一个问题
+
+```text
+H5 已验证（SUPPORTED）。
+Causal experiment warranted: YES（但本轮不实施）。
+```
+
+```text
+Next:
+Design causal K intervention.
+Do not run yet.
+```
+
+下一实验目标：
+
+```text
+K=8 vs larger K
+```
+
+但必须先解决两个设计问题：
+
+```text
+1. difficulty stratification / initial gold_q stratification
+2. rollout compute confounding
+```
+
+后续至少讨论两种对齐方式：
+
+```text
+A. equal optimizer steps
+      -> K 大的组看到 2x / 4x 的 rollout
+B. equal total rollout budget
+      -> K 大的组 optimizer steps 减半 / 四分之一
+```
+
+**不能把：**
+
+```text
+larger K + more rollout compute
+```
+
+**的结果直接归因于 K。**
+
+固定项（K 干预实验必须保持不变）：
+
+```text
+same SFT init (checkpoint-1252) / same exact reward /
+same beta = 0.01 / same LR / same data /
+same seed strategy / same number of unique prompts
+```
+
+**不要自动开始。** 需人工确认后再执行。
+
+---
+
+## 下一个问题（H5 之前的版本，保留作历史）
 
 ```text
 H5:
