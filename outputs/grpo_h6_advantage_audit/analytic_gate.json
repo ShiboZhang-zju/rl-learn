@@ -1,0 +1,7 @@
+{
+  "max_abs_error_formula_vs_no_eps": 1.8900244369568497e-08,
+  "tolerance": 1e-06,
+  "max_eps_correction": 0.0014994002399038031,
+  "note": "formulas validated against (r-mean)/std without the 1e-4 guard; TRL's +1e-4 is reported separately",
+  "verdict": "H6_ANALYTIC_FORMULA_VALID"
+}

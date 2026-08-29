@@ -117,7 +117,9 @@ Fresh K-intervention Holdout（N=2000，seed 20260903，与全部历史数据零
 | 指标 | K8 | K16 | K16 − K8 | 95% CI |
 |---|---:|---:|---:|---|
 | median Δgold_q | −0.02208 | **−0.03634** | **−0.01355** | [−0.02760, −0.00000] **EXCL0** |
-| frac 最终 q < 0.05 | 0.379 | **0.547** | **+0.08336** | [+0.02304, +0.14747] **EXCL0** |
+| **frac 最终 gold_q < 0.05** | **0.58986** | **0.67281** | **+0.08295** | [+0.02304, +0.14747] **EXCL0** |
+
+（bootstrap 均值 +0.08336；逐样本精确差 +0.08295。）
 
 **K16 在低支持区不是"没帮上忙"，而是显著更差。**
 
@@ -133,7 +135,22 @@ Fresh K-intervention Holdout（N=2000，seed 20260903，与全部历史数据零
 | [0.60,0.80) | 318 | +0.2110 | +0.2201 | 0.022 | 0.019 | 0.890 | **0.931** |
 | [0.80,1.00] | 929 | +0.0145 | +0.0160 | 0.003 | 0.002 | 0.986 | 0.987 |
 
-低支持三桶（<0.20）K16 一致更差；中高桶 K16 略好。**K16 放大了两极，而不是缩小。**
+```text
+K16 对 low-support region 的作用是非单调的：
+极低支持 [0.00,0.05) 略有 rescue，
+但 [0.05,0.20) 明显恶化，
+使 <0.20 聚合结果整体显著更差。
+```
+
+具体地：
+
+```text
+[0.00,0.05)  N=66   medΔ −0.0100 -> −0.0090   q<.05 0.864 -> 0.803   K16 略好
+[0.05,0.10)  N=56   medΔ −0.0532 -> −0.0582   q<.05 0.625 -> 0.732   K16 更差
+[0.10,0.20)  N=95   medΔ −0.0662 -> −0.0983   q<.05 0.379 -> 0.547   K16 更差
+```
+
+中高桶（≥0.20）K16 略好。**整体而言 K16 没有缩小两极，反而使低支持区聚合显著恶化。**
 
 ---
 
@@ -251,11 +268,27 @@ KL mean:             K8 0.00908  vs  K16 0.01544
 Top1 accuracy:       几乎不变（+0.35pp，n.s.）
 ```
 
-即：**更多 rollout → 组统计量噪声更小 → 更新更自信 → sharpening 更强**，
-而不是"更多 rollout → 低支持答案被救回来"。
+### 对 coverage 结论的严格限定
 
-这与 H4 的结论一致：GRPO 的可观测作用是 answer-space 概率重分配 / sharpening；
-本轮说明 **sampling coverage 不是该 sharpening 的瓶颈**。
+```text
+Increasing group size from K=8 to K=16 successfully increased
+rollout coverage, but this intervention did not mitigate the
+observed lower-tail collapse. Therefore finite-K miss is not a
+sufficient explanation of polarization, and there is no evidence
+from this intervention that it is the dominant bottleneck.
+```
+
+**同时必须注明：**
+
+```text
+Changing K also changes group-normalized advantage geometry,
+so K16 is not a pure coverage-only intervention.
+```
+
+即 K16 不是一个"只改 coverage"的干净干预：在 `scale_rewards="group"` 下，
+改变 K 会同时改变 group mean / sample std / 每个 rollout 的 normalized advantage
+（见下一轮 H6）。因此本轮结果只能说明
+**finite-K miss 不是充分解释**，不能断言 coverage 完全无关。
 
 ---
 

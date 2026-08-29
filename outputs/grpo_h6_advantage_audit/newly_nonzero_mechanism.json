@@ -1,0 +1,7 @@
+{
+  "partitions": 20,
+  "n_prompts": 200,
+  "total_newly_nonzero_wrong": 872,
+  "total_newly_nonzero_correct": 2784,
+  "per_prompt_per_partition_newly_nonzero_wrong": 0.218
+}
