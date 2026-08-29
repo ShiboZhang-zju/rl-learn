@@ -1,0 +1,75 @@
+{
+  "description": "static Epoch4 -> Epoch5 change, same initial gold_q bins",
+  "bins": [
+    {
+      "bin": "[0.00,0.05)",
+      "N": 66,
+      "v2_mean_delta_gold_q": 0.06457710419952847,
+      "epoch5_mean_delta_gold_q": 0.04788496055647935,
+      "v2_frac_decreased": 0.6212121212121212,
+      "epoch5_frac_decreased": 0.5151515151515151,
+      "v2_final_top1": 0.06060606060606061,
+      "epoch5_final_top1": 0.030303030303030304
+    },
+    {
+      "bin": "[0.05,0.10)",
+      "N": 60,
+      "v2_mean_delta_gold_q": 0.05848079076515225,
+      "epoch5_mean_delta_gold_q": 0.05588318128511462,
+      "v2_frac_decreased": 0.7,
+      "epoch5_frac_decreased": 0.6166666666666667,
+      "v2_final_top1": 0.11666666666666667,
+      "epoch5_final_top1": 0.05
+    },
+    {
+      "bin": "[0.10,0.20)",
+      "N": 118,
+      "v2_mean_delta_gold_q": 0.047531110163915,
+      "epoch5_mean_delta_gold_q": 0.06638403987526778,
+      "v2_frac_decreased": 0.6610169491525424,
+      "epoch5_frac_decreased": 0.4406779661016949,
+      "v2_final_top1": 0.1864406779661017,
+      "epoch5_final_top1": 0.09322033898305085
+    },
+    {
+      "bin": "[0.20,0.40)",
+      "N": 201,
+      "v2_mean_delta_gold_q": 0.09672943899442457,
+      "epoch5_mean_delta_gold_q": 0.08334981152616729,
+      "v2_frac_decreased": 0.5124378109452736,
+      "epoch5_frac_decreased": 0.39303482587064675,
+      "v2_final_top1": 0.417910447761194,
+      "epoch5_final_top1": 0.38308457711442784
+    },
+    {
+      "bin": "[0.40,0.60)",
+      "N": 270,
+      "v2_mean_delta_gold_q": 0.13981580608264413,
+      "epoch5_mean_delta_gold_q": 0.08848009668176761,
+      "v2_frac_decreased": 0.3148148148148148,
+      "epoch5_frac_decreased": 0.3074074074074074,
+      "v2_final_top1": 0.7037037037037037,
+      "epoch5_final_top1": 0.7481481481481481
+    },
+    {
+      "bin": "[0.60,0.80)",
+      "N": 332,
+      "v2_mean_delta_gold_q": 0.1402331250742984,
+      "epoch5_mean_delta_gold_q": 0.056253813821919366,
+      "v2_frac_decreased": 0.1566265060240964,
+      "epoch5_frac_decreased": 0.2710843373493976,
+      "v2_final_top1": 0.9156626506024096,
+      "epoch5_final_top1": 0.9156626506024096
+    },
+    {
+      "bin": "[0.80,1.00]",
+      "N": 953,
+      "v2_mean_delta_gold_q": 0.02627108358887458,
+      "epoch5_mean_delta_gold_q": 0.010710969265860217,
+      "v2_frac_decreased": 0.09863588667366212,
+      "epoch5_frac_decreased": 0.1794333683105981,
+      "v2_final_top1": 0.9905561385099685,
+      "epoch5_final_top1": 0.9958027282266527
+    }
+  ]
+}

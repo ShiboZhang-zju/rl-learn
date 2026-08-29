@@ -1,0 +1,8 @@
+bin,N,n_hit,n_miss,mean_initial_gold_q_HIT,mean_initial_gold_q_MISS,mean_delta_gold_q_HIT,mean_delta_gold_q_MISS,delta_gold_q_diff,final_accuracy_HIT,final_accuracy_MISS,final_all_wrong_HIT,final_all_wrong_MISS
+"[0.00,0.05)",6,0,6,,,,,,,,,
+"[0.05,0.10)",9,3,6,,,,,,,,,
+"[0.10,0.20)",8,8,0,,,,,,,,,
+"[0.20,0.40)",23,22,1,,,,,,,,,
+"[0.40,0.60)",34,34,0,,,,,,,,,
+"[0.60,0.80)",37,37,0,,,,,,,,,
+"[0.80,1.00]",83,83,0,,,,,,,,,
