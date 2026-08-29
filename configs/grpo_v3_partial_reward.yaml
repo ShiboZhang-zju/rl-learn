@@ -1,0 +1,69 @@
+# GRPO-V3 round: binary reward sparsity / all-wrong zero-advantage check (H2).
+#
+# Identical to configs/grpo_v2_kl001.yaml except `reward.mode`: exact -> partial.
+#
+# H2: with the binary exact reward, a prompt whose 8 rollouts are all wrong has
+# group reward std = 0, hence zero group-relative advantage, hence no gradient on
+# exactly the prompts the model is most consistently failing. The partial reward
+# (correct_person_count / 3) gives those groups a graded signal whenever the
+# rollouts disagree about *how many* people they got right.
+#
+# Only the reward changes. beta / reference / init / data / seed / sampling / LR /
+# epochs / steps are all locked to GRPO-V2.
+dataset_version: kk-v2-statement-first
+model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+init_checkpoint: outputs/sft_v2_5k_p800/checkpoint-1252
+reference_checkpoint: outputs/sft_v2_5k_p800/checkpoint-1252
+
+seed: 20260830
+
+train_file: data/processed/grpo_v1_train.jsonl
+val_file: data/processed/v2_answer_only_val.jsonl
+output_dir: outputs/grpo_v3_partial
+
+generation:
+  num_generations: 8
+  temperature: 0.8
+  top_p: 0.95
+  max_completion_length: 64
+  max_prompt_length: 512
+
+training:
+  bf16: true
+  gradient_checkpointing: false
+
+  beta: 0.01
+
+  clip_range: 0.2
+  # Unique prompts per optimizer step. In TRL 0.23 the trainer batch is
+  # prompt_batch_size * num_generations rows (each unique prompt repeated
+  # num_generations times), so per_device_train_batch_size is set to that product.
+  prompt_batch_size: 8
+  learning_rate: 1e-5
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  epochs: 1
+  max_steps: -1
+  eval_every: 100
+  save_every: 100
+  log_every: 1
+
+reward:
+  # "exact"   -> 1.0 iff parsed answer == ground truth, else 0.0  (GRPO-V1 / GRPO-V2)
+  # "partial" -> correct_person_count / len(people)                (GRPO-V3)
+  #
+  # Partial reward values with 3 people:
+  #   3/3 correct = 1.0
+  #   2/3 correct = 0.6666667
+  #   1/3 correct = 0.3333333
+  #   0/3 correct = 0.0
+  #   invalid     = 0.0
+  # No alpha, no format bonus, no length reward, no reasoning reward.
+  mode: partial
+
+  # Only consulted when mode == "exact"; retained so the V1/V2 configs keep their
+  # exact meaning. Parse failure / invalid format yields 0.0 in both modes.
+  correct: 1.0
+  incorrect: 0.0
+  parse_failure: 0.0
+  format_invalid: 0.0

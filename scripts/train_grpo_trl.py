@@ -7,7 +7,15 @@ driven by the YAML config; `training.beta` is the only variable between the two.
 - Initializes from an SFT LoRA adapter (`init_checkpoint`), e.g. SFT Epoch4
   checkpoint-1252.
 - Rollout: 8 generations/prompt, temperature 0.8, top_p 0.95, max 64 completion tokens.
-- Reward: exact-answer verifier, +1 iff parsed answer == ground truth, else 0.
+- Reward: `reward.mode` selects the training signal.
+    exact   (default, GRPO-V1/V2): +1 iff parsed answer == ground truth, else 0.
+    partial (GRPO-V3, H2):        correct_person_count / len(people), a Hamming-style
+      dense reward. It exists to test whether the binary reward's zero-variance
+      all-wrong groups are what blocks correction of hard prompts.
+  Regardless of mode, the exact-reward group statistics (mixed / all-correct /
+  all-wrong / zero-variance, and how many all-wrong groups the shaped reward
+  re-energises) are logged every step, so "all-wrong" always keeps its exact
+  meaning and a rising shaped reward can never be mistaken for task improvement.
 - scale_rewards="group": advantage = (r - group_mean) / (group_std + 1e-4). TRL
   computes group_std with `torch.std` over each group of `num_generations`
   rollouts, i.e. the *unbiased sample* std (ddof=1), not the population std.
@@ -47,6 +55,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from kk_sft.data import read_jsonl  # noqa: E402
 from kk_sft.evaluation import aggregate_metrics, assignment_pattern, parse_answer  # noqa: E402
+from kk_sft.reward import EXACT, PARTIAL, compute_reward  # noqa: E402
 
 
 def load_config(path: Path) -> dict:
@@ -259,6 +268,12 @@ def main() -> None:
     max_steps = min(max_steps, total_batches)
     eval_every = int(train_cfg.get("eval_every", 100))
     beta = float(train_cfg.get("beta", 0.0))
+    # reward.mode: "exact" (V1/V2, default) or "partial" (V3). Only the reward changes;
+    # the exact-reward group statistics below are always logged so that "all-wrong",
+    # "all-correct" and "mixed" keep their exact-reward meaning across rounds.
+    reward_mode = str(reward_cfg.get("mode", EXACT))
+    if reward_mode not in (EXACT, PARTIAL):
+        raise ValueError(f"unknown reward.mode: {reward_mode!r} (expected {EXACT} or {PARTIAL})")
 
     from datasets import Dataset
     from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -284,6 +299,7 @@ def main() -> None:
     print(f"prompts={n_prompts} prompt_batch={prompt_batch_size} num_gen={num_gen} batches={total_batches} max_steps={max_steps} per_device_train_batch_size={per_device_train_batch_size}", flush=True)
     print("advantage=group normalization (unbiased sample std, ddof=1) via TRL scale_rewards='group'", flush=True)
     print(f"beta={beta}", flush=True)
+    print(f"reward_mode={reward_mode} ({'Hamming-style dense: correct_people/3' if reward_mode == PARTIAL else 'binary: 1 iff exact match'})", flush=True)
 
     # ------------------------------------------------------------------ reference model
     # TRL 0.23 sets ref_model = None for PEFT models and falls back to disable_adapter(),
@@ -303,6 +319,11 @@ def main() -> None:
     # ------------------------------------------------------------------ reward + stats
     stats_buffer: list[dict] = []
     call_counter = [0]
+    rescued_examples_seen: list[dict] = []
+    rescue_counters = {"all_wrong_groups": 0, "rescued_groups": 0}
+    # See the rescue_mechanism_observed check: below this many exact-all-wrong groups the
+    # mechanism check is not statistically meaningful and is treated as informational.
+    MIN_ALL_WRONG_FOR_MECHANISM_CHECK = 20
 
     def to_text(completion) -> str:
         if isinstance(completion, str):
@@ -317,19 +338,23 @@ def main() -> None:
         # consecutively, so completions are ordered prompt-major: group j//G is the
         # unique prompt index. Number of unique prompts in this call:
         n_groups = len(prompts) // G
+        # `rewards` is the TRAINING signal: partial (V3) or exact (V1/V2).
         rewards: list[float] = []
         group_parsed: list[list[dict]] = [[] for _ in range(n_groups)]
+        group_shaped: list[list[float]] = [[] for _ in range(n_groups)]
+        group_exact: list[list[float]] = [[] for _ in range(n_groups)]
         for j, comp in enumerate(completions):
             pi = j // G
             pz = json.loads(puzzle_json[j])
             parsed = parse_answer(to_text(comp), pz["people"])
-            correct = parsed.parsed == answer[j]
-            reward = float(reward_cfg.get("correct", 1.0)) if correct else 0.0
+            reward = compute_reward(parsed.parsed, answer[j], pz["people"], reward_mode)
             rewards.append(reward)
+            group_shaped[pi].append(reward)
+            group_exact[pi].append(1.0 if parsed.parsed == answer[j] else 0.0)
             group_parsed[pi].append(
                 {
                     "reward": reward,
-                    "correct": correct,
+                    "correct": parsed.parsed == answer[j],
                     "format_valid": parsed.format_valid,
                     "parse_success": parsed.parsed is not None,
                     "parsed_answer": parsed.parsed,
@@ -339,17 +364,72 @@ def main() -> None:
         if n_groups == 0:
             stats_buffer.append({"n_prompts": 0, "n_completions": len(completions)})
             return rewards
+
+        # Group-level state under the EXACT reward. These keep their historical names so
+        # V1 / V2 / V3 stay comparable; the shaping must never redefine what "all-wrong"
+        # means.
+        def all_wrong(group: list[float]) -> bool:
+            return all(value < 0.5 for value in group)
+
+        def all_correct(group: list[float]) -> bool:
+            return all(value > 0.5 for value in group)
+
+        def mixed(group: list[float]) -> bool:
+            return any(value < 0.5 for value in group) and any(value > 0.5 for value in group)
+
+        def zero_var(group: list[float]) -> bool:
+            # Rewards live on {0, 1/3, 2/3, 1}; anything below 1e-6 is float noise.
+            mean = sum(group) / len(group)
+            return sum((value - mean) ** 2 for value in group) / (len(group) - 1) < 1e-12 if len(group) > 1 else True
+
+        exact_all_wrong_groups = [group for group in group_exact if all_wrong(group)]
+        rescued = [
+            index
+            for index, group in enumerate(group_exact)
+            if all_wrong(group) and not zero_var(group_shaped[index])
+        ]
+        # Keep a couple of concrete rescued groups per step as human-checkable evidence
+        # that the intervention really fires on real rollouts (H2 mechanism check).
+        rescued_examples = []
+        for index in rescued[:2]:
+            first = index * G
+            rescued_examples.append(
+                {
+                    "group_index": index,
+                    "ground_truth": answer[first] if first < len(answer) else None,
+                    "predicted_patterns": [entry["pattern"] for entry in group_parsed[index]],
+                    "exact_rewards": group_exact[index],
+                    "shaped_rewards": [round(value, 6) for value in group_shaped[index]],
+                }
+            )
+        all_shaped = [value for group in group_shaped for value in group]
+        shaped_mean = sum(all_shaped) / len(all_shaped)
+
         stats = {
             "n_prompts": n_groups,
             "n_completions": len(completions),
-            "reward_mean": sum(rewards) / len(rewards),
-            "mixed_group_ratio": sum(any(r["reward"] > 0.5 for r in group) and any(r["reward"] < 0.5 for r in group) for group in group_parsed) / n_groups,
-            "all_wrong_ratio": sum(all(r["reward"] < 0.5 for r in group) for group in group_parsed) / n_groups,
-            "all_correct_ratio": sum(all(r["reward"] > 0.5 for r in group) for group in group_parsed) / n_groups,
-            "avg_correct_per_group": sum(sum(r["reward"] for r in group) for group in group_parsed) / n_groups,
+            "reward_mean": shaped_mean,
+            "mixed_group_ratio": sum(mixed(group) for group in group_exact) / n_groups,
+            "all_wrong_ratio": sum(all_wrong(group) for group in group_exact) / n_groups,
+            "all_correct_ratio": sum(all_correct(group) for group in group_exact) / n_groups,
+            "avg_correct_per_group": sum(sum(value for value in group) for group in group_exact) / n_groups,
             "avg_unique_answers": sum(len({canonical_answer(r["parsed_answer"]) for r in group if r["parsed_answer"] is not None}) for group in group_parsed) / n_groups,
             "format_valid_ratio": sum(r["format_valid"] for group in group_parsed for r in group) / len(completions),
             "parse_success_ratio": sum(r["parse_success"] for group in group_parsed for r in group) / len(completions),
+            # ---- dual-track: training signal (shaped) vs task metric (exact) ----
+            "reward_mode": reward_mode,
+            "shaped_reward_mean": shaped_mean,
+            "shaped_reward_std": (sum((value - shaped_mean) ** 2 for value in all_shaped) / (len(all_shaped) - 1)) ** 0.5,
+            "exact_reward_mean": sum(value for group in group_exact for value in group) / len(completions),
+            "exact_mixed_ratio": sum(mixed(group) for group in group_exact) / n_groups,
+            "exact_all_correct_ratio": sum(all_correct(group) for group in group_exact) / n_groups,
+            "exact_all_wrong_ratio": sum(all_wrong(group) for group in group_exact) / n_groups,
+            "shaped_zero_variance_ratio": sum(zero_var(group) for group in group_shaped) / n_groups,
+            "exact_zero_variance_ratio": sum(zero_var(group) for group in group_exact) / n_groups,
+            "exact_all_wrong_but_shaped_nonzero_variance_ratio": (len(rescued) / len(exact_all_wrong_groups)) if exact_all_wrong_groups else 0.0,
+            "n_exact_all_wrong_groups": len(exact_all_wrong_groups),
+            "n_rescued_groups": len(rescued),
+            "rescued_examples": rescued_examples,
         }
         stats_buffer.append(stats)
         call_counter[0] += 1
@@ -556,6 +636,11 @@ def main() -> None:
             step = state.global_step
             entry = dict(logs)
             stats = stats_buffer.pop(0) if stats_buffer else {}
+            rescue_counters["all_wrong_groups"] += int(stats.get("n_exact_all_wrong_groups") or 0)
+            rescue_counters["rescued_groups"] += int(stats.get("n_rescued_groups") or 0)
+            for example in stats.get("rescued_examples", []):
+                if len(rescued_examples_seen) < 5:
+                    rescued_examples_seen.append({"step": step, **example})
             entry.update(
                 {
                     "step": step,
@@ -568,6 +653,20 @@ def main() -> None:
                     "format_valid_ratio": stats.get("format_valid_ratio"),
                     "parse_success_ratio": stats.get("parse_success_ratio"),
                     "zero_variance_group_ratio": logs.get("frac_reward_zero_std"),
+                    # Dual track: the training reward may be shaped, but the task metric
+                    # is always the exact reward. Both are logged every step.
+                    "reward_mode": stats.get("reward_mode"),
+                    "shaped_reward_mean": stats.get("shaped_reward_mean"),
+                    "shaped_reward_std": stats.get("shaped_reward_std"),
+                    "exact_reward_mean": stats.get("exact_reward_mean"),
+                    "exact_mixed_ratio": stats.get("exact_mixed_ratio"),
+                    "exact_all_correct_ratio": stats.get("exact_all_correct_ratio"),
+                    "exact_all_wrong_ratio": stats.get("exact_all_wrong_ratio"),
+                    "shaped_zero_variance_ratio": stats.get("shaped_zero_variance_ratio"),
+                    "exact_zero_variance_ratio": stats.get("exact_zero_variance_ratio"),
+                    "exact_all_wrong_but_shaped_nonzero_variance_ratio": stats.get("exact_all_wrong_but_shaped_nonzero_variance_ratio"),
+                    "n_exact_all_wrong_groups": stats.get("n_exact_all_wrong_groups"),
+                    "n_rescued_groups": stats.get("n_rescued_groups"),
                     "peak_memory_allocated_gb": torch.cuda.max_memory_allocated() / 1024**3 if torch.cuda.is_available() else 0.0,
                 }
             )
@@ -618,6 +717,7 @@ def main() -> None:
     ref_trainable = int(sum(p.numel() for p in trainer.ref_model.parameters() if p.requires_grad)) if trainer.ref_model is not None else 0
     audit_record = {
         "REFERENCE_MODE": "explicit_sft_epoch4" if trainer.ref_model is not None else "none",
+        "reward_mode": reward_mode,
         "beta": beta,
         "trainer_beta": trainer.beta,
         "reference_checkpoint": str(reference_checkpoint) if trainer.ref_model is not None else None,
@@ -635,6 +735,16 @@ def main() -> None:
         "loss_all_finite": all_finite(loss_values),
         "grad_norm_all_finite": all_finite(grad_values),
         "n_loss_values": len(loss_values),
+        # H2 mechanism evidence: real rollout groups that are exact-all-wrong yet regain
+        # non-zero variance under the partial reward. Note that a short smoke sees far
+        # too few groups to expect one (~16% all-wrong x ~31% rescue ~= 0.8 per 16 groups),
+        # so distinguish "mechanism never fired" from "no opportunity to fire".
+        "n_exact_all_wrong_groups_seen": rescue_counters["all_wrong_groups"],
+        "n_rescued_groups_seen": rescue_counters["rescued_groups"],
+        "rescue_mechanism_had_opportunity": rescue_counters["all_wrong_groups"] > 0,
+        "rescue_mechanism_checkable": rescue_counters["all_wrong_groups"] >= MIN_ALL_WRONG_FOR_MECHANISM_CHECK,
+        "n_rescued_examples_observed": len(rescued_examples_seen),
+        "rescued_examples": rescued_examples_seen[:5],
     }
     checks = {
         "beta_matches_config": float(trainer.beta) == float(beta),
@@ -645,6 +755,16 @@ def main() -> None:
         "kl_nonnegative_and_finite": (not expect_kl) or (all_finite(kl_values) and min(kl_values) >= 0.0),
         "loss_finite": all_finite(loss_values),
         "grad_finite": all_finite(grad_values),
+        # Partial mode must demonstrably fire on real rollouts, otherwise the run does
+        # not test H2 at all. Only enforced once enough exact-all-wrong groups were seen
+        # for the check to mean something: at ~31% rescue rate, 20 all-wrong groups give
+        # ~6 expected rescues. A 2-step smoke over 16 prompts sees 0-1 all-wrong groups,
+        # so it can only verify plumbing, not the mechanism.
+        "rescue_mechanism_observed": (
+            reward_mode != PARTIAL
+            or rescue_counters["all_wrong_groups"] < MIN_ALL_WRONG_FOR_MECHANISM_CHECK
+            or bool(rescued_examples_seen)
+        ),
     }
     audit_record["checks"] = checks
     audit_record["AUDIT_PASS"] = all(checks.values())
@@ -659,7 +779,8 @@ def main() -> None:
         if not ok:
             print(f"[AUDIT] FAILED CHECK: {name}", flush=True)
     if audit_record["AUDIT_PASS"]:
-        print("KL_SMOKE_PASS", flush=True)
+        # GRPO-V1/V2 named this gate KL_SMOKE_PASS; the H2 round names it H2_SMOKE_PASS.
+        print("H2_SMOKE_PASS", flush=True)
     else:
         print("AUDIT_FAIL", flush=True)
 

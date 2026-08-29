@@ -1,0 +1,236 @@
+[
+  {
+    "step": 0,
+    "count": 500,
+    "exact_accuracy": 0.722,
+    "format_accuracy": 1.0,
+    "parse_success_rate": 1.0,
+    "average_response_chars": 56.418,
+    "repetition_rate": 0.0,
+    "ground_truth_pattern_distribution": {
+      "NKK": 60,
+      "NNN": 64,
+      "NNK": 65,
+      "KKN": 73,
+      "NKN": 63,
+      "KKK": 60,
+      "KNN": 63,
+      "KNK": 52
+    },
+    "prediction_pattern_distribution": {
+      "KNN": 56,
+      "NNN": 69,
+      "NNK": 83,
+      "KKN": 59,
+      "KKK": 60,
+      "NKK": 52,
+      "NKN": 74,
+      "KNK": 47
+    }
+  },
+  {
+    "step": 100,
+    "count": 500,
+    "exact_accuracy": 0.734,
+    "format_accuracy": 1.0,
+    "parse_success_rate": 1.0,
+    "average_response_chars": 56.406,
+    "repetition_rate": 0.0,
+    "ground_truth_pattern_distribution": {
+      "NKK": 60,
+      "NNN": 64,
+      "NNK": 65,
+      "KKN": 73,
+      "NKN": 63,
+      "KKK": 60,
+      "KNN": 63,
+      "KNK": 52
+    },
+    "prediction_pattern_distribution": {
+      "NKK": 56,
+      "NNN": 72,
+      "NNK": 93,
+      "KKN": 54,
+      "NKN": 77,
+      "KKK": 62,
+      "KNK": 41,
+      "KNN": 45
+    }
+  },
+  {
+    "step": 200,
+    "count": 500,
+    "exact_accuracy": 0.758,
+    "format_accuracy": 0.998,
+    "parse_success_rate": 0.998,
+    "average_response_chars": 56.452,
+    "repetition_rate": 0.0,
+    "ground_truth_pattern_distribution": {
+      "NKK": 60,
+      "NNN": 64,
+      "NNK": 65,
+      "KKN": 73,
+      "NKN": 63,
+      "KKK": 60,
+      "KNN": 63,
+      "KNK": 52
+    },
+    "prediction_pattern_distribution": {
+      "NKK": 65,
+      "NNN": 67,
+      "NNK": 84,
+      "KKN": 64,
+      "NKN": 72,
+      "KKK": 64,
+      "KNN": 45,
+      "KNK": 38,
+      "invalid": 1
+    }
+  },
+  {
+    "step": 300,
+    "count": 500,
+    "exact_accuracy": 0.768,
+    "format_accuracy": 1.0,
+    "parse_success_rate": 1.0,
+    "average_response_chars": 56.508,
+    "repetition_rate": 0.0,
+    "ground_truth_pattern_distribution": {
+      "NKK": 60,
+      "NNN": 64,
+      "NNK": 65,
+      "KKN": 73,
+      "NKN": 63,
+      "KKK": 60,
+      "KNN": 63,
+      "KNK": 52
+    },
+    "prediction_pattern_distribution": {
+      "KNN": 62,
+      "NNN": 59,
+      "NNK": 64,
+      "KKN": 83,
+      "NKN": 62,
+      "KKK": 60,
+      "NKK": 54,
+      "KNK": 56
+    }
+  },
+  {
+    "step": 400,
+    "count": 500,
+    "exact_accuracy": 0.774,
+    "format_accuracy": 1.0,
+    "parse_success_rate": 1.0,
+    "average_response_chars": 56.478,
+    "repetition_rate": 0.0,
+    "ground_truth_pattern_distribution": {
+      "NKK": 60,
+      "NNN": 64,
+      "NNK": 65,
+      "KKN": 73,
+      "NKN": 63,
+      "KKK": 60,
+      "KNN": 63,
+      "KNK": 52
+    },
+    "prediction_pattern_distribution": {
+      "KKN": 69,
+      "NNN": 71,
+      "NNK": 77,
+      "NKN": 59,
+      "KKK": 67,
+      "NKK": 56,
+      "KNN": 50,
+      "KNK": 51
+    }
+  },
+  {
+    "step": 500,
+    "count": 500,
+    "exact_accuracy": 0.732,
+    "format_accuracy": 0.994,
+    "parse_success_rate": 0.994,
+    "average_response_chars": 56.514,
+    "repetition_rate": 0.0,
+    "ground_truth_pattern_distribution": {
+      "NKK": 60,
+      "NNN": 64,
+      "NNK": 65,
+      "KKN": 73,
+      "NKN": 63,
+      "KKK": 60,
+      "KNN": 63,
+      "KNK": 52
+    },
+    "prediction_pattern_distribution": {
+      "KNN": 45,
+      "NNN": 77,
+      "NNK": 80,
+      "KKN": 57,
+      "NKN": 62,
+      "KKK": 64,
+      "NKK": 68,
+      "KNK": 44,
+      "invalid": 3
+    }
+  },
+  {
+    "step": 600,
+    "count": 500,
+    "exact_accuracy": 0.754,
+    "format_accuracy": 1.0,
+    "parse_success_rate": 1.0,
+    "average_response_chars": 56.544,
+    "repetition_rate": 0.0,
+    "ground_truth_pattern_distribution": {
+      "NKK": 60,
+      "NNN": 64,
+      "NNK": 65,
+      "KKN": 73,
+      "NKN": 63,
+      "KKK": 60,
+      "KNN": 63,
+      "KNK": 52
+    },
+    "prediction_pattern_distribution": {
+      "KNN": 59,
+      "NNN": 60,
+      "NNK": 65,
+      "KKN": 79,
+      "NKN": 50,
+      "KKK": 66,
+      "NKK": 60,
+      "KNK": 61
+    }
+  },
+  {
+    "step": 625,
+    "count": 500,
+    "exact_accuracy": 0.74,
+    "format_accuracy": 1.0,
+    "parse_success_rate": 1.0,
+    "average_response_chars": 56.46,
+    "repetition_rate": 0.0,
+    "ground_truth_pattern_distribution": {
+      "NKK": 60,
+      "NNN": 64,
+      "NNK": 65,
+      "KKN": 73,
+      "NKN": 63,
+      "KKK": 60,
+      "KNN": 63,
+      "KNK": 52
+    },
+    "prediction_pattern_distribution": {
+      "KNN": 54,
+      "NNN": 70,
+      "NNK": 75,
+      "KKN": 66,
+      "NKN": 59,
+      "KKK": 58,
+      "NKK": 62,
+      "KNK": 56
+    }
+  }
+]

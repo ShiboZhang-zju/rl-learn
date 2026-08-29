@@ -1,0 +1,235 @@
+{
+  "REFERENCE_MODE": "explicit_sft_epoch4",
+  "reward_mode": "partial",
+  "beta": 0.01,
+  "trainer_beta": 0.01,
+  "reference_checkpoint": "outputs/sft_v2_5k_p800/checkpoint-1252",
+  "reference_attached": true,
+  "reference_trainable_params": 0,
+  "policy_trainable_params": 4399104,
+  "steps": 625,
+  "policy_param_delta_max": 0.0009596049785614014,
+  "reference_param_delta_max": 0.0,
+  "kl_logged": true,
+  "kl_first": 3.9244558138307184e-05,
+  "kl_last": 0.0056533608585596085,
+  "kl_max": 0.1794067621231079,
+  "kl_all_finite": true,
+  "loss_all_finite": true,
+  "grad_norm_all_finite": true,
+  "n_loss_values": 625,
+  "n_exact_all_wrong_groups_seen": 673,
+  "n_rescued_groups_seen": 162,
+  "rescue_mechanism_had_opportunity": true,
+  "rescue_mechanism_checkable": true,
+  "n_rescued_examples_observed": 5,
+  "rescued_examples": [
+    {
+      "step": 2,
+      "group_index": 6,
+      "ground_truth": {
+        "Alice": "knave",
+        "Bob": "knave",
+        "Carol": "knave"
+      },
+      "predicted_patterns": [
+        "NNK",
+        "NNK",
+        "NNK",
+        "NNK",
+        "NNK",
+        "NNK",
+        "NKK",
+        "NNK"
+      ],
+      "exact_rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shaped_rewards": [
+        0.666667,
+        0.666667,
+        0.666667,
+        0.666667,
+        0.666667,
+        0.666667,
+        0.333333,
+        0.666667
+      ]
+    },
+    {
+      "step": 10,
+      "group_index": 1,
+      "ground_truth": {
+        "Alice": "knave",
+        "Bob": "knave",
+        "Carol": "knight"
+      },
+      "predicted_patterns": [
+        "KNK",
+        "NKK",
+        "KKK",
+        "KNK",
+        "KKK",
+        "KNK",
+        "KKK",
+        "KNK"
+      ],
+      "exact_rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shaped_rewards": [
+        0.666667,
+        0.666667,
+        0.333333,
+        0.666667,
+        0.333333,
+        0.666667,
+        0.333333,
+        0.666667
+      ]
+    },
+    {
+      "step": 11,
+      "group_index": 3,
+      "ground_truth": {
+        "Alice": "knight",
+        "Bob": "knight",
+        "Carol": "knave"
+      },
+      "predicted_patterns": [
+        "NKN",
+        "KNN",
+        "NKN",
+        "NKN",
+        "NKN",
+        "KNN",
+        "KNN",
+        "NNN"
+      ],
+      "exact_rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shaped_rewards": [
+        0.666667,
+        0.666667,
+        0.666667,
+        0.666667,
+        0.666667,
+        0.666667,
+        0.666667,
+        0.333333
+      ]
+    },
+    {
+      "step": 11,
+      "group_index": 7,
+      "ground_truth": {
+        "Alice": "knight",
+        "Bob": "knave",
+        "Carol": "knight"
+      },
+      "predicted_patterns": [
+        "NKK",
+        "NKK",
+        "NKK",
+        "NNK",
+        "NNK",
+        "NKK",
+        "NKK",
+        "NKK"
+      ],
+      "exact_rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shaped_rewards": [
+        0.333333,
+        0.333333,
+        0.333333,
+        0.666667,
+        0.666667,
+        0.333333,
+        0.333333,
+        0.333333
+      ]
+    },
+    {
+      "step": 17,
+      "group_index": 7,
+      "ground_truth": {
+        "Alice": "knave",
+        "Bob": "knight",
+        "Carol": "knight"
+      },
+      "predicted_patterns": [
+        "KNK",
+        "KNK",
+        "KNK",
+        "KNK",
+        "KNK",
+        "KNN",
+        "KNK",
+        "KNK"
+      ],
+      "exact_rewards": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shaped_rewards": [
+        0.333333,
+        0.333333,
+        0.333333,
+        0.333333,
+        0.333333,
+        0.0,
+        0.333333,
+        0.333333
+      ]
+    }
+  ],
+  "checks": {
+    "beta_matches_config": true,
+    "reference_attached_when_beta_nonzero": true,
+    "reference_frozen": true,
+    "policy_updated": true,
+    "kl_logged_when_beta_nonzero": true,
+    "kl_nonnegative_and_finite": true,
+    "loss_finite": true,
+    "grad_finite": true,
+    "rescue_mechanism_observed": true
+  },
+  "AUDIT_PASS": true
+}
