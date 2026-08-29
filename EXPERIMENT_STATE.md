@@ -9,15 +9,16 @@
 ## Last known good commit
 
 ```text
-dc0526a   # Complete GRPO-V3 H2 partial-reward experiment
+63abc47   # Complete H3 shortcut amplification diagnosis
 ```
 
-上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（GRPO-V3 完成）。
+上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（H3 诊断完成）。
 
 ```text
 GRPO-V1 结果由 30976e5 产生。
 GRPO-V2 结果由 87762e2 产生。
 GRPO-V3 结果由 dc0526a 产生。
+H3 诊断结果由 63abc47 产生。
 ```
 
 恢复时先比较（避免「文档描述状态 A，但 checkout 的代码是状态 B」）：
@@ -58,6 +59,7 @@ GRPO-V1        VALID
 GRPO-V1 Stats  COMPLETE
 GRPO-V2        COMPLETE   (KL regularization 单变量验证，beta=0.01)
 GRPO-V3        COMPLETE   (binary reward sparsity 单变量验证，reward.mode=partial)
+H3 Diagnosis   COMPLETE   (structure/operator shortcut，零训练)
 GRPO-V4        NOT STARTED
 ```
 
@@ -67,6 +69,8 @@ best          outputs/grpo_v2_kl001/checkpoint-600   (V2 Val exact = 0.7720)
 
 H2            NOT_SUPPORTED
 best          outputs/grpo_v3_partial/checkpoint-400 (V2 Val exact = 0.7740)
+
+H3            NOT_SUPPORTED   (零训练诊断，未训练 V4)
 ```
 
 **不要重新运行已经完成的实验。**
@@ -511,9 +515,113 @@ TRL 原生 frac_reward_zero_std 阈值 1e-8 偏敏感，
 
 ---
 
-## 当前待验证假设
+## H3 诊断结论（零训练，2026-08-29）
 
-按顺序：
+分析集：GRPO-V3 Fresh Holdout（N=2000，seed 20260902）。
+复用五个模型的已有逐样本预测，**未重新推理、未训练**。
+结构特征复用 `scripts/audit_dataset_features.row_features`。
+脚本：`scripts/audit_h3_shortcut.py`，报告：`outputs/grpo_h3_shortcut_audit/h3_shortcut_report.md`。
+
+### 核心结论
+
+```text
+H3 = NOT_SUPPORTED
+
+数据 shortcut 存在，但没有证据表明 GRPO 在放大它。
+```
+
+```text
+Data structure→GT shortcut exists but is weak.
+
+No consistent evidence that:
+GRPO amplifies structure→prediction association.
+
+Conditional on GT:
+GRPO does not show stronger structure dependence than SFT.
+
+Epoch5 control explains observed generic training effects.
+
+H3 = NOT_SUPPORTED.
+```
+
+### Q1 数据 shortcut 存在但很弱
+
+```text
+same_count        MI=0.0697  (permutation null 0.0133) -> 净 +0.0564 = GT 熵的 3.35%
+different_count   MI=0.0608  (null 0.0113)             -> 净 +0.0494 = 2.92%
+top_ops 序列      MI=0.7122  (null 0.4183)             -> 净 +0.2940，但偏差占 59%
+not / person_is / expression_depth                     -> permutation p=0.10~0.93，无信号
+```
+
+### Q2 structure→prediction 未增强
+
+```text
+H(prediction) 五模型几乎相同（2.074~2.078），无熵混淆，可直接比较
+
+top_ops_multiset 原始 MI:  0.3400 -> 0.3244(e5) -> 0.3355(v1) -> 0.3262(v2) -> 0.3151(v3)
+                          单调下降
+
+bootstrap vs Epoch4:  仅 v1 top_ops +0.0238 显著；其余全部 n.s.
+bootstrap vs Epoch5:  仅 v1 top_ops +0.0255、same_count +0.0090 显著；v2/v3 全部 n.s.
+```
+
+### Q3 控制 GT 后：V2 显著下降，GRPO 与 Epoch5 无法区分
+
+```text
+conditional MI delta vs Epoch4:
+  v2  top_ops          -0.0643  CI [-0.100, -0.026]   显著下降
+  v2  top_ops_multiset -0.0341  CI [-0.067, -0.002]   显著下降
+  v2  op_signature     -0.0554  CI [-0.099, -0.014]   显著下降
+  v1 / v3              全部 n.s.
+  Epoch5 - Epoch4      top_ops -0.0421 显著下降（纯 SFT 多训也下降）
+
+conditional MI delta vs Epoch5:
+  v1 / v2 / v3         全部 n.s.
+```
+
+**关键控制：Epoch5。** `expression_nodes` conditional NMI
+Epoch4 0.1595 → **Epoch5 0.1778**，V1 0.1777 / V2 0.1819 / V3 0.1751，
+GRPO 与「只是多训一个 epoch 的 SFT」完全重合。
+这些变化是「训练更多」的通用效应，不是 RL 特有。
+
+### Q4 类别异常无法归因到具体 structure
+
+```text
+V1 的 NKK 上升分散在 >=5 个 signature，每个只贡献 3-5 个样本
+V2 的 KKN/KNN 上升同样分散，每个 3-5 个样本
+没有任何单一结构能解释整体类别位移
+```
+
+### Q4b WC 与 CW 在结构上无分离
+
+```text
+卡方独立性检验（signature x {WC, CW}）:
+  v1 p=0.9193   v2 p=0.5156   v3 p=0.6509
+同一个 signature 常同时出现在 WC 与 CW 两个列表
+  （如 v2 的 not|or|person_is WC=8 CW=7；different|or|same WC=10 CW=10）
+```
+
+### 唯一反向观察（如实记录）
+
+```text
+V1 的 top_ops 原始 MI 相对 Epoch4(+0.0238) 与 Epoch5(+0.0255) 都显著上升。
+但原始 MI 混杂「结构→GT→预测」的间接路径（模型越准该项越大），
+控制 GT 后同一对比变为 n.s.（+0.0257, CI [-0.0147, +0.0670]），
+且 V2/V3 未复现。
+V1 是唯一在原始指标上出现 structure 依赖上升的模型，
+与 V1 最强的 NKK 类别异常在时间上吻合。
+```
+
+### 为何未判 INCONCLUSIVE
+
+```text
+- signature 样本量：top_ops 只有 5 个 signature 达 N>=20（覆盖 5.6%），
+  但改用同为纯结构特征的 top_ops_multiset 后有 38 个、覆盖 91.8%，
+  且 MI 分析使用全部 2000 样本，功效充足。
+- 指标方向：除上述 V1 原始 MI 一项外，其余指标方向一致指向「无增强」。
+```
+
+## 当前待验证假设
 
 ```text
 H1:
@@ -529,8 +637,11 @@ all-wrong group advantage=0，无法自我纠正。
 H3:
 GRPO 是否放大了 generator 中残余的
 structure/operator → answer-pattern shortcut。
-  -> 下一个（H1/H2 均不支持后，这是唯一剩下的候选）
+  -> 已验证：NOT_SUPPORTED（零训练诊断，2026-08-29）
 ```
+
+三条候选假设**全部不支持**：三者的干预（KL、partial reward）都真实生效，
+或机制真实存在（structure→GT 相关性），但都没能解释或缓解 polarization。
 
 H1 与 H2 **均不支持**，两者的干预（KL、partial reward）都真实生效，
 但都没能减少错误方向 polarization。这提示：
@@ -541,51 +652,72 @@ polarization 可能不是由「缺少约束」或「缺少信号」造成的，
 或来自 generator / 数据分布层面的 shortcut。
 ```
 
+## 下一个问题
+
+```text
+H4:
+Does GRPO primarily reshape/sharpen the probability
+distribution over the 8 legal answer patterns rather than
+broadly increasing answer-space competence?
+```
+
+类型：**零训练诊断**（teacher-forced 8-way probability landscape）。
+不使用 temperature sampling 估计概率，直接在 8 个 canonical answer completion 上
+做 teacher-forced scoring 并归一化。
+
+---
+
 ## 下一步实验
 
 ```text
-GRPO-V4
+未定。H1 / H2 / H3 全部不支持，候选假设已耗尽。
+H4 待验证（零训练诊断，不启动训练）。
 ```
 
-**只验证 H3（generator / policy shortcut）。不要自动开始。**
+**不要自动开始 GRPO-V4。** 下一轮需要先由人工确认研究方向。
 
-起始点（建议，未执行）：
+不建议继续的方向（本轮已排除）：
 
 ```text
-init checkpoint    = checkpoint-1252
-reference          = checkpoint-1252 (frozen, explicit_sft_epoch4)
-beta               = 0.01
-reward.mode        = exact           <- 回到 exact：partial 已证明有害
-lr = 1e-5, num_generations = 8, temperature = 0.8, top_p = 0.95, 1 epoch
+继续调 beta / LR / reward shaping    -> H1、H2 已证明不改变 polarization
+继续做 partial / Hamming reward      -> H2 已证明出现 Goodhart，且显著变差
+按 structure shortcut 重构 generator -> H3 已证明 GRPO 未放大该 shortcut
 ```
 
-H3 的方向（需人工确认后再执行）：
+建议的新方向（需人工确认后另立假设）：
 
 ```text
-a: 审计 generator 是否存在 structure/operator -> answer-pattern 的可利用相关性
-b: 检查 GRPO 是否放大了 a 中的 shortcut
-c: 若成立，考虑在数据层面（而非 reward 层面）修正
+把问题从「优化过程缺什么」转向「目标与任务的错位」：
+  1. 复核 polarization 是否本身就是「用 exact-match 目标做 RL」的必然结果
+     —— H2 中 partial reward 的 Goodhart 证据支持这一方向
+  2. 若要继续追 structure，需要更大的诊断集
+     （top_ops 需 N >> 2000 才能支撑 per-signature 分析），而不是新特征
+  3. 在提出独立假设之前，不建议再对 reward / beta / LR 做扫描
 ```
 
-**不要自动开始 GRPO-V4。**
-
-本轮额外禁止：
+### 方法论收获（跨轮通用）
 
 ```text
-任何新的 reward shaping（partial 已证明有害）
-reward alpha sweep
-beta sweep
-LR sweep
-第二 epoch
-修改训练集 / generator（在 H3 审计完成前）
+1. 必须设「通用训练效应」对照。本轮用 Epoch5 证明：
+   若干看起来像「RL 放大结构依赖」的变化，纯 SFT 多训一个 epoch 同样产生。
+   只比较 Epoch4 vs GRPO 会得出错误结论。
+
+2. 原始 MI(结构; 预测) 混杂了「结构→GT→预测」的间接路径，
+   模型越准该项越大。判定 shortcut 放大必须用 conditional MI（控制 GT）。
+
+3. 高基数特征（top_ops 211 类、op_signature 582 类）的 plug-in MI
+   绝大部分是估计偏差（分别占 59% 与 91%）。必须用 permutation null 校准。
+
+4. 评估 GRPO 效果时，H(prediction) 在各模型间可能不同，
+   跨模型比较 MI 前应检查熵是否可比（本轮实测相同，故可直接比较）。
 ```
 
 新的评测集状态：
 
 ```text
-data/processed/grpo_v2_final_holdout.jsonl  已被 GRPO-V2/V3 使用（非 untouched）
-data/processed/grpo_v3_final_holdout.jsonl  已被 GRPO-V3 使用（非 untouched）
-  下一轮需另生成新的 holdout（建议 seed 20260903）。
+data/processed/grpo_v2_final_holdout.jsonl  已被 GRPO-V2/V3/H3 诊断使用（非 untouched）
+data/processed/grpo_v3_final_holdout.jsonl  已被 GRPO-V3/H3 诊断使用（非 untouched）
+  下一轮若做正式实验，需另生成新的 holdout（建议 seed 20260903）。
 ```
 
 任意关键恢复项失败时，不要自动重新训练，先报告差异。

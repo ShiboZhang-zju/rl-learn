@@ -301,7 +301,7 @@ done
 
 if [ "$ALL_OK" = "yes" ]; then
   echo "READY_TO_RESUME"
-  echo "Next: GRPO-V2"
+  echo "Next: read EXPERIMENT_STATE.md"
   echo "================================"
   echo
   echo "Do not rerun completed experiments. Read EXPERIMENT_STATE.md before continuing."
