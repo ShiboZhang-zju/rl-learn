@@ -1,0 +1,85 @@
+{
+  "limit": 100,
+  "gate": {
+    "epoch4": {
+      "agreement_with_existing_greedy": 0.97,
+      "disagreements": 3,
+      "n": 100
+    },
+    "epoch5": {
+      "agreement_with_existing_greedy": 0.99,
+      "disagreements": 1,
+      "n": 100
+    },
+    "v1": {
+      "agreement_with_existing_greedy": 0.97,
+      "disagreements": 3,
+      "n": 100
+    },
+    "v2": {
+      "agreement_with_existing_greedy": 1.0,
+      "disagreements": 0,
+      "n": 100
+    },
+    "v3": {
+      "agreement_with_existing_greedy": 0.97,
+      "disagreements": 3,
+      "n": 100
+    },
+    "_all_models_ge_95pct": true,
+    "_verdict": "H4_SCORING_VALID"
+  },
+  "sanity": {
+    "epoch4": {
+      "no_nan": true,
+      "q_sum_min": 0.9999999999999998,
+      "q_sum_max": 1.0000000000000002,
+      "gold_rank_min": 1,
+      "gold_rank_max": 7,
+      "entropy_min": 7.715397224950554e-05,
+      "entropy_max": 1.7503493067131994,
+      "argmax_parseable": true
+    },
+    "epoch5": {
+      "no_nan": true,
+      "q_sum_min": 0.9999999999999998,
+      "q_sum_max": 1.0000000000000002,
+      "gold_rank_min": 1,
+      "gold_rank_max": 3,
+      "entropy_min": 1.4479344602262627e-05,
+      "entropy_max": 1.2920330371984008,
+      "argmax_parseable": true
+    },
+    "v1": {
+      "no_nan": true,
+      "q_sum_min": 0.9999999999999998,
+      "q_sum_max": 1.0000000000000004,
+      "gold_rank_min": 1,
+      "gold_rank_max": 3,
+      "entropy_min": 1.948611211772502e-05,
+      "entropy_max": 1.1046986827433392,
+      "argmax_parseable": true
+    },
+    "v2": {
+      "no_nan": true,
+      "q_sum_min": 0.9999999999999997,
+      "q_sum_max": 1.0000000000000002,
+      "gold_rank_min": 1,
+      "gold_rank_max": 3,
+      "entropy_min": 2.769625123906834e-05,
+      "entropy_max": 1.1715736600525157,
+      "argmax_parseable": true
+    },
+    "v3": {
+      "no_nan": true,
+      "q_sum_min": 0.9999999999999998,
+      "q_sum_max": 1.0000000000000004,
+      "gold_rank_min": 1,
+      "gold_rank_max": 3,
+      "entropy_min": 2.303896486599234e-05,
+      "entropy_max": 1.271274448468961,
+      "argmax_parseable": true
+    },
+    "_passed": true
+  }
+}

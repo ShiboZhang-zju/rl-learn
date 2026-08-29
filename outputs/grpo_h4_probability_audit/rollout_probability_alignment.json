@@ -1,0 +1,323 @@
+{
+  "per_model": {
+    "epoch4": {
+      "spearman_gold_q_vs_correct_fraction": {
+        "rho": 0.9322858720945502,
+        "p": 2.1953302680284714e-89
+      },
+      "spearman_implied_pass8_vs_actual_pass8": {
+        "rho": 0.42030517449649496,
+        "p": 5.78665918419061e-10
+      },
+      "mean_8way_implied_pass8": 0.9295270546096646,
+      "actual_pass8": 0.935,
+      "mean_correct_fraction": 0.666875,
+      "mean_gold_q": 0.6566508257071325
+    },
+    "v1": {
+      "spearman_gold_q_vs_correct_fraction": {
+        "rho": 0.8833902332512844,
+        "p": 4.2869294480396955e-67
+      },
+      "spearman_implied_pass8_vs_actual_pass8": {
+        "rho": 0.590440521935588,
+        "p": 3.527948536572437e-20
+      },
+      "mean_8way_implied_pass8": 0.8825401652642586,
+      "actual_pass8": 0.865,
+      "mean_correct_fraction": 0.73,
+      "mean_gold_q": 0.7219568298777017
+    },
+    "v2": {
+      "spearman_gold_q_vs_correct_fraction": {
+        "rho": 0.8756991507233883,
+        "p": 1.607448004069576e-64
+      },
+      "spearman_implied_pass8_vs_actual_pass8": {
+        "rho": 0.6450940511696356,
+        "p": 6.37584373531032e-25
+      },
+      "mean_8way_implied_pass8": 0.8683619345522118,
+      "actual_pass8": 0.84,
+      "mean_correct_fraction": 0.754375,
+      "mean_gold_q": 0.732628908478258
+    },
+    "v3": {
+      "spearman_gold_q_vs_correct_fraction": {
+        "rho": 0.9084360997835059,
+        "p": 6.1957640419910716e-77
+      },
+      "spearman_implied_pass8_vs_actual_pass8": {
+        "rho": 0.6766148695314068,
+        "p": 3.9936050154269137e-28
+      },
+      "mean_8way_implied_pass8": 0.852505181570198,
+      "actual_pass8": 0.82,
+      "mean_correct_fraction": 0.693125,
+      "mean_gold_q": 0.6965763460999017
+    }
+  },
+  "state_conditioned": {
+    "v1": {
+      "all-correct->all-correct": {
+        "n": 72,
+        "epoch4": {
+          "gold_q": 0.9540022598163722,
+          "gold_rank": 1.0,
+          "gold_margin": 5.4951845581332845,
+          "normalized_entropy": 0.07510918919923658,
+          "effective_support": 1.193089715673136
+        },
+        "v1": {
+          "gold_q": 0.9866646557326185,
+          "gold_rank": 1.0,
+          "gold_margin": 7.468049220740795,
+          "normalized_entropy": 0.025963890091100752,
+          "effective_support": 1.062658108828929
+        }
+      },
+      "all-wrong->all-wrong": {
+        "n": 10,
+        "epoch4": {
+          "gold_q": 0.04782319739297884,
+          "gold_rank": 3.1,
+          "gold_margin": -3.287054991722107,
+          "normalized_entropy": 0.28887071738403314,
+          "effective_support": 1.9010253419042917
+        },
+        "v1": {
+          "gold_q": 0.013122608769706468,
+          "gold_rank": 3.2,
+          "gold_margin": -6.042792189121246,
+          "normalized_entropy": 0.15434223774008077,
+          "effective_support": 1.4110705780389516
+        }
+      },
+      "mixed->all-correct": {
+        "n": 38,
+        "epoch4": {
+          "gold_q": 0.6353032004549429,
+          "gold_rank": 1.131578947368421,
+          "gold_margin": 0.8535253029120596,
+          "normalized_entropy": 0.35213580395025035,
+          "effective_support": 2.143385189420031
+        },
+        "v1": {
+          "gold_q": 0.9387082800507006,
+          "gold_rank": 1.0,
+          "gold_margin": 3.7187048588928424,
+          "normalized_entropy": 0.1057377541121875,
+          "effective_support": 1.2663649581603524
+        }
+      },
+      "mixed->all-wrong": {
+        "n": 17,
+        "epoch4": {
+          "gold_q": 0.35584899973884887,
+          "gold_rank": 1.8823529411764706,
+          "gold_margin": -0.49055323530645933,
+          "normalized_entropy": 0.4220496824162468,
+          "effective_support": 2.4571287417411725
+        },
+        "v1": {
+          "gold_q": 0.08039174283939719,
+          "gold_rank": 2.4705882352941178,
+          "gold_margin": -3.0705802651012646,
+          "normalized_entropy": 0.21971387271579268,
+          "effective_support": 1.6355420302399533
+        }
+      },
+      "mixed->mixed": {
+        "n": 57,
+        "epoch4": {
+          "gold_q": 0.5057923523730821,
+          "gold_rank": 1.456140350877193,
+          "gold_margin": 0.27027749910689236,
+          "normalized_entropy": 0.41094003079738517,
+          "effective_support": 2.4076557740987723
+        },
+        "v1": {
+          "gold_q": 0.5684906669206209,
+          "gold_rank": 1.3508771929824561,
+          "gold_margin": 0.4473137008516412,
+          "normalized_entropy": 0.31894577197517865,
+          "effective_support": 1.9797005666904575
+        }
+      }
+    },
+    "v2": {
+      "all-correct->all-correct": {
+        "n": 75,
+        "epoch4": {
+          "gold_q": 0.9527286040045868,
+          "gold_rank": 1.0,
+          "gold_margin": 5.414468630154928,
+          "normalized_entropy": 0.0772496455375823,
+          "effective_support": 1.1984646018626528
+        },
+        "v2": {
+          "gold_q": 0.9851620788119008,
+          "gold_rank": 1.0,
+          "gold_margin": 8.217811484336853,
+          "normalized_entropy": 0.023837708984746242,
+          "effective_support": 1.059514201804325
+        }
+      },
+      "all-wrong->all-wrong": {
+        "n": 13,
+        "epoch4": {
+          "gold_q": 0.06572316484373461,
+          "gold_rank": 3.1538461538461537,
+          "gold_margin": -3.040555816430312,
+          "normalized_entropy": 0.3281774458059577,
+          "effective_support": 2.1020316101800827
+        },
+        "v2": {
+          "gold_q": 0.019259180362028124,
+          "gold_rank": 3.230769230769231,
+          "gold_margin": -6.423053576396062,
+          "normalized_entropy": 0.2067041944868258,
+          "effective_support": 1.5953002050568974
+        }
+      },
+      "mixed->all-correct": {
+        "n": 43,
+        "epoch4": {
+          "gold_q": 0.6172509492518251,
+          "gold_rank": 1.2325581395348837,
+          "gold_margin": 0.7603704319443814,
+          "normalized_entropy": 0.3621114573161877,
+          "effective_support": 2.185487028174282
+        },
+        "v2": {
+          "gold_q": 0.9547227787446206,
+          "gold_rank": 1.0,
+          "gold_margin": 3.907783479191536,
+          "normalized_entropy": 0.08653545728427078,
+          "effective_support": 1.2095932006379257
+        }
+      },
+      "mixed->all-wrong": {
+        "n": 19,
+        "epoch4": {
+          "gold_q": 0.3132938945749682,
+          "gold_rank": 2.0,
+          "gold_margin": -0.6788543368640699,
+          "normalized_entropy": 0.4387548762516181,
+          "effective_support": 2.5672082565803778
+        },
+        "v2": {
+          "gold_q": 0.06204260273773652,
+          "gold_rank": 2.736842105263158,
+          "gold_margin": -3.7028488359953227,
+          "normalized_entropy": 0.24752335018811975,
+          "effective_support": 1.7783991008922366
+        }
+      },
+      "mixed->mixed": {
+        "n": 50,
+        "epoch4": {
+          "gold_q": 0.5305348776672215,
+          "gold_rank": 1.34,
+          "gold_margin": 0.394053555727005,
+          "normalized_entropy": 0.401449031865197,
+          "effective_support": 2.3540661168933963
+        },
+        "v2": {
+          "gold_q": 0.60312735004034,
+          "gold_rank": 1.26,
+          "gold_margin": 0.6006138336658478,
+          "normalized_entropy": 0.3063592755287388,
+          "effective_support": 1.9265364958411844
+        }
+      }
+    },
+    "v3": {
+      "all-correct->all-correct": {
+        "n": 72,
+        "epoch4": {
+          "gold_q": 0.9575950905315062,
+          "gold_rank": 1.0,
+          "gold_margin": 5.56372859991259,
+          "normalized_entropy": 0.07082921289627932,
+          "effective_support": 1.1805693435271039
+        },
+        "v3": {
+          "gold_q": 0.9898745275880935,
+          "gold_rank": 1.0,
+          "gold_margin": 8.22095613512728,
+          "normalized_entropy": 0.0206757003304582,
+          "effective_support": 1.0480777161557508
+        }
+      },
+      "all-wrong->all-wrong": {
+        "n": 11,
+        "epoch4": {
+          "gold_q": 0.04497856412247784,
+          "gold_rank": 3.272727272727273,
+          "gold_margin": -3.3043091080405493,
+          "normalized_entropy": 0.3105580890572282,
+          "effective_support": 2.0004284089453233
+        },
+        "v3": {
+          "gold_q": 0.014494924610500738,
+          "gold_rank": 3.272727272727273,
+          "gold_margin": -5.841499149799347,
+          "normalized_entropy": 0.1810406667899519,
+          "effective_support": 1.5032719611586187
+        }
+      },
+      "mixed->all-correct": {
+        "n": 34,
+        "epoch4": {
+          "gold_q": 0.624934708942544,
+          "gold_rank": 1.2058823529411764,
+          "gold_margin": 0.771641203585793,
+          "normalized_entropy": 0.34083798352314437,
+          "effective_support": 2.0727382344790017
+        },
+        "v3": {
+          "gold_q": 0.9453967314516286,
+          "gold_rank": 1.0,
+          "gold_margin": 3.7981559020631455,
+          "normalized_entropy": 0.09750646896215713,
+          "effective_support": 1.2402868266858182
+        }
+      },
+      "mixed->all-wrong": {
+        "n": 25,
+        "epoch4": {
+          "gold_q": 0.34690787710685683,
+          "gold_rank": 1.88,
+          "gold_margin": -0.5329252696037292,
+          "normalized_entropy": 0.415979174929547,
+          "effective_support": 2.431222562726591
+        },
+        "v3": {
+          "gold_q": 0.05111241634891721,
+          "gold_rank": 2.76,
+          "gold_margin": -3.841526622772217,
+          "normalized_entropy": 0.1945296877713002,
+          "effective_support": 1.540529370182682
+        }
+      },
+      "mixed->mixed": {
+        "n": 53,
+        "epoch4": {
+          "gold_q": 0.5490687106867176,
+          "gold_rank": 1.320754716981132,
+          "gold_margin": 0.501654807126747,
+          "normalized_entropy": 0.414936152709643,
+          "effective_support": 2.437783790391326
+        },
+        "v3": {
+          "gold_q": 0.5896394769391594,
+          "gold_rank": 1.3584905660377358,
+          "gold_margin": 0.5865177298491856,
+          "normalized_entropy": 0.3172492238989965,
+          "effective_support": 1.9688833425320968
+        }
+      }
+    }
+  }
+}

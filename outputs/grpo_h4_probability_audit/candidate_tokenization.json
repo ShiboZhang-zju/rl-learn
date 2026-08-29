@@ -1,0 +1,55 @@
+{
+  "people": [
+    "Alice",
+    "Bob",
+    "Carol"
+  ],
+  "formatter": "kk_sft.data.format_answer_only_completion (verified byte-identical)",
+  "candidates": [
+    {
+      "pattern": "KKK",
+      "completion": "<answer>\nAlice: knight\nBob: knight\nCarol: knight\n</answer>",
+      "token_count": 18
+    },
+    {
+      "pattern": "KKN",
+      "completion": "<answer>\nAlice: knight\nBob: knight\nCarol: knave\n</answer>",
+      "token_count": 19
+    },
+    {
+      "pattern": "KNK",
+      "completion": "<answer>\nAlice: knight\nBob: knave\nCarol: knight\n</answer>",
+      "token_count": 19
+    },
+    {
+      "pattern": "KNN",
+      "completion": "<answer>\nAlice: knight\nBob: knave\nCarol: knave\n</answer>",
+      "token_count": 20
+    },
+    {
+      "pattern": "NKK",
+      "completion": "<answer>\nAlice: knave\nBob: knight\nCarol: knight\n</answer>",
+      "token_count": 19
+    },
+    {
+      "pattern": "NKN",
+      "completion": "<answer>\nAlice: knave\nBob: knight\nCarol: knave\n</answer>",
+      "token_count": 20
+    },
+    {
+      "pattern": "NNK",
+      "completion": "<answer>\nAlice: knave\nBob: knave\nCarol: knight\n</answer>",
+      "token_count": 20
+    },
+    {
+      "pattern": "NNN",
+      "completion": "<answer>\nAlice: knave\nBob: knave\nCarol: knave\n</answer>",
+      "token_count": 21
+    }
+  ],
+  "length_spread": {
+    "min": 18,
+    "max": 21,
+    "note": "'knight' is 1 token, 'knave' is 2 tokens -> KKK is shorter than NNN"
+  }
+}
