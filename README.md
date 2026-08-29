@@ -10,6 +10,18 @@
 - 后续 RL：基于同一套 verifier 的 rule-based reward，再接 GRPO
 - 参考实现：Sophie0、Logic-RL；本仓库不直接复制它们的训练代码
 
+## Resume on a new GPU
+
+For the latest experiment state and recovery instructions:
+
+→ `EXPERIMENT_STATE.md`
+
+Quick restore:
+
+```bash
+bash scripts/bootstrap_gpu.sh
+```
+
 ## 目录
 
 ```text

@@ -1,0 +1,28 @@
+# GPU environment pins for rl-learn.
+#
+# PyTorch/CUDA are platform-level dependencies.
+# Verified environment:
+# torch = 2.5.1+cu118
+# CUDA runtime = 11.8
+#
+# torch / CUDA are intentionally NOT listed here.
+# Do NOT auto-install or upgrade torch on a GPU platform:
+#   pip install torch==...   # <- do not run by default
+# The GPU image normally ships a matching torch+CUDA build;
+# replacing it can break the CUDA runtime.
+#
+# Verified on 2026-08-29 with:
+#   python 3.10.19 / trl 0.23.0 / peft 0.20.0 / transformers 4.57.1
+
+transformers==4.57.1
+datasets==4.0.0
+peft==0.20.0
+trl==0.23.0
+accelerate==1.14.0
+huggingface-hub==0.34.3
+safetensors==0.5.3
+scipy==1.15.3
+numpy==1.26.4
+pyyaml==6.0.2
+tqdm==4.67.1
+pytest==9.0.2
