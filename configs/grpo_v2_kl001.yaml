@@ -1,15 +1,21 @@
-# Formal GRPO round 1 (full run) configuration.
-# Trainer: scripts/train_grpo_trl.py (TRL 0.23 GRPOTrainer, single GPU).
-# beta = 0.0, i.e. no reference model and no KL penalty.
+# GRPO-V2 round: KL regularization single-variable check (H1).
+#
+# Identical to configs/grpo_v1_full.yaml except `training.beta`: 0.0 -> 0.01.
+# trainer: scripts/train_grpo_trl.py (TRL 0.23 GRPOTrainer, single GPU).
+#
+# Because beta > 0, the trainer loads an *explicit* frozen reference model from
+# `reference_checkpoint` (SFT Epoch4) instead of letting TRL fall back to
+# disable_adapter() (which would be the Qwen base model).
 dataset_version: kk-v2-statement-first
 model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
 init_checkpoint: outputs/sft_v2_5k_p800/checkpoint-1252
+reference_checkpoint: outputs/sft_v2_5k_p800/checkpoint-1252
 
 seed: 20260830
 
 train_file: data/processed/grpo_v1_train.jsonl
 val_file: data/processed/v2_answer_only_val.jsonl
-output_dir: outputs/grpo_v1
+output_dir: outputs/grpo_v2_kl001
 
 generation:
   num_generations: 8
@@ -21,7 +27,10 @@ generation:
 training:
   bf16: true
   gradient_checkpointing: false
-  beta: 0.0
+
+  # The single algorithmic variable vs GRPO-V1.
+  beta: 0.01
+
   clip_range: 0.2
   # Unique prompts per optimizer step. In TRL 0.23 the trainer batch is
   # prompt_batch_size * num_generations rows (each unique prompt repeated

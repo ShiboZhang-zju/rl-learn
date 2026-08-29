@@ -1,0 +1,5 @@
+{
+  "step": 600,
+  "exact": 0.772,
+  "checkpoint": "outputs/grpo_v2_kl001/checkpoint-600"
+}

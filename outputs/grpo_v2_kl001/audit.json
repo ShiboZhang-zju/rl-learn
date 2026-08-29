@@ -1,0 +1,31 @@
+{
+  "REFERENCE_MODE": "explicit_sft_epoch4",
+  "beta": 0.01,
+  "trainer_beta": 0.01,
+  "reference_checkpoint": "outputs/sft_v2_5k_p800/checkpoint-1252",
+  "reference_attached": true,
+  "reference_trainable_params": 0,
+  "policy_trainable_params": 4399104,
+  "steps": 625,
+  "policy_param_delta_max": 0.0008815291657811031,
+  "reference_param_delta_max": 0.0,
+  "kl_logged": true,
+  "kl_first": 3.9244558138307184e-05,
+  "kl_last": 0.006305141374468803,
+  "kl_max": 0.3609617352485657,
+  "kl_all_finite": true,
+  "loss_all_finite": true,
+  "grad_norm_all_finite": true,
+  "n_loss_values": 625,
+  "checks": {
+    "beta_matches_config": true,
+    "reference_attached_when_beta_nonzero": true,
+    "reference_frozen": true,
+    "policy_updated": true,
+    "kl_logged_when_beta_nonzero": true,
+    "kl_nonnegative_and_finite": true,
+    "loss_finite": true,
+    "grad_finite": true
+  },
+  "AUDIT_PASS": true
+}

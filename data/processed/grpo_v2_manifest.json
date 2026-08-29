@@ -1,0 +1,56 @@
+{
+  "dataset_version": "kk-v2-statement-first",
+  "generator_version": "kk-v2-statement-first",
+  "seed": 20260901,
+  "people": [
+    "Alice",
+    "Bob",
+    "Carol"
+  ],
+  "generation_rule": "statement-first, exact solve, retain solution_count == 1; dedup against legacy+v2+grpo-v1+self",
+  "dedup_universe": {
+    "sources": {
+      "legacy_raw": [
+        "data/raw/train.jsonl",
+        "data/raw/val.jsonl",
+        "data/raw/test.jsonl"
+      ],
+      "v2_raw": [
+        "data/raw_v2/train.jsonl",
+        "data/raw_v2/val.jsonl",
+        "data/raw_v2/test.jsonl"
+      ],
+      "grpo_v1_raw": [
+        "data/raw_grpo_v1/train.jsonl",
+        "data/raw_grpo_v1/final_holdout.jsonl"
+      ]
+    },
+    "universe_key_count": 14999
+  },
+  "splits": {
+    "final_holdout": {
+      "count": 2000,
+      "raw_file": "data/raw_grpo_v2/final_holdout.jsonl",
+      "processed_file": "data/processed/grpo_v2_final_holdout.jsonl",
+      "seed": 20260901
+    }
+  },
+  "overlap": {
+    "vs_legacy_raw": {
+      "data/raw/train.jsonl": 0,
+      "data/raw/val.jsonl": 0,
+      "data/raw/test.jsonl": 0
+    },
+    "vs_v2_raw": {
+      "data/raw_v2/train.jsonl": 0,
+      "data/raw_v2/val.jsonl": 0,
+      "data/raw_v2/test.jsonl": 0
+    },
+    "vs_grpo_v1_raw": {
+      "data/raw_grpo_v1/train.jsonl": 0,
+      "data/raw_grpo_v1/final_holdout.jsonl": 0
+    }
+  },
+  "internal_duplicates": 0,
+  "total_unique_puzzles": 16999
+}

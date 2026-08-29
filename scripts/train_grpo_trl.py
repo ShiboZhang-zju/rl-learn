@@ -1,13 +1,28 @@
 #!/usr/bin/env python3
-"""GRPO-v1 formal run using TRL GRPOTrainer (trl==0.23.0) on a single GPU.
+"""GRPO formal run using TRL GRPOTrainer (trl==0.23.0) on a single GPU.
 
-Matches the GRPO-v1 spec:
-- Initializes from SFT checkpoint-1252 (Epoch4) via an existing LoRA adapter.
+Shared by GRPO-V1 (beta=0.0) and GRPO-V2 (beta=0.01). Everything algorithmic is
+driven by the YAML config; `training.beta` is the only variable between the two.
+
+- Initializes from an SFT LoRA adapter (`init_checkpoint`), e.g. SFT Epoch4
+  checkpoint-1252.
 - Rollout: 8 generations/prompt, temperature 0.8, top_p 0.95, max 64 completion tokens.
 - Reward: exact-answer verifier, +1 iff parsed answer == ground truth, else 0.
-- scale_rewards="group": per-group normalization with population std (TRL zeroes
-  the advantage when group std == 0 internally, so no NaN).
-- beta=0.0: no reference model, no KL penalty.
+- scale_rewards="group": advantage = (r - group_mean) / (group_std + 1e-4). TRL
+  computes group_std with `torch.std` over each group of `num_generations`
+  rollouts, i.e. the *unbiased sample* std (ddof=1), not the population std.
+  TRL does not special-case std == 0; it adds 1e-4 to the denominator, so
+  zero-variance groups get advantage ~0 instead of NaN (`frac_reward_zero_std`
+  reports their frequency).
+- beta is read from the config, never hard-coded:
+    beta == 0.0 -> no reference model, no KL penalty (GRPO-V1).
+    beta  > 0.0 -> an explicit frozen reference model is loaded from
+      `reference_checkpoint` and attached to the trainer, so that
+          policy init = SFT adapter,  reference = frozen SFT adapter.
+      Without this override TRL 0.23 would take the PEFT branch
+      (`grpo_trainer.py`: `elif is_peft_model(model): self.ref_model = None`) and
+      compute reference log-probs under `disable_adapter()`, i.e. against the raw
+      Qwen base model instead of SFT Epoch4, which is not the intended constraint.
 - No vLLM / DeepSpeed / FSDP / format / length / entropy rewards.
 
 Per-step logs come from TRL's log_history plus group statistics collected inside
@@ -80,6 +95,120 @@ def canonical_answer(answer) -> str:
     return json.dumps(answer, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
+def snapshot_adapter_params(model: torch.nn.Module, limit: int = 4) -> dict[str, list[float]]:
+    """Full-tensor copy of the first `limit` LoRA params, used to prove a model moved / did not move."""
+    snapshot: dict[str, list[float]] = {}
+    for name, param in model.named_parameters():
+        if "lora_" in name:
+            snapshot[name] = param.detach().to(torch.float32).cpu().flatten().tolist()
+            if len(snapshot) >= limit:
+                break
+    return snapshot
+
+
+def max_param_delta(before: dict[str, list[float]], after: dict[str, list[float]]) -> float:
+    if not before or set(before) != set(after):
+        return float("nan")
+    worst = 0.0
+    for key, values in before.items():
+        other = after[key]
+        if len(other) != len(values):
+            return float("nan")
+        worst = max(worst, max((abs(a - b) for a, b in zip(values, other)), default=0.0))
+    return worst
+
+
+def completion_logps(model, input_ids: torch.Tensor, attention_mask: torch.Tensor, completion_len: int) -> torch.Tensor:
+    """Per-token log p of each completion token, aligned with TRL's `logits_to_keep` slicing."""
+    logits = model(input_ids=input_ids, attention_mask=attention_mask, use_cache=False).logits
+    sliced = logits[:, -completion_len - 1 : -1].to(torch.float32)
+    log_probs = torch.log_softmax(sliced, dim=-1)
+    targets = input_ids[:, -completion_len:].unsqueeze(-1)
+    return torch.gather(log_probs, 2, targets).squeeze(-1)
+
+
+def run_reference_audit(
+    policy,
+    reference,
+    tokenizer,
+    rows: list[dict],
+    device: str,
+    beta: float,
+    init_checkpoint: str,
+    reference_checkpoint: str,
+    max_new_tokens: int,
+    max_prompt_len: int,
+    output_path: Path,
+) -> dict:
+    """Compare policy-at-initialization against the frozen reference on identical token sequences.
+
+    Both models are `Qwen base + the same SFT adapter`, so the expected result is
+    logprob_diff ~ 0 and initial KL ~ 0. Anything else means the reference is not the
+    policy's initialization and training must not proceed.
+    """
+    was_training = policy.training
+    policy.eval()
+    reference.eval()
+
+    per_prompt = []
+    all_diffs: list[torch.Tensor] = []
+    all_kl: list[torch.Tensor] = []
+    for row in rows:
+        prompt_text = tokenizer.apply_chat_template(row["prompt"], tokenize=False, add_generation_prompt=True)
+        inputs = tokenizer(prompt_text, return_tensors="pt", truncation=True, max_length=max_prompt_len).to(device)
+        with torch.inference_mode():
+            generated = policy.generate(
+                **inputs,
+                max_new_tokens=max_new_tokens,
+                do_sample=False,
+                pad_token_id=tokenizer.pad_token_id,
+                use_cache=True,
+            )
+        completion_len = generated.shape[1] - inputs["input_ids"].shape[1]
+        if completion_len <= 0:
+            continue
+        attention_mask = torch.ones_like(generated)
+        with torch.inference_mode():
+            policy_lp = completion_logps(policy, generated, attention_mask, completion_len)[0]
+            reference_lp = completion_logps(reference, generated, attention_mask, completion_len)[0]
+        diff = (reference_lp - policy_lp).abs()
+        # k3 estimator, identical to the one TRL uses for the KL penalty term.
+        delta = reference_lp - policy_lp
+        kl = torch.exp(delta) - delta - 1.0
+        all_diffs.append(diff.detach().float().cpu())
+        all_kl.append(kl.detach().float().cpu())
+        per_prompt.append(
+            {
+                "id": row["id"],
+                "completion_tokens": int(completion_len),
+                "mean_abs_logprob_diff": float(diff.mean()),
+                "max_abs_logprob_diff": float(diff.max()),
+                "initial_kl": float(kl.mean()),
+            }
+        )
+
+    all_diffs_t = torch.cat(all_diffs) if all_diffs else torch.zeros(1)
+    all_kl_t = torch.cat(all_kl) if all_kl else torch.zeros(1)
+    audit = {
+        "REFERENCE_MODE": "explicit_sft_epoch4",
+        "policy_checkpoint": str(init_checkpoint),
+        "reference_checkpoint": str(reference_checkpoint),
+        "beta": beta,
+        "policy_trainable_params": int(sum(p.numel() for p in policy.parameters() if p.requires_grad)),
+        "reference_trainable_params": int(sum(p.numel() for p in reference.parameters() if p.requires_grad)),
+        "n_prompts": len(per_prompt),
+        "mean_abs_logprob_diff": float(all_diffs_t.mean()),
+        "max_abs_logprob_diff": float(all_diffs_t.max()),
+        "initial_kl": float(all_kl_t.mean()),
+        "prompts": per_prompt,
+    }
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if was_training:
+        policy.train()
+    return audit
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=Path, default=Path("configs/grpo_v1_full.yaml"))
@@ -91,6 +220,7 @@ def main() -> None:
     parser.add_argument("--seed", type=int)
     parser.add_argument("--no-val", action="store_true")
     parser.add_argument("--no-probe", action="store_true")
+    parser.add_argument("--audit-only", action="store_true", help="Write the reference audit and exit without training.")
     parser.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
     args = parser.parse_args()
 
@@ -128,13 +258,16 @@ def main() -> None:
         max_steps = int(total_batches * epochs)
     max_steps = min(max_steps, total_batches)
     eval_every = int(train_cfg.get("eval_every", 100))
+    beta = float(train_cfg.get("beta", 0.0))
 
     from datasets import Dataset
     from transformers import AutoModelForCausalLM, AutoTokenizer
     from trl import GRPOConfig, GRPOTrainer
+    from peft import PeftModel
 
     model_name = cfg["model_name_or_path"]
     init_checkpoint = Path(cfg["init_checkpoint"])
+    reference_checkpoint = Path(cfg.get("reference_checkpoint") or cfg["init_checkpoint"])
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -142,7 +275,6 @@ def main() -> None:
 
     dtype = torch.bfloat16 if (bool(train_cfg.get("bf16", False)) and device != "cpu") else torch.float32
     base_model = AutoModelForCausalLM.from_pretrained(model_name, dtype=dtype, trust_remote_code=True)
-    from peft import PeftModel
 
     model = PeftModel.from_pretrained(base_model, init_checkpoint, is_trainable=True)
     model.to(device)
@@ -150,7 +282,23 @@ def main() -> None:
     n_total = sum(p.numel() for p in model.parameters())
     print(f"device={device} dtype={dtype} trainable={n_trainable}/{n_total} ({100 * n_trainable / n_total:.4f}%)", flush=True)
     print(f"prompts={n_prompts} prompt_batch={prompt_batch_size} num_gen={num_gen} batches={total_batches} max_steps={max_steps} per_device_train_batch_size={per_device_train_batch_size}", flush=True)
-    print("advantage=group normalization (population std) via TRL scale_rewards='group'; beta=0.0", flush=True)
+    print("advantage=group normalization (unbiased sample std, ddof=1) via TRL scale_rewards='group'", flush=True)
+    print(f"beta={beta}", flush=True)
+
+    # ------------------------------------------------------------------ reference model
+    # TRL 0.23 sets ref_model = None for PEFT models and falls back to disable_adapter(),
+    # i.e. the raw base model. We want `reference = frozen SFT init`, so load it explicitly.
+    reference_model = None
+    if beta != 0.0:
+        ref_base = AutoModelForCausalLM.from_pretrained(model_name, dtype=dtype, trust_remote_code=True)
+        reference_model = PeftModel.from_pretrained(ref_base, reference_checkpoint, is_trainable=False)
+        reference_model.eval()
+        for p in reference_model.parameters():
+            p.requires_grad_(False)
+        reference_model.to(device)
+        print(f"reference=explicit_sft_epoch4 checkpoint={reference_checkpoint} trainable_params={sum(p.numel() for p in reference_model.parameters() if p.requires_grad)}", flush=True)
+    else:
+        print("reference=None (beta=0.0, no KL penalty)", flush=True)
 
     # ------------------------------------------------------------------ reward + stats
     stats_buffer: list[dict] = []
@@ -235,7 +383,7 @@ def main() -> None:
         save_total_limit=None,
         bf16=bool(train_cfg.get("bf16", False)),
         gradient_checkpointing=False,
-        beta=0.0,
+        beta=beta,
         num_generations=num_gen,
         max_prompt_length=int(gen_cfg.get("max_prompt_length", 512)),
         max_completion_length=int(gen_cfg.get("max_completion_length", 64)),
@@ -261,10 +409,19 @@ def main() -> None:
         reward_funcs=[reward_fn],
     )
 
+    # Attach the explicit frozen reference. TRL only builds one itself for non-PEFT
+    # models, and only consults `self.ref_model` at loss time, so overriding it here is
+    # enough to make `reference = frozen SFT init` instead of `disable_adapter() -> base`.
+    if reference_model is not None:
+        trainer.ref_model = trainer.accelerator.prepare_model(reference_model, evaluation_mode=True)
+        print(f"trainer.beta={trainer.beta} trainer.ref_model is not None={trainer.ref_model is not None}", flush=True)
+        print(f"reference_trainable_params={sum(p.numel() for p in trainer.ref_model.parameters() if p.requires_grad)}", flush=True)
+
     # ------------------------------------------------------------------ val / probe / logging
-    train_metrics_path = output_dir / "grpo_v1_train_metrics.jsonl"
-    val_metrics_path = output_dir / "grpo_v1_val_metrics.json"
-    probe_path = output_dir / "grpo_v1_probe_rollouts.json"
+    train_metrics_path = output_dir / "train_metrics.jsonl"
+    val_metrics_path = output_dir / "val_metrics.json"
+    probe_path = output_dir / "probe_rollouts.json"
+    audit_path = output_dir / "audit" / "reference_audit.json"
     val_metrics: list[dict] = []
     probe_records: list[dict] = []
     best = {"step": -1, "exact": -1.0, "checkpoint": None}
@@ -282,6 +439,42 @@ def main() -> None:
     max_prompt_len = int(gen_cfg.get("max_prompt_length", 512))
     temperature = float(gen_cfg.get("temperature", 0.8))
     top_p = float(gen_cfg.get("top_p", 0.95))
+
+    # ------------------------------------------------------------------ reference audit
+    # Must run before any optimizer step: policy-at-init vs frozen reference, same tokens.
+    audit: dict = {}
+    if beta != 0.0 and trainer.ref_model is not None:
+        audit_rows = train_rows[:2]
+        audit = run_reference_audit(
+            policy=trainer.model,
+            reference=trainer.ref_model,
+            tokenizer=tokenizer,
+            rows=audit_rows,
+            device=device,
+            beta=beta,
+            init_checkpoint=str(init_checkpoint),
+            reference_checkpoint=str(reference_checkpoint),
+            max_new_tokens=max_new_tokens,
+            max_prompt_len=max_prompt_len,
+            output_path=audit_path,
+        )
+        print(
+            f"[REFERENCE AUDIT] mode={audit['REFERENCE_MODE']} ref={audit['reference_checkpoint']} "
+            f"ref_trainable={audit['reference_trainable_params']} "
+            f"mean_abs_logprob_diff={audit['mean_abs_logprob_diff']:.3e} "
+            f"max_abs_logprob_diff={audit['max_abs_logprob_diff']:.3e} "
+            f"initial_kl={audit['initial_kl']:.3e}",
+            flush=True,
+        )
+        if audit["reference_trainable_params"] != 0:
+            print("REFERENCE_AUDIT_FAIL: reference has trainable parameters", flush=True)
+            return
+        if not (audit["initial_kl"] < 1e-3):
+            print(f"REFERENCE_AUDIT_FAIL: initial_kl={audit['initial_kl']:.3e} is not ~0; STOP before training", flush=True)
+            return
+        print("REFERENCE_AUDIT_PASS", flush=True)
+        if args.audit_only:
+            return
 
     def run_probe(step: int) -> None:
         if not probe_rows:
@@ -352,12 +545,16 @@ def main() -> None:
 
     do_probe = not args.no_probe
 
-    class GrpoV1Callback(TrainerCallback):
-        def on_step_end(self, args, state, control, **kwargs):
+    class GrpoCallback(TrainerCallback):
+        # Metrics are recorded in `on_log` rather than `on_step_end`: Trainer flushes the
+        # step log *after* `on_step_end`, so reading `state.log_history[-1]` there yields
+        # the previous step's metrics (off by one). `on_log` receives this step's dict.
+        def on_log(self, args, state, control, logs=None, **kwargs):
+            logs = logs or {}
+            if "loss" not in logs:  # eval / final summary logs, not an optimizer step
+                return
             step = state.global_step
-            entry = {}
-            if state.log_history:
-                entry = dict(state.log_history[-1])
+            entry = dict(logs)
             stats = stats_buffer.pop(0) if stats_buffer else {}
             entry.update(
                 {
@@ -370,7 +567,7 @@ def main() -> None:
                     "avg_unique_answers": stats.get("avg_unique_answers"),
                     "format_valid_ratio": stats.get("format_valid_ratio"),
                     "parse_success_ratio": stats.get("parse_success_ratio"),
-                    "zero_variance_group_ratio": entry.get("train/frac_reward_zero_std"),
+                    "zero_variance_group_ratio": logs.get("frac_reward_zero_std"),
                     "peak_memory_allocated_gb": torch.cuda.max_memory_allocated() / 1024**3 if torch.cuda.is_available() else 0.0,
                 }
             )
@@ -388,7 +585,10 @@ def main() -> None:
         run_probe(0)
     print(f"[baseline] val exact={best['exact']:.4f} (step 0 = SFT Epoch4 ckpt-1252)", flush=True)
 
-    trainer.add_callback(GrpoV1Callback())
+    policy_before = snapshot_adapter_params(trainer.model)
+    reference_before = snapshot_adapter_params(trainer.ref_model) if trainer.ref_model is not None else {}
+
+    trainer.add_callback(GrpoCallback())
     trainer.train()
 
     # Final metrics: val at last step, final probe, best checkpoint bookkeeping.
@@ -397,6 +597,71 @@ def main() -> None:
     best_path = output_dir / "best_checkpoint.json"
     best_path.write_text(json.dumps(best, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"best_val_exact={best['exact']:.4f} at step {best['step']} checkpoint={best['checkpoint']}", flush=True)
+
+    # ------------------------------------------------------------------ post-run audit
+    policy_after = snapshot_adapter_params(trainer.model)
+    reference_after = snapshot_adapter_params(trainer.ref_model) if trainer.ref_model is not None else {}
+    policy_delta = max_param_delta(policy_before, policy_after)
+    reference_delta = max_param_delta(reference_before, reference_after) if reference_before else 0.0
+
+    step_entries = []
+    if train_metrics_path.exists():
+        step_entries = [json.loads(line) for line in train_metrics_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    kl_values = [float(entry["kl"]) for entry in step_entries if entry.get("kl") is not None]
+    loss_values = [float(entry["loss"]) for entry in step_entries if entry.get("loss") is not None]
+    grad_values = [float(entry["grad_norm"]) for entry in step_entries if entry.get("grad_norm") is not None]
+
+    def all_finite(values: list[float]) -> bool:
+        return all(math.isfinite(value) for value in values)
+
+    expect_kl = beta != 0.0
+    ref_trainable = int(sum(p.numel() for p in trainer.ref_model.parameters() if p.requires_grad)) if trainer.ref_model is not None else 0
+    audit_record = {
+        "REFERENCE_MODE": "explicit_sft_epoch4" if trainer.ref_model is not None else "none",
+        "beta": beta,
+        "trainer_beta": trainer.beta,
+        "reference_checkpoint": str(reference_checkpoint) if trainer.ref_model is not None else None,
+        "reference_attached": trainer.ref_model is not None,
+        "reference_trainable_params": ref_trainable,
+        "policy_trainable_params": int(sum(p.numel() for p in trainer.model.parameters() if p.requires_grad)),
+        "steps": len(step_entries),
+        "policy_param_delta_max": policy_delta,
+        "reference_param_delta_max": reference_delta,
+        "kl_logged": bool(kl_values),
+        "kl_first": kl_values[0] if kl_values else None,
+        "kl_last": kl_values[-1] if kl_values else None,
+        "kl_max": max(kl_values) if kl_values else None,
+        "kl_all_finite": all_finite(kl_values) if kl_values else None,
+        "loss_all_finite": all_finite(loss_values),
+        "grad_norm_all_finite": all_finite(grad_values),
+        "n_loss_values": len(loss_values),
+    }
+    checks = {
+        "beta_matches_config": float(trainer.beta) == float(beta),
+        "reference_attached_when_beta_nonzero": (not expect_kl) or trainer.ref_model is not None,
+        "reference_frozen": (not expect_kl) or (ref_trainable == 0 and reference_delta == 0.0),
+        "policy_updated": policy_delta > 0,
+        "kl_logged_when_beta_nonzero": (not expect_kl) or bool(kl_values),
+        "kl_nonnegative_and_finite": (not expect_kl) or (all_finite(kl_values) and min(kl_values) >= 0.0),
+        "loss_finite": all_finite(loss_values),
+        "grad_finite": all_finite(grad_values),
+    }
+    audit_record["checks"] = checks
+    audit_record["AUDIT_PASS"] = all(checks.values())
+    (output_dir / "audit.json").write_text(json.dumps(audit_record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(
+        f"[AUDIT] policy_delta={policy_delta:.3e} reference_delta={reference_delta:.3e} "
+        f"kl_logged={audit_record['kl_logged']} kl_first={audit_record['kl_first']} kl_last={audit_record['kl_last']} "
+        f"kl_max={audit_record['kl_max']}",
+        flush=True,
+    )
+    for name, ok in checks.items():
+        if not ok:
+            print(f"[AUDIT] FAILED CHECK: {name}", flush=True)
+    if audit_record["AUDIT_PASS"]:
+        print("KL_SMOKE_PASS", flush=True)
+    else:
+        print("AUDIT_FAIL", flush=True)
 
 
 if __name__ == "__main__":

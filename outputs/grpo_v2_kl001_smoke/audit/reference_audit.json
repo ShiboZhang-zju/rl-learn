@@ -1,0 +1,28 @@
+{
+  "REFERENCE_MODE": "explicit_sft_epoch4",
+  "policy_checkpoint": "outputs/sft_v2_5k_p800/checkpoint-1252",
+  "reference_checkpoint": "outputs/sft_v2_5k_p800/checkpoint-1252",
+  "beta": 0.01,
+  "policy_trainable_params": 4399104,
+  "reference_trainable_params": 0,
+  "n_prompts": 2,
+  "mean_abs_logprob_diff": 0.0023408490233123302,
+  "max_abs_logprob_diff": 0.06831663846969604,
+  "initial_kl": 5.724818038288504e-05,
+  "prompts": [
+    {
+      "id": "kk_grpo_v1_train_000000",
+      "completion_tokens": 21,
+      "mean_abs_logprob_diff": 0.004352234769612551,
+      "max_abs_logprob_diff": 0.06831663846969604,
+      "initial_kl": 0.0001153037665062584
+    },
+    {
+      "id": "kk_grpo_v1_train_000001",
+      "completion_tokens": 22,
+      "mean_abs_logprob_diff": 0.00042089007911272347,
+      "max_abs_logprob_diff": 0.008965909481048584,
+      "initial_kl": 1.831488134484971e-06
+    }
+  ]
+}
