@@ -9,10 +9,10 @@
 ## Last known good commit
 
 ```text
-b633eda   # Complete H5 finite-K sampling feedback diagnosis
+d3bb35c   # Complete H5 causal intervention: K=8 vs K=16
 ```
 
-上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（H5 诊断完成）。
+上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（K16 因果干预完成）。
 
 ```text
 GRPO-V1 结果由 30976e5 产生。
@@ -21,6 +21,7 @@ GRPO-V3 结果由 dc0526a 产生。
 H3 诊断结果由 63abc47 产生。
 H4 诊断结果由 247cb21 产生。
 H5 诊断结果由 b633eda 产生。
+K16 因果干预结果由 d3bb35c 产生。
 ```
 
 恢复时先比较（避免「文档描述状态 A，但 checkout 的代码是状态 B」）：
@@ -64,7 +65,8 @@ GRPO-V3        COMPLETE   (binary reward sparsity 单变量验证，reward.mode=
 H3 Diagnosis   COMPLETE   (structure/operator shortcut，零训练)
 H4 Diagnosis   COMPLETE   (8-way probability landscape，零训练)
 H5 Diagnosis   COMPLETE   (finite-K sampling feedback，零训练)
-GRPO-V4        NOT STARTED  (H5 若转因果实验则为 K 干预，不是 V4)
+K8 vs K16      COMPLETE   (H5 因果干预，K=8 -> K=16)
+GRPO-V4        NOT STARTED
 ```
 
 ```text
@@ -84,6 +86,11 @@ H5            SUPPORTED       (零训练诊断，6/7 判据，判据 4 未检验
 
               H5 is supported as a predictive/path-dependent mechanism,
               not yet established causally.
+
+H5 CAUSAL     NOT_SUPPORTED   (K=8 -> K=16 干预，2026-08-29)
+              K16 确实提高 sampling coverage，
+              但 lower tail / p10 / common-eval all-wrong / Pass@8 均无改善；
+              低支持区(initial q<0.20)反而显著更差
 ```
 
 **不要重新运行已经完成的实验。**
@@ -963,12 +970,108 @@ V2 probe rollouts 的 20 个 prompt 取自 v2_answer_only_val.jsonl，
 本轮不为此重新推理或重新训练。
 ```
 
+## H5 因果干预结论（K=8 → K=16，2026-08-29）
+
+设计预注册（训练前）：`outputs/grpo_k16_intervention/preregistered_design.md`
+报告：`outputs/grpo_k16_analysis/k16_causal_report.md`
+
+### 判定
+
+```text
+H5_CAUSAL_NOT_SUPPORTED
+```
+
+```text
+K16 明显提高 sampling coverage（训练期 all-wrong 0.1050 -> 0.0788，相对 -25%；
+零方差组 0.6200 -> 0.5563），
+但 lower tail / p10 / common-eval all-wrong / Pass@8 均没有改善。
+低支持区 (initial gold_q < 0.20, n=217) 反而显著更差。
+
+之前的 H5 相关性更多反映 difficulty，而不是 K 的因果作用。
+```
+
+### 关键数字
+
+```text
+Fresh K-intervention Holdout (N=2000, seed 20260903):
+
+                     Top1     p10 gold_q   frac q<0.05   norm entropy
+  Epoch4            0.7525     0.1808        0.0330        0.2622
+  Epoch5            0.7795     0.1824        0.0430        0.2077
+  K8  (V2 ckpt-600) 0.7710     0.0534        0.0960        0.1235
+  K16 (ckpt-625)    0.7745     0.0530        0.0995        0.1149
+
+Primary bootstrap (10000, seed 20260903), K16 - K8:
+  p10 gold_q            -0.00495  CI [-0.02279,+0.01292]  n.s.
+  frac gold_q < 0.05    +0.00336  CI [-0.00750,+0.01400]  n.s.
+  normalized entropy    -0.00864  CI [-0.01331,-0.00388]  EXCL0 (K16 更尖)
+  Top1 accuracy         +0.00356  CI [-0.01000,+0.01750]  n.s.
+  McNemar exact p = 0.6643
+
+低支持区 (initial q<0.20, n=217):
+  median Δgold_q   K8 -0.02208  K16 -0.03634  diff -0.01355 CI [-0.02760,-0.00000] EXCL0
+  frac q<0.05      K8  0.379    K16  0.547    diff +0.08336 CI [+0.02304,+0.14747] EXCL0
+
+Common K_eval=8 (200-prompt):
+  Pass@8      E4 0.9350 | K8 0.8400 | K16 0.8450
+  all-wrong   E4 0.0650 | K8 0.1600 | K16 0.1550
+  mixed->all-wrong   K8 19  ->  K16 19     <- 完全没有变化
+```
+
+### 前置 gate 全部通过
+
+```text
+HISTORICAL_K8_CONTROL_VALID
+  V2 时期脚本与当前脚本各跑 2 步，step1/2 的 loss/grad_norm/kl/entropy/
+  reward_mean/num_tokens 逐位一致 -> 训练语义未变。
+  唯一触及训练信号的改动是 reward 重构为 compute_reward，
+  exact 模式行为由单元测试锁定为等价。
+
+  必须记录的噪声下限：V2 原始记录与重跑相差 1 个 token (8276 vs 8277)，
+  导致 loss/grad/kl 在 1e-4 量级不同。
+  GRPO rollout 采样在本加速器上不是 bit-reproducible。
+
+SAMPLER_ALIGNED
+  K8 / K16 前 100 optimizer step (800 unique prompts) 顺序完全一致，
+  每步 8 unique prompts，64 vs 128 completions。
+
+K16 smoke @128 completions/step
+  峰值 45.7GB，无 OOM。未改动 prompt_batch_size /
+  gradient accumulation / gradient checkpointing / max_completion_length。
+```
+
+### 机制线索（不是结论）
+
+```text
+K16 的 sharpening 更强：entropy diff -0.00864 EXCL0，
+KL mean 0.01544 vs K8 0.00908，但 Top1 几乎不变。
+
+更像：更多 rollout -> 组统计量噪声更小 -> 更新更自信 -> sharpening 更强，
+而不是：更多 rollout -> 低支持答案被救回来。
+
+结合 H4：GRPO 的可观测作用是 answer-space 概率重分配 / sharpening；
+本轮说明 sampling coverage 不是该 sharpening 的瓶颈。
+```
+
+### 已按规格不执行
+
+```text
+未跑 K=32（无论结果如何本轮禁止）
+未改 reward / beta / LR / init / 训练数据 / epoch / generator
+```
+
 ## 下一个问题
 
 ```text
-H5 已验证（SUPPORTED）。
-Causal experiment warranted: YES（但本轮不实施）。
+H5 已在两个层面都被检验：
+  - 相关性：       SUPPORTED   (predictive / path-dependent)
+  - 因果 (K=8->16)：NOT_SUPPORTED
+
+下一步未定，需人工确认。不建议继续沿 K 方向扩大（K=32），
+因为 K16 已证明 coverage 提升不改变 lower-tail collapse。
 ```
+
+## 下一个问题（K 干预之前的版本，保留作历史）
 
 ```text
 Next:
