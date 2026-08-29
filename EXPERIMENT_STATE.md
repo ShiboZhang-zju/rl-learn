@@ -9,14 +9,15 @@
 ## Last known good commit
 
 ```text
-87762e2   # Complete GRPO-V2 KL regularization experiment
+dc0526a   # Complete GRPO-V3 H2 partial-reward experiment
 ```
 
-上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（GRPO-V2 完成）。
+上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（GRPO-V3 完成）。
 
 ```text
 GRPO-V1 结果由 30976e5 产生。
 GRPO-V2 结果由 87762e2 产生。
+GRPO-V3 结果由 dc0526a 产生。
 ```
 
 恢复时先比较（避免「文档描述状态 A，但 checkout 的代码是状态 B」）：
@@ -56,12 +57,16 @@ Rollout Audit  COMPLETE
 GRPO-V1        VALID
 GRPO-V1 Stats  COMPLETE
 GRPO-V2        COMPLETE   (KL regularization 单变量验证，beta=0.01)
-GRPO-V3        NOT STARTED
+GRPO-V3        COMPLETE   (binary reward sparsity 单变量验证，reward.mode=partial)
+GRPO-V4        NOT STARTED
 ```
 
 ```text
 H1            NOT_SUPPORTED
 best          outputs/grpo_v2_kl001/checkpoint-600   (V2 Val exact = 0.7720)
+
+H2            NOT_SUPPORTED
+best          outputs/grpo_v3_partial/checkpoint-400 (V2 Val exact = 0.7740)
 ```
 
 **不要重新运行已经完成的实验。**
@@ -267,6 +272,8 @@ beta=0（缺少 reference KL）不是
 「all-correct 与 all-wrong 同时上升」这一 polarization 的主要原因。
 ```
 
+**已由 dc0526a 提交并推送。** 该结论不再依赖工作区状态。
+
 ### Failure Mode
 
 ```text
@@ -358,45 +365,227 @@ generator 中残余 structure→label shortcut
 
 ---
 
+## GRPO-V3 最终结论（binary reward sparsity，reward.mode=partial）
+
+配置：`configs/grpo_v3_partial_reward.yaml`。除 `reward.mode` exact→partial 外
+与 GRPO-V2 **完全一致**（同 init、同 reference、同 beta=0.01、同 seed、
+同训练数据、同采样、同 LR、同 1 epoch、同 625 steps）。
+
+Partial reward = `correct_person_count / 3`：`1.0 / 0.6667 / 0.3333 / 0.0`，
+invalid = 0.0。无 alpha、无 format bonus、无 length reward。
+
+### Phase A：零训练 reward-rescue audit（未做任何新 rollout）
+
+复用 `outputs/grpo_v2_analysis/rollout_D_final200.jsonl`（真实模型输出）：
+
+```text
+exact all-wrong groups                32
+  ├─ partial 仍然 zero-variance        22
+  └─ partial 恢复 non-zero variance    10
+
+reward rescue rate = 10 / 32 = 31.25%   [Wilson 95% CI 0.180, 0.486]
+Gate: 31.2% > 25% -> CONTINUE_TO_PHASE_B
+```
+
+未被 rescue 的 22 组：8 次 rollout 全部预测**同一**错误 pattern（partial 恒定）。
+被 rescue 的 10 组：8 次中出现 2 种错误 pattern（例 gt=NNN → [NNK×7, NKK×1]）。
+
+上下文：Epoch4 7/13 = 53.8%，V1 7/27 = 25.9%，V2 probe 5/14 = 35.7%。
+
+### 训练期机制（真实 rollout，673 组）
+
+```text
+exact-all-wrong groups seen : 673
+rescued (regained variance) : 162     -> 24.1%
+rescued examples archived   : 5       (见 audit.json)
+```
+
+rescue rate 随训练下降：34.7%（1-100）→ 18.2%（601-625）。
+policy 越 sharpen，all-wrong group 越同质化，越难被 rescue。
+
+### 结果（greedy，指标恒为 exact accuracy）
+
+Fresh GRPO-V3 Holdout（N=2000，seed 20260902，与全部历史数据零重叠）：
+
+```text
+Epoch4      73.35%
+Epoch5      76.25%
+GRPO-V1     75.50%
+GRPO-V2     76.95%
+GRPO-V3     75.20%
+```
+
+统计检验（paired）：
+
+```text
+V3 - V2     = -1.75pp   McNemar p = 0.0276   95% CI [-3.25, -0.25]pp   <- 显著变差
+V3 - Epoch5 = -1.05pp   McNemar p = 0.1919   95% CI [-2.55, +0.40]pp   (跨 0)
+V3 - Epoch4 = +1.85pp   McNemar p = 0.0286   95% CI [+0.25, +3.45]pp
+```
+
+V2 Holdout 上：V3 − V2 = −2.75pp，p = 0.0004。
+
+### 行为对照（固定 200-prompt 子集，8 rollouts，T=0.8）
+
+| Metric | Epoch4 | GRPO-V1 | GRPO-V2 | GRPO-V3 |
+|---|---:|---:|---:|---:|
+| Pass@8 | 93.5% | 86.5% | 84.0% | 82.0% |
+| All-correct | 37.5% | 55.0% | 59.0% | 53.0% |
+| All-wrong | 6.5% | 13.5% | 16.0% | 18.0% |
+| Mixed | 56.0% | 31.5% | 25.0% | 29.0% |
+| Avg unique | 1.825 | 1.390 | 1.335 | 1.370 |
+| Avg correct/group | 5.335 | 5.840 | 6.035 | 5.545 |
+
+```text
+mixed→all-correct / mixed→all-wrong
+  Epoch4 → V1:  38 / 17
+  Epoch4 → V2:  43 / 19
+  Epoch4 → V3:  34 / 25      <- 两个方向都更差
+```
+
+### H2 判定：NOT_SUPPORTED
+
+```text
+机制成立：673 个 all-wrong group 中 162 个（24.1%）恢复了 non-zero variance，
+          5 个真实 group 实例已归档 -> 排除 INCONCLUSIVE
+
+但三条行为判据全部不成立：
+  All-wrong       16.0% -> 18.0%   (+2.0pp, p=0.5034)   未下降
+  Pass@8          84.0% -> 82.0%   (-2.0pp)             未恢复
+  mixed→all-wrong 19    -> 25                           反而增加
+
+且 exact greedy accuracy 显著下降：
+  fresh holdout 76.95% -> 75.20%   (-1.75pp, p=0.0276)
+```
+
+结论：
+
+```text
+H2 = NOT_SUPPORTED
+
+Partial reward 确实恢复了部分 exact-all-wrong group 的
+reward variance / non-zero advantage，
+因此机制干预真实生效。
+
+但 All-wrong、Pass@8、mixed→wrong 和最终 exact accuracy
+均未改善，反而恶化。
+
+因此 all-wrong zero-advantage 虽然真实存在，
+但不是当前 polarization failure 的主要原因。
+```
+
+### 重要发现：partial reward 是错位的代理目标（Goodhart）
+
+```text
+Partial reward 出现 proxy misalignment / Goodhart：
+
+shaped training reward ↑
+但 exact task reward ↓
+
+因此后续禁止继续做类似 partial/Hamming reward shaping，
+除非提出新的独立假设。
+```
+
+数据：
+
+```text
+V3 shaped (training) reward = 0.8735          <- 训练信号持续上升
+V3 exact reward (rollout)   = 0.7462  vs V2 0.7575   <- 真实目标下降
+V3 avg correct/group        = 5.545   vs V2 6.035
+```
+
+Hamming-style dense reward 与「三人全对才算对」**非单调一致**：
+从「三人全错」到「只错一人」提高 partial reward，但任务得分仍为 0。
+模型学会了「每人少错一点」，没有学会「三人全对」。
+
+### 训练动态备注
+
+```text
+V2 的 train_metrics.jsonl 生成于双轨字段加入之前；
+本轮按「V2 为 exact 模式 -> shaped ≡ exact」重建了 exact_*/shaped_* 字段。
+TRL 原生 frac_reward_zero_std 阈值 1e-8 偏敏感，
+本轮以自算的 *_zero_variance_ratio（阈值 1e-6）为准。
+```
+
+详细报告：`outputs/grpo_v3_report.md`
+
+---
+
+## 当前待验证假设
+
+按顺序：
+
+```text
+H1:
+beta=0 缺少 reference KL，
+导致 policy 过度 sharpening / drift。
+  -> 已验证：NOT_SUPPORTED（GRPO-V2，2026-08-29）
+
+H2:
+binary exact reward 太稀疏，
+all-wrong group advantage=0，无法自我纠正。
+  -> 已验证：NOT_SUPPORTED（GRPO-V3，2026-08-29）
+
+H3:
+GRPO 是否放大了 generator 中残余的
+structure/operator → answer-pattern shortcut。
+  -> 下一个（H1/H2 均不支持后，这是唯一剩下的候选）
+```
+
+H1 与 H2 **均不支持**，两者的干预（KL、partial reward）都真实生效，
+但都没能减少错误方向 polarization。这提示：
+
+```text
+polarization 可能不是由「缺少约束」或「缺少信号」造成的，
+而可能来自被优化目标本身与任务目标的错位（partial reward 的证据支持这一点），
+或来自 generator / 数据分布层面的 shortcut。
+```
+
 ## 下一步实验
 
 ```text
-GRPO-V3
+GRPO-V4
 ```
 
-**只验证 H2（binary reward sparsity / all-wrong zero advantage）。**
+**只验证 H3（generator / policy shortcut）。不要自动开始。**
 
 起始点（建议，未执行）：
 
 ```text
 init checkpoint    = checkpoint-1252
 reference          = checkpoint-1252 (frozen, explicit_sft_epoch4)
-beta               = 0.01        <- 保留：已证明能显著提升 greedy accuracy
+beta               = 0.01
+reward.mode        = exact           <- 回到 exact：partial 已证明有害
 lr = 1e-5, num_generations = 8, temperature = 0.8, top_p = 0.95, 1 epoch
 ```
 
-唯一计划修改（二选一，需人工确认后再执行）：
+H3 的方向（需人工确认后再执行）：
 
 ```text
-方案 a: reward 由 binary exact 改为 partial / shaped
-方案 b: 对 all-wrong group 做特殊处理（advantage=0 无法自我纠正）
+a: 审计 generator 是否存在 structure/operator -> answer-pattern 的可利用相关性
+b: 检查 GRPO 是否放大了 a 中的 shortcut
+c: 若成立，考虑在数据层面（而非 reward 层面）修正
 ```
 
-**不要自动开始 GRPO-V3。**
+**不要自动开始 GRPO-V4。**
 
-除了上一节列出的禁止项，本轮额外禁止：
+本轮额外禁止：
 
 ```text
+任何新的 reward shaping（partial 已证明有害）
+reward alpha sweep
 beta sweep
-把 GRPO-V2 的 greedy 提升当作 H1 被支持的证据
-用 grpo_v1_final_holdout 作为最终泛化指标（已非 untouched）
+LR sweep
+第二 epoch
+修改训练集 / generator（在 H3 审计完成前）
 ```
 
-新的 untouched 评测集已就绪：
+新的评测集状态：
 
 ```text
-data/processed/grpo_v2_final_holdout.jsonl    (2000, seed 20260901)
-  已被 GRPO-V2 使用过；下一轮需另生成新的 holdout。
+data/processed/grpo_v2_final_holdout.jsonl  已被 GRPO-V2/V3 使用（非 untouched）
+data/processed/grpo_v3_final_holdout.jsonl  已被 GRPO-V3 使用（非 untouched）
+  下一轮需另生成新的 holdout（建议 seed 20260903）。
 ```
 
 任意关键恢复项失败时，不要自动重新训练，先报告差异。
