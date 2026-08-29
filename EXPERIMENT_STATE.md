@@ -9,16 +9,17 @@
 ## Last known good commit
 
 ```text
-63abc47   # Complete H3 shortcut amplification diagnosis
+247cb21   # Complete H4 probability landscape diagnosis
 ```
 
-上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（H3 诊断完成）。
+上面的 commit 是**本文档所描述的实验状态被产生的那个 commit**（H4 诊断完成）。
 
 ```text
 GRPO-V1 结果由 30976e5 产生。
 GRPO-V2 结果由 87762e2 产生。
 GRPO-V3 结果由 dc0526a 产生。
 H3 诊断结果由 63abc47 产生。
+H4 诊断结果由 247cb21 产生。
 ```
 
 恢复时先比较（避免「文档描述状态 A，但 checkout 的代码是状态 B」）：
@@ -60,6 +61,7 @@ GRPO-V1 Stats  COMPLETE
 GRPO-V2        COMPLETE   (KL regularization 单变量验证，beta=0.01)
 GRPO-V3        COMPLETE   (binary reward sparsity 单变量验证，reward.mode=partial)
 H3 Diagnosis   COMPLETE   (structure/operator shortcut，零训练)
+H4 Diagnosis   COMPLETE   (8-way probability landscape，零训练)
 GRPO-V4        NOT STARTED
 ```
 
@@ -71,6 +73,10 @@ H2            NOT_SUPPORTED
 best          outputs/grpo_v3_partial/checkpoint-400 (V2 Val exact = 0.7740)
 
 H3            NOT_SUPPORTED   (零训练诊断，未训练 V4)
+
+H4            SUPPORTED       (零训练诊断，未训练 V4)
+              GRPO 主要在 8 个合法答案上重分配/sharpen 概率，
+              而非广泛扩大 gold answer 的 high-rank support
 ```
 
 **不要重新运行已经完成的实验。**
@@ -652,18 +658,144 @@ polarization 可能不是由「缺少约束」或「缺少信号」造成的，
 或来自 generator / 数据分布层面的 shortcut。
 ```
 
+## H4 诊断结论（零训练，2026-08-29）
+
+分析集：GRPO-V3 Fresh Holdout（N=2000）+ 固定 200-prompt 诊断子集。
+方法：对 8 个 canonical answer completion 做 teacher-forced scoring，
+用 logsumexp 归一化得到 answer-space `q`。**不使用 temperature sampling、不训练。**
+脚本：`scripts/audit_h4_probability_landscape.py`；
+报告：`outputs/grpo_h4_probability_audit/h4_probability_report.md`。
+
+### 核心结论
+
+```text
+H4 = SUPPORTED
+
+GRPO 的主要可观测作用更接近 answer-space probability
+redistribution / sharpening，
+而不是广泛扩大 gold answer 的 high-rank support。
+```
+
+```text
+GRPO primarily reshapes/sharpens the existing 8-way answer distribution.
+
+V2:
+Top1: 74.90% -> 77.75%
+Top3: 97.70% -> 97.85%
+
+149/152 promoted samples already had gold rank <= 3 at Epoch4.
+
+mixed->all-correct:
+gold probability increases and entropy decreases.
+
+mixed->all-wrong:
+gold probability decreases and entropy also decreases.
+
+Therefore polarization is bidirectional probability sharpening.
+```
+
+**不要**写成「GRPO 没有学到推理」——本实验无法证明这一点。
+
+### 关键数字
+
+```text
+normalized entropy   0.2560 -> 0.1208   (V2)   CI EXCL0
+effective support    1.8446 -> 1.3527   (V2)   CI EXCL0
+top1 margin          2.7796 -> 5.0221   (V2)   CI EXCL0
+
+Top1 coverage        0.7490 -> 0.7775   +2.85pp  CI [+1.35, +4.40]pp  EXCL0
+Top2 coverage        0.9240 -> 0.9185   -0.55pp
+Top3 coverage        0.9770 -> 0.9785   +0.15pp  CI n.s.              <- 核心
+
+新 rank1 正确题来源 (V2):  149/152 = 98.0% 原本已在 rank<=3
+                          rank>3 -> rank1 仅 3 题
+
+mixed->all-correct  (n=43): gold_q +0.3375, entropy -0.2756
+mixed->all-wrong    (n=19): gold_q -0.2513, gold margin -0.679 -> -3.703, entropy -0.1912
+   -> 两边 entropy 都降，概率质量朝相反方向集中
+
+V2 悖论:  median gold_q 0.7735 -> 0.9698  (↑)
+          p10     gold_q 0.1642 -> 0.0450  (↓)
+          gold_q < 0.05   3.30%  -> 10.55%
+          implied Pass@8  0.9295 -> 0.8684  贴合实际 0.9350 -> 0.8400
+```
+
+### Epoch5 控制：哪些是通用效应
+
+```text
+通用（Epoch5 同向，但幅度约为 GRPO 的 1/2.5）:
+  entropy↓ / effective support↓ / top1 margin↑ / rank2/3→rank1 占 98.4%
+  V2 - Epoch5 仍显著:  entropy -0.0805, support -0.2760, margin +1.4707 (均 EXCL0)
+
+GRPO-specific（Epoch5 不出现或反向）:
+  p10 gold_q       Epoch4->Epoch5 +0.0174 (改善)   vs  ->V2 -0.1192
+  gold_q<0.05 占比 Epoch4->Epoch5 +1.05pp          vs  ->V2 +7.25pp
+  Top2 coverage    Epoch4->Epoch5 +0.60pp          vs  ->V2 -0.55pp
+```
+
+**sharpening 本身是通用训练效应；下尾崩塌与 Top2 收窄才是 GRPO 特有，
+也正是 all-wrong↑ / Pass@8↓ 的直接来源。**
+
+### Scoring gate
+
+```text
+8-way argmax vs 已有 greedy prediction 一致率:
+  Epoch4 0.9540 | Epoch5 0.9685 | V1 0.9775 | V2 0.9830 | V3 0.9790
+  全部 >= 0.95 -> H4_SCORING_VALID
+```
+
+### Caveats
+
+```text
+1. q 是在 8 个 canonical legal answer 上重新归一化的 answer-space 分布，
+   不是整个语言生成空间中的绝对 probability。
+2. tokenization 偏差: knight=1 token, knave=2 tokens -> KKK 18 / NNN 21 tokens。
+   该偏移对所有模型是常数，跨模型比较中抵消；
+   spearman(gold token 长度, gold_q 变化) rho = -0.0574，可忽略。
+3. mean-token-logprob 敏感性检查退化了（压缩约 20 倍，q 近乎均匀，
+   normalized entropy 0.961~0.974），无法用于尾部指标；
+   主结果使用真实 sequence log-probability。
+4. implied Pass@8 = 1-(1-q_gold)^8 不是真实 Pass@8，
+   但与实测值高度吻合，且与 rollout 正确比例 spearman rho = 0.88~0.93。
+```
+
 ## 下一个问题
 
 ```text
-H4:
-Does GRPO primarily reshape/sharpen the probability
-distribution over the 8 legal answer patterns rather than
-broadly increasing answer-space competence?
+H5:
+Finite-K on-policy sampling may create a rich-get-richer
+feedback loop that amplifies initial probability differences.
 ```
 
-类型：**零训练诊断**（teacher-forced 8-way probability landscape）。
-不使用 temperature sampling 估计概率，直接在 8 个 canonical answer completion 上
-做 teacher-forced scoring 并归一化。
+类型：**零训练诊断**（静态 retrospective audit + 训练轨迹 probability audit）。
+
+```text
+K=8, P(miss) = (1-p)^8:
+  p=0.50 -> 0.4%    p=0.30 -> 5.8%    p=0.20 -> 16.8%
+  p=0.10 -> 43.0%   p=0.05 -> 66.3%
+
+gold probability 高 -> 容易采到 correct -> 持续正强化 -> 更高
+gold probability 低 -> 经常 8 次全 miss -> 缺正强化 -> 更低
+```
+
+主分析对象：**GRPO-V2**（标准 exact reward、beta=0.01、无 V3 的代理目标混杂）。
+初始化 Epoch4 checkpoint-1252，最终 checkpoint-600。
+概率定义必须用 H4 的 `gold_q`（8-way 归一化），
+真实 hit/miss 用已有 rollout 的 `correct_count`。
+
+**H5 即使 SUPPORTED 也只是 path-dependence 证据，不是因果证据。**
+真正的因果实验是 K=8 vs K=16/32，本轮禁止实施。
+
+H1 / H2 / H3 均不支持，H4 支持。当前对 polarization 的最佳解释是：
+
+```text
+GRPO 主要在 answer-space 上重分配概率：
+把多数题推到"几乎确定正确"（greedy↑、all-correct↑），
+同时把少数困难题推到"几乎确定错误"（all-wrong↑、Pass@8↓）。
+
+sharpening 的"量"是通用训练效应（Epoch5 也有，约 1/2.5），
+但"下尾崩塌 + Top2 收窄"是 GRPO 特有的。
+```
 
 ---
 
